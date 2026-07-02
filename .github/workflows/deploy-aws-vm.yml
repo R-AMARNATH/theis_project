@@ -2,10 +2,15 @@ name: Deploy AWS VM
 
 on:
   workflow_dispatch:
-
-env:
-  REGION: eu-west-1
-  INSTANCE_TYPE: t3.micro
+    inputs:
+      region:
+        description: 'AWS region to deploy VM'
+        required: true
+        type: string
+      instanceType:
+        description: 'EC2 instance type'
+        required: true
+        type: string
 
 jobs:
   deploy:
@@ -17,7 +22,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ env.REGION }}
+          aws-region: ${{ inputs.region }}
 
       - name: Get Latest Ubuntu AMI
         id: ami
@@ -36,8 +41,8 @@ jobs:
         run: |
           INSTANCE_ID=$(aws ec2 run-instances \
             --image-id ${{ steps.ami.outputs.ami_id }} \
-            --instance-type ${{ env.INSTANCE_TYPE }} \
-            --region ${{ env.REGION }} \
+            --instance-type ${{ inputs.instanceType }} \
+            --region ${{ inputs.region }} \
             --tag-specifications 'ResourceType=instance,Tags=[{Key=Source,Value=CarbonAwareScheduler},{Key=RunId,Value=${{ github.run_id }}}]' \
             --query "Instances[0].InstanceId" \
             --output text)

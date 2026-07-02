@@ -1,1 +1,57 @@
+name: Deploy AWS VM
 
+on:
+  workflow_dispatch:
+
+env:
+  REGION: eu-west-1
+  INSTANCE_TYPE: t3.micro
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.REGION }}
+
+      - name: Get Latest Ubuntu AMI
+        id: ami
+        run: |
+          AMI_ID=$(aws ec2 describe-images \
+            --owners 099720109477 \
+            --filters "Name=name,Values=ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*" \
+                      "Name=state,Values=available" \
+            --query "sort_by(Images, &CreationDate)[-1].ImageId" \
+            --output text)
+          echo "ami_id=$AMI_ID" >> "$GITHUB_OUTPUT"
+          echo "AMI: $AMI_ID"
+
+      - name: Launch EC2 Instance
+        id: ec2
+        run: |
+          INSTANCE_ID=$(aws ec2 run-instances \
+            --image-id ${{ steps.ami.outputs.ami_id }} \
+            --instance-type ${{ env.INSTANCE_TYPE }} \
+            --region ${{ env.REGION }} \
+            --tag-specifications 'ResourceType=instance,Tags=[{Key=Source,Value=CarbonAwareScheduler},{Key=RunId,Value=${{ github.run_id }}}]' \
+            --query "Instances[0].InstanceId" \
+            --output text)
+          echo "instance_id=$INSTANCE_ID" >> "$GITHUB_OUTPUT"
+          echo "Instance ID: $INSTANCE_ID"
+
+      - name: Wait for Instance Running
+        run: |
+          aws ec2 wait instance-running \
+            --instance-ids ${{ steps.ec2.outputs.instance_id }}
+
+      - name: Show Instance Details
+        run: |
+          aws ec2 describe-instances \
+            --instance-ids ${{ steps.ec2.outputs.instance_id }} \
+            --query "Reservations[0].Instances[0].{ID:InstanceId, State:State.Name, Region:Placement.AvailabilityZone, Type:InstanceType, IP:PublicIpAddress}" \
+            --output table

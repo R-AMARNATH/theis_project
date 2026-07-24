@@ -13,3 +13,19 @@ C:\Users\vargs\source\repos\CarbonAware.RegionMap\obj\Debug\net8.0\CarbonAware.R
 C:\Users\vargs\source\repos\CarbonAware.RegionMap\bin\Debug\net8.0\CarbonAware.Core.dll
 C:\Users\vargs\source\repos\CarbonAware.RegionMap\bin\Debug\net8.0\CarbonAware.Core.pdb
 C:\Users\vargs\source\repos\CarbonAware.RegionMap\obj\Debug\net8.0\CarbonAw.E917A201.Up2Date
+C:\Users\amarnath\Documents\TUD modules\sem2\research thesis\project\CarbonAwareAPI\CarbonAware.RegionMap\bin\Debug\net8.0\CarbonAware.RegionMap.deps.json
+C:\Users\amarnath\Documents\TUD modules\sem2\research thesis\project\CarbonAwareAPI\CarbonAware.RegionMap\bin\Debug\net8.0\CarbonAware.RegionMap.dll
+C:\Users\amarnath\Documents\TUD modules\sem2\research thesis\project\CarbonAwareAPI\CarbonAware.RegionMap\bin\Debug\net8.0\CarbonAware.RegionMap.pdb
+C:\Users\amarnath\Documents\TUD modules\sem2\research thesis\project\CarbonAwareAPI\CarbonAware.RegionMap\bin\Debug\net8.0\CarbonAware.Core.dll
+C:\Users\amarnath\Documents\TUD modules\sem2\research thesis\project\CarbonAwareAPI\CarbonAware.RegionMap\bin\Debug\net8.0\CarbonAware.Core.pdb
+C:\Users\amarnath\Documents\TUD modules\sem2\research thesis\project\CarbonAwareAPI\CarbonAware.RegionMap\obj\Debug\net8.0\CarbonAware.RegionMap.csproj.AssemblyReference.cache
+C:\Users\amarnath\Documents\TUD modules\sem2\research thesis\project\CarbonAwareAPI\CarbonAware.RegionMap\obj\Debug\net8.0\CarbonAware.RegionMap.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\amarnath\Documents\TUD modules\sem2\research thesis\project\CarbonAwareAPI\CarbonAware.RegionMap\obj\Debug\net8.0\CarbonAware.RegionMap.AssemblyInfoInputs.cache
+C:\Users\amarnath\Documents\TUD modules\sem2\research thesis\project\CarbonAwareAPI\CarbonAware.RegionMap\obj\Debug\net8.0\CarbonAware.RegionMap.AssemblyInfo.cs
+C:\Users\amarnath\Documents\TUD modules\sem2\research thesis\project\CarbonAwareAPI\CarbonAware.RegionMap\obj\Debug\net8.0\CarbonAware.RegionMap.csproj.CoreCompileInputs.cache
+C:\Users\amarnath\Documents\TUD modules\sem2\research thesis\project\CarbonAwareAPI\CarbonAware.RegionMap\obj\Debug\net8.0\CarbonAware.RegionMap.sourcelink.json
+C:\Users\amarnath\Documents\TUD modules\sem2\research thesis\project\CarbonAwareAPI\CarbonAware.RegionMap\obj\Debug\net8.0\CarbonAw.E917A201.Up2Date
+C:\Users\amarnath\Documents\TUD modules\sem2\research thesis\project\CarbonAwareAPI\CarbonAware.RegionMap\obj\Debug\net8.0\CarbonAware.RegionMap.dll
+C:\Users\amarnath\Documents\TUD modules\sem2\research thesis\project\CarbonAwareAPI\CarbonAware.RegionMap\obj\Debug\net8.0\refint\CarbonAware.RegionMap.dll
+C:\Users\amarnath\Documents\TUD modules\sem2\research thesis\project\CarbonAwareAPI\CarbonAware.RegionMap\obj\Debug\net8.0\CarbonAware.RegionMap.pdb
+C:\Users\amarnath\Documents\TUD modules\sem2\research thesis\project\CarbonAwareAPI\CarbonAware.RegionMap\obj\Debug\net8.0\ref\CarbonAware.RegionMap.dll

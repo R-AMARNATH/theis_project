@@ -27,6 +27,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.Configure<WattTimeOptions>(builder.Configuration.GetSection("WattTime"));
 // Bind GitHub options
 builder.Services.Configure<GitHubActionsOptions>(builder.Configuration.GetSection("GitHub"));
+// NEW: Bind cost and latency signal options for the multi-objective scheduler
+builder.Services.Configure<CostSignalOptions>(builder.Configuration.GetSection("CostSignal"));
+builder.Services.Configure<LatencySignalOptions>(builder.Configuration.GetSection("LatencySignal"));
 
 // Add targets 
 builder.Services.AddHttpClient<AzureGithubActionsTarget>(http =>http.BaseAddress = new Uri(gitHubApiURL));
@@ -51,12 +54,21 @@ builder.Services.AddHttpClient<WattTimeProvider>((sp, http) =>
 builder.Services.AddScoped<ICarbonSignalProvider>(sp =>sp.GetRequiredService<WattTimeProvider>());
 builder.Services.AddScoped<IBestWindowSignalProvider>(sp =>sp.GetRequiredService<WattTimeProvider>());
 builder.Services.AddSingleton<ICorrelationContext, CorrelationContext>();
+
+// NEW: cost and latency signal providers for the multi-objective scheduler
+builder.Services.AddHttpClient<CostSignalProvider>();
+builder.Services.AddHttpClient<LatencySignalProvider>();
+builder.Services.AddScoped<ICostSignalProvider>(sp => sp.GetRequiredService<CostSignalProvider>());
+builder.Services.AddScoped<ILatencySignalProvider>(sp => sp.GetRequiredService<LatencySignalProvider>());
+
 // Background service can safely depend on WattTimeProvider (typed client)
 builder.Services.AddHostedService<WattTimeAuthBackgroundService>();
 
 // Region map / engine / target
 builder.Services.AddSingleton<IRegionMapper, StaticRegionMapper>();
 builder.Services.AddScoped<IPolicyEngine,WattTimeTwoModeEngine>();
+// NEW: multi-objective scheduling engine (runs alongside IPolicyEngine, doesn't replace it)
+builder.Services.AddScoped<IMultiObjectivePolicyEngine, MultiObjectiveScoringEngine>();
 builder.Services.AddScoped<ICloudTarget>(sp =>
     new TargetRouter(
         sp.GetRequiredService<ILogger<TargetRouter>>(),
@@ -104,6 +116,63 @@ app.MapPost("/schedule", async (OrchestrationRequest req, IPolicyEngine engine, 
     finally { correlation.Current = null; }
 })
 .WithName("Schedule");
+
+// ---------------------------------------------------------------------
+// NEW: multi-objective endpoints (carbon + cost + latency)
+// ---------------------------------------------------------------------
+
+app.MapPost("/advise-multi", async (MultiObjectiveRequest req, IMultiObjectivePolicyEngine engine, CancellationToken ct) =>
+{
+    var correlation = new CorrelationContext { Current = Guid.NewGuid() };
+    try
+    {
+        var weights = req.ResolveWeights();
+        var advice = await engine.AdviseMultiAsync(req.Job, req.Policy, weights, correlation, ct);
+        return Results.Ok(advice);
+    }
+    finally { correlation.Current = null; }
+})
+.WithName("AdviseMulti");
+
+app.MapPost("/schedule-multi", async (MultiObjectiveRequest req, IMultiObjectivePolicyEngine engine, ICloudTarget target, CancellationToken ct) =>
+{
+    var correlation = new CorrelationContext { Current = Guid.NewGuid() };
+    try
+    {
+        var weights = req.ResolveWeights();
+        var advice = await engine.AdviseMultiAsync(req.Job, req.Policy, weights, correlation, ct);
+        if (advice.Cloud is null || advice.Region is null)
+            return Results.UnprocessableEntity(new { error = "No candidate had complete carbon+cost+latency signals.", advice });
+
+        var singleShapedAdvice = new AdviceResult(advice.Cloud!, advice.Region!, advice.When, advice.Rationale, null);
+        var id = await target.ScheduleAsync(singleShapedAdvice, req.Job, correlation, ct);
+        return Results.Ok(new { advice, scheduledId = id });
+    }
+    finally { correlation.Current = null; }
+})
+.WithName("ScheduleMulti");
+
+app.MapPost("/advise-multi/compare", async (OrchestrationRequest req, IMultiObjectivePolicyEngine engine, CancellationToken ct) =>
+{
+    var correlation = new CorrelationContext { Current = Guid.NewGuid() };
+    try
+    {
+        var profiles = new (string Name, ObjectiveWeights Weights)[]
+        {
+            ("carbon-prioritised", ObjectiveWeights.CarbonPrioritised),
+            ("balanced", ObjectiveWeights.Balanced),
+            ("cost-prioritised", ObjectiveWeights.CostPrioritised)
+        };
+
+        var results = new Dictionary<string, MultiObjectiveAdviceResult>();
+        foreach (var (name, weights) in profiles)
+            results[name] = await engine.AdviseMultiAsync(req.Job, req.Policy, weights, correlation, ct);
+
+        return Results.Ok(results);
+    }
+    finally { correlation.Current = null; }
+})
+.WithName("AdviseMultiCompare");
 
 app.MapGet("/regions", (IRegionMapper mapper) =>
 {

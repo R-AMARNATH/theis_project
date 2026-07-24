@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Api\\CarbonAware.Api.csproj": {}
+    "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Api\\CarbonAware.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Api\\CarbonAware.Api.csproj": {
+    "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Api\\CarbonAware.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Api\\CarbonAware.Api.csproj",
+        "projectUniqueName": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Api\\CarbonAware.Api.csproj",
         "projectName": "CarbonAware.Api",
-        "projectPath": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Api\\CarbonAware.Api.csproj",
-        "packagesPath": "C:\\Users\\vargs\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Api\\obj\\",
+        "projectPath": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Api\\CarbonAware.Api.csproj",
+        "packagesPath": "C:\\Users\\amarnath\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Api\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\vargs\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\amarnath\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,24 +26,23 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Core\\CarbonAware.Core.csproj": {
-                "projectPath": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Core\\CarbonAware.Core.csproj"
+              "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Core\\CarbonAware.Core.csproj": {
+                "projectPath": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Core\\CarbonAware.Core.csproj"
               },
-              "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Providers\\CarbonAware.Providers.csproj": {
-                "projectPath": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Providers\\CarbonAware.Providers.csproj"
+              "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Providers\\CarbonAware.Providers.csproj": {
+                "projectPath": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Providers\\CarbonAware.Providers.csproj"
               },
-              "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.RegionMap\\CarbonAware.RegionMap.csproj": {
-                "projectPath": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.RegionMap\\CarbonAware.RegionMap.csproj"
+              "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.RegionMap\\CarbonAware.RegionMap.csproj": {
+                "projectPath": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.RegionMap\\CarbonAware.RegionMap.csproj"
               },
-              "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Targets\\CarbonAware.Targets.csproj": {
-                "projectPath": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Targets\\CarbonAware.Targets.csproj"
+              "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Targets\\CarbonAware.Targets.csproj": {
+                "projectPath": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Targets\\CarbonAware.Targets.csproj"
               }
             }
           }
@@ -53,7 +56,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -110,21 +114,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Core\\CarbonAware.Core.csproj": {
+    "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Core\\CarbonAware.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Core\\CarbonAware.Core.csproj",
+        "projectUniqueName": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Core\\CarbonAware.Core.csproj",
         "projectName": "CarbonAware.Core",
-        "projectPath": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Core\\CarbonAware.Core.csproj",
-        "packagesPath": "C:\\Users\\vargs\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Core\\obj\\",
+        "projectPath": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Core\\CarbonAware.Core.csproj",
+        "packagesPath": "C:\\Users\\amarnath\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Core\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\vargs\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\amarnath\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -132,7 +140,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -150,7 +157,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -171,21 +179,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Providers\\CarbonAware.Providers.csproj": {
+    "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Providers\\CarbonAware.Providers.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Providers\\CarbonAware.Providers.csproj",
+        "projectUniqueName": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Providers\\CarbonAware.Providers.csproj",
         "projectName": "CarbonAware.Providers",
-        "projectPath": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Providers\\CarbonAware.Providers.csproj",
-        "packagesPath": "C:\\Users\\vargs\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Providers\\obj\\",
+        "projectPath": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Providers\\CarbonAware.Providers.csproj",
+        "packagesPath": "C:\\Users\\amarnath\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Providers\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\vargs\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\amarnath\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -193,15 +205,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Core\\CarbonAware.Core.csproj": {
-                "projectPath": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Core\\CarbonAware.Core.csproj"
+              "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Core\\CarbonAware.Core.csproj": {
+                "projectPath": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Core\\CarbonAware.Core.csproj"
               }
             }
           }
@@ -215,7 +226,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -246,21 +258,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.RegionMap\\CarbonAware.RegionMap.csproj": {
+    "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.RegionMap\\CarbonAware.RegionMap.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.RegionMap\\CarbonAware.RegionMap.csproj",
+        "projectUniqueName": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.RegionMap\\CarbonAware.RegionMap.csproj",
         "projectName": "CarbonAware.RegionMap",
-        "projectPath": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.RegionMap\\CarbonAware.RegionMap.csproj",
-        "packagesPath": "C:\\Users\\vargs\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.RegionMap\\obj\\",
+        "projectPath": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.RegionMap\\CarbonAware.RegionMap.csproj",
+        "packagesPath": "C:\\Users\\amarnath\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.RegionMap\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\vargs\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\amarnath\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -268,15 +284,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Core\\CarbonAware.Core.csproj": {
-                "projectPath": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Core\\CarbonAware.Core.csproj"
+              "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Core\\CarbonAware.Core.csproj": {
+                "projectPath": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Core\\CarbonAware.Core.csproj"
               }
             }
           }
@@ -290,7 +305,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -311,21 +327,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Targets\\CarbonAware.Targets.csproj": {
+    "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Targets\\CarbonAware.Targets.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Targets\\CarbonAware.Targets.csproj",
+        "projectUniqueName": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Targets\\CarbonAware.Targets.csproj",
         "projectName": "CarbonAware.Targets",
-        "projectPath": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Targets\\CarbonAware.Targets.csproj",
-        "packagesPath": "C:\\Users\\vargs\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Targets\\obj\\",
+        "projectPath": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Targets\\CarbonAware.Targets.csproj",
+        "packagesPath": "C:\\Users\\amarnath\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Targets\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\vargs\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\amarnath\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -333,15 +353,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Core\\CarbonAware.Core.csproj": {
-                "projectPath": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Core\\CarbonAware.Core.csproj"
+              "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Core\\CarbonAware.Core.csproj": {
+                "projectPath": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Core\\CarbonAware.Core.csproj"
               }
             }
           }
@@ -355,7 +374,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -386,7 +406,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

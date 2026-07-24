@@ -13,3 +13,19 @@ C:\Users\vargs\source\repos\CarbonAware.Providers\bin\Debug\net8.0\CarbonAware.C
 C:\Users\vargs\source\repos\CarbonAware.Providers\bin\Debug\net8.0\CarbonAware.Core.pdb
 C:\Users\vargs\source\repos\CarbonAware.Providers\obj\Debug\net8.0\CarbonAware.Providers.csproj.AssemblyReference.cache
 C:\Users\vargs\source\repos\CarbonAware.Providers\obj\Debug\net8.0\CarbonAw.EC904D66.Up2Date
+C:\Users\amarnath\Documents\TUD modules\sem2\research thesis\project\CarbonAwareAPI\CarbonAware.Providers\bin\Debug\net8.0\CarbonAware.Providers.deps.json
+C:\Users\amarnath\Documents\TUD modules\sem2\research thesis\project\CarbonAwareAPI\CarbonAware.Providers\bin\Debug\net8.0\CarbonAware.Providers.dll
+C:\Users\amarnath\Documents\TUD modules\sem2\research thesis\project\CarbonAwareAPI\CarbonAware.Providers\bin\Debug\net8.0\CarbonAware.Providers.pdb
+C:\Users\amarnath\Documents\TUD modules\sem2\research thesis\project\CarbonAwareAPI\CarbonAware.Providers\bin\Debug\net8.0\CarbonAware.Core.dll
+C:\Users\amarnath\Documents\TUD modules\sem2\research thesis\project\CarbonAwareAPI\CarbonAware.Providers\bin\Debug\net8.0\CarbonAware.Core.pdb
+C:\Users\amarnath\Documents\TUD modules\sem2\research thesis\project\CarbonAwareAPI\CarbonAware.Providers\obj\Debug\net8.0\CarbonAware.Providers.csproj.AssemblyReference.cache
+C:\Users\amarnath\Documents\TUD modules\sem2\research thesis\project\CarbonAwareAPI\CarbonAware.Providers\obj\Debug\net8.0\CarbonAware.Providers.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\amarnath\Documents\TUD modules\sem2\research thesis\project\CarbonAwareAPI\CarbonAware.Providers\obj\Debug\net8.0\CarbonAware.Providers.AssemblyInfoInputs.cache
+C:\Users\amarnath\Documents\TUD modules\sem2\research thesis\project\CarbonAwareAPI\CarbonAware.Providers\obj\Debug\net8.0\CarbonAware.Providers.AssemblyInfo.cs
+C:\Users\amarnath\Documents\TUD modules\sem2\research thesis\project\CarbonAwareAPI\CarbonAware.Providers\obj\Debug\net8.0\CarbonAware.Providers.csproj.CoreCompileInputs.cache
+C:\Users\amarnath\Documents\TUD modules\sem2\research thesis\project\CarbonAwareAPI\CarbonAware.Providers\obj\Debug\net8.0\CarbonAware.Providers.sourcelink.json
+C:\Users\amarnath\Documents\TUD modules\sem2\research thesis\project\CarbonAwareAPI\CarbonAware.Providers\obj\Debug\net8.0\CarbonAw.EC904D66.Up2Date
+C:\Users\amarnath\Documents\TUD modules\sem2\research thesis\project\CarbonAwareAPI\CarbonAware.Providers\obj\Debug\net8.0\CarbonAware.Providers.dll
+C:\Users\amarnath\Documents\TUD modules\sem2\research thesis\project\CarbonAwareAPI\CarbonAware.Providers\obj\Debug\net8.0\refint\CarbonAware.Providers.dll
+C:\Users\amarnath\Documents\TUD modules\sem2\research thesis\project\CarbonAwareAPI\CarbonAware.Providers\obj\Debug\net8.0\CarbonAware.Providers.pdb
+C:\Users\amarnath\Documents\TUD modules\sem2\research thesis\project\CarbonAwareAPI\CarbonAware.Providers\obj\Debug\net8.0\ref\CarbonAware.Providers.dll

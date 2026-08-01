@@ -1,0 +1,1362 @@
+[
+  {
+    "Cloud": "aws",
+    "Region": "af-south-1",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 921.291462707,
+    "Cost": 0.0542,
+    "Latency": 1184.4568,
+    "CostLive": false
+  },
+  {
+    "Cloud": "aws",
+    "Region": "ap-east-1",
+    "Usable": false,
+    "Reason": "missing signal(s): carbon",
+    "Moer": null,
+    "Cost": null,
+    "Latency": null,
+    "CostLive": null
+  },
+  {
+    "Cloud": "aws",
+    "Region": "ap-east-2",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 575.472639819,
+    "Cost": 0.049,
+    "Latency": 1739.3391,
+    "CostLive": false
+  },
+  {
+    "Cloud": "aws",
+    "Region": "ap-northeast-1",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 586.631012121,
+    "Cost": 0.0544,
+    "Latency": 1593.5333,
+    "CostLive": false
+  },
+  {
+    "Cloud": "aws",
+    "Region": "ap-northeast-2",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 2029.1908264320002,
+    "Cost": 0.052,
+    "Latency": 1587.5882,
+    "CostLive": false
+  },
+  {
+    "Cloud": "aws",
+    "Region": "ap-northeast-3",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 527.07433394,
+    "Cost": 0.0544,
+    "Latency": 1287.0103,
+    "CostLive": false
+  },
+  {
+    "Cloud": "aws",
+    "Region": "ap-south-1",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 977.718353535,
+    "Cost": 0.0448,
+    "Latency": 1130.0091,
+    "CostLive": false
+  },
+  {
+    "Cloud": "aws",
+    "Region": "ap-south-2",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 977.718353535,
+    "Cost": 0.0448,
+    "Latency": 1088.6838,
+    "CostLive": false
+  },
+  {
+    "Cloud": "aws",
+    "Region": "ap-southeast-1",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 425.56036153400004,
+    "Cost": 0.0528,
+    "Latency": 1330.7706,
+    "CostLive": false
+  },
+  {
+    "Cloud": "aws",
+    "Region": "ap-southeast-2",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 776.005826596,
+    "Cost": 0.0528,
+    "Latency": 1391.4607,
+    "CostLive": false
+  },
+  {
+    "Cloud": "aws",
+    "Region": "ap-southeast-3",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 747.883099656,
+    "Cost": 0.0528,
+    "Latency": 1476.0613,
+    "CostLive": false
+  },
+  {
+    "Cloud": "aws",
+    "Region": "ap-southeast-4",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 855.747365242,
+    "Cost": 0.0528,
+    "Latency": 1494.5582,
+    "CostLive": false
+  },
+  {
+    "Cloud": "aws",
+    "Region": "ap-southeast-5",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 689.687198585,
+    "Cost": 0.0475,
+    "Latency": 1456.7586,
+    "CostLive": false
+  },
+  {
+    "Cloud": "aws",
+    "Region": "ap-southeast-6",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 1789.059025754,
+    "Cost": 0.0554,
+    "Latency": 1679.8166,
+    "CostLive": false
+  },
+  {
+    "Cloud": "aws",
+    "Region": "ap-southeast-7",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 425.74179848200004,
+    "Cost": 0.0475,
+    "Latency": 1451.9134,
+    "CostLive": false
+  },
+  {
+    "Cloud": "aws",
+    "Region": "ca-central-1",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 437.036248495,
+    "Cost": 0.0464,
+    "Latency": 914.028,
+    "CostLive": false
+  },
+  {
+    "Cloud": "aws",
+    "Region": "ca-west-1",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 461.439518001,
+    "Cost": 0.0464,
+    "Latency": 1187.7442,
+    "CostLive": false
+  },
+  {
+    "Cloud": "aws",
+    "Region": "eu-central-1",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 34.291583171999996,
+    "Cost": 0.048,
+    "Latency": 922.4627,
+    "CostLive": false
+  },
+  {
+    "Cloud": "aws",
+    "Region": "eu-central-2",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 992.1425909010002,
+    "Cost": 0.0528,
+    "Latency": 742.5266,
+    "CostLive": false
+  },
+  {
+    "Cloud": "aws",
+    "Region": "eu-north-1",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 173.363003814,
+    "Cost": 0.0432,
+    "Latency": 881.5411,
+    "CostLive": false
+  },
+  {
+    "Cloud": "aws",
+    "Region": "eu-south-1",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 363.146051422,
+    "Cost": 0.0479,
+    "Latency": 759.9248,
+    "CostLive": false
+  },
+  {
+    "Cloud": "aws",
+    "Region": "eu-south-2",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 64.455475777,
+    "Cost": 0.0456,
+    "Latency": 653.3754,
+    "CostLive": false
+  },
+  {
+    "Cloud": "aws",
+    "Region": "eu-west-1",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 489.42616723000003,
+    "Cost": 0.0456,
+    "Latency": 685.2726,
+    "CostLive": false
+  },
+  {
+    "Cloud": "aws",
+    "Region": "eu-west-2",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 387.00501008400005,
+    "Cost": 0.0472,
+    "Latency": 726.4705,
+    "CostLive": false
+  },
+  {
+    "Cloud": "aws",
+    "Region": "eu-west-3",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 210.421500443,
+    "Cost": 0.0472,
+    "Latency": 641.4407,
+    "CostLive": false
+  },
+  {
+    "Cloud": "aws",
+    "Region": "il-central-1",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 687.101722076,
+    "Cost": 0.0479,
+    "Latency": 811.9933,
+    "CostLive": false
+  },
+  {
+    "Cloud": "aws",
+    "Region": "me-central-1",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 384.73704823400004,
+    "Cost": 0.0502,
+    "Latency": 1073.3788,
+    "CostLive": false
+  },
+  {
+    "Cloud": "aws",
+    "Region": "me-south-1",
+    "Usable": false,
+    "Reason": "missing signal(s): latency",
+    "Moer": null,
+    "Cost": null,
+    "Latency": null,
+    "CostLive": null
+  },
+  {
+    "Cloud": "aws",
+    "Region": "mx-central-1",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 565.9018408119999,
+    "Cost": 0.0437,
+    "Latency": 1086.4832,
+    "CostLive": false
+  },
+  {
+    "Cloud": "aws",
+    "Region": "sa-east-1",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 555.514575539,
+    "Cost": 0.0672,
+    "Latency": 1122.4045,
+    "CostLive": false
+  },
+  {
+    "Cloud": "aws",
+    "Region": "us-east-1",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 522.4930510030001,
+    "Cost": 0.0416,
+    "Latency": 794.275,
+    "CostLive": false
+  },
+  {
+    "Cloud": "aws",
+    "Region": "us-east-2",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 522.2662548180001,
+    "Cost": 0.0416,
+    "Latency": 925.754,
+    "CostLive": false
+  },
+  {
+    "Cloud": "aws",
+    "Region": "us-gov-east-1",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 522.4930510030001,
+    "Cost": 0.0488,
+    "Latency": 987.8914,
+    "CostLive": false
+  },
+  {
+    "Cloud": "aws",
+    "Region": "us-gov-west-1",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 626.184266785,
+    "Cost": 0.0488,
+    "Latency": 1143.4544,
+    "CostLive": false
+  },
+  {
+    "Cloud": "aws",
+    "Region": "us-west-1",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 415.626688631,
+    "Cost": 0.0496,
+    "Latency": 1059.5459,
+    "CostLive": false
+  },
+  {
+    "Cloud": "aws",
+    "Region": "us-west-2",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 625.6853151780001,
+    "Cost": 0.0416,
+    "Latency": 1190.076,
+    "CostLive": false
+  },
+  {
+    "Cloud": "azure",
+    "Region": "australiacentral",
+    "Usable": false,
+    "Reason": "missing signal(s): latency",
+    "Moer": null,
+    "Cost": null,
+    "Latency": null,
+    "CostLive": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "australiaeast",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 776.005826596,
+    "Cost": 0.0528,
+    "Latency": 733.7542,
+    "CostLive": true
+  },
+  {
+    "Cloud": "azure",
+    "Region": "australiasoutheast",
+    "Usable": false,
+    "Reason": "missing signal(s): latency",
+    "Moer": null,
+    "Cost": null,
+    "Latency": null,
+    "CostLive": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "austriaeast",
+    "Usable": false,
+    "Reason": "missing signal(s): latency",
+    "Moer": null,
+    "Cost": null,
+    "Latency": null,
+    "CostLive": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "belgiumcentral",
+    "Usable": false,
+    "Reason": "missing signal(s): latency",
+    "Moer": null,
+    "Cost": null,
+    "Latency": null,
+    "CostLive": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "brazilsouth",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 555.514575539,
+    "Cost": 0.0672,
+    "Latency": 515.3579,
+    "CostLive": true
+  },
+  {
+    "Cloud": "azure",
+    "Region": "brazilsoutheast",
+    "Usable": false,
+    "Reason": "missing signal(s): latency",
+    "Moer": null,
+    "Cost": null,
+    "Latency": null,
+    "CostLive": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "canadacentral",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 457.22110896000004,
+    "Cost": 0.0464,
+    "Latency": 339.1405,
+    "CostLive": true
+  },
+  {
+    "Cloud": "azure",
+    "Region": "canadaeast",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 437.036248495,
+    "Cost": 0.0464,
+    "Latency": 342.5646,
+    "CostLive": true
+  },
+  {
+    "Cloud": "azure",
+    "Region": "centralindia",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 977.718353535,
+    "Cost": 0.0448,
+    "Latency": 873.7259,
+    "CostLive": true
+  },
+  {
+    "Cloud": "azure",
+    "Region": "centralus",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 644.917631666,
+    "Cost": 0.0499,
+    "Latency": 561.1736,
+    "CostLive": true
+  },
+  {
+    "Cloud": "azure",
+    "Region": "chilecentral",
+    "Usable": false,
+    "Reason": "missing signal(s): latency",
+    "Moer": null,
+    "Cost": null,
+    "Latency": null,
+    "CostLive": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "eastasia",
+    "Usable": false,
+    "Reason": "missing signal(s): carbon",
+    "Moer": null,
+    "Cost": null,
+    "Latency": null,
+    "CostLive": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "eastus",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 522.4930510030001,
+    "Cost": 0.0416,
+    "Latency": 402.2786,
+    "CostLive": true
+  },
+  {
+    "Cloud": "azure",
+    "Region": "eastus2",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 522.4930510030001,
+    "Cost": 0.0416,
+    "Latency": 415.6446,
+    "CostLive": true
+  },
+  {
+    "Cloud": "azure",
+    "Region": "francecentral",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 210.421500443,
+    "Cost": 0.0472,
+    "Latency": 397.8859,
+    "CostLive": true
+  },
+  {
+    "Cloud": "azure",
+    "Region": "francesouth",
+    "Usable": false,
+    "Reason": "missing signal(s): latency",
+    "Moer": null,
+    "Cost": null,
+    "Latency": null,
+    "CostLive": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "germanynorth",
+    "Usable": false,
+    "Reason": "missing signal(s): latency",
+    "Moer": null,
+    "Cost": null,
+    "Latency": null,
+    "CostLive": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "germanywestcentral",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 34.291583171999996,
+    "Cost": 0.048,
+    "Latency": 417.2889,
+    "CostLive": true
+  },
+  {
+    "Cloud": "azure",
+    "Region": "indonesiacentral",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 747.883099656,
+    "Cost": 0.0475,
+    "Latency": 630.8519,
+    "CostLive": true
+  },
+  {
+    "Cloud": "azure",
+    "Region": "israelcentral",
+    "Usable": false,
+    "Reason": "missing signal(s): latency",
+    "Moer": null,
+    "Cost": null,
+    "Latency": null,
+    "CostLive": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "italynorth",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 363.146051422,
+    "Cost": 0.048,
+    "Latency": 343.0364,
+    "CostLive": true
+  },
+  {
+    "Cloud": "azure",
+    "Region": "japaneast",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 586.631012121,
+    "Cost": 0.0544,
+    "Latency": 707.4589,
+    "CostLive": true
+  },
+  {
+    "Cloud": "azure",
+    "Region": "japanwest",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 527.07433394,
+    "Cost": 0.0599,
+    "Latency": 653.0884,
+    "CostLive": true
+  },
+  {
+    "Cloud": "azure",
+    "Region": "koreacentral",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 2028.147563981,
+    "Cost": 0.052,
+    "Latency": 548.7149,
+    "CostLive": true
+  },
+  {
+    "Cloud": "azure",
+    "Region": "koreasouth",
+    "Usable": false,
+    "Reason": "missing signal(s): latency",
+    "Moer": null,
+    "Cost": null,
+    "Latency": null,
+    "CostLive": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "malaysiawest",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 689.687198585,
+    "Cost": 0.0475,
+    "Latency": 608.4887,
+    "CostLive": true
+  },
+  {
+    "Cloud": "azure",
+    "Region": "mexicocentral",
+    "Usable": false,
+    "Reason": "missing signal(s): latency",
+    "Moer": null,
+    "Cost": null,
+    "Latency": null,
+    "CostLive": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "newzealandnorth",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 1789.059025754,
+    "Cost": 0.0554,
+    "Latency": 579.8079,
+    "CostLive": true
+  },
+  {
+    "Cloud": "azure",
+    "Region": "northcentralus",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 521.994099396,
+    "Cost": 0.0416,
+    "Latency": 648.7936,
+    "CostLive": true
+  },
+  {
+    "Cloud": "azure",
+    "Region": "northeurope",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 489.42616723000003,
+    "Cost": 0.045,
+    "Latency": 410.2919,
+    "CostLive": true
+  },
+  {
+    "Cloud": "azure",
+    "Region": "norwayeast",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 215.00278338,
+    "Cost": 0.0528,
+    "Latency": 504.459,
+    "CostLive": true
+  },
+  {
+    "Cloud": "azure",
+    "Region": "norwaywest",
+    "Usable": false,
+    "Reason": "missing signal(s): latency",
+    "Moer": null,
+    "Cost": null,
+    "Latency": null,
+    "CostLive": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "polandcentral",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 891.581162472,
+    "Cost": 0.048,
+    "Latency": 465.0346,
+    "CostLive": true
+  },
+  {
+    "Cloud": "azure",
+    "Region": "qatarcentral",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 510.69964938300006,
+    "Cost": 0.0502,
+    "Latency": 422.7495,
+    "CostLive": true
+  },
+  {
+    "Cloud": "azure",
+    "Region": "saudiarabiacentral",
+    "Usable": false,
+    "Reason": "missing signal(s): cost,latency",
+    "Moer": null,
+    "Cost": null,
+    "Latency": null,
+    "CostLive": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "saudiarabiaeast",
+    "Usable": false,
+    "Reason": "missing signal(s): cost,latency",
+    "Moer": null,
+    "Cost": null,
+    "Latency": null,
+    "CostLive": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "southafricanorth",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 921.291462707,
+    "Cost": 0.0542,
+    "Latency": 615.3659,
+    "CostLive": true
+  },
+  {
+    "Cloud": "azure",
+    "Region": "southafricawest",
+    "Usable": false,
+    "Reason": "missing signal(s): latency",
+    "Moer": null,
+    "Cost": null,
+    "Latency": null,
+    "CostLive": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "southcentralus",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 564.72250065,
+    "Cost": 0.0499,
+    "Latency": 432.2302,
+    "CostLive": true
+  },
+  {
+    "Cloud": "azure",
+    "Region": "southeastasia",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 425.56036153400004,
+    "Cost": 0.0528,
+    "Latency": 613.6179,
+    "CostLive": true
+  },
+  {
+    "Cloud": "azure",
+    "Region": "southindia",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 977.718353535,
+    "Cost": 0.058,
+    "Latency": 1038.7505,
+    "CostLive": true
+  },
+  {
+    "Cloud": "azure",
+    "Region": "spaincentral",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 64.455475777,
+    "Cost": 0.0458,
+    "Latency": 409.7081,
+    "CostLive": true
+  },
+  {
+    "Cloud": "azure",
+    "Region": "swedencentral",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 173.363003814,
+    "Cost": 0.0432,
+    "Latency": 406.0553,
+    "CostLive": true
+  },
+  {
+    "Cloud": "azure",
+    "Region": "swedensouth",
+    "Usable": false,
+    "Reason": "missing signal(s): latency",
+    "Moer": null,
+    "Cost": null,
+    "Latency": null,
+    "CostLive": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "switzerlandnorth",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 992.1425909010002,
+    "Cost": 0.0528,
+    "Latency": 485.8828,
+    "CostLive": true
+  },
+  {
+    "Cloud": "azure",
+    "Region": "switzerlandwest",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 992.1425909010002,
+    "Cost": 0.06866,
+    "Latency": 431.6648,
+    "CostLive": true
+  },
+  {
+    "Cloud": "azure",
+    "Region": "taiwannorth",
+    "Usable": false,
+    "Reason": "missing signal(s): cost",
+    "Moer": null,
+    "Cost": null,
+    "Latency": null,
+    "CostLive": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "uaecentral",
+    "Usable": false,
+    "Reason": "missing signal(s): latency",
+    "Moer": null,
+    "Cost": null,
+    "Latency": null,
+    "CostLive": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "uaenorth",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 384.73704823400004,
+    "Cost": 0.0499,
+    "Latency": 460.6146,
+    "CostLive": true
+  },
+  {
+    "Cloud": "azure",
+    "Region": "uksouth",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 387.00501008400005,
+    "Cost": 0.0472,
+    "Latency": 431.0842,
+    "CostLive": true
+  },
+  {
+    "Cloud": "azure",
+    "Region": "ukwest",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 387.00501008400005,
+    "Cost": 0.047,
+    "Latency": 379.6574,
+    "CostLive": true
+  },
+  {
+    "Cloud": "azure",
+    "Region": "westcentralus",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 624.369897305,
+    "Cost": 0.0499,
+    "Latency": 585.4926,
+    "CostLive": true
+  },
+  {
+    "Cloud": "azure",
+    "Region": "westeurope",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 10.477983747000001,
+    "Cost": 0.048,
+    "Latency": 443.251,
+    "CostLive": true
+  },
+  {
+    "Cloud": "azure",
+    "Region": "westindia",
+    "Usable": false,
+    "Reason": "missing signal(s): latency",
+    "Moer": null,
+    "Cost": null,
+    "Latency": null,
+    "CostLive": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "westus",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 415.626688631,
+    "Cost": 0.0496,
+    "Latency": 590.7352,
+    "CostLive": true
+  },
+  {
+    "Cloud": "azure",
+    "Region": "westus2",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 625.4585189930001,
+    "Cost": 0.0416,
+    "Latency": 633.8955,
+    "CostLive": true
+  },
+  {
+    "Cloud": "azure",
+    "Region": "westus3",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 497.182596757,
+    "Cost": 0.0416,
+    "Latency": 366.1664,
+    "CostLive": true
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "africa-south1",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 921.291462707,
+    "Cost": 0.0609,
+    "Latency": 1038.8951,
+    "CostLive": false
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "asia-east1",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 575.472639819,
+    "Cost": 0.0641,
+    "Latency": 1039.9408,
+    "CostLive": false
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "asia-east2",
+    "Usable": false,
+    "Reason": "missing signal(s): carbon",
+    "Moer": null,
+    "Cost": null,
+    "Latency": null,
+    "CostLive": null
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "asia-northeast1",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 586.631012121,
+    "Cost": 0.071,
+    "Latency": 1060.5909,
+    "CostLive": false
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "asia-northeast2",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 527.07433394,
+    "Cost": 0.071,
+    "Latency": 976.6956,
+    "CostLive": false
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "asia-northeast3",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 2028.147563981,
+    "Cost": 0.071,
+    "Latency": 951.027,
+    "CostLive": false
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "asia-south1",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 977.718353535,
+    "Cost": 0.0664,
+    "Latency": 1053.8095,
+    "CostLive": false
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "asia-south2",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 977.718353535,
+    "Cost": 0.0664,
+    "Latency": 1095.0478,
+    "CostLive": false
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "asia-southeast1",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 425.56036153400004,
+    "Cost": 0.0682,
+    "Latency": 1038.3125,
+    "CostLive": false
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "asia-southeast2",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 747.883099656,
+    "Cost": 0.0744,
+    "Latency": 1183.1054,
+    "CostLive": false
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "australia-southeast1",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 776.005826596,
+    "Cost": 0.0785,
+    "Latency": 1265.1414,
+    "CostLive": false
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "australia-southeast2",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 855.747365242,
+    "Cost": 0.0667,
+    "Latency": 951.721,
+    "CostLive": false
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "europe-central2",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 891.581162472,
+    "Cost": 0.0669,
+    "Latency": 969.475,
+    "CostLive": false
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "europe-north1",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 316.19924112700005,
+    "Cost": 0.0609,
+    "Latency": 987.229,
+    "CostLive": false
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "europe-north2",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 173.363003814,
+    "Cost": 0.0581,
+    "Latency": 984.8402,
+    "CostLive": false
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "europe-southwest1",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 64.455475777,
+    "Cost": 0.0653,
+    "Latency": 986.8536,
+    "CostLive": false
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "europe-west1",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 30.345329553000003,
+    "Cost": 0.0609,
+    "Latency": 868.8715,
+    "CostLive": false
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "europe-west10",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 34.291583171999996,
+    "Cost": 0.0713,
+    "Latency": 957.0376,
+    "CostLive": false
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "europe-west12",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 363.146051422,
+    "Cost": 0.0714,
+    "Latency": 934.5856,
+    "CostLive": false
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "europe-west2",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 387.00501008400005,
+    "Cost": 0.0713,
+    "Latency": 997.0209,
+    "CostLive": false
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "europe-west3",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 34.291583171999996,
+    "Cost": 0.0713,
+    "Latency": 963.5158,
+    "CostLive": false
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "europe-west4",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 10.477983747000001,
+    "Cost": 0.0609,
+    "Latency": 858.1171,
+    "CostLive": false
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "europe-west6",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 992.1425909010002,
+    "Cost": 0.0725,
+    "Latency": 927.7665,
+    "CostLive": false
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "europe-west8",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 363.146051422,
+    "Cost": 0.0642,
+    "Latency": 965.1116,
+    "CostLive": false
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "europe-west9",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 210.421500443,
+    "Cost": 0.0642,
+    "Latency": 452.6225,
+    "CostLive": false
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "me-central1",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 510.69964938300006,
+    "Cost": 0.0672,
+    "Latency": 1038.3543,
+    "CostLive": false
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "me-central2",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 671.362066837,
+    "Cost": 0.0885,
+    "Latency": 962.3307,
+    "CostLive": false
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "me-west1",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 687.101722076,
+    "Cost": 0.0608,
+    "Latency": 1009.3243,
+    "CostLive": false
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "northamerica-northeast1",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 437.036248495,
+    "Cost": 0.0609,
+    "Latency": 1090.1501,
+    "CostLive": false
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "northamerica-northeast2",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 457.22110896000004,
+    "Cost": 0.0609,
+    "Latency": 996.8469,
+    "CostLive": false
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "northamerica-south1",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 565.9018408119999,
+    "Cost": 0.0603,
+    "Latency": 968.2783,
+    "CostLive": false
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "southamerica-east1",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 555.514575539,
+    "Cost": 0.0878,
+    "Latency": 1046.8577,
+    "CostLive": false
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "southamerica-west1",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 639.293086278,
+    "Cost": 0.0791,
+    "Latency": 973.602,
+    "CostLive": false
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "us-central1",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 644.7361947180001,
+    "Cost": 0.0553,
+    "Latency": 933.3718,
+    "CostLive": false
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "us-east1",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 782.582915961,
+    "Cost": 0.0553,
+    "Latency": 866.2416,
+    "CostLive": false
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "us-east4",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 522.4930510030001,
+    "Cost": 0.0623,
+    "Latency": 1016.7915,
+    "CostLive": false
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "us-east5",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 522.2662548180001,
+    "Cost": 0.0553,
+    "Latency": 1005.991,
+    "CostLive": false
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "us-south1",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 565.538966916,
+    "Cost": 0.0653,
+    "Latency": 1041.3073,
+    "CostLive": false
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "us-west1",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 625.6853151780001,
+    "Cost": 0.0553,
+    "Latency": 951.3428,
+    "CostLive": false
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "us-west2",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 542.269678335,
+    "Cost": 0.0664,
+    "Latency": 991.924,
+    "CostLive": false
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "us-west3",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 625.2317228080001,
+    "Cost": 0.0664,
+    "Latency": 1000.6059,
+    "CostLive": false
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "us-west4",
+    "Usable": true,
+    "Reason": null,
+    "Moer": 624.279178831,
+    "Cost": 0.0623,
+    "Latency": 981.4294,
+    "CostLive": false
+  }
+]

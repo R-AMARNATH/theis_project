@@ -76,7 +76,10 @@ public sealed class MultiObjectiveScoringEngine : IMultiObjectivePolicyEngine
                 c.Region,
                 Moer = moer,
                 Cost = costSig?.HourlyUsd,
-                Lat = (latSig.Reachable ? latSig.RoundTripMs : null)
+                CostSource = costSig?.Source,
+                CostIsLive = IsLiveCostSource(costSig?.Source),
+                Lat = (latSig.Reachable ? latSig.RoundTripMs : null),
+                LatSource = latSig.Source
             };
         }));
 
@@ -96,7 +99,8 @@ public sealed class MultiObjectiveScoringEngine : IMultiObjectivePolicyEngine
                 if (!r.Cost.HasValue) missing.Add("cost");
                 if (!r.Lat.HasValue) missing.Add("latency");
                 scored.Add(new RegionCandidateScore(r.Cloud, r.Region, r.Moer, r.Cost, r.Lat,
-                    null, null, null, null, true, $"missing signal(s): {string.Join(",", missing)}"));
+                    null, null, null, null, true, $"missing signal(s): {string.Join(",", missing)}",
+                    r.CostIsLive, r.CostSource, r.LatSource));
             }
 
             return new MultiObjectiveAdviceResult(
@@ -121,7 +125,8 @@ public sealed class MultiObjectiveScoringEngine : IMultiObjectivePolicyEngine
                 if (!r.Cost.HasValue) missing.Add("cost");
                 if (!r.Lat.HasValue) missing.Add("latency");
                 scored.Add(new RegionCandidateScore(r.Cloud, r.Region, r.Moer, r.Cost, r.Lat,
-                    null, null, null, null, true, $"missing signal(s): {string.Join(",", missing)}"));
+                    null, null, null, null, true, $"missing signal(s): {string.Join(",", missing)}",
+                    r.CostIsLive, r.CostSource, r.LatSource));
                 continue;
             }
 
@@ -131,7 +136,8 @@ public sealed class MultiObjectiveScoringEngine : IMultiObjectivePolicyEngine
             var composite = weights.Carbon * nMoer + weights.Cost * nCost + weights.Latency * nLat;
 
             scored.Add(new RegionCandidateScore(r.Cloud, r.Region, r.Moer, r.Cost, r.Lat,
-                nMoer, nCost, nLat, composite, false, null));
+                nMoer, nCost, nLat, composite, false, null,
+                r.CostIsLive, r.CostSource, r.LatSource));
         }
 
         var best = scored.Where(s => !s.Excluded).OrderByDescending(s => s.CompositeScore!.Value).First();
@@ -140,10 +146,17 @@ public sealed class MultiObjectiveScoringEngine : IMultiObjectivePolicyEngine
         var regionsDiffer = !(string.Equals(best.Cloud, singleObjectiveBest.Cloud, StringComparison.OrdinalIgnoreCase)
                             && string.Equals(best.Region, singleObjectiveBest.Region, StringComparison.OrdinalIgnoreCase));
 
+        var costProvenance = best.CostIsLive switch
+        {
+            true => "live",
+            false => "static-fallback",
+            null => "unknown"
+        };
+
         var rationale =
             $"multi-objective ({WeightProfileLabel(weights)}, w=[C:{weights.Carbon:F2} Co:{weights.Cost:F2} L:{weights.Latency:F2}]): " +
             $"selected {best.Cloud}:{best.Region} (score {best.CompositeScore:F3}; " +
-            $"{best.MoerGPerKwh:F1} g/kWh, ${best.CostUsdPerHr:F3}/hr, {best.LatencyMs:F0} ms). " +
+            $"{best.MoerGPerKwh:F1} g/kWh, ${best.CostUsdPerHr:F3}/hr [{costProvenance}], {best.LatencyMs:F0} ms). " +
             $"Single-objective (carbon-only) pick was {singleObjectiveBest.Cloud}:{singleObjectiveBest.Region}" +
             (regionsDiffer ? " — DIFFERENT region." : " — same region.");
 
@@ -175,4 +188,10 @@ public sealed class MultiObjectiveScoringEngine : IMultiObjectivePolicyEngine
 
     // WattTime returns lbs/MWh; the rest of the codebase converts to g/kWh this way (see WattTimeTwoModeEngine).
     private static double ConvertToGPerKwh(double lbsPerMwh) => lbsPerMwh * 0.45359237;
+
+    // CostSignalProvider always tags its static-fallback signals with a Source starting
+    // "static-fallback" (see CostSignalProvider.GetStaticCost). Everything else — the Azure
+    // Retail Prices call, the AWS Price List Bulk API call — is a live lookup for that cycle.
+    private static bool? IsLiveCostSource(string? source) =>
+        source is null ? null : !source.StartsWith("static-fallback", StringComparison.OrdinalIgnoreCase);
 }

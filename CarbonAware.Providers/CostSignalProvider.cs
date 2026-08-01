@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
@@ -18,7 +19,9 @@ namespace CarbonAware.Providers;
 ///   - aws   -> live call to the AWS Price List Bulk API region index, with a tight timeout;
 ///              falls back to the static table on any failure (timeout, connection reset, parse error).
 ///              The per-region file can be tens of MB, so this is attempted but never trusted alone.
-///   - gcp   -> static seed table (GCP Cloud Billing Catalog API needs an API key)
+///   - gcp   -> live call to the Cloud Billing Catalog API (needs CostSignal:GcpApiKey); falls back to
+///              the static table if no key is configured, the SKU catalog fetch fails, or a matching
+///              Core/Ram SKU can't be found for that machine type + region.
 ///
 /// Results are cached in-memory per (cloud,region) for CostSignalOptions.CacheTtlHours so an
 /// unattended multi-week experiment isn't dependent on a live API responding on every cycle —
@@ -59,7 +62,8 @@ public sealed class CostSignalProvider : ICostSignalProvider
             {
                 "azure" => await GetAzureCostAsync(region, instanceType, ct),
                 "aws" => await GetAwsCostAsync(region, instanceType, ct),
-                _ => null // gcp has no live path yet — falls straight through to static table below
+                "gcp" => await GetGcpCostAsync(region, instanceType, ct),
+                _ => null
             };
         }
         catch (Exception ex)
@@ -94,9 +98,16 @@ public sealed class CostSignalProvider : ICostSignalProvider
         if (!doc.RootElement.TryGetProperty("Items", out var items) || items.GetArrayLength() == 0)
             return null;
 
-        // Prefer the Linux meter (Azure lists a separate, pricier meter for Windows on the same SKU/region)
+        // Prefer the Linux, pay-as-you-go meter: exclude Windows (separate, pricier meter for the
+        // same SKU/region), and exclude Spot/Low Priority (a different, much cheaper, non-guaranteed
+        // meter that was slipping through the old Windows-only filter and winning the Min() below —
+        // e.g. italynorth/westus3 returning ~$0.01/hr instead of the real ~$0.05/hr on-demand rate).
+        string[] exclude = { "windows", "spot", "low priority" };
         var best = items.EnumerateArray()
-            .Where(i => !(i.TryGetProperty("productName", out var pn) && pn.GetString()?.Contains("Windows") == true))
+            .Where(i => !(i.TryGetProperty("productName", out var pn) &&
+                          exclude.Any(x => pn.GetString()?.Contains(x, StringComparison.OrdinalIgnoreCase) == true)))
+            .Where(i => !(i.TryGetProperty("meterName", out var mn) &&
+                          exclude.Any(x => mn.GetString()?.Contains(x, StringComparison.OrdinalIgnoreCase) == true)))
             .Select(i => i.GetProperty("retailPrice").GetDouble())
             .DefaultIfEmpty(-1)
             .Min();
@@ -160,6 +171,137 @@ public sealed class CostSignalProvider : ICostSignalProvider
         return null;
     }
 
+    // ------------------------------------------------------------------
+    // GCP Cloud Billing Catalog API — https://cloudbilling.googleapis.com/v1/services/{computeEngine}/skus
+    // Needs only an API key (no IAM role, no billing account link) — it's public list pricing.
+    // Unlike AWS/Azure, GCP has no single "price this instance type" SKU: vCPU and RAM are billed as
+    // two separate line items, so we sum vcpu*coreHourlyRate + ramGb*ramHourlyRate using GcpMachineSpecs.
+    // The full Compute Engine SKU catalog (thousands of rows, all regions/families) is fetched once and
+    // cached for CacheTtlHours — re-fetching it on every scheduling cycle would be wasteful and slow.
+    // ------------------------------------------------------------------
+    private static readonly TimeSpan GcpFetchTimeout = TimeSpan.FromSeconds(15);
+
+    private sealed record GcpSkuLite(string Description, IReadOnlyList<string> ServiceRegions, double UnitPriceUsd);
+
+    private static readonly ConcurrentDictionary<string, (List<GcpSkuLite> Skus, DateTimeOffset ExpiresAt)> _gcpCatalogCache = new();
+
+    private async Task<CostSignal?> GetGcpCostAsync(string region, string machineType, CancellationToken ct)
+    {
+        if (string.IsNullOrWhiteSpace(_opts.GcpApiKey))
+        {
+            _log.LogWarning("GCP live pricing skipped: no CostSignal:GcpApiKey configured. Falling back to static table.");
+            return null;
+        }
+
+        if (!_opts.GcpMachineSpecs.TryGetValue(machineType, out var spec))
+        {
+            _log.LogWarning(
+                "No vCPU/RAM spec configured for GCP machine type {MachineType}. Add one under CostSignal:GcpMachineSpecs:{MachineType}.",
+                machineType, machineType);
+            return null;
+        }
+
+        var skus = await GetComputeSkuCatalogAsync(ct);
+
+        // e.g. "e2-medium" -> "E2" — GCP SKU descriptions read "E2 Instance Core running in ...".
+        var family = machineType.Split('-')[0].ToUpperInvariant();
+        string[] exclude = { "custom", "sole tenancy", "premium", "reserved", "commitment", "spot", "preemptible" };
+
+        bool Matches(GcpSkuLite s, string resourceWord) =>
+            s.ServiceRegions.Any(r => string.Equals(r, region, StringComparison.OrdinalIgnoreCase)) &&
+            s.Description.StartsWith(family, StringComparison.OrdinalIgnoreCase) &&
+            s.Description.Contains(resourceWord, StringComparison.OrdinalIgnoreCase) &&
+            !exclude.Any(x => s.Description.Contains(x, StringComparison.OrdinalIgnoreCase));
+
+        var coreSku = skus.FirstOrDefault(s => Matches(s, "Core"));
+        var ramSku = skus.FirstOrDefault(s => Matches(s, "Ram"));
+
+        if (coreSku is null || ramSku is null)
+        {
+            _log.LogWarning(
+                "Could not find both Core and Ram SKUs for {MachineType} in {Region} (core found: {Core}, ram found: {Ram}).",
+                machineType, region, coreSku is not null, ramSku is not null);
+            return null;
+        }
+
+        var hourly = spec.VCpu * coreSku.UnitPriceUsd + spec.RamGb * ramSku.UnitPriceUsd;
+        if (hourly <= 0) return null;
+
+        return new CostSignal("gcp", region, machineType, hourly, DateTimeOffset.UtcNow,
+            "cloudbilling.googleapis.com/v1 (Cloud Billing Catalog API, Compute Engine SKUs)");
+    }
+
+    private async Task<List<GcpSkuLite>> GetComputeSkuCatalogAsync(CancellationToken ct)
+    {
+        const string cacheKey = "gcp-compute-skus";
+        if (_gcpCatalogCache.TryGetValue(cacheKey, out var cached) && cached.ExpiresAt > DateTimeOffset.UtcNow)
+            return cached.Skus;
+
+        using var timeoutCts = CancellationTokenSource.CreateLinkedTokenSource(ct);
+        timeoutCts.CancelAfter(GcpFetchTimeout);
+
+        var result = new List<GcpSkuLite>();
+        string? pageToken = null;
+
+        do
+        {
+            var url = $"https://cloudbilling.googleapis.com/v1/{_opts.GcpComputeEngineServiceId}/skus" +
+                      $"?key={Uri.EscapeDataString(_opts.GcpApiKey!)}&pageSize=5000" +
+                      (pageToken is null ? "" : $"&pageToken={Uri.EscapeDataString(pageToken)}");
+
+            using var resp = await _http.GetAsync(url, timeoutCts.Token);
+            if (!resp.IsSuccessStatusCode)
+            {
+                _log.LogWarning("GCP Cloud Billing Catalog API returned {Status} while fetching SKUs.", resp.StatusCode);
+                break;
+            }
+
+            await using var stream = await resp.Content.ReadAsStreamAsync(timeoutCts.Token);
+            using var doc = await JsonDocument.ParseAsync(stream, cancellationToken: timeoutCts.Token);
+
+            if (doc.RootElement.TryGetProperty("skus", out var skusEl))
+            {
+                foreach (var sku in skusEl.EnumerateArray())
+                {
+                    if (!sku.TryGetProperty("category", out var cat)) continue;
+                    if (!TryGetString(cat, "resourceFamily", out var family) || family != "Compute") continue;
+                    if (!TryGetString(cat, "usageType", out var usageType) || usageType != "OnDemand") continue;
+                    if (!TryGetString(sku, "description", out var description)) continue;
+
+                    var regions = sku.TryGetProperty("serviceRegions", out var regionsEl)
+                        ? regionsEl.EnumerateArray().Select(r => r.GetString() ?? "").ToList()
+                        : new List<string>();
+
+                    if (!sku.TryGetProperty("pricingInfo", out var pricingInfoEl) || pricingInfoEl.GetArrayLength() == 0)
+                        continue;
+
+                    var pricingExpr = pricingInfoEl[0].GetProperty("pricingExpression");
+                    var tieredRates = pricingExpr.GetProperty("tieredRates");
+                    if (tieredRates.GetArrayLength() == 0) continue;
+
+                    var unitPriceEl = tieredRates[0].GetProperty("unitPrice");
+                    if (!TryGetString(unitPriceEl, "currencyCode", out var currency) || currency != "USD") continue;
+
+                    var units = unitPriceEl.TryGetProperty("units", out var unitsEl)
+                        ? (unitsEl.ValueKind == JsonValueKind.String ? double.Parse(unitsEl.GetString()!) : unitsEl.GetDouble())
+                        : 0;
+                    var nanos = unitPriceEl.TryGetProperty("nanos", out var nanosEl) ? nanosEl.GetDouble() : 0;
+                    var price = units + nanos / 1_000_000_000.0;
+
+                    result.Add(new GcpSkuLite(description, regions, price));
+                }
+            }
+
+            pageToken = doc.RootElement.TryGetProperty("nextPageToken", out var tokenEl)
+                ? tokenEl.GetString()
+                : null;
+        }
+        while (!string.IsNullOrEmpty(pageToken));
+
+        _gcpCatalogCache[cacheKey] = (result, DateTimeOffset.UtcNow.AddHours(Math.Max(1, _opts.CacheTtlHours)));
+        return result;
+    }
+
     private static bool TryGetString(JsonElement obj, string name, out string value)
     {
         if (obj.TryGetProperty(name, out var el) && el.ValueKind == JsonValueKind.String)
@@ -172,7 +314,8 @@ public sealed class CostSignalProvider : ICostSignalProvider
     }
 
     // ------------------------------------------------------------------
-    // Static fallback table — sole source for GCP, fallback for AWS/Azure if the live call fails
+    // Static fallback table — used for GCP when no API key is set (or the live lookup fails),
+    // and as a fallback for AWS/Azure if their live calls fail
     // ------------------------------------------------------------------
     private CostSignal? GetStaticCost(string cloud, string region, string instanceType)
     {

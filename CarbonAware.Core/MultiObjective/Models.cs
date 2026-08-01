@@ -79,7 +79,12 @@ public record RegionCandidateScore(
     double? NormLatency,
     double? CompositeScore,
     bool Excluded,
-    string? ExclusionReason
+    string? ExclusionReason,
+    // Provenance — lets you report in the thesis exactly which readings were
+    // live API calls vs. the static fallback table, per candidate per cycle.
+    bool? CostIsLive = null,
+    string? CostSource = null,
+    string? LatencySource = null
 );
 
 public record MultiObjectiveAdviceResult(

@@ -1,0 +1,1138 @@
+[
+  {
+    "Cloud": "aws",
+    "Region": "af-south-1",
+    "Endpoint": "https://ec2.af-south-1.amazonaws.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 997.3315
+  },
+  {
+    "Cloud": "aws",
+    "Region": "ap-east-1",
+    "Endpoint": "https://ec2.ap-east-1.amazonaws.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 1298.3191
+  },
+  {
+    "Cloud": "aws",
+    "Region": "ap-east-2",
+    "Endpoint": "https://ec2.ap-east-2.amazonaws.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 1199.5698
+  },
+  {
+    "Cloud": "aws",
+    "Region": "ap-northeast-1",
+    "Endpoint": "https://ec2.ap-northeast-1.amazonaws.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 1036.1484
+  },
+  {
+    "Cloud": "aws",
+    "Region": "ap-northeast-2",
+    "Endpoint": "https://ec2.ap-northeast-2.amazonaws.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 1206.6163
+  },
+  {
+    "Cloud": "aws",
+    "Region": "ap-northeast-3",
+    "Endpoint": "https://ec2.ap-northeast-3.amazonaws.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 1181.2913
+  },
+  {
+    "Cloud": "aws",
+    "Region": "ap-south-1",
+    "Endpoint": "https://ec2.ap-south-1.amazonaws.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 918.5615
+  },
+  {
+    "Cloud": "aws",
+    "Region": "ap-south-2",
+    "Endpoint": "https://ec2.ap-south-2.amazonaws.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 942.62
+  },
+  {
+    "Cloud": "aws",
+    "Region": "ap-southeast-1",
+    "Endpoint": "https://ec2.ap-southeast-1.amazonaws.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 1154.7416
+  },
+  {
+    "Cloud": "aws",
+    "Region": "ap-southeast-2",
+    "Endpoint": "https://ec2.ap-southeast-2.amazonaws.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 1199.0594
+  },
+  {
+    "Cloud": "aws",
+    "Region": "ap-southeast-3",
+    "Endpoint": "https://ec2.ap-southeast-3.amazonaws.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 1182.299
+  },
+  {
+    "Cloud": "aws",
+    "Region": "ap-southeast-4",
+    "Endpoint": "https://ec2.ap-southeast-4.amazonaws.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 1214.6357
+  },
+  {
+    "Cloud": "aws",
+    "Region": "ap-southeast-5",
+    "Endpoint": "https://ec2.ap-southeast-5.amazonaws.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 1475.6451
+  },
+  {
+    "Cloud": "aws",
+    "Region": "ap-southeast-6",
+    "Endpoint": "https://ec2.ap-southeast-6.amazonaws.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 1449.2064
+  },
+  {
+    "Cloud": "aws",
+    "Region": "ap-southeast-7",
+    "Endpoint": "https://ec2.ap-southeast-7.amazonaws.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 1198.9096
+  },
+  {
+    "Cloud": "aws",
+    "Region": "ca-central-1",
+    "Endpoint": "https://ec2.ca-central-1.amazonaws.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 622.6403
+  },
+  {
+    "Cloud": "aws",
+    "Region": "ca-west-1",
+    "Endpoint": "https://ec2.ca-west-1.amazonaws.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 748.3633
+  },
+  {
+    "Cloud": "aws",
+    "Region": "eu-central-1",
+    "Endpoint": "https://ec2.eu-central-1.amazonaws.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 442.7945
+  },
+  {
+    "Cloud": "aws",
+    "Region": "eu-central-2",
+    "Endpoint": "https://ec2.eu-central-2.amazonaws.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 448.9407
+  },
+  {
+    "Cloud": "aws",
+    "Region": "eu-east-1",
+    "Endpoint": "https://ec2.eu-east-1.amazonaws.com",
+    "Reachable": false,
+    "Detail": "No such host is known. (ec2.eu-east-1.amazonaws.com:443)",
+    "RoundTripMs": null
+  },
+  {
+    "Cloud": "aws",
+    "Region": "eu-east-2",
+    "Endpoint": "https://ec2.eu-east-2.amazonaws.com",
+    "Reachable": false,
+    "Detail": "No such host is known. (ec2.eu-east-2.amazonaws.com:443)",
+    "RoundTripMs": null
+  },
+  {
+    "Cloud": "aws",
+    "Region": "eu-north-1",
+    "Endpoint": "https://ec2.eu-north-1.amazonaws.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 228.4775
+  },
+  {
+    "Cloud": "aws",
+    "Region": "eu-south-1",
+    "Endpoint": "https://ec2.eu-south-1.amazonaws.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 360.6233
+  },
+  {
+    "Cloud": "aws",
+    "Region": "eu-south-2",
+    "Endpoint": "https://ec2.eu-south-2.amazonaws.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 368.5466
+  },
+  {
+    "Cloud": "aws",
+    "Region": "eu-west-1",
+    "Endpoint": "https://ec2.eu-west-1.amazonaws.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 258.9635
+  },
+  {
+    "Cloud": "aws",
+    "Region": "eu-west-2",
+    "Endpoint": "https://ec2.eu-west-2.amazonaws.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 429.0327
+  },
+  {
+    "Cloud": "aws",
+    "Region": "eu-west-3",
+    "Endpoint": "https://ec2.eu-west-3.amazonaws.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 356.4769
+  },
+  {
+    "Cloud": "aws",
+    "Region": "eu-west-4",
+    "Endpoint": "https://ec2.eu-west-4.amazonaws.com",
+    "Reachable": false,
+    "Detail": "No such host is known. (ec2.eu-west-4.amazonaws.com:443)",
+    "RoundTripMs": null
+  },
+  {
+    "Cloud": "aws",
+    "Region": "il-central-1",
+    "Endpoint": "https://ec2.il-central-1.amazonaws.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 493.893
+  },
+  {
+    "Cloud": "aws",
+    "Region": "me-central-1",
+    "Endpoint": "https://ec2.me-central-1.amazonaws.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 644.3117
+  },
+  {
+    "Cloud": "aws",
+    "Region": "me-south-1",
+    "Endpoint": "https://ec2.me-south-1.amazonaws.com",
+    "Reachable": false,
+    "Detail": "timeout",
+    "RoundTripMs": null
+  },
+  {
+    "Cloud": "aws",
+    "Region": "mx-central-1",
+    "Endpoint": "https://ec2.mx-central-1.amazonaws.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 653.9702
+  },
+  {
+    "Cloud": "aws",
+    "Region": "sa-east-1",
+    "Endpoint": "https://ec2.sa-east-1.amazonaws.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 822.0186
+  },
+  {
+    "Cloud": "aws",
+    "Region": "us-east-1",
+    "Endpoint": "https://ec2.us-east-1.amazonaws.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 486.0744
+  },
+  {
+    "Cloud": "aws",
+    "Region": "us-east-2",
+    "Endpoint": "https://ec2.us-east-2.amazonaws.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 523.8959
+  },
+  {
+    "Cloud": "aws",
+    "Region": "us-gov-east-1",
+    "Endpoint": "https://ec2.us-gov-east-1.amazonaws.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 503.1977
+  },
+  {
+    "Cloud": "aws",
+    "Region": "us-gov-west-1",
+    "Endpoint": "https://ec2.us-gov-west-1.amazonaws.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 683.2612
+  },
+  {
+    "Cloud": "aws",
+    "Region": "us-west-1",
+    "Endpoint": "https://ec2.us-west-1.amazonaws.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 612.568
+  },
+  {
+    "Cloud": "aws",
+    "Region": "us-west-2",
+    "Endpoint": "https://ec2.us-west-2.amazonaws.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 639.1579
+  },
+  {
+    "Cloud": "azure",
+    "Region": "australiacentral",
+    "Endpoint": "https://australiacentral.api.cognitive.microsoft.com",
+    "Reachable": false,
+    "Detail": "No such host is known. (australiacentral.api.cognitive.microsoft.com:443)",
+    "RoundTripMs": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "australiaeast",
+    "Endpoint": "https://australiaeast.api.cognitive.microsoft.com",
+    "Reachable": true,
+    "Detail": "status 200",
+    "RoundTripMs": 965.4831
+  },
+  {
+    "Cloud": "azure",
+    "Region": "australiasoutheast",
+    "Endpoint": "https://australiasoutheast.api.cognitive.microsoft.com",
+    "Reachable": false,
+    "Detail": "No such host is known. (australiasoutheast.api.cognitive.microsoft.com:443)",
+    "RoundTripMs": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "austriacenter",
+    "Endpoint": "https://austriacenter.api.cognitive.microsoft.com",
+    "Reachable": false,
+    "Detail": "No such host is known. (austriacenter.api.cognitive.microsoft.com:443)",
+    "RoundTripMs": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "austriaeast",
+    "Endpoint": "https://austriaeast.api.cognitive.microsoft.com",
+    "Reachable": false,
+    "Detail": "No such host is known. (austriaeast.api.cognitive.microsoft.com:443)",
+    "RoundTripMs": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "belgiumcentral",
+    "Endpoint": "https://belgiumcentral.api.cognitive.microsoft.com",
+    "Reachable": false,
+    "Detail": "No such host is known. (belgiumcentral.api.cognitive.microsoft.com:443)",
+    "RoundTripMs": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "brazilsouth",
+    "Endpoint": "https://brazilsouth.api.cognitive.microsoft.com",
+    "Reachable": true,
+    "Detail": "status 200",
+    "RoundTripMs": 624.2169
+  },
+  {
+    "Cloud": "azure",
+    "Region": "brazilsoutheast",
+    "Endpoint": "https://brazilsoutheast.api.cognitive.microsoft.com",
+    "Reachable": false,
+    "Detail": "No such host is known. (brazilsoutheast.api.cognitive.microsoft.com:443)",
+    "RoundTripMs": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "canadacentral",
+    "Endpoint": "https://canadacentral.api.cognitive.microsoft.com",
+    "Reachable": true,
+    "Detail": "status 200",
+    "RoundTripMs": 397.0886
+  },
+  {
+    "Cloud": "azure",
+    "Region": "canadaeast",
+    "Endpoint": "https://canadaeast.api.cognitive.microsoft.com",
+    "Reachable": true,
+    "Detail": "status 200",
+    "RoundTripMs": 365.0775
+  },
+  {
+    "Cloud": "azure",
+    "Region": "centralindia",
+    "Endpoint": "https://centralindia.api.cognitive.microsoft.com",
+    "Reachable": true,
+    "Detail": "status 200",
+    "RoundTripMs": 541.3234
+  },
+  {
+    "Cloud": "azure",
+    "Region": "centralus",
+    "Endpoint": "https://centralus.api.cognitive.microsoft.com",
+    "Reachable": true,
+    "Detail": "status 200",
+    "RoundTripMs": 453.8794
+  },
+  {
+    "Cloud": "azure",
+    "Region": "chilecentral",
+    "Endpoint": "https://chilecentral.api.cognitive.microsoft.com",
+    "Reachable": false,
+    "Detail": "No such host is known. (chilecentral.api.cognitive.microsoft.com:443)",
+    "RoundTripMs": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "eastasia",
+    "Endpoint": "https://eastasia.api.cognitive.microsoft.com",
+    "Reachable": true,
+    "Detail": "status 200",
+    "RoundTripMs": 778.1399
+  },
+  {
+    "Cloud": "azure",
+    "Region": "eastus",
+    "Endpoint": "https://eastus.api.cognitive.microsoft.com",
+    "Reachable": true,
+    "Detail": "status 200",
+    "RoundTripMs": 363.851
+  },
+  {
+    "Cloud": "azure",
+    "Region": "eastus2",
+    "Endpoint": "https://eastus2.api.cognitive.microsoft.com",
+    "Reachable": true,
+    "Detail": "status 200",
+    "RoundTripMs": 362.0837
+  },
+  {
+    "Cloud": "azure",
+    "Region": "eastus3",
+    "Endpoint": "https://eastus3.api.cognitive.microsoft.com",
+    "Reachable": false,
+    "Detail": "No such host is known. (eastus3.api.cognitive.microsoft.com:443)",
+    "RoundTripMs": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "francecentral",
+    "Endpoint": "https://francecentral.api.cognitive.microsoft.com",
+    "Reachable": true,
+    "Detail": "status 200",
+    "RoundTripMs": 178.117
+  },
+  {
+    "Cloud": "azure",
+    "Region": "francesouth",
+    "Endpoint": "https://francesouth.api.cognitive.microsoft.com",
+    "Reachable": false,
+    "Detail": "No such host is known. (francesouth.api.cognitive.microsoft.com:443)",
+    "RoundTripMs": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "germanynorth",
+    "Endpoint": "https://germanynorth.api.cognitive.microsoft.com",
+    "Reachable": false,
+    "Detail": "No such host is known. (germanynorth.api.cognitive.microsoft.com:443)",
+    "RoundTripMs": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "germanywestcentral",
+    "Endpoint": "https://germanywestcentral.api.cognitive.microsoft.com",
+    "Reachable": true,
+    "Detail": "status 200",
+    "RoundTripMs": 198.2224
+  },
+  {
+    "Cloud": "azure",
+    "Region": "indonesiacentral",
+    "Endpoint": "https://indonesiacentral.api.cognitive.microsoft.com",
+    "Reachable": true,
+    "Detail": "status 200",
+    "RoundTripMs": 1151.1438
+  },
+  {
+    "Cloud": "azure",
+    "Region": "israelcentral",
+    "Endpoint": "https://israelcentral.api.cognitive.microsoft.com",
+    "Reachable": false,
+    "Detail": "No such host is known. (israelcentral.api.cognitive.microsoft.com:443)",
+    "RoundTripMs": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "italynorth",
+    "Endpoint": "https://italynorth.api.cognitive.microsoft.com",
+    "Reachable": true,
+    "Detail": "status 200",
+    "RoundTripMs": 228.178
+  },
+  {
+    "Cloud": "azure",
+    "Region": "japaneast",
+    "Endpoint": "https://japaneast.api.cognitive.microsoft.com",
+    "Reachable": true,
+    "Detail": "status 200",
+    "RoundTripMs": 850.7749
+  },
+  {
+    "Cloud": "azure",
+    "Region": "japanwest",
+    "Endpoint": "https://japanwest.api.cognitive.microsoft.com",
+    "Reachable": true,
+    "Detail": "status 200",
+    "RoundTripMs": 860.6905
+  },
+  {
+    "Cloud": "azure",
+    "Region": "koreacentral",
+    "Endpoint": "https://koreacentral.api.cognitive.microsoft.com",
+    "Reachable": true,
+    "Detail": "status 200",
+    "RoundTripMs": 1395.0754
+  },
+  {
+    "Cloud": "azure",
+    "Region": "koreasouth",
+    "Endpoint": "https://koreasouth.api.cognitive.microsoft.com",
+    "Reachable": false,
+    "Detail": "No such host is known. (koreasouth.api.cognitive.microsoft.com:443)",
+    "RoundTripMs": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "malaysiawest",
+    "Endpoint": "https://malaysiawest.api.cognitive.microsoft.com",
+    "Reachable": true,
+    "Detail": "status 200",
+    "RoundTripMs": 723.2119
+  },
+  {
+    "Cloud": "azure",
+    "Region": "mexicocentral",
+    "Endpoint": "https://mexicocentral.api.cognitive.microsoft.com",
+    "Reachable": false,
+    "Detail": "No such host is known. (mexicocentral.api.cognitive.microsoft.com:443)",
+    "RoundTripMs": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "newzealandnorth",
+    "Endpoint": "https://newzealandnorth.api.cognitive.microsoft.com",
+    "Reachable": true,
+    "Detail": "status 200",
+    "RoundTripMs": 1689.6789
+  },
+  {
+    "Cloud": "azure",
+    "Region": "northcentralus",
+    "Endpoint": "https://northcentralus.api.cognitive.microsoft.com",
+    "Reachable": true,
+    "Detail": "status 200",
+    "RoundTripMs": 684.9555
+  },
+  {
+    "Cloud": "azure",
+    "Region": "northeurope",
+    "Endpoint": "https://northeurope.api.cognitive.microsoft.com",
+    "Reachable": true,
+    "Detail": "status 200",
+    "RoundTripMs": 116.9215
+  },
+  {
+    "Cloud": "azure",
+    "Region": "norwayeast",
+    "Endpoint": "https://norwayeast.api.cognitive.microsoft.com",
+    "Reachable": true,
+    "Detail": "status 200",
+    "RoundTripMs": 183.6864
+  },
+  {
+    "Cloud": "azure",
+    "Region": "norwaywest",
+    "Endpoint": "https://norwaywest.api.cognitive.microsoft.com",
+    "Reachable": false,
+    "Detail": "No such host is known. (norwaywest.api.cognitive.microsoft.com:443)",
+    "RoundTripMs": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "polandcentral",
+    "Endpoint": "https://polandcentral.api.cognitive.microsoft.com",
+    "Reachable": true,
+    "Detail": "status 200",
+    "RoundTripMs": 519.244
+  },
+  {
+    "Cloud": "azure",
+    "Region": "qatarcentral",
+    "Endpoint": "https://qatarcentral.api.cognitive.microsoft.com",
+    "Reachable": true,
+    "Detail": "status 200",
+    "RoundTripMs": 780.487
+  },
+  {
+    "Cloud": "azure",
+    "Region": "saudiarabiacentral",
+    "Endpoint": "https://saudiarabiacentral.api.cognitive.microsoft.com",
+    "Reachable": false,
+    "Detail": "No such host is known. (saudiarabiacentral.api.cognitive.microsoft.com:443)",
+    "RoundTripMs": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "saudiarabiaeast",
+    "Endpoint": "https://saudiarabiaeast.api.cognitive.microsoft.com",
+    "Reachable": false,
+    "Detail": "No such host is known. (saudiarabiaeast.api.cognitive.microsoft.com:443)",
+    "RoundTripMs": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "southafricanorth",
+    "Endpoint": "https://southafricanorth.api.cognitive.microsoft.com",
+    "Reachable": true,
+    "Detail": "status 200",
+    "RoundTripMs": 725.3163
+  },
+  {
+    "Cloud": "azure",
+    "Region": "southafricawest",
+    "Endpoint": "https://southafricawest.api.cognitive.microsoft.com",
+    "Reachable": false,
+    "Detail": "No such host is known. (southafricawest.api.cognitive.microsoft.com:443)",
+    "RoundTripMs": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "southcentralus",
+    "Endpoint": "https://southcentralus.api.cognitive.microsoft.com",
+    "Reachable": true,
+    "Detail": "status 200",
+    "RoundTripMs": 846.5059
+  },
+  {
+    "Cloud": "azure",
+    "Region": "southeastasia",
+    "Endpoint": "https://southeastasia.api.cognitive.microsoft.com",
+    "Reachable": true,
+    "Detail": "status 200",
+    "RoundTripMs": 737.0766
+  },
+  {
+    "Cloud": "azure",
+    "Region": "southindia",
+    "Endpoint": "https://southindia.api.cognitive.microsoft.com",
+    "Reachable": true,
+    "Detail": "status 200",
+    "RoundTripMs": 628.1348
+  },
+  {
+    "Cloud": "azure",
+    "Region": "spaincentral",
+    "Endpoint": "https://spaincentral.api.cognitive.microsoft.com",
+    "Reachable": true,
+    "Detail": "status 200",
+    "RoundTripMs": 517.8576
+  },
+  {
+    "Cloud": "azure",
+    "Region": "swedencentral",
+    "Endpoint": "https://swedencentral.api.cognitive.microsoft.com",
+    "Reachable": true,
+    "Detail": "status 200",
+    "RoundTripMs": 602.9522
+  },
+  {
+    "Cloud": "azure",
+    "Region": "swedensouth",
+    "Endpoint": "https://swedensouth.api.cognitive.microsoft.com",
+    "Reachable": false,
+    "Detail": "No such host is known. (swedensouth.api.cognitive.microsoft.com:443)",
+    "RoundTripMs": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "switzerlandnorth",
+    "Endpoint": "https://switzerlandnorth.api.cognitive.microsoft.com",
+    "Reachable": true,
+    "Detail": "status 200",
+    "RoundTripMs": 1331.9042
+  },
+  {
+    "Cloud": "azure",
+    "Region": "switzerlandwest",
+    "Endpoint": "https://switzerlandwest.api.cognitive.microsoft.com",
+    "Reachable": true,
+    "Detail": "status 200",
+    "RoundTripMs": 1356.3464
+  },
+  {
+    "Cloud": "azure",
+    "Region": "taiwannorth",
+    "Endpoint": "https://taiwannorth.api.cognitive.microsoft.com",
+    "Reachable": true,
+    "Detail": "status 200",
+    "RoundTripMs": 936.7139
+  },
+  {
+    "Cloud": "azure",
+    "Region": "uaecentral",
+    "Endpoint": "https://uaecentral.api.cognitive.microsoft.com",
+    "Reachable": false,
+    "Detail": "No such host is known. (uaecentral.api.cognitive.microsoft.com:443)",
+    "RoundTripMs": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "uaenorth",
+    "Endpoint": "https://uaenorth.api.cognitive.microsoft.com",
+    "Reachable": true,
+    "Detail": "status 200",
+    "RoundTripMs": 478.896
+  },
+  {
+    "Cloud": "azure",
+    "Region": "uksouth",
+    "Endpoint": "https://uksouth.api.cognitive.microsoft.com",
+    "Reachable": true,
+    "Detail": "status 200",
+    "RoundTripMs": 146.9609
+  },
+  {
+    "Cloud": "azure",
+    "Region": "ukwest",
+    "Endpoint": "https://ukwest.api.cognitive.microsoft.com",
+    "Reachable": true,
+    "Detail": "status 200",
+    "RoundTripMs": 180.4564
+  },
+  {
+    "Cloud": "azure",
+    "Region": "westcentralus",
+    "Endpoint": "https://westcentralus.api.cognitive.microsoft.com",
+    "Reachable": true,
+    "Detail": "status 200",
+    "RoundTripMs": 481.1949
+  },
+  {
+    "Cloud": "azure",
+    "Region": "westcentralus2",
+    "Endpoint": "https://westcentralus2.api.cognitive.microsoft.com",
+    "Reachable": false,
+    "Detail": "No such host is known. (westcentralus2.api.cognitive.microsoft.com:443)",
+    "RoundTripMs": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "westeurope",
+    "Endpoint": "https://westeurope.api.cognitive.microsoft.com",
+    "Reachable": true,
+    "Detail": "status 200",
+    "RoundTripMs": 205.9339
+  },
+  {
+    "Cloud": "azure",
+    "Region": "westindia",
+    "Endpoint": "https://westindia.api.cognitive.microsoft.com",
+    "Reachable": false,
+    "Detail": "No such host is known. (westindia.api.cognitive.microsoft.com:443)",
+    "RoundTripMs": null
+  },
+  {
+    "Cloud": "azure",
+    "Region": "westus",
+    "Endpoint": "https://westus.api.cognitive.microsoft.com",
+    "Reachable": true,
+    "Detail": "status 200",
+    "RoundTripMs": 595.8032
+  },
+  {
+    "Cloud": "azure",
+    "Region": "westus2",
+    "Endpoint": "https://westus2.api.cognitive.microsoft.com",
+    "Reachable": true,
+    "Detail": "status 200",
+    "RoundTripMs": 600.6324
+  },
+  {
+    "Cloud": "azure",
+    "Region": "westus3",
+    "Endpoint": "https://westus3.api.cognitive.microsoft.com",
+    "Reachable": true,
+    "Detail": "status 200",
+    "RoundTripMs": 600.7832
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "africa-south1",
+    "Endpoint": "https://storage.africa-south1.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 717.683
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "asia-east1",
+    "Endpoint": "https://storage.asia-east1.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 917.2719
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "asia-east2",
+    "Endpoint": "https://storage.asia-east2.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 900.0413
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "asia-northeast1",
+    "Endpoint": "https://storage.asia-northeast1.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 858.9172
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "asia-northeast2",
+    "Endpoint": "https://storage.asia-northeast2.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 940.3716
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "asia-northeast3",
+    "Endpoint": "https://storage.asia-northeast3.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 1020.2305
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "asia-south1",
+    "Endpoint": "https://storage.asia-south1.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 1065.0669
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "asia-south2",
+    "Endpoint": "https://storage.asia-south2.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 1095.543
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "asia-southeast1",
+    "Endpoint": "https://storage.asia-southeast1.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 981.9377
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "asia-southeast2",
+    "Endpoint": "https://storage.asia-southeast2.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 980.9711
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "australia-southeast1",
+    "Endpoint": "https://storage.australia-southeast1.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 1040.1397
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "australia-southeast2",
+    "Endpoint": "https://storage.australia-southeast2.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 1125.3619
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "europe-central2",
+    "Endpoint": "https://storage.europe-central2.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 409.4937
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "europe-north1",
+    "Endpoint": "https://storage.europe-north1.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 389.3223
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "europe-north2",
+    "Endpoint": "https://storage.europe-north2.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 398.1411
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "europe-southwest1",
+    "Endpoint": "https://storage.europe-southwest1.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 359.981
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "europe-west1",
+    "Endpoint": "https://storage.europe-west1.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 217.665
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "europe-west10",
+    "Endpoint": "https://storage.europe-west10.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 261.1921
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "europe-west12",
+    "Endpoint": "https://storage.europe-west12.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 290.6971
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "europe-west2",
+    "Endpoint": "https://storage.europe-west2.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 238.4175
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "europe-west3",
+    "Endpoint": "https://storage.europe-west3.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 305.0587
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "europe-west4",
+    "Endpoint": "https://storage.europe-west4.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 229.4009
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "europe-west6",
+    "Endpoint": "https://storage.europe-west6.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 321.0627
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "europe-west8",
+    "Endpoint": "https://storage.europe-west8.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 312.8594
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "europe-west9",
+    "Endpoint": "https://storage.europe-west9.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 253.1102
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "me-central1",
+    "Endpoint": "https://storage.me-central1.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 784.9034
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "me-central2",
+    "Endpoint": "https://storage.me-central2.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 759.9372
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "me-west1",
+    "Endpoint": "https://storage.me-west1.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 376.8335
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "northamerica-northeast1",
+    "Endpoint": "https://storage.northamerica-northeast1.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 458.7067
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "northamerica-northeast2",
+    "Endpoint": "https://storage.northamerica-northeast2.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 458.537
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "northamerica-south1",
+    "Endpoint": "https://storage.northamerica-south1.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 705.8251
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "southamerica-east1",
+    "Endpoint": "https://storage.southamerica-east1.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 977.3278
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "southamerica-west1",
+    "Endpoint": "https://storage.southamerica-west1.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 1015.2944
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "us-central1",
+    "Endpoint": "https://storage.us-central1.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 597.3454
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "us-east1",
+    "Endpoint": "https://storage.us-east1.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 569.8257
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "us-east4",
+    "Endpoint": "https://storage.us-east4.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 541.013
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "us-east5",
+    "Endpoint": "https://storage.us-east5.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 536.1007
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "us-south1",
+    "Endpoint": "https://storage.us-south1.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 750.4454
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "us-west1",
+    "Endpoint": "https://storage.us-west1.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 811.8422
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "us-west2",
+    "Endpoint": "https://storage.us-west2.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 787.8747
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "us-west3",
+    "Endpoint": "https://storage.us-west3.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 801.0571
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "us-west4",
+    "Endpoint": "https://storage.us-west4.rep.googleapis.com",
+    "Reachable": true,
+    "Detail": "status 400",
+    "RoundTripMs": 768.2734
+  }
+]

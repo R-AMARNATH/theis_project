@@ -34,7 +34,12 @@ public sealed class CostSignalProvider : ICostSignalProvider
     private readonly ILogger<CostSignalProvider> _log;
 
     // Keep the AWS bulk-file fetch from hanging a whole scheduling cycle if it stalls mid-download.
-    private static readonly TimeSpan AwsFetchTimeout = TimeSpan.FromSeconds(8);
+    // Was 8s — the real /advise-multi test run showed this caused EVERY AWS region to fall back to
+    // static (0% live), while the standalone SeedCostTable tool (30s HttpClient timeout, no per-call
+    // cap) successfully fetched 36/39 regions live. 8s wasn't enough to download+parse AWS's per-region
+    // price-list file (tens of MB for large regions like us-east-1/eu-west-1). 20s balances giving the
+    // live call a real chance against not blocking a scheduling cycle too long if AWS is genuinely slow.
+    private static readonly TimeSpan AwsFetchTimeout = TimeSpan.FromSeconds(20);
 
     private static readonly ConcurrentDictionary<string, (CostSignal Signal, DateTimeOffset ExpiresAt)> _cache = new();
 

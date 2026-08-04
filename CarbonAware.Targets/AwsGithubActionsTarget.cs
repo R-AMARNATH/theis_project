@@ -15,7 +15,7 @@ public sealed class AwsGithubActionsTarget : ICloudTarget
     private readonly GitHubActionsOptions _opts;
     private readonly ILogger<AwsGithubActionsTarget> _log;
 
-    private const string DefaultInstanceType = "t3.micro";  // free/cheap in most regions
+    private const string DefaultInstanceType = "t3.medium";  // matches CostSignalOptions.InstanceTypeByCloud["aws"] — was t3.micro, which priced differently from what was actually deployed
 
     public AwsGithubActionsTarget(
         HttpClient http,

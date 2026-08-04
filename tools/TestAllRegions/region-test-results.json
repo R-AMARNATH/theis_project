@@ -4,9 +4,9 @@
     "Region": "af-south-1",
     "Usable": true,
     "Reason": null,
-    "Moer": 921.291462707,
+    "Moer": 909.4073426130001,
     "Cost": 0.0542,
-    "Latency": 1184.4568,
+    "Latency": 828.9888,
     "CostLive": false
   },
   {
@@ -24,9 +24,9 @@
     "Region": "ap-east-2",
     "Usable": true,
     "Reason": null,
-    "Moer": 575.472639819,
+    "Moer": 530.294839767,
     "Cost": 0.049,
-    "Latency": 1739.3391,
+    "Latency": 1153.9676,
     "CostLive": false
   },
   {
@@ -34,9 +34,9 @@
     "Region": "ap-northeast-1",
     "Usable": true,
     "Reason": null,
-    "Moer": 586.631012121,
+    "Moer": 575.971591426,
     "Cost": 0.0544,
-    "Latency": 1593.5333,
+    "Latency": 1044.159,
     "CostLive": false
   },
   {
@@ -44,9 +44,9 @@
     "Region": "ap-northeast-2",
     "Usable": true,
     "Reason": null,
-    "Moer": 2029.1908264320002,
+    "Moer": 572.841804073,
     "Cost": 0.052,
-    "Latency": 1587.5882,
+    "Latency": 1148.0421,
     "CostLive": false
   },
   {
@@ -54,9 +54,9 @@
     "Region": "ap-northeast-3",
     "Usable": true,
     "Reason": null,
-    "Moer": 527.07433394,
+    "Moer": 530.9298690850001,
     "Cost": 0.0544,
-    "Latency": 1287.0103,
+    "Latency": 1104.5998,
     "CostLive": false
   },
   {
@@ -64,9 +64,9 @@
     "Region": "ap-south-1",
     "Usable": true,
     "Reason": null,
-    "Moer": 977.718353535,
+    "Moer": 970.052642482,
     "Cost": 0.0448,
-    "Latency": 1130.0091,
+    "Latency": 757.6512,
     "CostLive": false
   },
   {
@@ -74,9 +74,9 @@
     "Region": "ap-south-2",
     "Usable": true,
     "Reason": null,
-    "Moer": 977.718353535,
+    "Moer": 970.052642482,
     "Cost": 0.0448,
-    "Latency": 1088.6838,
+    "Latency": 814.9008,
     "CostLive": false
   },
   {
@@ -84,9 +84,9 @@
     "Region": "ap-southeast-1",
     "Usable": true,
     "Reason": null,
-    "Moer": 425.56036153400004,
+    "Moer": 336.38410159200004,
     "Cost": 0.0528,
-    "Latency": 1330.7706,
+    "Latency": 1086.9109,
     "CostLive": false
   },
   {
@@ -94,9 +94,9 @@
     "Region": "ap-southeast-2",
     "Usable": true,
     "Reason": null,
-    "Moer": 776.005826596,
+    "Moer": 809.435584265,
     "Cost": 0.0528,
-    "Latency": 1391.4607,
+    "Latency": 1181.3987,
     "CostLive": false
   },
   {
@@ -104,9 +104,9 @@
     "Region": "ap-southeast-3",
     "Usable": true,
     "Reason": null,
-    "Moer": 747.883099656,
+    "Moer": 710.189573709,
     "Cost": 0.0528,
-    "Latency": 1476.0613,
+    "Latency": 1028.6755,
     "CostLive": false
   },
   {
@@ -114,9 +114,9 @@
     "Region": "ap-southeast-4",
     "Usable": true,
     "Reason": null,
-    "Moer": 855.747365242,
+    "Moer": 799.819426021,
     "Cost": 0.0528,
-    "Latency": 1494.5582,
+    "Latency": 1184.1114,
     "CostLive": false
   },
   {
@@ -124,9 +124,9 @@
     "Region": "ap-southeast-5",
     "Usable": true,
     "Reason": null,
-    "Moer": 689.687198585,
+    "Moer": 507.16162889699996,
     "Cost": 0.0475,
-    "Latency": 1456.7586,
+    "Latency": 1344.8357,
     "CostLive": false
   },
   {
@@ -134,9 +134,9 @@
     "Region": "ap-southeast-6",
     "Usable": true,
     "Reason": null,
-    "Moer": 1789.059025754,
+    "Moer": 1423.3728570600001,
     "Cost": 0.0554,
-    "Latency": 1679.8166,
+    "Latency": 1352.3017,
     "CostLive": false
   },
   {
@@ -144,9 +144,9 @@
     "Region": "ap-southeast-7",
     "Usable": true,
     "Reason": null,
-    "Moer": 425.74179848200004,
+    "Moer": 421.296593256,
     "Cost": 0.0475,
-    "Latency": 1451.9134,
+    "Latency": 1128.5186,
     "CostLive": false
   },
   {
@@ -154,9 +154,9 @@
     "Region": "ca-central-1",
     "Usable": true,
     "Reason": null,
-    "Moer": 437.036248495,
+    "Moer": 413.404086018,
     "Cost": 0.0464,
-    "Latency": 914.028,
+    "Latency": 649.0369,
     "CostLive": false
   },
   {
@@ -164,9 +164,9 @@
     "Region": "ca-west-1",
     "Usable": true,
     "Reason": null,
-    "Moer": 461.439518001,
+    "Moer": 455.452098717,
     "Cost": 0.0464,
-    "Latency": 1187.7442,
+    "Latency": 855.3233,
     "CostLive": false
   },
   {
@@ -174,9 +174,9 @@
     "Region": "eu-central-1",
     "Usable": true,
     "Reason": null,
-    "Moer": 34.291583171999996,
+    "Moer": 769.111222572,
     "Cost": 0.048,
-    "Latency": 922.4627,
+    "Latency": 380.598,
     "CostLive": false
   },
   {
@@ -184,9 +184,9 @@
     "Region": "eu-central-2",
     "Usable": true,
     "Reason": null,
-    "Moer": 992.1425909010002,
+    "Moer": 786.8466842390001,
     "Cost": 0.0528,
-    "Latency": 742.5266,
+    "Latency": 491.3876,
     "CostLive": false
   },
   {
@@ -194,9 +194,9 @@
     "Region": "eu-north-1",
     "Usable": true,
     "Reason": null,
-    "Moer": 173.363003814,
+    "Moer": 302.954343923,
     "Cost": 0.0432,
-    "Latency": 881.5411,
+    "Latency": 523.5696,
     "CostLive": false
   },
   {
@@ -204,9 +204,9 @@
     "Region": "eu-south-1",
     "Usable": true,
     "Reason": null,
-    "Moer": 363.146051422,
+    "Moer": 381.108309274,
     "Cost": 0.0479,
-    "Latency": 759.9248,
+    "Latency": 569.406,
     "CostLive": false
   },
   {
@@ -214,9 +214,9 @@
     "Region": "eu-south-2",
     "Usable": true,
     "Reason": null,
-    "Moer": 64.455475777,
+    "Moer": 396.89332375000004,
     "Cost": 0.0456,
-    "Latency": 653.3754,
+    "Latency": 475.0506,
     "CostLive": false
   },
   {
@@ -224,9 +224,9 @@
     "Region": "eu-west-1",
     "Usable": true,
     "Reason": null,
-    "Moer": 489.42616723000003,
+    "Moer": 536.962647606,
     "Cost": 0.0456,
-    "Latency": 685.2726,
+    "Latency": 487.4212,
     "CostLive": false
   },
   {
@@ -234,9 +234,9 @@
     "Region": "eu-west-2",
     "Usable": true,
     "Reason": null,
-    "Moer": 387.00501008400005,
+    "Moer": 433.45286877200004,
     "Cost": 0.0472,
-    "Latency": 726.4705,
+    "Latency": 501.7513,
     "CostLive": false
   },
   {
@@ -244,9 +244,9 @@
     "Region": "eu-west-3",
     "Usable": true,
     "Reason": null,
-    "Moer": 210.421500443,
+    "Moer": 490.923022051,
     "Cost": 0.0472,
-    "Latency": 641.4407,
+    "Latency": 446.437,
     "CostLive": false
   },
   {
@@ -254,9 +254,9 @@
     "Region": "il-central-1",
     "Usable": true,
     "Reason": null,
-    "Moer": 687.101722076,
+    "Moer": 655.486333887,
     "Cost": 0.0479,
-    "Latency": 811.9933,
+    "Latency": 483.3528,
     "CostLive": false
   },
   {
@@ -264,9 +264,9 @@
     "Region": "me-central-1",
     "Usable": true,
     "Reason": null,
-    "Moer": 384.73704823400004,
+    "Moer": 594.069926989,
     "Cost": 0.0502,
-    "Latency": 1073.3788,
+    "Latency": 701.5564,
     "CostLive": false
   },
   {
@@ -284,9 +284,9 @@
     "Region": "mx-central-1",
     "Usable": true,
     "Reason": null,
-    "Moer": 565.9018408119999,
+    "Moer": 557.46502273,
     "Cost": 0.0437,
-    "Latency": 1086.4832,
+    "Latency": 765.235,
     "CostLive": false
   },
   {
@@ -294,9 +294,9 @@
     "Region": "sa-east-1",
     "Usable": true,
     "Reason": null,
-    "Moer": 555.514575539,
+    "Moer": 962.2962129550001,
     "Cost": 0.0672,
-    "Latency": 1122.4045,
+    "Latency": 929.9934,
     "CostLive": false
   },
   {
@@ -304,9 +304,9 @@
     "Region": "us-east-1",
     "Usable": true,
     "Reason": null,
-    "Moer": 522.4930510030001,
+    "Moer": 555.559934776,
     "Cost": 0.0416,
-    "Latency": 794.275,
+    "Latency": 631.2275,
     "CostLive": false
   },
   {
@@ -314,9 +314,9 @@
     "Region": "us-east-2",
     "Usable": true,
     "Reason": null,
-    "Moer": 522.2662548180001,
+    "Moer": 555.786730961,
     "Cost": 0.0416,
-    "Latency": 925.754,
+    "Latency": 606.9531,
     "CostLive": false
   },
   {
@@ -324,9 +324,9 @@
     "Region": "us-gov-east-1",
     "Usable": true,
     "Reason": null,
-    "Moer": 522.4930510030001,
+    "Moer": 555.559934776,
     "Cost": 0.0488,
-    "Latency": 987.8914,
+    "Latency": 684.6755,
     "CostLive": false
   },
   {
@@ -334,29 +334,29 @@
     "Region": "us-gov-west-1",
     "Usable": true,
     "Reason": null,
-    "Moer": 626.184266785,
+    "Moer": 586.3588566990001,
     "Cost": 0.0488,
-    "Latency": 1143.4544,
+    "Latency": 808.8627,
     "CostLive": false
   },
   {
     "Cloud": "aws",
     "Region": "us-west-1",
-    "Usable": true,
-    "Reason": null,
-    "Moer": 415.626688631,
-    "Cost": 0.0496,
-    "Latency": 1059.5459,
-    "CostLive": false
+    "Usable": false,
+    "Reason": "missing signal(s): carbon",
+    "Moer": null,
+    "Cost": null,
+    "Latency": null,
+    "CostLive": null
   },
   {
     "Cloud": "aws",
     "Region": "us-west-2",
     "Usable": true,
     "Reason": null,
-    "Moer": 625.6853151780001,
+    "Moer": 586.631012121,
     "Cost": 0.0416,
-    "Latency": 1190.076,
+    "Latency": 837.1833,
     "CostLive": false
   },
   {
@@ -374,9 +374,9 @@
     "Region": "australiaeast",
     "Usable": true,
     "Reason": null,
-    "Moer": 776.005826596,
+    "Moer": 809.435584265,
     "Cost": 0.0528,
-    "Latency": 733.7542,
+    "Latency": 625.2847,
     "CostLive": true
   },
   {
@@ -414,9 +414,9 @@
     "Region": "brazilsouth",
     "Usable": true,
     "Reason": null,
-    "Moer": 555.514575539,
+    "Moer": 962.2962129550001,
     "Cost": 0.0672,
-    "Latency": 515.3579,
+    "Latency": 772.3415,
     "CostLive": true
   },
   {
@@ -434,9 +434,9 @@
     "Region": "canadacentral",
     "Usable": true,
     "Reason": null,
-    "Moer": 457.22110896000004,
+    "Moer": 457.175749723,
     "Cost": 0.0464,
-    "Latency": 339.1405,
+    "Latency": 318.4282,
     "CostLive": true
   },
   {
@@ -444,9 +444,9 @@
     "Region": "canadaeast",
     "Usable": true,
     "Reason": null,
-    "Moer": 437.036248495,
+    "Moer": 413.404086018,
     "Cost": 0.0464,
-    "Latency": 342.5646,
+    "Latency": 520.9793,
     "CostLive": true
   },
   {
@@ -454,9 +454,9 @@
     "Region": "centralindia",
     "Usable": true,
     "Reason": null,
-    "Moer": 977.718353535,
+    "Moer": 970.052642482,
     "Cost": 0.0448,
-    "Latency": 873.7259,
+    "Latency": 400.7049,
     "CostLive": true
   },
   {
@@ -464,9 +464,9 @@
     "Region": "centralus",
     "Usable": true,
     "Reason": null,
-    "Moer": 644.917631666,
+    "Moer": 634.621084867,
     "Cost": 0.0499,
-    "Latency": 561.1736,
+    "Latency": 408.5087,
     "CostLive": true
   },
   {
@@ -494,9 +494,9 @@
     "Region": "eastus",
     "Usable": true,
     "Reason": null,
-    "Moer": 522.4930510030001,
+    "Moer": 555.559934776,
     "Cost": 0.0416,
-    "Latency": 402.2786,
+    "Latency": 379.4651,
     "CostLive": true
   },
   {
@@ -504,9 +504,9 @@
     "Region": "eastus2",
     "Usable": true,
     "Reason": null,
-    "Moer": 522.4930510030001,
+    "Moer": 555.559934776,
     "Cost": 0.0416,
-    "Latency": 415.6446,
+    "Latency": 450.8213,
     "CostLive": true
   },
   {
@@ -514,9 +514,9 @@
     "Region": "francecentral",
     "Usable": true,
     "Reason": null,
-    "Moer": 210.421500443,
+    "Moer": 490.923022051,
     "Cost": 0.0472,
-    "Latency": 397.8859,
+    "Latency": 425.7237,
     "CostLive": true
   },
   {
@@ -544,9 +544,9 @@
     "Region": "germanywestcentral",
     "Usable": true,
     "Reason": null,
-    "Moer": 34.291583171999996,
+    "Moer": 769.111222572,
     "Cost": 0.048,
-    "Latency": 417.2889,
+    "Latency": 278.1166,
     "CostLive": true
   },
   {
@@ -554,9 +554,9 @@
     "Region": "indonesiacentral",
     "Usable": true,
     "Reason": null,
-    "Moer": 747.883099656,
+    "Moer": 710.189573709,
     "Cost": 0.0475,
-    "Latency": 630.8519,
+    "Latency": 777.1359,
     "CostLive": true
   },
   {
@@ -574,9 +574,9 @@
     "Region": "italynorth",
     "Usable": true,
     "Reason": null,
-    "Moer": 363.146051422,
+    "Moer": 381.108309274,
     "Cost": 0.048,
-    "Latency": 343.0364,
+    "Latency": 277.3598,
     "CostLive": true
   },
   {
@@ -584,9 +584,9 @@
     "Region": "japaneast",
     "Usable": true,
     "Reason": null,
-    "Moer": 586.631012121,
+    "Moer": 575.971591426,
     "Cost": 0.0544,
-    "Latency": 707.4589,
+    "Latency": 656.745,
     "CostLive": true
   },
   {
@@ -594,9 +594,9 @@
     "Region": "japanwest",
     "Usable": true,
     "Reason": null,
-    "Moer": 527.07433394,
+    "Moer": 530.9298690850001,
     "Cost": 0.0599,
-    "Latency": 653.0884,
+    "Latency": 518.6921,
     "CostLive": true
   },
   {
@@ -604,9 +604,9 @@
     "Region": "koreacentral",
     "Usable": true,
     "Reason": null,
-    "Moer": 2028.147563981,
+    "Moer": 572.841804073,
     "Cost": 0.052,
-    "Latency": 548.7149,
+    "Latency": 619.4996,
     "CostLive": true
   },
   {
@@ -624,9 +624,9 @@
     "Region": "malaysiawest",
     "Usable": true,
     "Reason": null,
-    "Moer": 689.687198585,
+    "Moer": 507.16162889699996,
     "Cost": 0.0475,
-    "Latency": 608.4887,
+    "Latency": 747.4896,
     "CostLive": true
   },
   {
@@ -644,9 +644,9 @@
     "Region": "newzealandnorth",
     "Usable": true,
     "Reason": null,
-    "Moer": 1789.059025754,
+    "Moer": 1423.3728570600001,
     "Cost": 0.0554,
-    "Latency": 579.8079,
+    "Latency": 559.5903,
     "CostLive": true
   },
   {
@@ -654,9 +654,9 @@
     "Region": "northcentralus",
     "Usable": true,
     "Reason": null,
-    "Moer": 521.994099396,
+    "Moer": 555.741371724,
     "Cost": 0.0416,
-    "Latency": 648.7936,
+    "Latency": 509.1253,
     "CostLive": true
   },
   {
@@ -664,9 +664,9 @@
     "Region": "northeurope",
     "Usable": true,
     "Reason": null,
-    "Moer": 489.42616723000003,
+    "Moer": 536.962647606,
     "Cost": 0.045,
-    "Latency": 410.2919,
+    "Latency": 499.6054,
     "CostLive": true
   },
   {
@@ -674,9 +674,9 @@
     "Region": "norwayeast",
     "Usable": true,
     "Reason": null,
-    "Moer": 215.00278338,
+    "Moer": 213.687365507,
     "Cost": 0.0528,
-    "Latency": 504.459,
+    "Latency": 373.4851,
     "CostLive": true
   },
   {
@@ -694,9 +694,9 @@
     "Region": "polandcentral",
     "Usable": true,
     "Reason": null,
-    "Moer": 891.581162472,
+    "Moer": 774.4636125380001,
     "Cost": 0.048,
-    "Latency": 465.0346,
+    "Latency": 410.6837,
     "CostLive": true
   },
   {
@@ -704,9 +704,9 @@
     "Region": "qatarcentral",
     "Usable": true,
     "Reason": null,
-    "Moer": 510.69964938300006,
+    "Moer": 666.372550767,
     "Cost": 0.0502,
-    "Latency": 422.7495,
+    "Latency": 482.0835,
     "CostLive": true
   },
   {
@@ -734,9 +734,9 @@
     "Region": "southafricanorth",
     "Usable": true,
     "Reason": null,
-    "Moer": 921.291462707,
+    "Moer": 909.4073426130001,
     "Cost": 0.0542,
-    "Latency": 615.3659,
+    "Latency": 527.1996,
     "CostLive": true
   },
   {
@@ -754,9 +754,9 @@
     "Region": "southcentralus",
     "Usable": true,
     "Reason": null,
-    "Moer": 564.72250065,
+    "Moer": 517.54889417,
     "Cost": 0.0499,
-    "Latency": 432.2302,
+    "Latency": 408.0183,
     "CostLive": true
   },
   {
@@ -764,9 +764,9 @@
     "Region": "southeastasia",
     "Usable": true,
     "Reason": null,
-    "Moer": 425.56036153400004,
+    "Moer": 336.38410159200004,
     "Cost": 0.0528,
-    "Latency": 613.6179,
+    "Latency": 511.5274,
     "CostLive": true
   },
   {
@@ -774,9 +774,9 @@
     "Region": "southindia",
     "Usable": true,
     "Reason": null,
-    "Moer": 977.718353535,
+    "Moer": 970.052642482,
     "Cost": 0.058,
-    "Latency": 1038.7505,
+    "Latency": 470.1247,
     "CostLive": true
   },
   {
@@ -784,9 +784,9 @@
     "Region": "spaincentral",
     "Usable": true,
     "Reason": null,
-    "Moer": 64.455475777,
+    "Moer": 396.89332375000004,
     "Cost": 0.0458,
-    "Latency": 409.7081,
+    "Latency": 357.1103,
     "CostLive": true
   },
   {
@@ -794,9 +794,9 @@
     "Region": "swedencentral",
     "Usable": true,
     "Reason": null,
-    "Moer": 173.363003814,
+    "Moer": 302.954343923,
     "Cost": 0.0432,
-    "Latency": 406.0553,
+    "Latency": 506.2278,
     "CostLive": true
   },
   {
@@ -814,9 +814,9 @@
     "Region": "switzerlandnorth",
     "Usable": true,
     "Reason": null,
-    "Moer": 992.1425909010002,
+    "Moer": 786.8466842390001,
     "Cost": 0.0528,
-    "Latency": 485.8828,
+    "Latency": 248.6213,
     "CostLive": true
   },
   {
@@ -824,9 +824,9 @@
     "Region": "switzerlandwest",
     "Usable": true,
     "Reason": null,
-    "Moer": 992.1425909010002,
+    "Moer": 786.8466842390001,
     "Cost": 0.06866,
-    "Latency": 431.6648,
+    "Latency": 355.9561,
     "CostLive": true
   },
   {
@@ -854,9 +854,9 @@
     "Region": "uaenorth",
     "Usable": true,
     "Reason": null,
-    "Moer": 384.73704823400004,
+    "Moer": 594.069926989,
     "Cost": 0.0499,
-    "Latency": 460.6146,
+    "Latency": 675.3684,
     "CostLive": true
   },
   {
@@ -864,9 +864,9 @@
     "Region": "uksouth",
     "Usable": true,
     "Reason": null,
-    "Moer": 387.00501008400005,
+    "Moer": 433.45286877200004,
     "Cost": 0.0472,
-    "Latency": 431.0842,
+    "Latency": 365.6663,
     "CostLive": true
   },
   {
@@ -874,29 +874,29 @@
     "Region": "ukwest",
     "Usable": true,
     "Reason": null,
-    "Moer": 387.00501008400005,
+    "Moer": 433.45286877200004,
     "Cost": 0.047,
-    "Latency": 379.6574,
+    "Latency": 407.2715,
     "CostLive": true
   },
   {
     "Cloud": "azure",
     "Region": "westcentralus",
-    "Usable": true,
-    "Reason": null,
-    "Moer": 624.369897305,
-    "Cost": 0.0499,
-    "Latency": 585.4926,
-    "CostLive": true
+    "Usable": false,
+    "Reason": "missing signal(s): carbon",
+    "Moer": null,
+    "Cost": null,
+    "Latency": null,
+    "CostLive": null
   },
   {
     "Cloud": "azure",
     "Region": "westeurope",
     "Usable": true,
     "Reason": null,
-    "Moer": 10.477983747000001,
+    "Moer": 552.92909903,
     "Cost": 0.048,
-    "Latency": 443.251,
+    "Latency": 334.0116,
     "CostLive": true
   },
   {
@@ -912,21 +912,21 @@
   {
     "Cloud": "azure",
     "Region": "westus",
-    "Usable": true,
-    "Reason": null,
-    "Moer": 415.626688631,
-    "Cost": 0.0496,
-    "Latency": 590.7352,
-    "CostLive": true
+    "Usable": false,
+    "Reason": "missing signal(s): carbon",
+    "Moer": null,
+    "Cost": null,
+    "Latency": null,
+    "CostLive": null
   },
   {
     "Cloud": "azure",
     "Region": "westus2",
     "Usable": true,
     "Reason": null,
-    "Moer": 625.4585189930001,
+    "Moer": 586.540293647,
     "Cost": 0.0416,
-    "Latency": 633.8955,
+    "Latency": 510.322,
     "CostLive": true
   },
   {
@@ -934,9 +934,9 @@
     "Region": "westus3",
     "Usable": true,
     "Reason": null,
-    "Moer": 497.182596757,
+    "Moer": 471.2371131930001,
     "Cost": 0.0416,
-    "Latency": 366.1664,
+    "Latency": 366.1158,
     "CostLive": true
   },
   {
@@ -944,9 +944,9 @@
     "Region": "africa-south1",
     "Usable": true,
     "Reason": null,
-    "Moer": 921.291462707,
+    "Moer": 909.4073426130001,
     "Cost": 0.0609,
-    "Latency": 1038.8951,
+    "Latency": 984.2985,
     "CostLive": false
   },
   {
@@ -954,9 +954,9 @@
     "Region": "asia-east1",
     "Usable": true,
     "Reason": null,
-    "Moer": 575.472639819,
+    "Moer": 530.294839767,
     "Cost": 0.0641,
-    "Latency": 1039.9408,
+    "Latency": 998.5509,
     "CostLive": false
   },
   {
@@ -974,9 +974,9 @@
     "Region": "asia-northeast1",
     "Usable": true,
     "Reason": null,
-    "Moer": 586.631012121,
+    "Moer": 575.971591426,
     "Cost": 0.071,
-    "Latency": 1060.5909,
+    "Latency": 984.1329,
     "CostLive": false
   },
   {
@@ -984,9 +984,9 @@
     "Region": "asia-northeast2",
     "Usable": true,
     "Reason": null,
-    "Moer": 527.07433394,
+    "Moer": 530.9298690850001,
     "Cost": 0.071,
-    "Latency": 976.6956,
+    "Latency": 983.8104,
     "CostLive": false
   },
   {
@@ -994,9 +994,9 @@
     "Region": "asia-northeast3",
     "Usable": true,
     "Reason": null,
-    "Moer": 2028.147563981,
+    "Moer": 572.841804073,
     "Cost": 0.071,
-    "Latency": 951.027,
+    "Latency": 978.6653,
     "CostLive": false
   },
   {
@@ -1004,9 +1004,9 @@
     "Region": "asia-south1",
     "Usable": true,
     "Reason": null,
-    "Moer": 977.718353535,
+    "Moer": 970.052642482,
     "Cost": 0.0664,
-    "Latency": 1053.8095,
+    "Latency": 1010.5847,
     "CostLive": false
   },
   {
@@ -1014,9 +1014,9 @@
     "Region": "asia-south2",
     "Usable": true,
     "Reason": null,
-    "Moer": 977.718353535,
+    "Moer": 970.052642482,
     "Cost": 0.0664,
-    "Latency": 1095.0478,
+    "Latency": 1017.4678,
     "CostLive": false
   },
   {
@@ -1024,9 +1024,9 @@
     "Region": "asia-southeast1",
     "Usable": true,
     "Reason": null,
-    "Moer": 425.56036153400004,
+    "Moer": 336.38410159200004,
     "Cost": 0.0682,
-    "Latency": 1038.3125,
+    "Latency": 980.3015,
     "CostLive": false
   },
   {
@@ -1034,9 +1034,9 @@
     "Region": "asia-southeast2",
     "Usable": true,
     "Reason": null,
-    "Moer": 747.883099656,
+    "Moer": 710.189573709,
     "Cost": 0.0744,
-    "Latency": 1183.1054,
+    "Latency": 1026.042,
     "CostLive": false
   },
   {
@@ -1044,9 +1044,9 @@
     "Region": "australia-southeast1",
     "Usable": true,
     "Reason": null,
-    "Moer": 776.005826596,
+    "Moer": 809.435584265,
     "Cost": 0.0785,
-    "Latency": 1265.1414,
+    "Latency": 1005.2188,
     "CostLive": false
   },
   {
@@ -1054,9 +1054,9 @@
     "Region": "australia-southeast2",
     "Usable": true,
     "Reason": null,
-    "Moer": 855.747365242,
+    "Moer": 799.819426021,
     "Cost": 0.0667,
-    "Latency": 951.721,
+    "Latency": 1028.0255,
     "CostLive": false
   },
   {
@@ -1064,9 +1064,9 @@
     "Region": "europe-central2",
     "Usable": true,
     "Reason": null,
-    "Moer": 891.581162472,
+    "Moer": 774.4636125380001,
     "Cost": 0.0669,
-    "Latency": 969.475,
+    "Latency": 710.7804,
     "CostLive": false
   },
   {
@@ -1074,9 +1074,9 @@
     "Region": "europe-north1",
     "Usable": true,
     "Reason": null,
-    "Moer": 316.19924112700005,
+    "Moer": 434.36005351200004,
     "Cost": 0.0609,
-    "Latency": 987.229,
+    "Latency": 902.0007,
     "CostLive": false
   },
   {
@@ -1084,9 +1084,9 @@
     "Region": "europe-north2",
     "Usable": true,
     "Reason": null,
-    "Moer": 173.363003814,
+    "Moer": 302.954343923,
     "Cost": 0.0581,
-    "Latency": 984.8402,
+    "Latency": 982.45,
     "CostLive": false
   },
   {
@@ -1094,9 +1094,9 @@
     "Region": "europe-southwest1",
     "Usable": true,
     "Reason": null,
-    "Moer": 64.455475777,
+    "Moer": 396.89332375000004,
     "Cost": 0.0653,
-    "Latency": 986.8536,
+    "Latency": 912.2954,
     "CostLive": false
   },
   {
@@ -1104,9 +1104,9 @@
     "Region": "europe-west1",
     "Usable": true,
     "Reason": null,
-    "Moer": 30.345329553000003,
+    "Moer": 481.1254268590001,
     "Cost": 0.0609,
-    "Latency": 868.8715,
+    "Latency": 909.0401,
     "CostLive": false
   },
   {
@@ -1114,9 +1114,9 @@
     "Region": "europe-west10",
     "Usable": true,
     "Reason": null,
-    "Moer": 34.291583171999996,
+    "Moer": 769.111222572,
     "Cost": 0.0713,
-    "Latency": 957.0376,
+    "Latency": 986.7239,
     "CostLive": false
   },
   {
@@ -1124,9 +1124,9 @@
     "Region": "europe-west12",
     "Usable": true,
     "Reason": null,
-    "Moer": 363.146051422,
+    "Moer": 381.108309274,
     "Cost": 0.0714,
-    "Latency": 934.5856,
+    "Latency": 987.6536,
     "CostLive": false
   },
   {
@@ -1134,9 +1134,9 @@
     "Region": "europe-west2",
     "Usable": true,
     "Reason": null,
-    "Moer": 387.00501008400005,
+    "Moer": 433.45286877200004,
     "Cost": 0.0713,
-    "Latency": 997.0209,
+    "Latency": 991.2902,
     "CostLive": false
   },
   {
@@ -1144,9 +1144,9 @@
     "Region": "europe-west3",
     "Usable": true,
     "Reason": null,
-    "Moer": 34.291583171999996,
+    "Moer": 769.111222572,
     "Cost": 0.0713,
-    "Latency": 963.5158,
+    "Latency": 787.7315,
     "CostLive": false
   },
   {
@@ -1154,9 +1154,9 @@
     "Region": "europe-west4",
     "Usable": true,
     "Reason": null,
-    "Moer": 10.477983747000001,
+    "Moer": 552.92909903,
     "Cost": 0.0609,
-    "Latency": 858.1171,
+    "Latency": 839.9478,
     "CostLive": false
   },
   {
@@ -1164,9 +1164,9 @@
     "Region": "europe-west6",
     "Usable": true,
     "Reason": null,
-    "Moer": 992.1425909010002,
+    "Moer": 786.8466842390001,
     "Cost": 0.0725,
-    "Latency": 927.7665,
+    "Latency": 888.0918,
     "CostLive": false
   },
   {
@@ -1174,9 +1174,9 @@
     "Region": "europe-west8",
     "Usable": true,
     "Reason": null,
-    "Moer": 363.146051422,
+    "Moer": 381.108309274,
     "Cost": 0.0642,
-    "Latency": 965.1116,
+    "Latency": 911.1777,
     "CostLive": false
   },
   {
@@ -1184,9 +1184,9 @@
     "Region": "europe-west9",
     "Usable": true,
     "Reason": null,
-    "Moer": 210.421500443,
+    "Moer": 490.923022051,
     "Cost": 0.0642,
-    "Latency": 452.6225,
+    "Latency": 965.8366,
     "CostLive": false
   },
   {
@@ -1194,9 +1194,9 @@
     "Region": "me-central1",
     "Usable": true,
     "Reason": null,
-    "Moer": 510.69964938300006,
+    "Moer": 666.372550767,
     "Cost": 0.0672,
-    "Latency": 1038.3543,
+    "Latency": 915.1298,
     "CostLive": false
   },
   {
@@ -1204,9 +1204,9 @@
     "Region": "me-central2",
     "Usable": true,
     "Reason": null,
-    "Moer": 671.362066837,
+    "Moer": 650.360740106,
     "Cost": 0.0885,
-    "Latency": 962.3307,
+    "Latency": 966.9668,
     "CostLive": false
   },
   {
@@ -1214,9 +1214,9 @@
     "Region": "me-west1",
     "Usable": true,
     "Reason": null,
-    "Moer": 687.101722076,
+    "Moer": 655.486333887,
     "Cost": 0.0608,
-    "Latency": 1009.3243,
+    "Latency": 860.2223,
     "CostLive": false
   },
   {
@@ -1224,9 +1224,9 @@
     "Region": "northamerica-northeast1",
     "Usable": true,
     "Reason": null,
-    "Moer": 437.036248495,
+    "Moer": 413.404086018,
     "Cost": 0.0609,
-    "Latency": 1090.1501,
+    "Latency": 920.7281,
     "CostLive": false
   },
   {
@@ -1234,9 +1234,9 @@
     "Region": "northamerica-northeast2",
     "Usable": true,
     "Reason": null,
-    "Moer": 457.22110896000004,
+    "Moer": 457.175749723,
     "Cost": 0.0609,
-    "Latency": 996.8469,
+    "Latency": 1004.7328,
     "CostLive": false
   },
   {
@@ -1244,9 +1244,9 @@
     "Region": "northamerica-south1",
     "Usable": true,
     "Reason": null,
-    "Moer": 565.9018408119999,
+    "Moer": 557.555741204,
     "Cost": 0.0603,
-    "Latency": 968.2783,
+    "Latency": 973.9477,
     "CostLive": false
   },
   {
@@ -1254,9 +1254,9 @@
     "Region": "southamerica-east1",
     "Usable": true,
     "Reason": null,
-    "Moer": 555.514575539,
+    "Moer": 977.8997904830001,
     "Cost": 0.0878,
-    "Latency": 1046.8577,
+    "Latency": 1028.7583,
     "CostLive": false
   },
   {
@@ -1264,29 +1264,29 @@
     "Region": "southamerica-west1",
     "Usable": true,
     "Reason": null,
-    "Moer": 639.293086278,
+    "Moer": 638.113746116,
     "Cost": 0.0791,
-    "Latency": 973.602,
+    "Latency": 1033.971,
     "CostLive": false
   },
   {
     "Cloud": "gcp",
     "Region": "us-central1",
-    "Usable": true,
-    "Reason": null,
-    "Moer": 644.7361947180001,
-    "Cost": 0.0553,
-    "Latency": 933.3718,
-    "CostLive": false
+    "Usable": false,
+    "Reason": "missing signal(s): carbon",
+    "Moer": null,
+    "Cost": null,
+    "Latency": null,
+    "CostLive": null
   },
   {
     "Cloud": "gcp",
     "Region": "us-east1",
     "Usable": true,
     "Reason": null,
-    "Moer": 782.582915961,
+    "Moer": 745.615137806,
     "Cost": 0.0553,
-    "Latency": 866.2416,
+    "Latency": 951.2544,
     "CostLive": false
   },
   {
@@ -1294,9 +1294,9 @@
     "Region": "us-east4",
     "Usable": true,
     "Reason": null,
-    "Moer": 522.4930510030001,
+    "Moer": 552.157992001,
     "Cost": 0.0623,
-    "Latency": 1016.7915,
+    "Latency": 924.8722,
     "CostLive": false
   },
   {
@@ -1304,9 +1304,9 @@
     "Region": "us-east5",
     "Usable": true,
     "Reason": null,
-    "Moer": 522.2662548180001,
+    "Moer": 552.4301474230001,
     "Cost": 0.0553,
-    "Latency": 1005.991,
+    "Latency": 1000.4563,
     "CostLive": false
   },
   {
@@ -1314,9 +1314,9 @@
     "Region": "us-south1",
     "Usable": true,
     "Reason": null,
-    "Moer": 565.538966916,
+    "Moer": 559.506188395,
     "Cost": 0.0653,
-    "Latency": 1041.3073,
+    "Latency": 959.4024,
     "CostLive": false
   },
   {
@@ -1324,9 +1324,9 @@
     "Region": "us-west1",
     "Usable": true,
     "Reason": null,
-    "Moer": 625.6853151780001,
+    "Moer": 597.6079474750001,
     "Cost": 0.0553,
-    "Latency": 951.3428,
+    "Latency": 957.1747,
     "CostLive": false
   },
   {
@@ -1334,9 +1334,9 @@
     "Region": "us-west2",
     "Usable": true,
     "Reason": null,
-    "Moer": 542.269678335,
+    "Moer": 495.821819647,
     "Cost": 0.0664,
-    "Latency": 991.924,
+    "Latency": 1006.102,
     "CostLive": false
   },
   {
@@ -1344,9 +1344,9 @@
     "Region": "us-west3",
     "Usable": true,
     "Reason": null,
-    "Moer": 625.2317228080001,
+    "Moer": 597.4718697640001,
     "Cost": 0.0664,
-    "Latency": 1000.6059,
+    "Latency": 987.7013,
     "CostLive": false
   },
   {
@@ -1354,9 +1354,9 @@
     "Region": "us-west4",
     "Usable": true,
     "Reason": null,
-    "Moer": 624.279178831,
+    "Moer": 599.8305500880001,
     "Cost": 0.0623,
-    "Latency": 981.4294,
+    "Latency": 991.9441,
     "CostLive": false
   }
 ]

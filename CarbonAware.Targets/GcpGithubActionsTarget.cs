@@ -15,8 +15,8 @@ public sealed class GcpGithubActionsTarget : ICloudTarget
     private readonly GitHubActionsOptions _opts;
     private readonly ILogger<GcpGithubActionsTarget> _log;
 
-    // Small/cheap default
-    private const string DefaultMachineType = "e2-micro";
+    // Matches CostSignalOptions.InstanceTypeByCloud["gcp"] — was e2-micro, which priced differently from what was actually deployed
+    private const string DefaultMachineType = "e2-medium";
 
     public GcpGithubActionsTarget(
         HttpClient http,

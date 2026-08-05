@@ -1,0 +1,265 @@
+zone_id,borough,service_type,base_congestion_factor
+1,Queens,Green,1.037
+2,Staten Island,FHV,1.489
+3,Queens,Yellow,1.237
+4,Queens,FHV,0.862
+5,EWR,Green,1.209
+6,Staten Island,FHV,1.001
+7,Staten Island,FHV,1.238
+8,Bronx,FHV,0.984
+9,Brooklyn,FHV,1.04
+10,Queens,FHV,0.982
+11,Bronx,Yellow,1.295
+12,Bronx,FHV,0.99
+13,Bronx,Yellow,1.423
+14,Bronx,FHV,1.213
+15,EWR,Yellow,1.495
+16,Bronx,Green,1.144
+17,Brooklyn,Yellow,0.927
+18,Brooklyn,Yellow,1.119
+19,Queens,Yellow,1.038
+20,EWR,FHV,0.891
+21,Staten Island,Yellow,1.305
+22,Manhattan,Yellow,0.978
+23,Manhattan,Green,1.26
+24,EWR,Yellow,1.028
+25,Staten Island,FHV,1.451
+26,Queens,Yellow,1.235
+27,EWR,Green,1.14
+28,Manhattan,FHV,1.124
+29,Queens,FHV,1.253
+30,EWR,FHV,0.984
+31,Brooklyn,Green,1.281
+32,Bronx,Green,1.113
+33,Queens,Yellow,1.411
+34,Bronx,FHV,1.165
+35,Queens,Green,1.164
+36,Staten Island,Green,0.94
+37,Staten Island,FHV,1.255
+38,Queens,Yellow,1.399
+39,Bronx,FHV,0.964
+40,Manhattan,Yellow,1.224
+41,Brooklyn,FHV,0.869
+42,Staten Island,FHV,0.974
+43,Bronx,FHV,1.17
+44,Manhattan,Green,1.303
+45,Bronx,FHV,1.01
+46,Brooklyn,Green,1.02
+47,Staten Island,FHV,0.821
+48,Manhattan,FHV,0.962
+49,Staten Island,Yellow,1.002
+50,Brooklyn,FHV,1.483
+51,Staten Island,FHV,1.267
+52,Queens,Green,1.348
+53,Manhattan,Yellow,0.917
+54,Queens,FHV,1.349
+55,Staten Island,Yellow,1.23
+56,EWR,Yellow,1.056
+57,EWR,Yellow,1.011
+58,Brooklyn,FHV,1.017
+59,Brooklyn,Green,1.38
+60,Staten Island,FHV,1.064
+61,Bronx,FHV,1.172
+62,Bronx,Yellow,1.03
+63,Staten Island,Green,1.438
+64,Queens,Yellow,1.328
+65,Manhattan,Yellow,1.309
+66,EWR,Yellow,0.886
+67,Staten Island,FHV,1.202
+68,Brooklyn,Green,1.361
+69,Staten Island,FHV,1.378
+70,Staten Island,FHV,0.945
+71,Staten Island,FHV,1.0
+72,Staten Island,FHV,0.87
+73,Manhattan,Green,0.977
+74,Staten Island,Yellow,1.088
+75,EWR,Yellow,1.426
+76,Queens,Green,1.403
+77,Staten Island,FHV,1.029
+78,EWR,Yellow,1.117
+79,EWR,Green,1.4
+80,Bronx,FHV,1.181
+81,Bronx,Green,1.095
+82,Staten Island,Green,1.286
+83,Queens,Green,1.122
+84,Brooklyn,Yellow,1.136
+85,Queens,Yellow,1.496
+86,Brooklyn,Yellow,0.885
+87,Staten Island,Yellow,1.152
+88,Manhattan,FHV,1.251
+89,Manhattan,FHV,0.836
+90,EWR,FHV,0.916
+91,Bronx,Green,1.126
+92,Brooklyn,Green,1.472
+93,Queens,Yellow,0.869
+94,Brooklyn,Yellow,1.039
+95,Staten Island,Yellow,1.331
+96,EWR,Green,1.045
+97,Brooklyn,Green,1.342
+98,EWR,Yellow,1.456
+99,Manhattan,Green,1.389
+100,Brooklyn,FHV,0.985
+101,Brooklyn,FHV,1.436
+102,Manhattan,Green,1.391
+103,Manhattan,Yellow,0.861
+104,EWR,FHV,1.347
+105,Staten Island,Green,1.448
+106,Manhattan,Yellow,1.397
+107,EWR,FHV,1.298
+108,Staten Island,FHV,1.11
+109,Bronx,Yellow,1.166
+110,Staten Island,FHV,1.013
+111,Brooklyn,FHV,1.177
+112,Bronx,Green,1.133
+113,Brooklyn,FHV,0.934
+114,Manhattan,FHV,1.152
+115,EWR,Green,1.481
+116,EWR,FHV,1.381
+117,EWR,FHV,1.262
+118,Staten Island,FHV,1.173
+119,Queens,Yellow,0.817
+120,EWR,FHV,0.824
+121,Brooklyn,Yellow,0.981
+122,Manhattan,Green,0.851
+123,Bronx,Yellow,1.01
+124,Staten Island,Yellow,1.342
+125,Staten Island,FHV,1.426
+126,Brooklyn,Yellow,1.216
+127,Brooklyn,Green,1.191
+128,Manhattan,Green,1.317
+129,Brooklyn,Green,0.932
+130,Manhattan,Yellow,1.345
+131,Manhattan,FHV,1.014
+132,Queens,FHV,0.992
+133,Queens,Yellow,1.46
+134,Brooklyn,FHV,1.211
+135,EWR,Green,1.452
+136,EWR,FHV,0.926
+137,Queens,Green,0.914
+138,EWR,FHV,1.02
+139,Brooklyn,FHV,1.068
+140,Bronx,Yellow,1.424
+141,EWR,FHV,0.945
+142,Bronx,FHV,1.013
+143,EWR,Green,1.311
+144,Bronx,Green,0.931
+145,Staten Island,Yellow,1.295
+146,Bronx,Green,1.109
+147,Brooklyn,FHV,1.191
+148,Manhattan,FHV,0.828
+149,EWR,FHV,1.401
+150,Bronx,Yellow,1.491
+151,Staten Island,Yellow,1.179
+152,Queens,FHV,0.856
+153,EWR,Yellow,0.952
+154,Brooklyn,FHV,1.286
+155,Brooklyn,Green,1.153
+156,Queens,Green,0.814
+157,Manhattan,Yellow,1.146
+158,Brooklyn,FHV,0.867
+159,EWR,Yellow,1.325
+160,EWR,FHV,1.354
+161,Bronx,Yellow,0.815
+162,Queens,FHV,1.122
+163,Manhattan,Yellow,0.928
+164,Bronx,Green,1.232
+165,Staten Island,Yellow,1.423
+166,Brooklyn,FHV,0.801
+167,Brooklyn,Yellow,1.245
+168,EWR,FHV,1.355
+169,Bronx,FHV,1.379
+170,Manhattan,Green,1.177
+171,EWR,Green,1.482
+172,Bronx,Yellow,1.056
+173,Queens,Green,1.186
+174,Staten Island,Green,1.043
+175,Bronx,FHV,0.817
+176,Bronx,Yellow,1.05
+177,Queens,Yellow,1.417
+178,Manhattan,FHV,1.19
+179,Staten Island,FHV,1.243
+180,Staten Island,Green,1.406
+181,Staten Island,Yellow,0.953
+182,Brooklyn,Yellow,0.845
+183,Bronx,Yellow,1.346
+184,Queens,Yellow,1.444
+185,Queens,Yellow,1.076
+186,EWR,Yellow,1.332
+187,Manhattan,FHV,0.805
+188,Brooklyn,FHV,1.365
+189,Bronx,Green,0.853
+190,Brooklyn,Green,1.139
+191,Manhattan,Yellow,1.429
+192,Queens,Green,1.183
+193,Queens,FHV,0.962
+194,Staten Island,FHV,1.24
+195,Bronx,Yellow,1.21
+196,Staten Island,FHV,1.208
+197,Bronx,Green,1.069
+198,Staten Island,Yellow,1.456
+199,Queens,FHV,1.185
+200,Manhattan,Yellow,0.825
+201,EWR,FHV,1.13
+202,Queens,FHV,1.026
+203,Manhattan,Yellow,1.267
+204,EWR,Green,0.822
+205,EWR,Yellow,0.826
+206,EWR,FHV,1.444
+207,Brooklyn,Yellow,1.006
+208,Brooklyn,Green,1.286
+209,Queens,Yellow,1.286
+210,Brooklyn,FHV,1.126
+211,Staten Island,FHV,0.854
+212,Manhattan,Green,1.27
+213,EWR,FHV,1.446
+214,Queens,Yellow,1.41
+215,Bronx,Yellow,1.42
+216,Staten Island,Green,1.285
+217,Bronx,Yellow,1.161
+218,Manhattan,FHV,1.034
+219,Staten Island,Yellow,1.229
+220,Brooklyn,FHV,0.958
+221,Manhattan,Green,1.183
+222,Staten Island,Yellow,1.281
+223,Manhattan,Green,0.905
+224,Staten Island,Green,1.496
+225,Brooklyn,FHV,1.322
+226,Manhattan,Yellow,1.335
+227,Staten Island,Yellow,1.237
+228,Bronx,Yellow,1.293
+229,Bronx,FHV,1.053
+230,Queens,Yellow,1.333
+231,EWR,Yellow,1.399
+232,Brooklyn,FHV,1.266
+233,EWR,Yellow,1.338
+234,Queens,FHV,1.035
+235,Bronx,Green,1.013
+236,Queens,FHV,0.972
+237,Brooklyn,FHV,1.387
+238,Bronx,Green,1.454
+239,Bronx,Green,1.229
+240,Staten Island,Yellow,1.437
+241,Staten Island,Yellow,1.442
+242,Bronx,Green,1.123
+243,Brooklyn,Green,1.07
+244,Brooklyn,FHV,1.381
+245,Manhattan,FHV,1.194
+246,Bronx,Green,1.355
+247,Queens,Green,1.157
+248,Queens,Yellow,1.069
+249,Bronx,FHV,0.965
+250,EWR,Yellow,1.219
+251,Staten Island,Yellow,1.077
+252,EWR,FHV,1.117
+253,EWR,Yellow,0.839
+254,Staten Island,FHV,0.815
+255,Queens,Green,1.261
+256,Brooklyn,Green,1.144
+257,EWR,FHV,1.227
+258,Staten Island,Green,1.163
+259,Staten Island,Yellow,0.997
+260,EWR,Yellow,0.947
+261,Staten Island,Green,1.474
+262,Queens,Yellow,1.217
+263,Manhattan,Yellow,1.358
+264,Queens,Yellow,0.925

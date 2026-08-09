@@ -101,8 +101,15 @@ jobs:
 
           export DEBIAN_FRONTEND=noninteractive
           apt-get update -y
-          apt-get install -y python3-pip awscli
+          apt-get install -y python3-pip unzip
           pip3 install boto3 pandas numpy
+
+          # Use AWS CLI v2 (self-contained, bundles its own Python) instead of the
+          # apt "awscli" package -- apt's old v1 CLI conflicts with the newer
+          # botocore that pip installs above (KeyError: 'opsworkscm').
+          curl -fsSL "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o awscliv2.zip
+          unzip -q awscliv2.zip
+          ./aws/install
 
           curl -fsSL -o /root/batch_job.py \
             "https://raw.githubusercontent.com/${{ github.repository }}/${{ github.ref_name }}/files/batch_job.py"

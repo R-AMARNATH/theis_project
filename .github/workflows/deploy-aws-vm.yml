@@ -101,7 +101,7 @@ jobs:
 
           export DEBIAN_FRONTEND=noninteractive
           apt-get update -y
-          apt-get install -y python3-pip
+          apt-get install -y python3-pip awscli
           pip3 install boto3 pandas numpy
 
           curl -fsSL -o /root/batch_job.py \
@@ -187,7 +187,7 @@ jobs:
           if-no-files-found: warn
 
       - name: Terminate EC2 Instance
-        if: false   # TEMP: disabled for debugging -- re-enable (if: always()) once confirmed working
+        if: always()
         run: |
           aws ec2 terminate-instances --region ${{ inputs.region }} \
             --instance-ids ${{ steps.ec2.outputs.instance_id }} || true

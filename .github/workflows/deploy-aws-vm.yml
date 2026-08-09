@@ -174,11 +174,7 @@ jobs:
           if-no-files-found: warn
 
       - name: Terminate EC2 Instance
-<<<<<<< HEAD
-        if: false   # TEMP: disabled for debugging -- re-enable (if: always()) once the pipeline is confirmed working
-=======
         if: false
->>>>>>> main
         run: |
           aws ec2 terminate-instances --region ${{ inputs.region }} \
             --instance-ids ${{ steps.ec2.outputs.instance_id }} || true

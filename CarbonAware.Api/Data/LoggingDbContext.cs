@@ -10,6 +10,7 @@ public sealed class LoggingDbContext : DbContext
     public DbSet<WattTimeCallLog> WattTimeCalls => Set<WattTimeCallLog>();
     public DbSet<AdviceExecutionLog> AdviceExecutions => Set<AdviceExecutionLog>();
     public DbSet<AdviceCandidateLog> AdviceCandidates => Set<AdviceCandidateLog>();
+    public DbSet<CycleResultLog> CycleResults => Set<CycleResultLog>();
 
     protected override void OnModelCreating(ModelBuilder mb)
     {
@@ -40,6 +41,20 @@ public sealed class LoggingDbContext : DbContext
             e.HasOne(x => x.Execution)
              .WithMany(x => x.Candidates)
              .HasForeignKey(x => x.ExecutionId);
+        });
+
+        mb.Entity<CycleResultLog>(e =>
+        {
+            e.HasKey(x => x.Id);
+            e.Property(x => x.CycleId).HasMaxLength(32).IsRequired();
+            e.Property(x => x.ObjectiveType).HasMaxLength(16);
+            e.Property(x => x.WeightConfig).HasMaxLength(32);
+            e.Property(x => x.CloudProvider).HasMaxLength(32);
+            e.Property(x => x.Region).HasMaxLength(64);
+            e.Property(x => x.ErrorNotes).HasMaxLength(1024);
+            // one row per cycle+cloud+region -- lets the same cycle id appear once per
+            // region if you ever run more than one region per cycle
+            e.HasIndex(x => new { x.CycleId, x.CloudProvider, x.Region }).IsUnique();
         });
     }
 }

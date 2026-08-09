@@ -1,0 +1,142 @@
+name: Create GCP VM
+
+# Prerequisites (one-time):
+#   1. A GCP service account with roles/compute.instanceAdmin.v1 and
+#      roles/iam.serviceAccountUser on the project, plus roles/storage.objectAdmin
+#      on the candidate buckets. Create a JSON key and save it as repo secret
+#      GCP_SERVICE_ACCOUNT_KEY. Set repo secret GCP_PROJECT_ID too.
+#   2. The instance itself also needs write access to the bucket: either attach the
+#      same service account to the instance (--service-account below) with
+#      cloud-platform scope, or a narrower dedicated SA -- simplest is reusing the
+#      deploy SA for both the workflow and the instance.
+#   3. files/manifest.json committed with real bucket/project names per GCP region.
+
+on:
+  workflow_dispatch:
+    inputs:
+      region:
+        description: 'GCP region to deploy VM (e.g. europe-west1); zone = region-b'
+        required: true
+        type: string
+      machineType:
+        description: 'GCP machine type'
+        required: true
+        type: string
+        default: 'e2-medium'
+      cycleId:
+        description: 'Experiment cycle id (1-84)'
+        required: true
+        type: string
+      objectiveType:
+        description: 'single | multi'
+        required: false
+        type: string
+        default: 'multi'
+      weightConfig:
+        description: 'carbon-prioritised | balanced | cost-prioritised'
+        required: false
+        type: string
+        default: 'balanced'
+
+env:
+  RESULT_TIMEOUT_SECONDS: 1200
+  RESULT_POLL_INTERVAL: 15
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Authenticate to GCP
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+
+      - name: Set up gcloud
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+
+      - name: Resolve bucket from manifest
+        id: manifest
+        run: |
+          BUCKET=$(jq -r --arg region "${{ inputs.region }}" \
+            '.[] | select(.cloud=="gcp" and .region==$region) | .bucket' files/manifest.json)
+          PROJECT=$(jq -r --arg region "${{ inputs.region }}" \
+            '.[] | select(.cloud=="gcp" and .region==$region) | .project' files/manifest.json)
+          if [ -z "$BUCKET" ] || [ "$BUCKET" == "null" ]; then
+            echo "No gcp manifest entry for region ${{ inputs.region }}" >&2
+            exit 1
+          fi
+          echo "bucket=$BUCKET" >> "$GITHUB_OUTPUT"
+          echo "project=$PROJECT" >> "$GITHUB_OUTPUT"
+
+      - name: Set run identifiers
+        id: run
+        run: |
+          VM="cabatch-${{ github.run_id }}"
+          ZONE="${{ inputs.region }}-b"
+          RESULT_OBJECT="results/cycle_${{ inputs.cycleId }}.json"
+          echo "vm=$VM" >> "$GITHUB_OUTPUT"
+          echo "zone=$ZONE" >> "$GITHUB_OUTPUT"
+          echo "result_object=$RESULT_OBJECT" >> "$GITHUB_OUTPUT"
+
+      - name: Build startup script
+        run: |
+          cat > startup.sh << EOF
+          #!/bin/bash
+          set -ex
+          exec > /var/log/carbonaware-batch.log 2>&1
+          apt-get update -y
+          apt-get install -y python3-pip
+          pip3 install --break-system-packages google-cloud-storage pandas numpy
+          curl -fsSL -o /root/batch_job.py "https://raw.githubusercontent.com/${{ github.repository }}/${{ github.ref_name }}/files/batch_job.py"
+          python3 /root/batch_job.py --cloud gcp --region "${{ inputs.region }}" --project "${{ steps.manifest.outputs.project }}" --bucket "${{ steps.manifest.outputs.bucket }}" --cycle-id "${{ inputs.cycleId }}" --objective-type "${{ inputs.objectiveType }}" --weight-config "${{ inputs.weightConfig }}" --output-json /root/result.json
+          gsutil cp /root/result.json gs://${{ steps.manifest.outputs.bucket }}/${{ steps.run.outputs.result_object }}
+          EOF
+
+      - name: Create instance
+        run: |
+          gcloud compute instances create ${{ steps.run.outputs.vm }} \
+            --project=${{ steps.manifest.outputs.project }} \
+            --zone=${{ steps.run.outputs.zone }} \
+            --machine-type=${{ inputs.machineType }} \
+            --image-family=ubuntu-2204-lts \
+            --image-project=ubuntu-os-cloud \
+            --scopes=cloud-platform \
+            --metadata-from-file=startup-script=startup.sh \
+            --labels=source=carbonawarescheduler,run_id=${{ github.run_id }},cycle_id=${{ inputs.cycleId }}
+
+      - name: Poll GCS for batch_job.py result
+        id: wait
+        run: |
+          elapsed=0
+          until gsutil -q stat "gs://${{ steps.manifest.outputs.bucket }}/${{ steps.run.outputs.result_object }}"; do
+            if [ "$elapsed" -ge "$RESULT_TIMEOUT_SECONDS" ]; then
+              echo "Timed out waiting for gs://${{ steps.manifest.outputs.bucket }}/${{ steps.run.outputs.result_object }}" >&2
+              exit 1
+            fi
+            sleep "$RESULT_POLL_INTERVAL"
+            elapsed=$((elapsed + RESULT_POLL_INTERVAL))
+            echo "waited ${elapsed}s..."
+          done
+          gsutil cp "gs://${{ steps.manifest.outputs.bucket }}/${{ steps.run.outputs.result_object }}" ./result.json
+          cat ./result.json
+
+      - name: Upload result as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: result-cycle-${{ inputs.cycleId }}-gcp-${{ inputs.region }}
+          path: result.json
+          if-no-files-found: warn
+
+      - name: Delete instance
+        if: always()
+        run: |
+          gcloud compute instances delete ${{ steps.run.outputs.vm }} \
+            --project=${{ steps.manifest.outputs.project }} \
+            --zone=${{ steps.run.outputs.zone }} \
+            --quiet || true

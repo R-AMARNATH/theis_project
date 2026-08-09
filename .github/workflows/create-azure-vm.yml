@@ -1,0 +1,164 @@
+name: Create Azure VM
+
+# Prerequisites (one-time):
+#   1. A service principal with Contributor on the subscription (Azure for Students
+#      subscription recommended -- avoids the TU Dublin tenant's app-registration lock):
+#        az ad sp create-for-rbac --name "carbonaware-gha" --role Contributor \
+#          --scopes /subscriptions/<SUBSCRIPTION_ID> --sdk-auth
+#      Save the JSON output as repo secret AZURE_CREDENTIALS.
+#   2. For each candidate Azure region in files/manifest.json, the storage ACCOUNT must
+#      already exist (stage_dataset.py does not create accounts, only containers):
+#        az storage account create --name <account> --resource-group <rg> \
+#          --location <region> --sku Standard_LRS
+#      Also add one secret per storage account: AZURE_STORAGE_CONNECTION_STRING_<ACCOUNT_UPPER>
+#      (e.g. AZURE_STORAGE_CONNECTION_STRING_CARBONAWESTAGINGWEU) -- one per region's account,
+#      matching the env var convention batch_job.py and stage_dataset.py already expect.
+#      Get each with:
+#        az storage account show-connection-string --name <account> \
+#          --resource-group <rg> --query connectionString -o tsv
+#   3. Repo secret AZURE_VM_ADMIN_PASSWORD (any Azure-compliant password; unused for
+#      login since nothing SSHes in, but az vm create requires an auth method).
+
+on:
+  workflow_dispatch:
+    inputs:
+      region:
+        description: 'Azure region to deploy VM (e.g. westeurope)'
+        required: true
+        type: string
+      vmsize:
+        description: 'Azure VM size'
+        required: true
+        type: string
+        default: 'Standard_B2s'
+      cycleId:
+        description: 'Experiment cycle id (1-84)'
+        required: true
+        type: string
+      objectiveType:
+        description: 'single | multi'
+        required: false
+        type: string
+        default: 'multi'
+      weightConfig:
+        description: 'carbon-prioritised | balanced | cost-prioritised'
+        required: false
+        type: string
+        default: 'balanced'
+
+env:
+  RESULT_TIMEOUT_SECONDS: 1200
+  RESULT_POLL_INTERVAL: 15
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Resolve storage account/container from manifest
+        id: manifest
+        run: |
+          ACCOUNT=$(jq -r --arg region "${{ inputs.region }}" \
+            '.[] | select(.cloud=="azure" and .region==$region) | .account' files/manifest.json)
+          CONTAINER=$(jq -r --arg region "${{ inputs.region }}" \
+            '.[] | select(.cloud=="azure" and .region==$region) | .container' files/manifest.json)
+          if [ -z "$ACCOUNT" ] || [ "$ACCOUNT" == "null" ]; then
+            echo "No azure manifest entry for region ${{ inputs.region }}" >&2
+            exit 1
+          fi
+          echo "account=$ACCOUNT" >> "$GITHUB_OUTPUT"
+          echo "container=$CONTAINER" >> "$GITHUB_OUTPUT"
+
+      - name: Set run identifiers
+        id: run
+        run: |
+          RG="carbonaware-run-${{ github.run_id }}"
+          VM="cabatch${{ github.run_id }}"
+          RESULT_BLOB="results/cycle_${{ inputs.cycleId }}.json"
+          echo "rg=$RG" >> "$GITHUB_OUTPUT"
+          echo "vm=$VM" >> "$GITHUB_OUTPUT"
+          echo "result_blob=$RESULT_BLOB" >> "$GITHUB_OUTPUT"
+
+      - name: Create resource group
+        run: az group create --name ${{ steps.run.outputs.rg }} --location ${{ inputs.region }}
+
+      - name: Resolve secret name for this account
+        id: secretname
+        run: |
+          ACCOUNT_UPPER=$(echo "${{ steps.manifest.outputs.account }}" | tr '[:lower:]' '[:upper:]')
+          echo "name=AZURE_STORAGE_CONNECTION_STRING_${ACCOUNT_UPPER}" >> "$GITHUB_OUTPUT"
+
+      - name: Build cloud-init script
+        run: |
+          ACCOUNT="${{ steps.manifest.outputs.account }}"
+          CONTAINER="${{ steps.manifest.outputs.container }}"
+          cat > cloud-init.txt << EOF
+          #cloud-config
+          package_update: true
+          packages:
+            - python3-pip
+          runcmd:
+            - pip3 install --break-system-packages boto3 pandas numpy azure-storage-blob
+            - curl -fsSL -o /root/batch_job.py "https://raw.githubusercontent.com/${{ github.repository }}/${{ github.ref_name }}/files/batch_job.py"
+            - export AZURE_STORAGE_CONNECTION_STRING_$(echo "$ACCOUNT" | tr '[:lower:]' '[:upper:]')="${{ secrets[steps.secretname.outputs.name] }}"
+            - python3 /root/batch_job.py --cloud azure --region "${{ inputs.region }}" --account "$ACCOUNT" --container "$CONTAINER" --cycle-id "${{ inputs.cycleId }}" --objective-type "${{ inputs.objectiveType }}" --weight-config "${{ inputs.weightConfig }}" --output-json /root/result.json
+          EOF
+
+      - name: Create VM
+        run: |
+          az vm create \
+            --resource-group ${{ steps.run.outputs.rg }} \
+            --name ${{ steps.run.outputs.vm }} \
+            --image Ubuntu2204 \
+            --size ${{ inputs.vmsize }} \
+            --admin-username carbonaware \
+            --admin-password "${{ secrets.AZURE_VM_ADMIN_PASSWORD }}" \
+            --custom-data cloud-init.txt \
+            --public-ip-address "" \
+            --tags Source=CarbonAwareScheduler RunId=${{ github.run_id }} CycleId=${{ inputs.cycleId }}
+
+      - name: Poll blob storage for batch_job.py result
+        id: wait
+        run: |
+          elapsed=0
+          until az storage blob exists \
+                  --account-name "${{ steps.manifest.outputs.account }}" \
+                  --container-name "${{ steps.manifest.outputs.container }}" \
+                  --name "${{ steps.run.outputs.result_blob }}" \
+                  --connection-string "${{ secrets[steps.secretname.outputs.name] }}" \
+                  --query exists -o tsv | grep -q true; do
+            if [ "$elapsed" -ge "$RESULT_TIMEOUT_SECONDS" ]; then
+              echo "Timed out waiting for blob ${{ steps.run.outputs.result_blob }}" >&2
+              exit 1
+            fi
+            sleep "$RESULT_POLL_INTERVAL"
+            elapsed=$((elapsed + RESULT_POLL_INTERVAL))
+            echo "waited ${elapsed}s..."
+          done
+
+          az storage blob download \
+            --account-name "${{ steps.manifest.outputs.account }}" \
+            --container-name "${{ steps.manifest.outputs.container }}" \
+            --name "${{ steps.run.outputs.result_blob }}" \
+            --file ./result.json \
+            --connection-string "${{ secrets[steps.secretname.outputs.name] }}"
+          cat ./result.json
+
+      - name: Upload result as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: result-cycle-${{ inputs.cycleId }}-azure-${{ inputs.region }}
+          path: result.json
+          if-no-files-found: warn
+
+      - name: Delete resource group (VM + disk + nic)
+        if: always()
+        run: az group delete --name ${{ steps.run.outputs.rg }} --yes --no-wait

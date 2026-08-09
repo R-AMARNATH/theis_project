@@ -1,5 +1,18 @@
 name: Deploy AWS VM
 
+# Prerequisites (one-time, do these yourself before the first real run):
+#   1. IAM instance profile "CarbonAwareBatchProfile" attached to an IAM role that can:
+#        - s3:GetObject/PutObject/ListBucket on the staging buckets from files/manifest.json
+#      Create it once with:
+#        aws iam create-role --role-name CarbonAwareBatchRole \
+#          --assume-role-policy-document '{"Version":"2012-10-17","Statement":[{"Effect":"Allow","Principal":{"Service":"ec2.amazonaws.com"},"Action":"sts:AssumeRole"}]}'
+#        aws iam put-role-policy --role-name CarbonAwareBatchRole --policy-name S3Access \
+#          --policy-document '{"Version":"2012-10-17","Statement":[{"Effect":"Allow","Action":["s3:GetObject","s3:PutObject","s3:ListBucket"],"Resource":["arn:aws:s3:::carbonaware-data-aws-*","arn:aws:s3:::carbonaware-data-aws-*/*"]}]}'
+#        aws iam create-instance-profile --instance-profile-name CarbonAwareBatchProfile
+#        aws iam add-role-to-instance-profile --instance-profile-name CarbonAwareBatchProfile --role-name CarbonAwareBatchRole
+#   2. Repo secrets: AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY (already in use by this workflow)
+#   3. files/manifest.json committed with real bucket names for each AWS region you'll target
+
 on:
   workflow_dispatch:
     inputs:
@@ -11,18 +24,53 @@ on:
         description: 'EC2 instance type'
         required: true
         type: string
+        default: 't3.medium'
+      cycleId:
+        description: 'Experiment cycle id (1-84)'
+        required: true
+        type: string
+      objectiveType:
+        description: 'single | multi'
+        required: false
+        type: string
+        default: 'multi'
+      weightConfig:
+        description: 'carbon-prioritised | balanced | cost-prioritised'
+        required: false
+        type: string
+        default: 'balanced'
+
+env:
+  RESULT_TIMEOUT_SECONDS: 1200   # 20 min max wait for batch_job.py to finish and upload its result
+  RESULT_POLL_INTERVAL: 15
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    outputs:
+      result_key: ${{ steps.wait.outputs.result_key }}
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ inputs.region }}
+
+      - name: Resolve bucket from manifest
+        id: manifest
+        run: |
+          BUCKET=$(jq -r --arg region "${{ inputs.region }}" \
+            '.[] | select(.cloud=="aws" and .region==$region) | .bucket' files/manifest.json)
+          if [ -z "$BUCKET" ] || [ "$BUCKET" == "null" ]; then
+            echo "No aws manifest entry for region ${{ inputs.region }}" >&2
+            exit 1
+          fi
+          echo "bucket=$BUCKET" >> "$GITHUB_OUTPUT"
 
       - name: Get Latest Ubuntu AMI
         id: ami
@@ -36,6 +84,46 @@ jobs:
           echo "ami_id=$AMI_ID" >> "$GITHUB_OUTPUT"
           echo "AMI: $AMI_ID"
 
+      - name: Build user-data script
+        id: userdata
+        run: |
+          RESULT_KEY="results/cycle_${{ inputs.cycleId }}.json"
+          echo "result_key=$RESULT_KEY" >> "$GITHUB_OUTPUT"
+
+          cat > userdata.sh << 'EOF'
+          #!/bin/bash
+          set -ex
+          exec > /var/log/carbonaware-batch.log 2>&1
+
+          export DEBIAN_FRONTEND=noninteractive
+          apt-get update -y
+          apt-get install -y python3-pip
+          pip3 install --break-system-packages boto3 pandas numpy
+
+          curl -fsSL -o /root/batch_job.py \
+            "https://raw.githubusercontent.com/${{ github.repository }}/${{ github.ref_name }}/files/batch_job.py"
+
+          python3 /root/batch_job.py \
+            --cloud aws \
+            --region "__REGION__" \
+            --bucket "__BUCKET__" \
+            --cycle-id "__CYCLE_ID__" \
+            --objective-type "__OBJECTIVE_TYPE__" \
+            --weight-config "__WEIGHT_CONFIG__" \
+            --output-json /root/result.json
+
+          aws s3 cp /root/result.json "s3://__BUCKET__/__RESULT_KEY__" --region "__REGION__"
+          EOF
+
+          # Fill placeholders (kept as literal __X__ tokens above so the heredoc
+          # itself doesn't try to expand GitHub Actions expressions inside bash).
+          sed -i "s#__REGION__#${{ inputs.region }}#g" userdata.sh
+          sed -i "s#__BUCKET__#${{ steps.manifest.outputs.bucket }}#g" userdata.sh
+          sed -i "s#__CYCLE_ID__#${{ inputs.cycleId }}#g" userdata.sh
+          sed -i "s#__OBJECTIVE_TYPE__#${{ inputs.objectiveType }}#g" userdata.sh
+          sed -i "s#__WEIGHT_CONFIG__#${{ inputs.weightConfig }}#g" userdata.sh
+          sed -i "s#__RESULT_KEY__#$RESULT_KEY#g" userdata.sh
+
       - name: Launch EC2 Instance
         id: ec2
         run: |
@@ -43,7 +131,9 @@ jobs:
             --image-id ${{ steps.ami.outputs.ami_id }} \
             --instance-type ${{ inputs.instanceType }} \
             --region ${{ inputs.region }} \
-            --tag-specifications 'ResourceType=instance,Tags=[{Key=Source,Value=CarbonAwareScheduler},{Key=RunId,Value=${{ github.run_id }}}]' \
+            --iam-instance-profile Name=CarbonAwareBatchProfile \
+            --user-data file://userdata.sh \
+            --tag-specifications "ResourceType=instance,Tags=[{Key=Source,Value=CarbonAwareScheduler},{Key=RunId,Value=${{ github.run_id }}},{Key=CycleId,Value=${{ inputs.cycleId }}}]" \
             --query "Instances[0].InstanceId" \
             --output text)
           echo "instance_id=$INSTANCE_ID" >> "$GITHUB_OUTPUT"
@@ -51,12 +141,40 @@ jobs:
 
       - name: Wait for Instance Running
         run: |
-          aws ec2 wait instance-running \
+          aws ec2 wait instance-running --region ${{ inputs.region }} \
             --instance-ids ${{ steps.ec2.outputs.instance_id }}
 
-      - name: Show Instance Details
+      - name: Poll S3 for batch_job.py result
+        id: wait
         run: |
-          aws ec2 describe-instances \
-            --instance-ids ${{ steps.ec2.outputs.instance_id }} \
-            --query "Reservations[0].Instances[0].{ID:InstanceId, State:State.Name, Region:Placement.AvailabilityZone, Type:InstanceType, IP:PublicIpAddress}" \
-            --output table
+          BUCKET=${{ steps.manifest.outputs.bucket }}
+          KEY=${{ steps.userdata.outputs.result_key }}
+          echo "result_key=$KEY" >> "$GITHUB_OUTPUT"
+
+          elapsed=0
+          until aws s3api head-object --bucket "$BUCKET" --key "$KEY" --region ${{ inputs.region }} 2>/dev/null; do
+            if [ "$elapsed" -ge "$RESULT_TIMEOUT_SECONDS" ]; then
+              echo "Timed out waiting for s3://$BUCKET/$KEY" >&2
+              exit 1
+            fi
+            sleep "$RESULT_POLL_INTERVAL"
+            elapsed=$((elapsed + RESULT_POLL_INTERVAL))
+            echo "waited ${elapsed}s..."
+          done
+
+          aws s3 cp "s3://$BUCKET/$KEY" ./result.json --region ${{ inputs.region }}
+          cat ./result.json
+
+      - name: Upload result as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: result-cycle-${{ inputs.cycleId }}-aws-${{ inputs.region }}
+          path: result.json
+          if-no-files-found: warn
+
+      - name: Terminate EC2 Instance
+        if: always()
+        run: |
+          aws ec2 terminate-instances --region ${{ inputs.region }} \
+            --instance-ids ${{ steps.ec2.outputs.instance_id }} || true

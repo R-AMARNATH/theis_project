@@ -95,6 +95,10 @@ jobs:
           set -ex
           exec > /var/log/carbonaware-batch.log 2>&1
 
+          # Upload the log no matter how the script exits (success, failure, or a
+          # command that killed it under set -e) -- this runs even if a step below fails.
+          trap 'aws s3 cp /var/log/carbonaware-batch.log "s3://__BUCKET__/logs/cycle___CYCLE_ID__.log" --region "__REGION__" || true' EXIT
+
           export DEBIAN_FRONTEND=noninteractive
           apt-get update -y
           apt-get install -y python3-pip
@@ -165,16 +169,25 @@ jobs:
           aws s3 cp "s3://$BUCKET/$KEY" ./result.json --region ${{ inputs.region }}
           cat ./result.json
 
+      - name: Fetch batch log (best effort, even on failure)
+        if: always()
+        continue-on-error: true
+        run: |
+          aws s3 cp "s3://${{ steps.manifest.outputs.bucket }}/logs/cycle_${{ inputs.cycleId }}.log" \
+            ./carbonaware-batch.log --region ${{ inputs.region }}
+
       - name: Upload result as artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: result-cycle-${{ inputs.cycleId }}-aws-${{ inputs.region }}
-          path: result.json
+          path: |
+            result.json
+            carbonaware-batch.log
           if-no-files-found: warn
 
       - name: Terminate EC2 Instance
-        if: false
+        if: false   # TEMP: disabled for debugging -- re-enable (if: always()) once confirmed working
         run: |
           aws ec2 terminate-instances --region ${{ inputs.region }} \
             --instance-ids ${{ steps.ec2.outputs.instance_id }} || true

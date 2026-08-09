@@ -91,7 +91,7 @@ jobs:
           exec > /var/log/carbonaware-batch.log 2>&1
           apt-get update -y
           apt-get install -y python3-pip
-          pip3 install --break-system-packages google-cloud-storage pandas numpy
+          pip3 install google-cloud-storage pandas numpy
           curl -fsSL -o /root/batch_job.py "https://raw.githubusercontent.com/${{ github.repository }}/${{ github.ref_name }}/files/batch_job.py"
           python3 /root/batch_job.py --cloud gcp --region "${{ inputs.region }}" --project "${{ steps.manifest.outputs.project }}" --bucket "${{ steps.manifest.outputs.bucket }}" --cycle-id "${{ inputs.cycleId }}" --objective-type "${{ inputs.objectiveType }}" --weight-config "${{ inputs.weightConfig }}" --output-json /root/result.json
           gsutil cp /root/result.json gs://${{ steps.manifest.outputs.bucket }}/${{ steps.run.outputs.result_object }}

@@ -1,0 +1,1 @@
+{"cycle_id": "test1", "objective_type": "multi", "weight_config": "balanced", "cloud_provider": "aws", "region": "eu-west-1", "timestamp_start": "2026-08-09T11:25:21.057523+00:00", "timestamp_end": "2026-08-09T11:25:59.623469+00:00", "latency_actual_sec": 26.287, "execution_time_sec": 38.566, "deployment_success": true, "error_notes": null}

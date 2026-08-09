@@ -30,7 +30,7 @@ on:
         description: 'Azure VM size'
         required: true
         type: string
-        default: 'Standard_B2s'
+        default: 'Standard_D2s_v3'
       cycleId:
         description: 'Experiment cycle id (1-84)'
         required: true
@@ -105,7 +105,7 @@ jobs:
           packages:
             - python3-pip
           runcmd:
-            - pip3 install --break-system-packages boto3 pandas numpy azure-storage-blob
+            - pip3 install boto3 pandas numpy azure-storage-blob
             - curl -fsSL -o /root/batch_job.py "https://raw.githubusercontent.com/${{ github.repository }}/${{ github.ref_name }}/files/batch_job.py"
             - export AZURE_STORAGE_CONNECTION_STRING_$(echo "$ACCOUNT" | tr '[:lower:]' '[:upper:]')="${{ secrets[steps.secretname.outputs.name] }}"
             - python3 /root/batch_job.py --cloud azure --region "${{ inputs.region }}" --account "$ACCOUNT" --container "$CONTAINER" --cycle-id "${{ inputs.cycleId }}" --objective-type "${{ inputs.objectiveType }}" --weight-config "${{ inputs.weightConfig }}" --output-json /root/result.json

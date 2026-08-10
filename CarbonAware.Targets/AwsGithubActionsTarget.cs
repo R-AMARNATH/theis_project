@@ -34,15 +34,19 @@ public sealed class AwsGithubActionsTarget : ICloudTarget
         }
     }
 
-    public async Task<string> ScheduleAsync(AdviceResult advice, JobSpec job, CorrelationContext correlation, CancellationToken ct = default)
+    public async Task<string> ScheduleAsync(AdviceResult advice, JobSpec job, CorrelationContext correlation, ExperimentContext experiment, CancellationToken ct = default)
     {
         if (!"aws".Equals(advice.Cloud, StringComparison.OrdinalIgnoreCase))
             return $"skipped-non-aws-{DateTimeOffset.UtcNow:yyyyMMddHHmmss}";
 
+        // cycleId is a REQUIRED workflow input -- omitting it makes workflow_dispatch fail with 422.
         var inputs = new
         {
             region = advice.Region,
-            instanceType = DefaultInstanceType
+            instanceType = DefaultInstanceType,
+            cycleId = experiment.CycleId,
+            objectiveType = experiment.ObjectiveType,
+            weightConfig = experiment.WeightProfile ?? ""
         };
 
         var body = new { @ref = _opts.Branch, inputs };

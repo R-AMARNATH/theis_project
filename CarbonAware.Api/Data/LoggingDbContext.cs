@@ -28,9 +28,17 @@ public sealed class LoggingDbContext : DbContext
         {
             e.HasKey(x => x.Id);
             e.Property(x => x.Mode).HasMaxLength(32);
+            e.Property(x => x.ObjectiveType).HasMaxLength(16);
+            e.Property(x => x.WeightProfile).HasMaxLength(32);
             e.Property(x => x.SelectedCloud).HasMaxLength(32);
             e.Property(x => x.SelectedRegion).HasMaxLength(64);
             e.Property(x => x.Rationale).HasMaxLength(1024);
+            e.Property(x => x.HighestCostCloud).HasMaxLength(32);
+            e.Property(x => x.HighestCostRegion).HasMaxLength(64);
+            e.Property(x => x.HighestLatencyCloud).HasMaxLength(32);
+            e.Property(x => x.HighestLatencyRegion).HasMaxLength(64);
+            e.Property(x => x.SingleObjectiveCloud).HasMaxLength(32);
+            e.Property(x => x.SingleObjectiveRegion).HasMaxLength(64);
         });
 
         mb.Entity<AdviceCandidateLog>(e =>
@@ -38,6 +46,9 @@ public sealed class LoggingDbContext : DbContext
             e.HasKey(x => x.Id);
             e.Property(x => x.Cloud).HasMaxLength(32);
             e.Property(x => x.Region).HasMaxLength(64);
+            e.Property(x => x.ExclusionReason).HasMaxLength(256);
+            e.Property(x => x.CostSource).HasMaxLength(128);
+            e.Property(x => x.LatencySource).HasMaxLength(256);
             e.HasOne(x => x.Execution)
              .WithMany(x => x.Candidates)
              .HasForeignKey(x => x.ExecutionId);
@@ -52,6 +63,8 @@ public sealed class LoggingDbContext : DbContext
             e.Property(x => x.CloudProvider).HasMaxLength(32);
             e.Property(x => x.Region).HasMaxLength(64);
             e.Property(x => x.ErrorNotes).HasMaxLength(1024);
+            e.Property(x => x.ActualMoerSource).HasMaxLength(64);
+            e.Property(x => x.ActualCostSource).HasMaxLength(128);
             // one row per cycle+cloud+region -- lets the same cycle id appear once per
             // region if you ever run more than one region per cycle
             e.HasIndex(x => new { x.CycleId, x.CloudProvider, x.Region }).IsUnique();
@@ -92,19 +105,29 @@ public sealed class AdviceExecutionLog
     public DateTimeOffset CreatedUtc { get; set; } = DateTimeOffset.UtcNow;
 
     // input context
-    public string Mode { get; set; } = default!;                 // run_now | schedule_at
+    public string Mode { get; set; } = default!;                 // run_now | schedule_at | multi_objective_<profile>
     public DateTimeOffset TargetWhen { get; set; }               // now or chosen deadline
     public string? PreferredCloudsCsv { get; set; }              // e.g., "gcp,azure,aws"
     public string? PreferredRegionsCsv { get; set; }             // raw list user picked
 
-    // decision
+    // multi-objective identity (null for single-objective /advise runs)
+    public string? ObjectiveType { get; set; }                   // single | multi
+    public string? WeightProfile { get; set; }                   // carbon-prioritised | balanced | cost-prioritised
+    public double? WeightCarbon { get; set; }
+    public double? WeightCost { get; set; }
+    public double? WeightLatency { get; set; }
+
+    // decision (best / selected candidate)
     public string SelectedCloud { get; set; } = default!;
     public string SelectedRegion { get; set; } = default!;
     public DateTimeOffset? SelectedWhen { get; set; }
     public double? SelectedMoerGPerKwh { get; set; }
+    public double? SelectedCostUsdPerHr { get; set; }
+    public double? SelectedLatencyMs { get; set; }
+    public double? SelectedCompositeScore { get; set; }
     public string Rationale { get; set; } = default!;
 
-    // metrics at decision time
+    // worst / average -- carbon (MOER)
     public string? HighestEmissionCloud { get; set; }
     public string? HighestEmissionRegion { get; set; }
     public double? HighestEmissionGPerKwh { get; set; }
@@ -112,6 +135,25 @@ public sealed class AdviceExecutionLog
     public double? EstimatedSavingPercent { get; set; }
     public double? AverageEmissionGPerKwh { get; set; }
     public double? AverageEstimatedSavingPercent { get; set; }
+
+    // worst / average -- cost (multi-objective only)
+    public string? HighestCostCloud { get; set; }
+    public string? HighestCostRegion { get; set; }
+    public double? HighestCostUsdPerHr { get; set; }
+    public double? AverageCostUsdPerHr { get; set; }
+
+    // worst / average -- latency (multi-objective only)
+    public string? HighestLatencyCloud { get; set; }
+    public string? HighestLatencyRegion { get; set; }
+    public double? HighestLatencyMs { get; set; }
+    public double? AverageLatencyMs { get; set; }
+
+    public int? CandidateCount { get; set; }
+
+    // single-objective (carbon-only) pick, for multi-objective runs
+    public string? SingleObjectiveCloud { get; set; }
+    public string? SingleObjectiveRegion { get; set; }
+    public bool? RegionsDiffer { get; set; }
 
     // best window (if schedule_at)
     public string? BestWindowCloud { get; set; }
@@ -134,5 +176,15 @@ public sealed class AdviceCandidateLog
     public double? MoerAtTarget { get; set; }
     public double? BestMoerUntilTarget { get; set; }
     public DateTimeOffset? BestMoerAt { get; set; }
+
+    // cost / latency (multi-objective only)
+    public double? CostUsdPerHr { get; set; }
+    public double? LatencyMs { get; set; }
+    public double? CompositeScore { get; set; }
+    public bool? Excluded { get; set; }
+    public string? ExclusionReason { get; set; }
+    public bool? CostIsLive { get; set; }
+    public string? CostSource { get; set; }
+    public string? LatencySource { get; set; }
     public Guid? RequestId { get; init; }
 }

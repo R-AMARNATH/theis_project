@@ -10,6 +10,9 @@ name: Create GCP VM
 #      cloud-platform scope, or a narrower dedicated SA -- simplest is reusing the
 #      deploy SA for both the workflow and the instance.
 #   3. files/manifest.json committed with real bucket/project names per GCP region.
+#   4. Repo variable CARBON_API_BASE_URL set to your CarbonAware.Api's public base URL
+#      (Settings -> Secrets and variables -> Actions -> Variables), so the "Report actual
+#      result" step below can POST result.json to /results/actual.
 
 on:
   workflow_dispatch:
@@ -158,6 +161,18 @@ jobs:
           done
           gsutil cp "gs://${{ steps.manifest.outputs.bucket }}/${{ steps.run.outputs.result_object }}" ./result.json
           cat ./result.json
+
+      - name: Report actual result to CarbonAware API
+        if: always()
+        continue-on-error: true   # experiment run must not fail just because the API/DB is unreachable
+        run: |
+          if [ -s ./result.json ]; then
+            curl -fsSL -X POST "${{ vars.CARBON_API_BASE_URL }}/results/actual" \
+              -H "Content-Type: application/json" \
+              --data-binary @result.json
+          else
+            echo "No result.json found, skipping /results/actual report."
+          fi
 
       - name: Upload result as artifact
         if: always()

@@ -57,11 +57,22 @@ public sealed class EfAuditSink : IAuditSink
             TargetWhen = rec.TargetWhen,
             PreferredCloudsCsv = rec.PreferredCloudsCsv,
             PreferredRegionsCsv = rec.PreferredRegionsCsv,
+
+            ObjectiveType = rec.ObjectiveType,
+            WeightProfile = rec.WeightProfile,
+            WeightCarbon = rec.WeightCarbon,
+            WeightCost = rec.WeightCost,
+            WeightLatency = rec.WeightLatency,
+
             SelectedCloud = rec.SelectedCloud,
             SelectedRegion = rec.SelectedRegion,
             SelectedWhen = rec.SelectedWhen,
             SelectedMoerGPerKwh = rec.SelectedMoerGPerKwh,
+            SelectedCostUsdPerHr = rec.SelectedCostUsdPerHr,
+            SelectedLatencyMs = rec.SelectedLatencyMs,
+            SelectedCompositeScore = rec.SelectedCompositeScore,
             Rationale = rec.Rationale,
+
             HighestEmissionCloud = rec.HighestEmissionCloud,
             HighestEmissionRegion = rec.HighestEmissionRegion,
             HighestEmissionGPerKwh = rec.HighestEmissionGPerKwh,
@@ -69,6 +80,22 @@ public sealed class EfAuditSink : IAuditSink
             EstimatedSavingPercent = rec.EstimatedSavingPercent,
             AverageEmissionGPerKwh = rec.AverageEmissionGPerKwh,
             AverageEstimatedSavingPercent = rec.AverageEstimatedSavingPercent,
+
+            HighestCostCloud = rec.HighestCostCloud,
+            HighestCostRegion = rec.HighestCostRegion,
+            HighestCostUsdPerHr = rec.HighestCostUsdPerHr,
+            AverageCostUsdPerHr = rec.AverageCostUsdPerHr,
+
+            HighestLatencyCloud = rec.HighestLatencyCloud,
+            HighestLatencyRegion = rec.HighestLatencyRegion,
+            HighestLatencyMs = rec.HighestLatencyMs,
+            AverageLatencyMs = rec.AverageLatencyMs,
+
+            CandidateCount = rec.CandidateCount,
+            SingleObjectiveCloud = rec.SingleObjectiveCloud,
+            SingleObjectiveRegion = rec.SingleObjectiveRegion,
+            RegionsDiffer = rec.RegionsDiffer,
+
             BestWindowCloud = rec.BestWindowCloud,
             BestWindowRegion = rec.BestWindowRegion,
             BestWindowMoerGPerKwh = rec.BestWindowMoerGPerKwh,
@@ -86,7 +113,15 @@ public sealed class EfAuditSink : IAuditSink
                     Region = c.Region,
                     MoerAtTarget = c.MoerAtTarget,
                     BestMoerUntilTarget = c.BestMoerUntilTarget,
-                    BestMoerAt = c.BestMoerAt
+                    BestMoerAt = c.BestMoerAt,
+                    CostUsdPerHr = c.CostUsdPerHr,
+                    LatencyMs = c.LatencyMs,
+                    CompositeScore = c.CompositeScore,
+                    Excluded = c.Excluded,
+                    ExclusionReason = c.ExclusionReason,
+                    CostIsLive = c.CostIsLive,
+                    CostSource = c.CostSource,
+                    LatencySource = c.LatencySource
                 });
             }
         }

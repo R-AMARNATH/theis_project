@@ -8,9 +8,12 @@ single JSON result row to stdout matching the experiment logging schema.
 
 The GitHub Actions workflow that launches the VM is responsible for:
   1. Injecting cloud/region/storage identifiers as env vars or CLI args
-  2. Capturing this script's stdout JSON line and appending it to the
-     results log (merged with the scheduler's *_predicted fields, which
-     this script has no access to)
+  2. Capturing this script's output-json file and POSTing it to the API's
+     POST /results/actual endpoint, where it's upserted by (cycle_id,
+     cloud_provider, region) against the row that /results/predicted
+     already wrote for this cycle -- this script has no access to the
+     scheduler's *_predicted fields, so it never sets them itself. See the
+     "Report actual result to CarbonAware API" step in the workflow yml.
   3. Terminating the VM once the script exits
 
 Usage:

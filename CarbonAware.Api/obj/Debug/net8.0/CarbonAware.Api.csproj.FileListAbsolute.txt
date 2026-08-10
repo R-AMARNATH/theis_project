@@ -193,3 +193,4 @@ C:\Users\amarnath\Documents\TUD modules\sem2\research thesis\project\CarbonAware
 C:\Users\amarnath\Documents\TUD modules\sem2\research thesis\project\CarbonAwareAPI\CarbonAware.Api\obj\Debug\net8.0\CarbonAware.Api.pdb
 C:\Users\amarnath\Documents\TUD modules\sem2\research thesis\project\CarbonAwareAPI\CarbonAware.Api\obj\Debug\net8.0\CarbonAware.Api.genruntimeconfig.cache
 C:\Users\amarnath\Documents\TUD modules\sem2\research thesis\project\CarbonAwareAPI\CarbonAware.Api\obj\Debug\net8.0\ref\CarbonAware.Api.dll
+C:\Users\amarnath\Documents\TUD modules\sem2\research thesis\project\CarbonAwareAPI\CarbonAware.Api\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

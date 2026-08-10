@@ -8,6 +8,7 @@ using CarbonAware.Targets.Options;
 using Microsoft.EntityFrameworkCore;
 using CarbonAware.Api.Data;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using CarbonAware.Core.Auditing;
 
 
@@ -103,15 +104,25 @@ app.MapPost("/advise", async (OrchestrationRequest req, IPolicyEngine engine, Ca
 })
 .WithName("Advise");
 
-app.MapPost("/schedule", async (OrchestrationRequest req, IPolicyEngine engine, ICloudTarget target, CancellationToken ct) =>
+app.MapPost("/schedule", async (OrchestrationRequest req, IPolicyEngine engine, ICloudTarget target, LoggingDbContext db, CancellationToken ct) =>
 {
     CorrelationContext correlation = new CorrelationContext();
     correlation.Current = Guid.NewGuid();
     try
     {
         var advice = await engine.AdviseAsync(req.Job, req.Policy, correlation ,ct);
-        var id = await target.ScheduleAsync(advice, req.Job, correlation, ct);
-        return Results.Ok(new { advice, scheduledId = id });
+
+        var cycleId = string.IsNullOrWhiteSpace(req.CycleId)
+            ? $"auto-{DateTimeOffset.UtcNow:yyyyMMddHHmmss}"
+            : req.CycleId!;
+        var experiment = new ExperimentContext(cycleId, "single", null);
+
+        await UpsertPredictedAsync(db, new PredictedResultRequest(
+            cycleId, "single", null, advice.Cloud, advice.Region,
+            advice.EstimatedIntensityGPerKwh, null, null), ct);
+
+        var id = await target.ScheduleAsync(advice, req.Job, correlation, experiment, ct);
+        return Results.Ok(new { advice, scheduledId = id, cycleId });
     }
     finally { correlation.Current = null; }
 })
@@ -134,7 +145,7 @@ app.MapPost("/advise-multi", async (MultiObjectiveRequest req, IMultiObjectivePo
 })
 .WithName("AdviseMulti");
 
-app.MapPost("/schedule-multi", async (MultiObjectiveRequest req, IMultiObjectivePolicyEngine engine, ICloudTarget target, CancellationToken ct) =>
+app.MapPost("/schedule-multi", async (MultiObjectiveRequest req, IMultiObjectivePolicyEngine engine, ICloudTarget target, LoggingDbContext db, CancellationToken ct) =>
 {
     var correlation = new CorrelationContext { Current = Guid.NewGuid() };
     try
@@ -144,9 +155,22 @@ app.MapPost("/schedule-multi", async (MultiObjectiveRequest req, IMultiObjective
         if (advice.Cloud is null || advice.Region is null)
             return Results.UnprocessableEntity(new { error = "No candidate had complete carbon+cost+latency signals.", advice });
 
+        var cycleId = string.IsNullOrWhiteSpace(req.CycleId)
+            ? $"auto-{DateTimeOffset.UtcNow:yyyyMMddHHmmss}"
+            : req.CycleId!;
+        var experiment = new ExperimentContext(cycleId, "multi", advice.WeightProfile);
+
+        var bestCandidate = advice.Candidates.FirstOrDefault(c =>
+            string.Equals(c.Cloud, advice.Cloud, StringComparison.OrdinalIgnoreCase) &&
+            string.Equals(c.Region, advice.Region, StringComparison.OrdinalIgnoreCase));
+
+        await UpsertPredictedAsync(db, new PredictedResultRequest(
+            cycleId, "multi", advice.WeightProfile, advice.Cloud!, advice.Region!,
+            bestCandidate?.MoerGPerKwh, bestCandidate?.CostUsdPerHr, bestCandidate?.LatencyMs), ct);
+
         var singleShapedAdvice = new AdviceResult(advice.Cloud!, advice.Region!, advice.When, advice.Rationale, null);
-        var id = await target.ScheduleAsync(singleShapedAdvice, req.Job, correlation, ct);
-        return Results.Ok(new { advice, scheduledId = id });
+        var id = await target.ScheduleAsync(singleShapedAdvice, req.Job, correlation, experiment, ct);
+        return Results.Ok(new { advice, scheduledId = id, cycleId });
     }
     finally { correlation.Current = null; }
 })
@@ -257,6 +281,166 @@ app.MapDelete("/favorites", () =>
 });
 
 
+// ---------------------------------------------------------------------
+// NEW: experiment results logging (2-3 week actuals collection).
+// Both endpoints upsert CycleResultLog by (CycleId, CloudProvider, Region),
+// so it doesn't matter which one arrives first. UpsertPredictedAsync is also
+// called directly from /schedule and /schedule-multi so every dispatched cycle
+// gets its predicted row written automatically -- callers only need
+// POST /results/predicted for cycles scheduled via /advise[-multi] instead
+// (i.e. you drove the workflow_dispatch yourself rather than using /schedule).
+// ---------------------------------------------------------------------
+
+async Task<CycleResultLog> UpsertPredictedAsync(LoggingDbContext db, PredictedResultRequest req, CancellationToken ct)
+{
+    var now = DateTimeOffset.UtcNow;
+    var row = await db.CycleResults.FirstOrDefaultAsync(r =>
+        r.CycleId == req.CycleId && r.CloudProvider == req.CloudProvider && r.Region == req.Region, ct);
+
+    if (row is null)
+    {
+        row = new CycleResultLog
+        {
+            CycleId = req.CycleId,
+            CloudProvider = req.CloudProvider,
+            Region = req.Region,
+            CreatedUtc = now
+        };
+        db.CycleResults.Add(row);
+    }
+    else
+    {
+        row.UpdatedUtc = now;
+    }
+
+    row.ObjectiveType = req.ObjectiveType ?? row.ObjectiveType;
+    row.WeightConfig = req.WeightConfig ?? row.WeightConfig;
+    row.PredictedMoerGPerKwh = req.MoerGPerKwh;
+    row.PredictedCostUsdPerHr = req.CostUsdPerHr;
+    row.PredictedLatencyMs = req.LatencyMs;
+    row.PredictedAtUtc = now;
+
+    await db.SaveChangesAsync(ct);
+    return row;
+}
+
+app.MapPost("/results/predicted", async (
+    PredictedResultRequest req,
+    LoggingDbContext db,
+    CancellationToken ct) =>
+{
+    if (string.IsNullOrWhiteSpace(req.CycleId) || string.IsNullOrWhiteSpace(req.CloudProvider) || string.IsNullOrWhiteSpace(req.Region))
+        return Results.BadRequest(new { error = "cycle_id, cloud_provider, and region are required." });
+
+    var row = await UpsertPredictedAsync(db, req, ct);
+    return Results.Ok(new { id = row.Id, upserted = "predicted" });
+})
+.WithName("ResultsPredicted");
+
+app.MapPost("/results/actual", async (
+    ActualResultRequest req,
+    LoggingDbContext db,
+    ICarbonSignalProvider carbon,
+    ICostSignalProvider cost,
+    IRegionMapper mapper,
+    CancellationToken ct) =>
+{
+    if (string.IsNullOrWhiteSpace(req.CycleId) || string.IsNullOrWhiteSpace(req.CloudProvider) || string.IsNullOrWhiteSpace(req.Region))
+        return Results.BadRequest(new { error = "cycle_id, cloud_provider, and region are required." });
+
+    var now = DateTimeOffset.UtcNow;
+    var row = await db.CycleResults.FirstOrDefaultAsync(r =>
+        r.CycleId == req.CycleId && r.CloudProvider == req.CloudProvider && r.Region == req.Region, ct);
+
+    if (row is null)
+    {
+        // Actual arrived with no matching predicted row -- still record it rather than
+        // silently dropping deployment data, but this shouldn't normally happen.
+        row = new CycleResultLog
+        {
+            CycleId = req.CycleId,
+            CloudProvider = req.CloudProvider,
+            Region = req.Region,
+            CreatedUtc = now
+        };
+        db.CycleResults.Add(row);
+    }
+
+    row.UpdatedUtc = now;
+    row.ObjectiveType ??= req.ObjectiveType;
+    row.WeightConfig ??= req.WeightConfig;
+    row.ActualTimestampStart = req.TimestampStart;
+    row.ActualTimestampEnd = req.TimestampEnd;
+    row.LatencyActualSec = req.LatencyActualSec;
+    row.ExecutionTimeSec = req.ExecutionTimeSec;
+    row.DeploymentSuccess = req.DeploymentSuccess;
+    row.ErrorNotes = req.ErrorNotes;
+
+    // batch_job.py runs on the deployed VM with no WattTime/pricing credentials, so it
+    // can't measure actual MOER/cost itself. Best-effort fill-in: ask the API's own
+    // providers for a reading of this cloud/region right now, at report time. This is
+    // an approximation of "actual" -- see the comment on CycleResultLog -- not a true
+    // historical reading for the exact execution window. Failures here must not block
+    // saving the actuals that batch_job.py DID measure (latency/execution time/success).
+    try
+    {
+        var zone = mapper.GetGridZones(req.CloudProvider, req.Region);
+        var sig = await carbon.GetSignalsAsync(zone, now, marginal: true, ct);
+        if (sig is not null && double.IsFinite(sig.IntensityGPerKwh) && sig.IntensityGPerKwh > 0)
+        {
+            row.ActualMoerGPerKwh = sig.IntensityGPerKwh * 0.45359237; // lbs/MWh -> g/kWh
+            row.ActualMoerSource = "watttime-at-report-time";
+        }
+    }
+    catch { /* best-effort; predicted values remain the primary record */ }
+
+    try
+    {
+        var costSig = await cost.GetCostAsync(req.CloudProvider, req.Region, ct);
+        if (costSig is not null)
+        {
+            row.ActualCostUsdPerHr = costSig.HourlyUsd;
+            row.ActualCostSource = costSig.Source;
+        }
+    }
+    catch { /* best-effort */ }
+
+    await db.SaveChangesAsync(ct);
+    return Results.Ok(new { id = row.Id, upserted = "actual" });
+})
+.WithName("ResultsActual");
+
 app.UseDefaultFiles();   // serves index.html by default
 app.UseStaticFiles();
 app.Run();
+
+// ---------------------------------------------------------------------
+// DTOs for the results endpoints. snake_case on purpose: ActualResultRequest's shape
+// matches batch_job.py's result_row exactly, so the GitHub Actions workflow can POST
+// result.json to /results/actual with no transformation.
+// ---------------------------------------------------------------------
+
+public record PredictedResultRequest(
+    [property: JsonPropertyName("cycle_id")] string CycleId,
+    [property: JsonPropertyName("objective_type")] string? ObjectiveType,
+    [property: JsonPropertyName("weight_config")] string? WeightConfig,
+    [property: JsonPropertyName("cloud_provider")] string CloudProvider,
+    [property: JsonPropertyName("region")] string Region,
+    [property: JsonPropertyName("moer_g_per_kwh")] double? MoerGPerKwh,
+    [property: JsonPropertyName("cost_usd_per_hr")] double? CostUsdPerHr,
+    [property: JsonPropertyName("latency_ms")] double? LatencyMs
+);
+
+public record ActualResultRequest(
+    [property: JsonPropertyName("cycle_id")] string CycleId,
+    [property: JsonPropertyName("objective_type")] string? ObjectiveType,
+    [property: JsonPropertyName("weight_config")] string? WeightConfig,
+    [property: JsonPropertyName("cloud_provider")] string CloudProvider,
+    [property: JsonPropertyName("region")] string Region,
+    [property: JsonPropertyName("timestamp_start")] DateTimeOffset? TimestampStart,
+    [property: JsonPropertyName("timestamp_end")] DateTimeOffset? TimestampEnd,
+    [property: JsonPropertyName("latency_actual_sec")] double? LatencyActualSec,
+    [property: JsonPropertyName("execution_time_sec")] double? ExecutionTimeSec,
+    [property: JsonPropertyName("deployment_success")] bool? DeploymentSuccess,
+    [property: JsonPropertyName("error_notes")] string? ErrorNotes
+);

@@ -36,17 +36,21 @@ public sealed class AzureGithubActionsTarget : ICloudTarget
         }
     }
 
-    public async Task<string> ScheduleAsync(AdviceResult advice, JobSpec job, CorrelationContext correlation, CancellationToken ct = default)
+    public async Task<string> ScheduleAsync(AdviceResult advice, JobSpec job, CorrelationContext correlation, ExperimentContext experiment, CancellationToken ct = default)
     {
         // Only act if Azure was selected; otherwise router will use other targets
         if (!"azure".Equals(advice.Cloud, StringComparison.OrdinalIgnoreCase))
             return $"skipped-non-azure-{DateTimeOffset.UtcNow:yyyyMMddHHmmss}";
 
-        // Region comes from the advice; VM size we default
+        // Region comes from the advice; VM size we default.
+        // cycleId is a REQUIRED workflow input -- omitting it makes workflow_dispatch fail with 422.
         var inputs = new
         {
             vmsize = DefaultVmSize,
-            region = advice.Region
+            region = advice.Region,
+            cycleId = experiment.CycleId,
+            objectiveType = experiment.ObjectiveType,
+            weightConfig = experiment.WeightProfile ?? ""
         };
 
         var body = new

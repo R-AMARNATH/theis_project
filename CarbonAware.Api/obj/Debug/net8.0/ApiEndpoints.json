@@ -162,6 +162,52 @@
   },
   {
     "ContainingType": "Program\u002B\u003C\u003Ec",
+    "Method": "\u003C\u003CMain\u003E$\u003Eb__0_22",
+    "RelativePath": "results/actual",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "ActualResultRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "ResultsActual"
+  },
+  {
+    "ContainingType": "Program\u002B\u003C\u003Ec",
+    "Method": "\u003C\u003CMain\u003E$\u003Eb__0_21",
+    "RelativePath": "results/predicted",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "PredictedResultRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "ResultsPredicted"
+  },
+  {
+    "ContainingType": "Program\u002B\u003C\u003Ec",
     "Method": "\u003C\u003CMain\u003E$\u003Eb__0_11",
     "RelativePath": "schedule",
     "HttpMethod": "POST",

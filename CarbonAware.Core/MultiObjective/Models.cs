@@ -100,12 +100,15 @@ public record MultiObjectiveAdviceResult(
     bool RegionsDiffer
 );
 
-// Request DTO — extends OrchestrationRequest with a weight profile
+// Request DTO — extends OrchestrationRequest with a weight profile.
+// CycleId is optional (see OrchestrationRequest) -- pass your experiment cycle id here
+// for /schedule-multi so it lines up with the predicted/actual rows in CycleResultLog.
 public record MultiObjectiveRequest(
     PolicySpec Policy,
     JobSpec Job,
     string? WeightProfile = null,
-    ObjectiveWeights? CustomWeights = null
+    ObjectiveWeights? CustomWeights = null,
+    string? CycleId = null
 )
 {
     public ObjectiveWeights ResolveWeights() =>

@@ -90,6 +90,20 @@ public sealed class MultiObjectiveScoringEngine : IMultiObjectivePolicyEngine
 
         var scored = new List<RegionCandidateScore>();
 
+        // Candidates the region mapper couldn't resolve to a grid zone at all (e.g. a typo'd
+        // or unsupported region string) never reach signal-fetching above -- log them too,
+        // so AdviceCandidates has a row for every candidate you asked about, not just the
+        // ones that made it past region mapping.
+        void AddInvalidCandidates()
+        {
+            foreach (var (cloud, region) in invalid)
+            {
+                scored.Add(new RegionCandidateScore(cloud, region, null, null, null,
+                    null, null, null, null, true, "no grid zone mapping for this cloud/region",
+                    null, null, null));
+            }
+        }
+
         if (complete.Count == 0)
         {
             foreach (var r in rows)
@@ -102,6 +116,7 @@ public sealed class MultiObjectiveScoringEngine : IMultiObjectivePolicyEngine
                     null, null, null, null, true, $"missing signal(s): {string.Join(",", missing)}",
                     r.CostIsLive, r.CostSource, r.LatSource));
             }
+            AddInvalidCandidates();
 
             return new MultiObjectiveAdviceResult(
                 null, null, now,
@@ -139,6 +154,7 @@ public sealed class MultiObjectiveScoringEngine : IMultiObjectivePolicyEngine
                 nMoer, nCost, nLat, composite, false, null,
                 r.CostIsLive, r.CostSource, r.LatSource));
         }
+        AddInvalidCandidates();
 
         var best = scored.Where(s => !s.Excluded).OrderByDescending(s => s.CompositeScore!.Value).First();
         var singleObjectiveBest = complete.OrderBy(r => r.Moer!.Value).First();
@@ -160,19 +176,80 @@ public sealed class MultiObjectiveScoringEngine : IMultiObjectivePolicyEngine
             $"Single-objective (carbon-only) pick was {singleObjectiveBest.Cloud}:{singleObjectiveBest.Region}" +
             (regionsDiffer ? " — DIFFERENT region." : " — same region.");
 
+        // Worst/average across every *complete* candidate (i.e. the same pool used for
+        // normalization) -- this is what the thesis needs for the multi-objective
+        // best/worst/average tables, mirroring what /advise already logs for carbon-only.
+        var worstMoer = scored.Where(s => !s.Excluded).OrderByDescending(s => s.MoerGPerKwh!.Value).First();
+        var worstCost = scored.Where(s => !s.Excluded).OrderByDescending(s => s.CostUsdPerHr!.Value).First();
+        var worstLatency = scored.Where(s => !s.Excluded).OrderByDescending(s => s.LatencyMs!.Value).First();
+        var avgMoer = complete.Average(r => r.Moer!.Value);
+        var avgCost = complete.Average(r => r.Cost!.Value);
+        var avgLatency = complete.Average(r => r.Lat!.Value);
+
         await _audit.LogAdviceAsync(new AdviceRecord
         {
             Mode = $"multi_objective_{WeightProfileLabel(weights)}",
             TargetWhen = now,
             PreferredCloudsCsv = string.Join(",", job.GetEffectiveClouds()),
+
+            ObjectiveType = "multi",
+            WeightProfile = WeightProfileLabel(weights),
+            WeightCarbon = weights.Carbon,
+            WeightCost = weights.Cost,
+            WeightLatency = weights.Latency,
+
             SelectedCloud = best.Cloud,
             SelectedRegion = best.Region,
             SelectedWhen = now,
             SelectedMoerGPerKwh = best.MoerGPerKwh,
+            SelectedCostUsdPerHr = best.CostUsdPerHr,
+            SelectedLatencyMs = best.LatencyMs,
+            SelectedCompositeScore = best.CompositeScore,
             Rationale = rationale,
+
+            HighestEmissionCloud = worstMoer.Cloud,
+            HighestEmissionRegion = worstMoer.Region,
+            HighestEmissionGPerKwh = worstMoer.MoerGPerKwh,
+            EstimatedSavingGPerKwh = worstMoer.MoerGPerKwh - best.MoerGPerKwh,
+            EstimatedSavingPercent = worstMoer.MoerGPerKwh is > 0
+                ? 100.0 * (worstMoer.MoerGPerKwh!.Value - best.MoerGPerKwh!.Value) / worstMoer.MoerGPerKwh.Value
+                : (double?)null,
+            AverageEmissionGPerKwh = avgMoer,
+            AverageEstimatedSavingPercent = avgMoer > 0
+                ? 100.0 * (avgMoer - best.MoerGPerKwh!.Value) / avgMoer
+                : (double?)null,
+
+            HighestCostCloud = worstCost.Cloud,
+            HighestCostRegion = worstCost.Region,
+            HighestCostUsdPerHr = worstCost.CostUsdPerHr,
+            AverageCostUsdPerHr = avgCost,
+
+            HighestLatencyCloud = worstLatency.Cloud,
+            HighestLatencyRegion = worstLatency.Region,
+            HighestLatencyMs = worstLatency.LatencyMs,
+            AverageLatencyMs = avgLatency,
+
+            CandidateCount = complete.Count,
+            SingleObjectiveCloud = singleObjectiveBest.Cloud,
+            SingleObjectiveRegion = singleObjectiveBest.Region,
+            RegionsDiffer = regionsDiffer,
+
             CreatedUtc = now,
             RequestId = correlation.Current
-        }, Enumerable.Empty<AdviceCandidateRecord>(), ct);
+        }, scored.Select(s => new AdviceCandidateRecord
+        {
+            Cloud = s.Cloud,
+            Region = s.Region,
+            MoerAtTarget = s.MoerGPerKwh,
+            CostUsdPerHr = s.CostUsdPerHr,
+            LatencyMs = s.LatencyMs,
+            CompositeScore = s.CompositeScore,
+            Excluded = s.Excluded,
+            ExclusionReason = s.ExclusionReason,
+            CostIsLive = s.CostIsLive,
+            CostSource = s.CostSource,
+            LatencySource = s.LatencySource
+        }), ct);
 
         return new MultiObjectiveAdviceResult(
             best.Cloud, best.Region, now, rationale, weights, WeightProfileLabel(weights),

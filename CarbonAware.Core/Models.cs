@@ -151,8 +151,11 @@ public record AdviceResult(
         : (double?)null;
 };
 
-// DTO to bind requests easily
-public record OrchestrationRequest(PolicySpec Policy, JobSpec Job);
+// DTO to bind requests easily. CycleId is optional -- when omitted, /schedule and
+// /schedule-multi generate one so the run is still logged/dispatchable, but for the
+// real 84-cycle experiment you should pass your own cycle id (1-84) so predicted rows
+// in CycleResultLog line up with the *_actual rows batch_job.py reports later.
+public record OrchestrationRequest(PolicySpec Policy, JobSpec Job, string? CycleId = null);
 
 public interface IPolicyEngine
 {
@@ -163,12 +166,20 @@ public interface IPolicyEngine
         CancellationToken ct = default);
 }
 
+// Carries experiment bookkeeping (cycle id, objective type, weight profile) down to the
+// GitHub Actions target so the dispatched workflow gets the inputs it requires (cycleId
+// is a *required* workflow input -- without this, workflow_dispatch fails with 422) and
+// so the eventual POST /results/actual from batch_job.py can be matched back to the
+// predicted row this scheduling call wrote.
+public sealed record ExperimentContext(string CycleId, string ObjectiveType, string? WeightProfile);
+
 public interface ICloudTarget
 {
     Task<string> ScheduleAsync(
         AdviceResult advice,
         JobSpec job,
         CorrelationContext correlation,
+        ExperimentContext experiment,
         CancellationToken ct = default);
 }
 

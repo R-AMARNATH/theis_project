@@ -27,10 +27,10 @@ on:
         required: true
         type: string
       vmsize:
-        description: 'Azure VM size'
+        description: 'Preferred Azure VM size -- workflow falls back to alternatives if this one has no capacity in the region'
         required: true
         type: string
-        default: 'Standard_D2s_v3'
+        default: 'Standard_B2s'
       cycleId:
         description: 'Experiment cycle id (1-84)'
         required: true
@@ -111,18 +111,49 @@ jobs:
             - python3 /root/batch_job.py --cloud azure --region "${{ inputs.region }}" --account "$ACCOUNT" --container "$CONTAINER" --cycle-id "${{ inputs.cycleId }}" --objective-type "${{ inputs.objectiveType }}" --weight-config "${{ inputs.weightConfig }}" --output-json /root/result.json
           EOF
 
+      - name: Resolve a deployable VM size for this region
+        id: vmsize
+        run: |
+          # Try the requested size first, then fall back through alternatives roughly
+          # matched to Standard_B2s's spec (2 vCPU / 4GiB), closest first. Capacity
+          # restrictions are per-subscription and change over time, so this is checked
+          # fresh on every run rather than hardcoded.
+          CANDIDATES="${{ inputs.vmsize }} Standard_B2s Standard_B2ms Standard_D2s_v3 Standard_D2s_v4 Standard_D2s_v5 Standard_DS1_v2 Standard_F2s_v2 Standard_D2_v3 Standard_A2_v2"
+
+          CHOSEN=""
+          for size in $CANDIDATES; do
+            REASON=$(az vm list-skus --location "${{ inputs.region }}" --size "$size" --all \
+              --query "[0].restrictions[0].reasonCode" -o tsv 2>/dev/null)
+            if [ -z "$REASON" ]; then
+              echo "$size is available in ${{ inputs.region }}"
+              CHOSEN="$size"
+              break
+            else
+              echo "$size is restricted in ${{ inputs.region }}: $REASON -- trying next"
+            fi
+          done
+
+          if [ -z "$CHOSEN" ]; then
+            echo "No available VM size found in ${{ inputs.region }} among: $CANDIDATES" >&2
+            echo "Try a different region, or request a quota increase via Azure Support." >&2
+            exit 1
+          fi
+
+          echo "size=$CHOSEN" >> "$GITHUB_OUTPUT"
+          echo "Selected VM size: $CHOSEN"
+
       - name: Create VM
         run: |
           az vm create \
             --resource-group ${{ steps.run.outputs.rg }} \
             --name ${{ steps.run.outputs.vm }} \
             --image Ubuntu2204 \
-            --size ${{ inputs.vmsize }} \
+            --size ${{ steps.vmsize.outputs.size }} \
             --admin-username carbonaware \
             --admin-password "${{ secrets.AZURE_VM_ADMIN_PASSWORD }}" \
             --custom-data cloud-init.txt \
             --public-ip-address "" \
-            --tags Source=CarbonAwareScheduler RunId=${{ github.run_id }} CycleId=${{ inputs.cycleId }}
+            --tags Source=CarbonAwareScheduler RunId=${{ github.run_id }} CycleId=${{ inputs.cycleId }} ResolvedSize=${{ steps.vmsize.outputs.size }}
 
       - name: Poll blob storage for batch_job.py result
         id: wait

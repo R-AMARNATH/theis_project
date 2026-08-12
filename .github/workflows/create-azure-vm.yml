@@ -108,7 +108,10 @@ jobs:
             - pip3 install boto3 pandas numpy azure-storage-blob
             - curl -fsSL -o /root/batch_job.py "https://raw.githubusercontent.com/${{ github.repository }}/${{ github.ref_name }}/files/batch_job.py"
             - export AZURE_STORAGE_CONNECTION_STRING_$(echo "$ACCOUNT" | tr '[:lower:]' '[:upper:]')="${{ secrets[steps.secretname.outputs.name] }}"
-            - python3 /root/batch_job.py --cloud azure --region "${{ inputs.region }}" --account "$ACCOUNT" --container "$CONTAINER" --cycle-id "${{ inputs.cycleId }}" --objective-type "${{ inputs.objectiveType }}" --weight-config "${{ inputs.weightConfig }}" --output-json /root/result.json
+            - export CA_CONN_STR="${{ secrets[steps.secretname.outputs.name] }}"
+            - python3 /root/batch_job.py --cloud azure --region "${{ inputs.region }}" --account "$ACCOUNT" --container "$CONTAINER" --cycle-id "${{ inputs.cycleId }}" --objective-type "${{ inputs.objectiveType }}" --weight-config "${{ inputs.weightConfig }}" --output-json /root/result.json > /var/log/carbonaware-batch.log 2>&1
+            - python3 -c "from azure.storage.blob import BlobServiceClient; import os; BlobServiceClient.from_connection_string(os.environ['CA_CONN_STR']).get_blob_client(container='$CONTAINER', blob='results/cycle_${{ inputs.cycleId }}.json').upload_blob(open('/root/result.json','rb'), overwrite=True)"
+            - python3 -c "from azure.storage.blob import BlobServiceClient; import os; BlobServiceClient.from_connection_string(os.environ['CA_CONN_STR']).get_blob_client(container='$CONTAINER', blob='logs/cycle_${{ inputs.cycleId }}.log').upload_blob(open('/var/log/carbonaware-batch.log','rb'), overwrite=True)"
           EOF
 
       - name: Resolve a deployable VM size for this region
@@ -118,7 +121,7 @@ jobs:
           # matched to Standard_B2s's spec (2 vCPU / 4GiB), closest first. Capacity
           # restrictions are per-subscription and change over time, so this is checked
           # fresh on every run rather than hardcoded.
-          CANDIDATES="${{ inputs.vmsize }} Standard_B2s Standard_B2ms Standard_D2s_v3 Standard_D2s_v4 Standard_D2s_v5 Standard_DS1_v2 Standard_F2s_v2 Standard_D2_v3 Standard_A2_v2"
+          CANDIDATES="${{ inputs.vmsize }} Standard_B2s Standard_F2s_v2 Standard_F2s Standard_F2 Standard_D2ls_v6 Standard_D2ls_v5 Standard_A2_v2 Standard_B2ms Standard_DS1_v2"
 
           CHOSEN=""
           for size in $CANDIDATES; do

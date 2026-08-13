@@ -94,12 +94,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{56df62a4-05a3-4e5b-aa1a-99371ccfb997}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 4,
@@ -144,7 +140,7 @@
               "RelativeDocumentMoniker": "..\\CarbonAware.Api\\appsettings.json",
               "ToolTip": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Api\\appsettings.json",
               "RelativeToolTip": "..\\CarbonAware.Api\\appsettings.json",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAABQAAAA6AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2026-07-02T13:26:16.366Z",
               "EditorCaption": ""
@@ -159,8 +155,7 @@
               "RelativeToolTip": "..\\CarbonAware.Api\\appsettings.Development.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-07-11T07:31:22.344Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-11T07:31:22.344Z"
             },
             {
               "$type": "Document",
@@ -436,6 +431,10 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-13T18:14:56.099Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{56df62a4-05a3-4e5b-aa1a-99371ccfb997}"
             }
           ]
         }

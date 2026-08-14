@@ -12,6 +12,18 @@
           "bin/placeholder/CarbonAware.Core.dll": {}
         }
       }
+    },
+    "net8.0/linux-x64": {
+      "CarbonAware.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/CarbonAware.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CarbonAware.Core.dll": {}
+        }
+      }
     }
   },
   "libraries": {
@@ -96,6 +108,11 @@
           }
         },
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+      }
+    },
+    "runtimes": {
+      "linux-x64": {
+        "#import": []
       }
     }
   }

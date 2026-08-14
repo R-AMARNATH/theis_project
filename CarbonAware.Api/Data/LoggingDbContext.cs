@@ -27,7 +27,7 @@ public sealed class LoggingDbContext : DbContext
         mb.Entity<AdviceExecutionLog>(e =>
         {
             e.HasKey(x => x.Id);
-            e.Property(x => x.Mode).HasMaxLength(32);
+            e.Property(x => x.Mode).HasMaxLength(64);
             e.Property(x => x.ObjectiveType).HasMaxLength(16);
             e.Property(x => x.WeightProfile).HasMaxLength(32);
             e.Property(x => x.SelectedCloud).HasMaxLength(32);

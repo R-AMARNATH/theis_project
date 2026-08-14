@@ -27,11 +27,39 @@ public sealed class LatencySignalProvider : ILatencySignalProvider
     private readonly LatencySignalOptions _opts;
     private readonly ILogger<LatencySignalProvider> _log;
 
+    // Shared across all candidates in a single scoring pass (and across concurrent requests,
+    // since this provider is registered once) — caps how many region checks run at once
+    // regardless of how many candidates the caller fans out. See MaxConcurrentChecks doc
+    // comment in LatencySignalOptions for why this exists.
+    private static readonly SemaphoreSlim _gate = new(initialCount: 12, maxCount: 12);
+    private static int _configuredMax = 12;
+
     public LatencySignalProvider(HttpClient http, IOptions<LatencySignalOptions> opts, ILogger<LatencySignalProvider> log)
     {
         _http = http;
         _opts = opts.Value;
         _log = log;
+
+        // Semaphore capacity is fixed at construction of the static field above; if config
+        // specifies a different value, adjust the static gate once (cheap, rare — options
+        // don't change per-request).
+        var wanted = Math.Max(1, _opts.MaxConcurrentChecks);
+        if (wanted != _configuredMax)
+        {
+            lock (_gate)
+            {
+                if (wanted != _configuredMax)
+                {
+                    var diff = wanted - _configuredMax;
+                    if (diff > 0) _gate.Release(diff);
+                    // Note: SemaphoreSlim doesn't support shrinking capacity cleanly; in practice
+                    // MaxConcurrentChecks is set once in config and doesn't change at runtime, so
+                    // growing is the only path exercised. If you need dynamic shrink, rebuild the
+                    // semaphore behind a lock instead.
+                    _configuredMax = wanted;
+                }
+            }
+        }
     }
 
     public async Task<LatencySignal> GetLatencyAsync(string cloud, string region, CancellationToken ct = default)
@@ -51,6 +79,23 @@ public sealed class LatencySignalProvider : ILatencySignalProvider
             return new LatencySignal(cloud, region, null, now, false, "unconfigured");
         }
 
+        // Throttle: wait for a free slot before doing this region's samples. With 81 regions
+        // all calling GetLatencyAsync concurrently, this keeps actual simultaneous outbound
+        // connections capped at MaxConcurrentChecks instead of all 81 firing at once.
+        await _gate.WaitAsync(ct);
+        try
+        {
+            return await MeasureAsync(cloud, region, endpoint, logKey, now, ct);
+        }
+        finally
+        {
+            _gate.Release();
+        }
+    }
+
+    private async Task<LatencySignal> MeasureAsync(
+        string cloud, string region, string endpoint, string logKey, DateTimeOffset now, CancellationToken ct)
+    {
         var samples = new List<double>();
         for (int i = 0; i < Math.Max(1, _opts.SamplesPerRegion); i++)
         {

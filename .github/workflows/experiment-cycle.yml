@@ -1,0 +1,133 @@
+name: Experiment Cycle
+
+# Runs one comparison cycle: /schedule (single-objective) and /schedule-multi
+# (multi-objective, balanced weights) fired CONCURRENTLY against the hosted API, so
+# both schedulers evaluate the exact same real-world carbon/cost/latency conditions --
+# sequencing them would let grid conditions drift between the two calls and weaken the
+# comparison, same reasoning as tools/TestSchedulingComparison in this repo.
+#
+# Uses every configured candidate region from appsettings.json (81 regions across
+# aws/azure/gcp). Each call causes a REAL deployment via ICloudTarget.ScheduleAsync.
+#
+# 6 fixed times/day, 4 hours apart, for 14 days -> 84 cycles, 168 real deployments
+# (2 per cycle: one single-objective, one balanced multi-objective).
+#
+# Prerequisites (one-time):
+#   1. Repo variable CARBON_API_BASE_URL set to the hosted API's base URL.
+#   2. All secrets required by deploy-aws-vm.yml / create-azure-vm.yml / create-gcp-vm.yml
+#      already configured (this workflow only calls the scheduling API; those three
+#      workflows are what the API's ICloudTarget dispatches in turn).
+#
+# GitHub Actions `schedule:` cron is not guaranteed to fire at the exact minute under
+# load -- expect a few minutes of jitter. Documented as a known limitation, not a bug.
+
+on:
+  schedule:
+    - cron: '0 0 * * *'   # 00:00 UTC
+    - cron: '0 4 * * *'   # 04:00 UTC
+    - cron: '0 8 * * *'   # 08:00 UTC
+    - cron: '0 12 * * *'  # 12:00 UTC
+    - cron: '0 16 * * *'  # 16:00 UTC
+    - cron: '0 20 * * *'  # 20:00 UTC
+  workflow_dispatch: {}
+
+jobs:
+  run-cycle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Determine cycle id and time window
+        id: vars
+        run: |
+          CYCLE_ID="cycle-$(date -u +%Y%m%dT%H%M%SZ)"
+          FROM=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+          UNTIL=$(date -u -d '+1 hour' +%Y-%m-%dT%H:%M:%SZ)
+          echo "cycle_id=$CYCLE_ID" >> "$GITHUB_OUTPUT"
+          echo "from=$FROM" >> "$GITHUB_OUTPUT"
+          echo "until=$UNTIL" >> "$GITHUB_OUTPUT"
+          echo "Cycle id: $CYCLE_ID   Window: $FROM to $UNTIL"
+
+      - name: Build candidate region list from appsettings.json
+        id: regions
+        run: |
+          CLOUDS=$(jq -c '.LatencySignal.EndpointByRegion | keys' CarbonAware.Api/appsettings.json)
+          LOCATIONS=$(jq -c '
+            .LatencySignal.EndpointByRegion
+            | to_entries
+            | map(.key as $cloud | (.value | keys | map({cloud: $cloud, region: .})))
+            | flatten
+          ' CarbonAware.Api/appsettings.json)
+          echo "clouds=$CLOUDS" >> "$GITHUB_OUTPUT"
+          # written to a file, not a GITHUB_OUTPUT var -- 81 regions is too large for a
+          # single-line output entry to stay reliable
+          echo "$LOCATIONS" > /tmp/locations.json
+          echo "Candidate count: $(echo "$LOCATIONS" | jq 'length')"
+
+      - name: Build request bodies
+        run: |
+          jq -n \
+            --argjson clouds '${{ steps.regions.outputs.clouds }}' \
+            --argjson locations "$(cat /tmp/locations.json)" \
+            --arg from "${{ steps.vars.outputs.from }}" \
+            --arg until "${{ steps.vars.outputs.until }}" \
+            --arg cycleId "${{ steps.vars.outputs.cycle_id }}-single" \
+            '{
+              job: { clouds: $clouds },
+              policy: { mode: "run_now", scheduleFrom: $from, scheduleUntil: $until, preferredLocations: $locations },
+              cycleId: $cycleId
+            }' > /tmp/single-body.json
+
+          jq -n \
+            --argjson clouds '${{ steps.regions.outputs.clouds }}' \
+            --argjson locations "$(cat /tmp/locations.json)" \
+            --arg from "${{ steps.vars.outputs.from }}" \
+            --arg until "${{ steps.vars.outputs.until }}" \
+            --arg cycleId "${{ steps.vars.outputs.cycle_id }}-multi" \
+            '{
+              job: { clouds: $clouds },
+              policy: { mode: "run_now", scheduleFrom: $from, scheduleUntil: $until, preferredLocations: $locations },
+              weightProfile: "balanced",
+              cycleId: $cycleId
+            }' > /tmp/multi-body.json
+
+      - name: Fire /schedule and /schedule-multi concurrently
+        id: fire
+        run: |
+          set +e
+
+          curl -fsS -X POST "${{ vars.CARBON_API_BASE_URL }}/schedule" \
+            -H "Content-Type: application/json" \
+            --data-binary @/tmp/single-body.json \
+            -w "\nHTTP %{http_code}\n" \
+            > /tmp/single-result.txt 2>&1 &
+          SINGLE_PID=$!
+
+          curl -fsS -X POST "${{ vars.CARBON_API_BASE_URL }}/schedule-multi" \
+            -H "Content-Type: application/json" \
+            --data-binary @/tmp/multi-body.json \
+            -w "\nHTTP %{http_code}\n" \
+            > /tmp/multi-result.txt 2>&1 &
+          MULTI_PID=$!
+
+          wait $SINGLE_PID
+          SINGLE_EXIT=$?
+          wait $MULTI_PID
+          MULTI_EXIT=$?
+
+          echo "########## /schedule (single-objective) ##########"
+          cat /tmp/single-result.txt
+          echo
+          echo "########## /schedule-multi [balanced] ##########"
+          cat /tmp/multi-result.txt
+          echo
+
+          echo "single_exit=$SINGLE_EXIT" >> "$GITHUB_OUTPUT"
+          echo "multi_exit=$MULTI_EXIT" >> "$GITHUB_OUTPUT"
+
+      - name: Fail the run if either call failed
+        if: steps.fire.outputs.single_exit != '0' || steps.fire.outputs.multi_exit != '0'
+        run: |
+          echo "single exit: ${{ steps.fire.outputs.single_exit }}"
+          echo "multi exit:  ${{ steps.fire.outputs.multi_exit }}"
+          exit 1

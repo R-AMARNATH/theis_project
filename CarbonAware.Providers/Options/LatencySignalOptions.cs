@@ -28,4 +28,6 @@ public sealed class LatencySignalOptions
 
     public int TimeoutMs { get; set; } = 3000;
     public int SamplesPerRegion { get; set; } = 3; // measured latency = median of N samples
+
+    public int MaxConcurrentChecks { get; set; } = 12;
 }

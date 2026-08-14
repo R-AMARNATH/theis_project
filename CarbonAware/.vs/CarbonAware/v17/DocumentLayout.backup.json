@@ -3,7 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{7E6F35D0-158A-45BC-B61E-220E69809732}|..\\CarbonAware.Providers\\CarbonAware.Providers.csproj|c:\\users\\amarnath\\documents\\tud modules\\sem2\\research thesis\\project\\carbonawareapi\\carbonaware.providers\\latencysignalprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E6F35D0-158A-45BC-B61E-220E69809732}|..\\CarbonAware.Providers\\CarbonAware.Providers.csproj|c:\\users\\amarnath\\documents\\tud modules\\sem2\\research thesis\\project\\carbonawareapi\\carbonaware.providers\\options\\latencysignaloptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{86208675-9F9E-4949-92A9-66251EC641C7}|..\\CarbonAware.Api\\CarbonAware.Api.csproj|c:\\users\\amarnath\\documents\\tud modules\\sem2\\research thesis\\project\\carbonawareapi\\carbonaware.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{86208675-9F9E-4949-92A9-66251EC641C7}|..\\CarbonAware.Api\\CarbonAware.Api.csproj|c:\\users\\amarnath\\documents\\tud modules\\sem2\\research thesis\\project\\carbonawareapi\\carbonaware.api\\data\\loggingdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{86208675-9F9E-4949-92A9-66251EC641C7}|..\\CarbonAware.Api\\CarbonAware.Api.csproj|c:\\users\\amarnath\\documents\\tud modules\\sem2\\research thesis\\project\\carbonawareapi\\carbonaware.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -109,11 +118,63 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LatencySignalProvider.cs",
+              "DocumentMoniker": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Providers\\LatencySignalProvider.cs",
+              "RelativeDocumentMoniker": "..\\CarbonAware.Providers\\LatencySignalProvider.cs",
+              "ToolTip": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Providers\\LatencySignalProvider.cs",
+              "RelativeToolTip": "..\\CarbonAware.Providers\\LatencySignalProvider.cs",
+              "ViewState": "AgIAAH0AAAAAAAAAAAAkwI4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-14T21:36:41.382Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LatencySignalOptions.cs",
+              "DocumentMoniker": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Providers\\Options\\LatencySignalOptions.cs",
+              "RelativeDocumentMoniker": "..\\CarbonAware.Providers\\Options\\LatencySignalOptions.cs",
+              "ToolTip": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Providers\\Options\\LatencySignalOptions.cs",
+              "RelativeToolTip": "..\\CarbonAware.Providers\\Options\\LatencySignalOptions.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAQwB8AAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-14T21:35:09.198Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "LoggingDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Api\\Data\\LoggingDbContext.cs",
+              "RelativeDocumentMoniker": "..\\CarbonAware.Api\\Data\\LoggingDbContext.cs",
+              "ToolTip": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Api\\Data\\LoggingDbContext.cs",
+              "RelativeToolTip": "..\\CarbonAware.Api\\Data\\LoggingDbContext.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAArwBsAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-14T21:08:13.1Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Api\\appsettings.json",
+              "RelativeDocumentMoniker": "..\\CarbonAware.Api\\appsettings.json",
+              "ToolTip": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Api\\appsettings.json",
+              "RelativeToolTip": "..\\CarbonAware.Api\\appsettings.json",
+              "ViewState": "AgIAAHsAAAAAAAAAAAAAAIQAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-07-02T13:26:16.366Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "EfAuditSink.cs",
               "DocumentMoniker": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Api\\Data\\EfAuditSink.cs",
               "RelativeDocumentMoniker": "..\\CarbonAware.Api\\Data\\EfAuditSink.cs",
@@ -121,12 +182,11 @@
               "RelativeToolTip": "..\\CarbonAware.Api\\Data\\EfAuditSink.cs",
               "ViewState": "AgIAAHMAAAAAAAAAAADwv4wAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-14T07:40:11.246Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-08-14T07:40:11.246Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "AzureGithubActionsTarget.cs",
               "DocumentMoniker": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Targets\\AzureGithubActionsTarget.cs",
               "RelativeDocumentMoniker": "..\\CarbonAware.Targets\\AzureGithubActionsTarget.cs",
@@ -138,7 +198,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "CostSignalOptions.cs",
               "DocumentMoniker": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Providers\\Options\\CostSignalOptions.cs",
               "RelativeDocumentMoniker": "..\\CarbonAware.Providers\\Options\\CostSignalOptions.cs",
@@ -150,7 +210,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Api\\Program.cs",
               "RelativeDocumentMoniker": "..\\CarbonAware.Api\\Program.cs",
@@ -158,29 +218,11 @@
               "RelativeToolTip": "..\\CarbonAware.Api\\Program.cs",
               "ViewState": "AgIAAAQAAAAAAAAAAAAiwBEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-08T15:51:55.494Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-08T15:51:55.494Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Api\\appsettings.json",
-              "RelativeDocumentMoniker": "..\\CarbonAware.Api\\appsettings.json",
-              "ToolTip": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Api\\appsettings.json",
-              "RelativeToolTip": "..\\CarbonAware.Api\\appsettings.json",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABQAAAA6AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-07-02T13:26:16.366Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{56df62a4-05a3-4e5b-aa1a-99371ccfb997}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "WattTimeTwoModeEngine.cs",
               "DocumentMoniker": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Core\\WattTimeTwoModeEngine.cs",
               "RelativeDocumentMoniker": "..\\CarbonAware.Core\\WattTimeTwoModeEngine.cs",
@@ -188,12 +230,11 @@
               "RelativeToolTip": "..\\CarbonAware.Core\\WattTimeTwoModeEngine.cs",
               "ViewState": "AgIAAK0CAAAAAAAAAAAgwLkCAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-08T09:08:29.523Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-08T09:08:29.523Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "MultiObjectiveScoringEngine.cs",
               "DocumentMoniker": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Core\\MultiObjective\\MultiObjectiveScoringEngine.cs",
               "RelativeDocumentMoniker": "..\\CarbonAware.Core\\MultiObjective\\MultiObjectiveScoringEngine.cs",
@@ -205,7 +246,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "CandidateResolver.cs",
               "DocumentMoniker": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Core\\MultiObjective\\CandidateResolver.cs",
               "RelativeDocumentMoniker": "..\\CarbonAware.Core\\MultiObjective\\CandidateResolver.cs",
@@ -217,7 +258,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
               "Title": "Models.cs",
               "DocumentMoniker": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Core\\Models.cs",
               "RelativeDocumentMoniker": "..\\CarbonAware.Core\\Models.cs",
@@ -229,7 +270,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Api\\appsettings.Development.json",
               "RelativeDocumentMoniker": "..\\CarbonAware.Api\\appsettings.Development.json",
@@ -241,7 +282,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "GcpGithubActionsTarget.cs",
               "DocumentMoniker": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Targets\\GcpGithubActionsTarget.cs",
               "RelativeDocumentMoniker": "..\\CarbonAware.Targets\\GcpGithubActionsTarget.cs",
@@ -253,7 +294,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "AwsGithubActionsTarget.cs",
               "DocumentMoniker": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Targets\\AwsGithubActionsTarget.cs",
               "RelativeDocumentMoniker": "..\\CarbonAware.Targets\\AwsGithubActionsTarget.cs",
@@ -265,7 +306,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 20,
               "Title": "Auditing.cs",
               "DocumentMoniker": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Core\\Auditing.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\..\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Core\\Auditing.cs",
@@ -277,7 +318,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 21,
               "Title": "Models.cs",
               "DocumentMoniker": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Core\\Models.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\..\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Core\\Models.cs",
@@ -289,7 +330,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 22,
               "Title": "LoggingDbContext.cs",
               "DocumentMoniker": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Api\\Data\\LoggingDbContext.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\..\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Api\\Data\\LoggingDbContext.cs",
@@ -301,7 +342,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 15,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Api\\appsettings.json",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\..\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Api\\appsettings.json",
@@ -312,7 +353,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 23,
               "Title": "WattTimeTwoModeEngine.cs",
               "DocumentMoniker": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Core\\WattTimeTwoModeEngine.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\..\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Core\\WattTimeTwoModeEngine.cs",
@@ -324,7 +365,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 24,
               "Title": "index.html",
               "DocumentMoniker": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Api\\wwwroot\\index.html",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\..\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Api\\wwwroot\\index.html",
@@ -336,7 +377,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 25,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Api\\Program.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\..\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Api\\Program.cs",
@@ -348,7 +389,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 26,
               "Title": "WattTimeProvider.cs",
               "DocumentMoniker": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Providers\\WattTimeProvider.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\..\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Providers\\WattTimeProvider.cs",
@@ -360,7 +401,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 27,
               "Title": "TargetRouter.cs",
               "DocumentMoniker": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Targets\\TargetRouter.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\..\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Targets\\TargetRouter.cs",
@@ -372,7 +413,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 28,
               "Title": "EfAuditSink.cs",
               "DocumentMoniker": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Api\\Data\\EfAuditSink.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\..\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Api\\Data\\EfAuditSink.cs",
@@ -384,7 +425,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 29,
               "Title": "StaticRegionMapper.cs",
               "DocumentMoniker": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.RegionMap\\StaticRegionMapper.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\..\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.RegionMap\\StaticRegionMapper.cs",
@@ -396,7 +437,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 30,
               "Title": "AzureGithubActionsTarget.cs",
               "DocumentMoniker": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Targets\\AzureGithubActionsTarget.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\..\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Targets\\AzureGithubActionsTarget.cs",
@@ -408,7 +449,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 17,
               "Title": "20251114131017_AddWattTimeRequestId.cs",
               "DocumentMoniker": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Api\\Migrations\\20251114131017_AddWattTimeRequestId.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\..\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Api\\Migrations\\20251114131017_AddWattTimeRequestId.cs",
@@ -420,7 +461,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 16,
               "Title": "20251115212208_Add_AverageEmissionGPerKwh.cs",
               "DocumentMoniker": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Api\\Migrations\\20251115212208_Add_AverageEmissionGPerKwh.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\..\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Api\\Migrations\\20251115212208_Add_AverageEmissionGPerKwh.cs",
@@ -432,7 +473,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 31,
               "Title": "AwsGithubActionsTarget.cs",
               "DocumentMoniker": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Targets\\AwsGithubActionsTarget.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\..\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Targets\\AwsGithubActionsTarget.cs",
@@ -444,7 +485,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 32,
               "Title": "GcpGithubActionsTarget.cs",
               "DocumentMoniker": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Targets\\GcpGithubActionsTarget.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\..\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Targets\\GcpGithubActionsTarget.cs",
@@ -456,7 +497,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 33,
               "Title": "LoggingDbContextFactory.cs",
               "DocumentMoniker": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Api\\Data\\LoggingDbContextFactory.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\..\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Api\\Data\\LoggingDbContextFactory.cs",
@@ -468,7 +509,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 19,
               "Title": "CorrelationContext.cs",
               "DocumentMoniker": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Core\\CorrelationContext.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\..\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Core\\CorrelationContext.cs",
@@ -480,7 +521,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 18,
               "Title": "20251112221649_Init_Logging.cs",
               "DocumentMoniker": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Api\\Migrations\\20251112221649_Init_Logging.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\..\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Api\\Migrations\\20251112221649_Init_Logging.cs",
@@ -492,7 +533,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 34,
               "Title": "CarbonAware.Api.csproj",
               "DocumentMoniker": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Api\\CarbonAware.Api.csproj",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\..\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Api\\CarbonAware.Api.csproj",
@@ -504,7 +545,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 35,
               "Title": "WattTimeAuthBackgroundService.cs",
               "DocumentMoniker": "C:\\Users\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Providers\\WattTimeAuthBackgroundService.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\..\\vargs\\Documents\\GitHub\\CarbonAwareAPI\\CarbonAware.Providers\\WattTimeAuthBackgroundService.cs",
@@ -513,6 +554,10 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-13T18:14:56.099Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{56df62a4-05a3-4e5b-aa1a-99371ccfb997}"
             }
           ]
         }

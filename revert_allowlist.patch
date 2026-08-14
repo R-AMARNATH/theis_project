@@ -1,0 +1,238 @@
+diff --git a/CarbonAware.Api/Program.cs b/CarbonAware.Api/Program.cs
+index 19da155..bb1b5ff 100644
+--- a/CarbonAware.Api/Program.cs
++++ b/CarbonAware.Api/Program.cs
+@@ -67,7 +67,6 @@ builder.Services.AddHostedService<WattTimeAuthBackgroundService>();
+ 
+ // Region map / engine / target
+ builder.Services.AddSingleton<IRegionMapper, StaticRegionMapper>();
+-builder.Services.AddSingleton<IRegionAllowlist, ConfigRegionAllowlist>();
+ builder.Services.AddScoped<IPolicyEngine, WattTimeTwoModeEngine>();
+ // NEW: multi-objective scheduling engine (runs alongside IPolicyEngine, doesn't replace it)
+ builder.Services.AddScoped<IMultiObjectivePolicyEngine, MultiObjectiveScoringEngine>();
+diff --git a/CarbonAware.Core/IRegionAllowlist.cs b/CarbonAware.Core/IRegionAllowlist.cs
+deleted file mode 100644
+index 540a356..0000000
+--- a/CarbonAware.Core/IRegionAllowlist.cs
++++ /dev/null
+@@ -1,17 +0,0 @@
+-namespace CarbonAware.Core;
+-
+-/// <summary>
+-/// Hard gate on which (cloud, region) pairs the scheduler is allowed to consider at all —
+-/// independent of whether carbon/cost/latency signals happen to resolve for that region.
+-///
+-/// This exists because signal availability alone isn't a safe proxy for "usable": a region can
+-/// have working latency/cost/carbon signals and still be wrong to schedule to, e.g. because the
+-/// batch pipeline has no pre-staged storage bucket there (see CandidateResolver.ResolveWithZones,
+-/// which checks this before even attempting zone mapping). Anything outside the allowlist is
+-/// rejected up front with an explicit reason, rather than relying on some other signal failing
+-/// as an indirect, easy-to-accidentally-widen way of keeping candidates in scope.
+-/// </summary>
+-public interface IRegionAllowlist
+-{
+-    bool IsAllowed(string cloud, string region);
+-}
+diff --git a/CarbonAware.Core/MultiObjective/CandidateResolver.cs b/CarbonAware.Core/MultiObjective/CandidateResolver.cs
+index 0369064..c7e1822 100644
+--- a/CarbonAware.Core/MultiObjective/CandidateResolver.cs
++++ b/CarbonAware.Core/MultiObjective/CandidateResolver.cs
+@@ -40,30 +40,22 @@ public static class CandidateResolver
+     }
+ 
+     /// <summary>
+-    /// Resolves candidates, drops anything outside the region allowlist, and further drops any
+-    /// pair the region mapper can't translate into a WattTime grid zone. Each dropped candidate
+-    /// carries its own specific reason, so callers can report "not in the approved region set"
+-    /// separately from "no carbon-zone mapping" rather than a single generic message for both.
++    /// Resolves candidates and drops any pair the region mapper can't translate into a
++    /// WattTime grid zone. Returns both the usable set and the ones that were dropped.
+     /// </summary>
+     public static (List<(string Cloud, string Region, string Zone)> Usable,
+-                   List<(string Cloud, string Region, string Reason)> Invalid)
+-        ResolveWithZones(JobSpec job, PolicySpec policy, IRegionMapper mapper, IRegionAllowlist allowlist)
++                   List<(string Cloud, string Region)> Invalid)
++        ResolveWithZones(JobSpec job, PolicySpec policy, IRegionMapper mapper)
+     {
+         var raw = BuildCandidates(job, policy);
+         var usable = new List<(string, string, string)>();
+-        var invalid = new List<(string, string, string)>();
++        var invalid = new List<(string, string)>();
+ 
+         foreach (var (cloud, region) in raw)
+         {
+-            if (!allowlist.IsAllowed(cloud, region))
+-            {
+-                invalid.Add((cloud, region, "not in the approved experiment region set"));
+-                continue;
+-            }
+-
+             var zone = mapper.GetGridZones(cloud, region);
+             if (string.IsNullOrWhiteSpace(zone))
+-                invalid.Add((cloud, region, "no grid zone mapping for this cloud/region"));
++                invalid.Add((cloud, region));
+             else
+                 usable.Add((cloud, region, zone));
+         }
+diff --git a/CarbonAware.Core/MultiObjective/MultiObjectiveScoringEngine.cs b/CarbonAware.Core/MultiObjective/MultiObjectiveScoringEngine.cs
+index 576f11f..8e36785 100644
+--- a/CarbonAware.Core/MultiObjective/MultiObjectiveScoringEngine.cs
++++ b/CarbonAware.Core/MultiObjective/MultiObjectiveScoringEngine.cs
+@@ -16,7 +16,6 @@ namespace CarbonAware.Core;
+ public sealed class MultiObjectiveScoringEngine : IMultiObjectivePolicyEngine
+ {
+     private readonly IRegionMapper _mapper;
+-    private readonly IRegionAllowlist _allowlist;
+     private readonly ICarbonSignalProvider _carbon;
+     private readonly ICostSignalProvider _cost;
+     private readonly ILatencySignalProvider _latency;
+@@ -25,14 +24,12 @@ public sealed class MultiObjectiveScoringEngine : IMultiObjectivePolicyEngine
+ 
+     public MultiObjectiveScoringEngine(
+         IRegionMapper mapper,
+-        IRegionAllowlist allowlist,
+         ICarbonSignalProvider carbon,
+         ICostSignalProvider cost,
+         ILatencySignalProvider latency,
+         IAuditSink audit)
+     {
+         _mapper = mapper;
+-        _allowlist = allowlist;
+         _carbon = carbon;
+         _cost = cost;
+         _latency = latency;
+@@ -49,13 +46,13 @@ public sealed class MultiObjectiveScoringEngine : IMultiObjectivePolicyEngine
+         var now = DateTimeOffset.UtcNow;
+         weights = weights.Normalized();
+ 
+-        var (usable, invalid) = CandidateResolver.ResolveWithZones(job, policy, _mapper, _allowlist);
++        var (usable, invalid) = CandidateResolver.ResolveWithZones(job, policy, _mapper);
+         if (usable.Count == 0)
+         {
+-            var detail = string.Join(", ", invalid.Select(x => $"{x.Cloud}:{x.Region} ({x.Reason})"));
++            var detail = string.Join(", ", invalid.Select(x => $"{x.Item1}:{x.Item2}"));
+             throw new ArgumentException(
+                 $"No valid cloud/region mappings for: {detail}. " +
+-                "Use exact region IDs (e.g., azure:eastus, gcp:us-east1, aws:us-east-1) from the approved experiment region set.");
++                "Use exact region IDs (e.g., azure:eastus, gcp:us-east1, aws:us-east-1).");
+         }
+ 
+         // Fetch all three signals for every candidate concurrently
+@@ -93,16 +90,16 @@ public sealed class MultiObjectiveScoringEngine : IMultiObjectivePolicyEngine
+ 
+         var scored = new List<RegionCandidateScore>();
+ 
+-        // Candidates rejected up front — either outside the approved region allowlist, or the
+-        // region mapper couldn't resolve them to a grid zone at all (e.g. a typo'd/unsupported
+-        // region string). Never reach signal-fetching above -- log them too, with their specific
+-        // reason, so AdviceCandidates has a row for every candidate you asked about.
++        // Candidates the region mapper couldn't resolve to a grid zone at all (e.g. a typo'd
++        // or unsupported region string) never reach signal-fetching above -- log them too,
++        // so AdviceCandidates has a row for every candidate you asked about, not just the
++        // ones that made it past region mapping.
+         void AddInvalidCandidates()
+         {
+-            foreach (var (cloud, region, reason) in invalid)
++            foreach (var (cloud, region) in invalid)
+             {
+                 scored.Add(new RegionCandidateScore(cloud, region, null, null, null,
+-                    null, null, null, null, true, reason,
++                    null, null, null, null, true, "no grid zone mapping for this cloud/region",
+                     null, null, null));
+             }
+         }
+diff --git a/CarbonAware.Core/WattTimeTwoModeEngine.cs b/CarbonAware.Core/WattTimeTwoModeEngine.cs
+index 156937d..9c9e0b0 100644
+--- a/CarbonAware.Core/WattTimeTwoModeEngine.cs
++++ b/CarbonAware.Core/WattTimeTwoModeEngine.cs
+@@ -10,20 +10,17 @@ namespace CarbonAware.Core;
+ public sealed class WattTimeTwoModeEngine : IPolicyEngine
+ {
+     private readonly IRegionMapper _mapper;
+-    private readonly IRegionAllowlist _allowlist;
+     private readonly ICarbonSignalProvider _signals;
+     private readonly IAuditSink _audit;
+     private readonly ICorrelationContext _correlationContext;
+ 
+     public WattTimeTwoModeEngine(
+         IRegionMapper mapper,
+-        IRegionAllowlist allowlist,
+         ICarbonSignalProvider signals,
+         ICorrelationContext correlation,
+         IAuditSink audit)
+     {
+         _mapper = mapper;
+-        _allowlist = allowlist;
+         _signals = signals;
+         _audit = audit;
+         _correlationContext = correlation;
+@@ -59,29 +56,23 @@ public sealed class WattTimeTwoModeEngine : IPolicyEngine
+         // Resolve candidates
+         var rawCandidates = BuildCandidates(job, policy);
+         var candidates = new List<(string cloud, string region, string zone)>();
+-        var invalid = new List<(string cloud, string region, string reason)>();
++        var invalid = new List<(string cloud, string region)>();
+ 
+         foreach (var (cloud, region) in rawCandidates)
+         {
+-            if (!_allowlist.IsAllowed(cloud, region))
+-            {
+-                invalid.Add((cloud, region, "not in the approved experiment region set"));
+-                continue;
+-            }
+-
+             var zone = _mapper.GetGridZones(cloud, region);
+             if (string.IsNullOrWhiteSpace(zone))
+-                invalid.Add((cloud, region, "no grid zone mapping for this cloud/region"));
++                invalid.Add((cloud, region));
+             else
+                 candidates.Add((cloud, region, zone));
+         }
+ 
+         if (candidates.Count == 0)
+         {
+-            var detail = string.Join(", ", invalid.Select(x => $"{x.cloud}:{x.region} ({x.reason})"));
++            var detail = string.Join(", ", invalid.Select(x => $"{x.cloud}:{x.region}"));
+             throw new ArgumentException(
+                 $"No valid cloud/region mappings for: {detail}. " +
+-                "Use exact region IDs (e.g., azure:eastus, gcp:us-east1, aws:us-east-1) from the approved experiment region set.");
++                "Use exact region IDs (e.g., azure:eastus, gcp:us-east1, aws:us-east-1).");
+         }
+ 
+         // Branch by mode
+diff --git a/CarbonAware.Providers/ConfigRegionAllowlist.cs b/CarbonAware.Providers/ConfigRegionAllowlist.cs
+deleted file mode 100644
+index d4c2858..0000000
+--- a/CarbonAware.Providers/ConfigRegionAllowlist.cs
++++ /dev/null
+@@ -1,30 +0,0 @@
+-using System;
+-using System.Collections.Generic;
+-using CarbonAware.Core;
+-using CarbonAware.Providers.Options;
+-using Microsoft.Extensions.Options;
+-
+-namespace CarbonAware.Providers;
+-
+-/// <summary>
+-/// IRegionAllowlist backed by LatencySignalOptions:EndpointByRegion — deliberately reuses that
+-/// config section rather than introducing a separate "AllowedRegions" list, since it's already
+-/// restricted to exactly the experiment's approved regions (see appsettings.json) and having a
+-/// second copy would just be one more place for the region set to drift out of sync.
+-/// </summary>
+-public sealed class ConfigRegionAllowlist : IRegionAllowlist
+-{
+-    private readonly Dictionary<string, HashSet<string>> _allowed;
+-
+-    public ConfigRegionAllowlist(IOptions<LatencySignalOptions> opts)
+-    {
+-        _allowed = new Dictionary<string, HashSet<string>>(StringComparer.OrdinalIgnoreCase);
+-        foreach (var (cloud, regions) in opts.Value.EndpointByRegion)
+-        {
+-            _allowed[cloud] = new HashSet<string>(regions.Keys, StringComparer.OrdinalIgnoreCase);
+-        }
+-    }
+-
+-    public bool IsAllowed(string cloud, string region) =>
+-        _allowed.TryGetValue(cloud, out var regions) && regions.Contains(region);
+-}

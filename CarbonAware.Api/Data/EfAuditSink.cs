@@ -4,26 +4,34 @@ using Microsoft.Extensions.Options;
 
 namespace CarbonAware.Api.Data;
 
+/// <summary>
+/// Uses IDbContextFactory rather than an injected scoped LoggingDbContext. MultiObjectiveScoringEngine
+/// fires many candidates concurrently (Task.WhenAll) within a single request, and each one can call
+/// LogWattTimeCallAsync — a single shared DbContext instance isn't thread-safe and throws under that
+/// concurrency. The factory hands out a fresh, short-lived context per call instead, which is safe
+/// to use from multiple concurrent tasks at once.
+/// </summary>
 public sealed class EfAuditSink : IAuditSink
 {
     private readonly AuditOptions _options;
-    private readonly LoggingDbContext _db;
- 
-    public EfAuditSink(LoggingDbContext db, IOptions<AuditOptions> options)
+    private readonly IDbContextFactory<LoggingDbContext> _dbFactory;
+
+    public EfAuditSink(IDbContextFactory<LoggingDbContext> dbFactory, IOptions<AuditOptions> options)
     {
-        _db = db;
+        _dbFactory = dbFactory;
         _options = options.Value;
     }
 
 
     public async Task LogWattTimeCallAsync(WattTimeCallRecord rec, CancellationToken ct = default)
-   {
+    {
         if (!_options.EnableDatabaseLogging)
         {
             // Logging disabled: do nothing
             return;
         }
-        _db.WattTimeCalls.Add(new WattTimeCallLog
+        await using var db = await _dbFactory.CreateDbContextAsync(ct);
+        db.WattTimeCalls.Add(new WattTimeCallLog
         {
             CreatedUtc = rec.CreatedUtc,
             Method = rec.Method,
@@ -40,7 +48,7 @@ public sealed class EfAuditSink : IAuditSink
             SourceLine = rec.SourceLine,
             RequestId = rec.RequestId
         });
-        await _db.SaveChangesAsync(ct);
+        await db.SaveChangesAsync(ct);
     }
 
     public async Task LogAdviceAsync(AdviceRecord rec, IEnumerable<AdviceCandidateRecord>? candidates = null, CancellationToken ct = default)
@@ -126,7 +134,8 @@ public sealed class EfAuditSink : IAuditSink
             }
         }
 
-        _db.AdviceExecutions.Add(exec);
-        await _db.SaveChangesAsync(ct);
+        await using var db = await _dbFactory.CreateDbContextAsync(ct);
+        db.AdviceExecutions.Add(exec);
+        await db.SaveChangesAsync(ct);
     }
 }

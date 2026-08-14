@@ -5,39 +5,31 @@
     "Usable": true,
     "Reason": null,
     "Moer": 577.060213114,
-    "Cost": 0.0544,
-    "Latency": 1631.7111,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is aws:ap-northeast-1 (577.1 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "aws",
     "Region": "ap-northeast-2",
     "Usable": true,
     "Reason": null,
-    "Moer": 693.769529915,
-    "Cost": 0.052,
-    "Latency": 1816.9435,
-    "CostLive": false
+    "Moer": 770.1544850230001,
+    "Rationale": "run_now: cleanest now is aws:ap-northeast-2 (770.2 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "aws",
     "Region": "ap-northeast-3",
     "Usable": true,
     "Reason": null,
-    "Moer": 536.372977525,
-    "Cost": 0.0544,
-    "Latency": 1636.0597,
-    "CostLive": false
+    "Moer": 535.964744392,
+    "Rationale": "run_now: cleanest now is aws:ap-northeast-3 (536.0 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "aws",
     "Region": "ap-south-1",
     "Usable": true,
     "Reason": null,
-    "Moer": 971.0505456960001,
-    "Cost": 0.0448,
-    "Latency": 1195.0984,
-    "CostLive": false
+    "Moer": 971.2319826439999,
+    "Rationale": "run_now: cleanest now is aws:ap-south-1 (971.2 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "aws",
@@ -45,19 +37,15 @@
     "Usable": true,
     "Reason": null,
     "Moer": 359.925545595,
-    "Cost": 0.0528,
-    "Latency": 1586.6716,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is aws:ap-southeast-1 (359.9 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "aws",
     "Region": "ap-southeast-2",
     "Usable": true,
     "Reason": null,
-    "Moer": 790.61150091,
-    "Cost": 0.0528,
-    "Latency": 1460.5578,
-    "CostLive": false
+    "Moer": 834.8367569850001,
+    "Rationale": "run_now: cleanest now is aws:ap-southeast-2 (834.8 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "aws",
@@ -65,19 +53,15 @@
     "Usable": true,
     "Reason": null,
     "Moer": 421.568748678,
-    "Cost": 0.0464,
-    "Latency": 964.0923,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is aws:ca-central-1 (421.6 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "aws",
     "Region": "eu-central-1",
     "Usable": true,
     "Reason": null,
-    "Moer": 751.920071749,
-    "Cost": 0.048,
-    "Latency": 697.3526,
-    "CostLive": false
+    "Moer": 750.4232169280001,
+    "Rationale": "run_now: cleanest now is aws:eu-central-1 (750.4 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "aws",
@@ -85,19 +69,15 @@
     "Usable": true,
     "Reason": null,
     "Moer": 717.855284762,
-    "Cost": 0.0432,
-    "Latency": 808.1464,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is aws:eu-north-1 (717.9 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "aws",
     "Region": "eu-west-1",
     "Usable": true,
     "Reason": null,
-    "Moer": 539.7295610630001,
-    "Cost": 0.0456,
-    "Latency": 730.8877,
-    "CostLive": false
+    "Moer": 539.6388425890001,
+    "Rationale": "run_now: cleanest now is aws:eu-west-1 (539.6 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "aws",
@@ -105,9 +85,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 434.36005351200004,
-    "Cost": 0.0472,
-    "Latency": 817.4004,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is aws:eu-west-2 (434.4 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "aws",
@@ -115,9 +93,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 385.009203656,
-    "Cost": 0.0472,
-    "Latency": 691.9493,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is aws:eu-west-3 (385.0 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "aws",
@@ -125,9 +101,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 742.98430206,
-    "Cost": 0.0672,
-    "Latency": 1323.0695,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is aws:sa-east-1 (743.0 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "aws",
@@ -135,9 +109,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 539.1852502190001,
-    "Cost": 0.0416,
-    "Latency": 1008.6245,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is aws:us-east-1 (539.2 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "aws",
@@ -145,9 +117,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 539.6388425890001,
-    "Cost": 0.0416,
-    "Latency": 812.639,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is aws:us-east-2 (539.6 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "aws",
@@ -155,9 +125,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 419.028631406,
-    "Cost": 0.0496,
-    "Latency": 1530.7421,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is aws:us-west-1 (419.0 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "aws",
@@ -165,49 +133,39 @@
     "Usable": true,
     "Reason": null,
     "Moer": 610.308533835,
-    "Cost": 0.0416,
-    "Latency": 1211.2448,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is aws:us-west-2 (610.3 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "azure",
     "Region": "australiacentral",
-    "Usable": false,
-    "Reason": "missing signal(s): latency",
-    "Moer": null,
-    "Cost": null,
-    "Latency": null,
-    "CostLive": null
+    "Usable": true,
+    "Reason": null,
+    "Moer": 834.8367569850001,
+    "Rationale": "run_now: cleanest now is azure:australiacentral (834.8 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "azure",
     "Region": "australiasoutheast",
-    "Usable": false,
-    "Reason": "missing signal(s): latency",
-    "Moer": null,
-    "Cost": null,
-    "Latency": null,
-    "CostLive": null
+    "Usable": true,
+    "Reason": null,
+    "Moer": 933.9013305930001,
+    "Rationale": "run_now: cleanest now is azure:australiasoutheast (933.9 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "azure",
     "Region": "austriaeast",
-    "Usable": false,
-    "Reason": "missing signal(s): latency",
-    "Moer": null,
-    "Cost": null,
-    "Latency": null,
-    "CostLive": null
+    "Usable": true,
+    "Reason": null,
+    "Moer": 604.1396776030001,
+    "Rationale": "run_now: cleanest now is azure:austriaeast (604.1 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "azure",
     "Region": "belgiumcentral",
-    "Usable": false,
-    "Reason": "missing signal(s): latency",
-    "Moer": null,
-    "Cost": null,
-    "Latency": null,
-    "CostLive": null
+    "Usable": true,
+    "Reason": null,
+    "Moer": 393.446021738,
+    "Rationale": "run_now: cleanest now is azure:belgiumcentral (393.4 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "azure",
@@ -215,9 +173,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 742.98430206,
-    "Cost": 0.153,
-    "Latency": 636.336,
-    "CostLive": true
+    "Rationale": "run_now: cleanest now is azure:brazilsouth (743.0 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "azure",
@@ -225,9 +181,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 421.568748678,
-    "Cost": 0.106,
-    "Latency": 532.5186,
-    "CostLive": true
+    "Rationale": "run_now: cleanest now is azure:canadaeast (421.6 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "azure",
@@ -235,29 +189,23 @@
     "Usable": true,
     "Reason": null,
     "Moer": 638.20446459,
-    "Cost": 0.108,
-    "Latency": 538.6725,
-    "CostLive": true
+    "Rationale": "run_now: cleanest now is azure:centralus (638.2 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "azure",
     "Region": "chilecentral",
-    "Usable": false,
-    "Reason": "missing signal(s): latency",
-    "Moer": null,
-    "Cost": null,
-    "Latency": null,
-    "CostLive": null
+    "Usable": true,
+    "Reason": null,
+    "Moer": 628.815102531,
+    "Rationale": "run_now: cleanest now is azure:chilecentral (628.8 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "azure",
     "Region": "eastasia",
-    "Usable": false,
-    "Reason": "missing signal(s): carbon",
+    "Usable": true,
+    "Reason": null,
     "Moer": null,
-    "Cost": null,
-    "Latency": null,
-    "CostLive": null
+    "Rationale": "run_now: no usable MOER for candidates; using fallback azure:us-east1"
   },
   {
     "Cloud": "azure",
@@ -265,9 +213,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 539.1852502190001,
-    "Cost": 0.0952,
-    "Latency": 474.1198,
-    "CostLive": true
+    "Rationale": "run_now: cleanest now is azure:eastus2 (539.2 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "azure",
@@ -275,9 +221,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 385.009203656,
-    "Cost": 0.112,
-    "Latency": 410.4084,
-    "CostLive": true
+    "Rationale": "run_now: cleanest now is azure:francecentral (385.0 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "azure",
@@ -285,19 +229,15 @@
     "Usable": true,
     "Reason": null,
     "Moer": 803.538883455,
-    "Cost": 0.108,
-    "Latency": 553.0511,
-    "CostLive": true
+    "Rationale": "run_now: cleanest now is azure:indonesiacentral (803.5 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "azure",
     "Region": "israelcentral",
-    "Usable": false,
-    "Reason": "missing signal(s): latency",
-    "Moer": null,
-    "Cost": null,
-    "Latency": null,
-    "CostLive": null
+    "Usable": true,
+    "Reason": null,
+    "Moer": 586.631012121,
+    "Rationale": "run_now: cleanest now is azure:israelcentral (586.6 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "azure",
@@ -305,9 +245,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 381.0175908,
-    "Cost": 0.112,
-    "Latency": 482.139,
-    "CostLive": true
+    "Rationale": "run_now: cleanest now is azure:italynorth (381.0 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "azure",
@@ -315,9 +253,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 535.964744392,
-    "Cost": 0.124,
-    "Latency": 582.3346,
-    "CostLive": true
+    "Rationale": "run_now: cleanest now is azure:japanwest (536.0 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "azure",
@@ -325,19 +261,15 @@
     "Usable": true,
     "Reason": null,
     "Moer": 770.1544850230001,
-    "Cost": 0.117,
-    "Latency": 446.8394,
-    "CostLive": true
+    "Rationale": "run_now: cleanest now is azure:koreacentral (770.2 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "azure",
     "Region": "koreasouth",
-    "Usable": false,
-    "Reason": "missing signal(s): latency",
-    "Moer": null,
-    "Cost": null,
-    "Latency": null,
-    "CostLive": null
+    "Usable": true,
+    "Reason": null,
+    "Moer": 770.1544850230001,
+    "Rationale": "run_now: cleanest now is azure:koreasouth (770.2 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "azure",
@@ -345,9 +277,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 654.0801975400001,
-    "Cost": 0.108,
-    "Latency": 404.1956,
-    "CostLive": true
+    "Rationale": "run_now: cleanest now is azure:malaysiawest (654.1 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "azure",
@@ -355,9 +285,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 1356.331904774,
-    "Cost": 0.12,
-    "Latency": 574.7881,
-    "CostLive": true
+    "Rationale": "run_now: cleanest now is azure:newzealandnorth (1356.3 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "azure",
@@ -365,9 +293,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 538.777017086,
-    "Cost": 0.0952,
-    "Latency": 439.7465,
-    "CostLive": true
+    "Rationale": "run_now: cleanest now is azure:northcentralus (538.8 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "azure",
@@ -375,9 +301,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 863.775950191,
-    "Cost": 0.115,
-    "Latency": 270.2705,
-    "CostLive": true
+    "Rationale": "run_now: cleanest now is azure:polandcentral (863.8 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "azure",
@@ -385,9 +309,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 401.474606687,
-    "Cost": 0.117,
-    "Latency": 472.8966,
-    "CostLive": true
+    "Rationale": "run_now: cleanest now is azure:qatarcentral (401.5 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "azure",
@@ -395,9 +317,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 758.86003501,
-    "Cost": 0.127,
-    "Latency": 770.1311,
-    "CostLive": true
+    "Rationale": "run_now: cleanest now is azure:southafricanorth (758.9 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "azure",
@@ -405,9 +325,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 561.365917112,
-    "Cost": 0.114,
-    "Latency": 818.3392,
-    "CostLive": true
+    "Rationale": "run_now: cleanest now is azure:southcentralus (561.4 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "azure",
@@ -415,9 +333,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 717.855284762,
-    "Cost": 0.102,
-    "Latency": 631.3197,
-    "CostLive": true
+    "Rationale": "run_now: cleanest now is azure:swedencentral (717.9 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "azure",
@@ -425,9 +341,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 789.1146460890001,
-    "Cost": 0.136,
-    "Latency": 372.8448,
-    "CostLive": true
+    "Rationale": "run_now: cleanest now is azure:switzerlandnorth (789.1 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "azure",
@@ -435,9 +349,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 615.52484609,
-    "Cost": 0.117,
-    "Latency": 431.6335,
-    "CostLive": true
+    "Rationale": "run_now: cleanest now is azure:uaenorth (615.5 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "azure",
@@ -445,9 +357,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 434.36005351200004,
-    "Cost": 0.115,
-    "Latency": 527.6043,
-    "CostLive": true
+    "Rationale": "run_now: cleanest now is azure:ukwest (434.4 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "azure",
@@ -455,9 +365,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 610.9889223900001,
-    "Cost": 0.114,
-    "Latency": 524.2983,
-    "CostLive": true
+    "Rationale": "run_now: cleanest now is azure:westcentralus (611.0 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "azure",
@@ -465,9 +373,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 610.444611546,
-    "Cost": 0.0952,
-    "Latency": 433.8913,
-    "CostLive": true
+    "Rationale": "run_now: cleanest now is azure:westus2 (610.4 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "azure",
@@ -475,9 +381,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 496.320771254,
-    "Cost": 0.0952,
-    "Latency": 706.0206,
-    "CostLive": true
+    "Rationale": "run_now: cleanest now is azure:westus3 (496.3 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "gcp",
@@ -485,9 +389,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 758.86003501,
-    "Cost": 0.0609,
-    "Latency": 1057.0279,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is gcp:africa-south1 (758.9 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "gcp",
@@ -495,19 +397,15 @@
     "Usable": true,
     "Reason": null,
     "Moer": 537.824473109,
-    "Cost": 0.0641,
-    "Latency": 1027.5932,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is gcp:asia-east1 (537.8 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "gcp",
     "Region": "asia-east2",
-    "Usable": false,
-    "Reason": "missing signal(s): carbon",
+    "Usable": true,
+    "Reason": null,
     "Moer": null,
-    "Cost": null,
-    "Latency": null,
-    "CostLive": null
+    "Rationale": "run_now: no usable MOER for candidates; using fallback gcp:us-east1"
   },
   {
     "Cloud": "gcp",
@@ -515,9 +413,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 577.060213114,
-    "Cost": 0.071,
-    "Latency": 1136.6317,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is gcp:asia-northeast1 (577.1 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "gcp",
@@ -525,9 +421,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 535.964744392,
-    "Cost": 0.071,
-    "Latency": 1062.3437,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is gcp:asia-northeast2 (536.0 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "gcp",
@@ -535,9 +429,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 770.1544850230001,
-    "Cost": 0.071,
-    "Latency": 956.9791,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is gcp:asia-northeast3 (770.2 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "gcp",
@@ -545,9 +437,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 971.2319826439999,
-    "Cost": 0.0664,
-    "Latency": 933.3386,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is gcp:asia-south1 (971.2 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "gcp",
@@ -555,9 +445,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 971.2319826439999,
-    "Cost": 0.0664,
-    "Latency": 1020.9759,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is gcp:asia-south2 (971.2 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "gcp",
@@ -565,9 +453,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 359.925545595,
-    "Cost": 0.0682,
-    "Latency": 1010.7344,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is gcp:asia-southeast1 (359.9 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "gcp",
@@ -575,9 +461,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 803.538883455,
-    "Cost": 0.0744,
-    "Latency": 1013.2423,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is gcp:asia-southeast2 (803.5 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "gcp",
@@ -585,9 +469,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 834.8367569850001,
-    "Cost": 0.0785,
-    "Latency": 1089.0785,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is gcp:australia-southeast1 (834.8 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "gcp",
@@ -595,9 +477,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 933.9013305930001,
-    "Cost": 0.0667,
-    "Latency": 1019.5602,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is gcp:australia-southeast2 (933.9 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "gcp",
@@ -605,9 +485,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 863.775950191,
-    "Cost": 0.0669,
-    "Latency": 999.9699,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is gcp:europe-central2 (863.8 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "gcp",
@@ -615,9 +493,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 735.182513296,
-    "Cost": 0.0609,
-    "Latency": 866.3334,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is gcp:europe-north1 (735.2 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "gcp",
@@ -625,9 +501,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 717.855284762,
-    "Cost": 0.0581,
-    "Latency": 892.5767,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is gcp:europe-north2 (717.9 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "gcp",
@@ -635,9 +509,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 367.137664278,
-    "Cost": 0.0653,
-    "Latency": 963.6371,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is gcp:europe-southwest1 (367.1 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "gcp",
@@ -645,9 +517,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 393.446021738,
-    "Cost": 0.0609,
-    "Latency": 977.6744,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is gcp:europe-west1 (393.4 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "gcp",
@@ -655,9 +525,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 750.4232169280001,
-    "Cost": 0.0713,
-    "Latency": 771.5762,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is gcp:europe-west10 (750.4 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "gcp",
@@ -665,9 +533,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 381.0175908,
-    "Cost": 0.0714,
-    "Latency": 984.9343,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is gcp:europe-west12 (381.0 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "gcp",
@@ -675,9 +541,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 434.36005351200004,
-    "Cost": 0.0713,
-    "Latency": 980.3714,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is gcp:europe-west2 (434.4 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "gcp",
@@ -685,9 +549,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 750.4232169280001,
-    "Cost": 0.0713,
-    "Latency": 753.0948,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is gcp:europe-west3 (750.4 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "gcp",
@@ -695,9 +557,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 409.956784006,
-    "Cost": 0.0609,
-    "Latency": 913.3042,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is gcp:europe-west4 (410.0 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "gcp",
@@ -705,9 +565,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 789.1146460890001,
-    "Cost": 0.0725,
-    "Latency": 879.6826,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is gcp:europe-west6 (789.1 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "gcp",
@@ -715,9 +573,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 381.0175908,
-    "Cost": 0.0642,
-    "Latency": 998.6854,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is gcp:europe-west8 (381.0 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "gcp",
@@ -725,9 +581,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 385.009203656,
-    "Cost": 0.0642,
-    "Latency": 942.1407,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is gcp:europe-west9 (385.0 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "gcp",
@@ -735,9 +589,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 401.474606687,
-    "Cost": 0.0672,
-    "Latency": 969.04,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is gcp:me-central1 (401.5 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "gcp",
@@ -745,9 +597,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 586.631012121,
-    "Cost": 0.0608,
-    "Latency": 993.9504,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is gcp:me-west1 (586.6 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "gcp",
@@ -755,9 +605,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 421.568748678,
-    "Cost": 0.0609,
-    "Latency": 1013.9247,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is gcp:northamerica-northeast1 (421.6 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "gcp",
@@ -765,9 +613,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 460.39625555000003,
-    "Cost": 0.0609,
-    "Latency": 968.4912,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is gcp:northamerica-northeast2 (460.4 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "gcp",
@@ -775,9 +621,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 522.6744879510001,
-    "Cost": 0.0603,
-    "Latency": 1001.6994,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is gcp:northamerica-south1 (522.7 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "gcp",
@@ -785,9 +629,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 742.98430206,
-    "Cost": 0.0878,
-    "Latency": 1089.0489,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is gcp:southamerica-east1 (743.0 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "gcp",
@@ -795,9 +637,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 628.815102531,
-    "Cost": 0.0791,
-    "Latency": 1171.214,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is gcp:southamerica-west1 (628.8 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "gcp",
@@ -805,9 +645,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 638.567338486,
-    "Cost": 0.0553,
-    "Latency": 956.5854,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is gcp:us-central1 (638.6 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "gcp",
@@ -815,9 +653,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 738.493737597,
-    "Cost": 0.0553,
-    "Latency": 1021.9476,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is gcp:us-east1 (738.5 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "gcp",
@@ -825,9 +661,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 539.1852502190001,
-    "Cost": 0.0623,
-    "Latency": 1042.3236,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is gcp:us-east4 (539.2 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "gcp",
@@ -835,9 +669,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 539.6388425890001,
-    "Cost": 0.0553,
-    "Latency": 1016.2713,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is gcp:us-east5 (539.6 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "gcp",
@@ -845,9 +677,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 558.3268482330001,
-    "Cost": 0.0653,
-    "Latency": 1008.0963,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is gcp:us-south1 (558.3 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "gcp",
@@ -855,9 +685,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 610.308533835,
-    "Cost": 0.0553,
-    "Latency": 1023.9137,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is gcp:us-west1 (610.3 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "gcp",
@@ -865,9 +693,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 514.600543765,
-    "Cost": 0.0664,
-    "Latency": 1001.1059,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is gcp:us-west2 (514.6 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "gcp",
@@ -875,9 +701,7 @@
     "Usable": true,
     "Reason": null,
     "Moer": 610.08173765,
-    "Cost": 0.0664,
-    "Latency": 1002.7937,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is gcp:us-west3 (610.1 g/kWh, via watttime.v3.forecast@now)"
   },
   {
     "Cloud": "gcp",
@@ -885,8 +709,6 @@
     "Usable": true,
     "Reason": null,
     "Moer": 609.17455291,
-    "Cost": 0.0623,
-    "Latency": 1010.5772,
-    "CostLive": false
+    "Rationale": "run_now: cleanest now is gcp:us-west4 (609.2 g/kWh, via watttime.v3.forecast@now)"
   }
 ]

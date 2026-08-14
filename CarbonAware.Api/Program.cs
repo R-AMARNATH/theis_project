@@ -37,7 +37,17 @@ builder.Services.AddHttpClient<AzureGithubActionsTarget>(http => http.BaseAddres
 builder.Services.AddHttpClient<GcpGithubActionsTarget>(http => http.BaseAddress = new Uri(gitHubApiURL));
 builder.Services.AddHttpClient<AwsGithubActionsTarget>(http => http.BaseAddress = new Uri(gitHubApiURL));
 
-builder.Services.AddDbContext<LoggingDbContext>(opt =>
+// Registered as a factory only (not also AddDbContext) — MultiObjectiveScoringEngine fires many
+// candidates concurrently (Task.WhenAll) within a single request, and each one can trigger a
+// WattTime/audit write. A single Scoped DbContext instance isn't thread-safe and throws under
+// that concurrency ("A second operation was started on this context instance before a previous
+// operation completed"). The factory hands out a short-lived context per write instead, which is
+// safe to use concurrently. (Registering both AddDbContext and AddDbContextFactory for the same
+// TContext causes a DI validation error — AddDbContextFactory registers IDbContextFactory<T> as
+// Singleton, which then can't consume the Scoped DbContextOptions<T> that AddDbContext creates —
+// so anywhere that used to inject LoggingDbContext directly now injects
+// IDbContextFactory<LoggingDbContext> and creates its own short-lived context instead.)
+builder.Services.AddDbContextFactory<LoggingDbContext>(opt =>
     opt.UseSqlServer(builder.Configuration.GetConnectionString("LoggingDb"),
         sql => sql.EnableRetryOnFailure(5, TimeSpan.FromSeconds(2), null)));
 
@@ -67,7 +77,6 @@ builder.Services.AddHostedService<WattTimeAuthBackgroundService>();
 
 // Region map / engine / target
 builder.Services.AddSingleton<IRegionMapper, StaticRegionMapper>();
-builder.Services.AddSingleton<IRegionAllowlist, ConfigRegionAllowlist>();
 builder.Services.AddScoped<IPolicyEngine, WattTimeTwoModeEngine>();
 // NEW: multi-objective scheduling engine (runs alongside IPolicyEngine, doesn't replace it)
 builder.Services.AddScoped<IMultiObjectivePolicyEngine, MultiObjectiveScoringEngine>();
@@ -106,7 +115,7 @@ app.MapPost("/advise", async (OrchestrationRequest req, IPolicyEngine engine, Ca
 })
 .WithName("Advise");
 
-app.MapPost("/schedule", async (OrchestrationRequest req, IPolicyEngine engine, ICloudTarget target, LoggingDbContext db, CancellationToken ct) =>
+app.MapPost("/schedule", async (OrchestrationRequest req, IPolicyEngine engine, ICloudTarget target, IDbContextFactory<LoggingDbContext> dbFactory, CancellationToken ct) =>
 {
     CorrelationContext correlation = new CorrelationContext();
     correlation.Current = Guid.NewGuid();
@@ -119,9 +128,12 @@ app.MapPost("/schedule", async (OrchestrationRequest req, IPolicyEngine engine, 
             : req.CycleId!;
         var experiment = new ExperimentContext(cycleId, "single", null);
 
-        await UpsertPredictedAsync(db, new PredictedResultRequest(
-            cycleId, "single", null, advice.Cloud, advice.Region,
-            advice.EstimatedIntensityGPerKwh, null, null), ct);
+        await using (var db = await dbFactory.CreateDbContextAsync(ct))
+        {
+            await UpsertPredictedAsync(db, new PredictedResultRequest(
+                cycleId, "single", null, advice.Cloud, advice.Region,
+                advice.EstimatedIntensityGPerKwh, null, null), ct);
+        }
 
         var id = await target.ScheduleAsync(advice, req.Job, correlation, experiment, ct);
         return Results.Ok(new { advice, scheduledId = id, cycleId });
@@ -147,7 +159,7 @@ app.MapPost("/advise-multi", async (MultiObjectiveRequest req, IMultiObjectivePo
 })
 .WithName("AdviseMulti");
 
-app.MapPost("/schedule-multi", async (MultiObjectiveRequest req, IMultiObjectivePolicyEngine engine, ICloudTarget target, LoggingDbContext db, CancellationToken ct) =>
+app.MapPost("/schedule-multi", async (MultiObjectiveRequest req, IMultiObjectivePolicyEngine engine, ICloudTarget target, IDbContextFactory<LoggingDbContext> dbFactory, CancellationToken ct) =>
 {
     var correlation = new CorrelationContext { Current = Guid.NewGuid() };
     try
@@ -166,9 +178,12 @@ app.MapPost("/schedule-multi", async (MultiObjectiveRequest req, IMultiObjective
             string.Equals(c.Cloud, advice.Cloud, StringComparison.OrdinalIgnoreCase) &&
             string.Equals(c.Region, advice.Region, StringComparison.OrdinalIgnoreCase));
 
-        await UpsertPredictedAsync(db, new PredictedResultRequest(
-            cycleId, "multi", advice.WeightProfile, advice.Cloud!, advice.Region!,
-            bestCandidate?.MoerGPerKwh, bestCandidate?.CostUsdPerHr, bestCandidate?.LatencyMs), ct);
+        await using (var db = await dbFactory.CreateDbContextAsync(ct))
+        {
+            await UpsertPredictedAsync(db, new PredictedResultRequest(
+                cycleId, "multi", advice.WeightProfile, advice.Cloud!, advice.Region!,
+                bestCandidate?.MoerGPerKwh, bestCandidate?.CostUsdPerHr, bestCandidate?.LatencyMs), ct);
+        }
 
         var singleShapedAdvice = new AdviceResult(advice.Cloud!, advice.Region!, advice.When, advice.Rationale, null);
         var id = await target.ScheduleAsync(singleShapedAdvice, req.Job, correlation, experiment, ct);
@@ -328,12 +343,13 @@ async Task<CycleResultLog> UpsertPredictedAsync(LoggingDbContext db, PredictedRe
 
 app.MapPost("/results/predicted", async (
     PredictedResultRequest req,
-    LoggingDbContext db,
+    IDbContextFactory<LoggingDbContext> dbFactory,
     CancellationToken ct) =>
 {
     if (string.IsNullOrWhiteSpace(req.CycleId) || string.IsNullOrWhiteSpace(req.CloudProvider) || string.IsNullOrWhiteSpace(req.Region))
         return Results.BadRequest(new { error = "cycle_id, cloud_provider, and region are required." });
 
+    await using var db = await dbFactory.CreateDbContextAsync(ct);
     var row = await UpsertPredictedAsync(db, req, ct);
     return Results.Ok(new { id = row.Id, upserted = "predicted" });
 })
@@ -341,7 +357,7 @@ app.MapPost("/results/predicted", async (
 
 app.MapPost("/results/actual", async (
     ActualResultRequest req,
-    LoggingDbContext db,
+    IDbContextFactory<LoggingDbContext> dbFactory,
     ICarbonSignalProvider carbon,
     ICostSignalProvider cost,
     IRegionMapper mapper,
@@ -349,6 +365,8 @@ app.MapPost("/results/actual", async (
 {
     if (string.IsNullOrWhiteSpace(req.CycleId) || string.IsNullOrWhiteSpace(req.CloudProvider) || string.IsNullOrWhiteSpace(req.Region))
         return Results.BadRequest(new { error = "cycle_id, cloud_provider, and region are required." });
+
+    await using var db = await dbFactory.CreateDbContextAsync(ct);
 
     var now = DateTimeOffset.UtcNow;
     var row = await db.CycleResults.FirstOrDefaultAsync(r =>

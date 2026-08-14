@@ -10,20 +10,17 @@ namespace CarbonAware.Core;
 public sealed class WattTimeTwoModeEngine : IPolicyEngine
 {
     private readonly IRegionMapper _mapper;
-    private readonly IRegionAllowlist _allowlist;
     private readonly ICarbonSignalProvider _signals;
     private readonly IAuditSink _audit;
     private readonly ICorrelationContext _correlationContext;
 
     public WattTimeTwoModeEngine(
         IRegionMapper mapper,
-        IRegionAllowlist allowlist,
         ICarbonSignalProvider signals,
         ICorrelationContext correlation,
         IAuditSink audit)
     {
         _mapper = mapper;
-        _allowlist = allowlist;
         _signals = signals;
         _audit = audit;
         _correlationContext = correlation;
@@ -59,29 +56,23 @@ public sealed class WattTimeTwoModeEngine : IPolicyEngine
         // Resolve candidates
         var rawCandidates = BuildCandidates(job, policy);
         var candidates = new List<(string cloud, string region, string zone)>();
-        var invalid = new List<(string cloud, string region, string reason)>();
+        var invalid = new List<(string cloud, string region)>();
 
         foreach (var (cloud, region) in rawCandidates)
         {
-            if (!_allowlist.IsAllowed(cloud, region))
-            {
-                invalid.Add((cloud, region, "not in the approved experiment region set"));
-                continue;
-            }
-
             var zone = _mapper.GetGridZones(cloud, region);
             if (string.IsNullOrWhiteSpace(zone))
-                invalid.Add((cloud, region, "no grid zone mapping for this cloud/region"));
+                invalid.Add((cloud, region));
             else
                 candidates.Add((cloud, region, zone));
         }
 
         if (candidates.Count == 0)
         {
-            var detail = string.Join(", ", invalid.Select(x => $"{x.cloud}:{x.region} ({x.reason})"));
+            var detail = string.Join(", ", invalid.Select(x => $"{x.cloud}:{x.region}"));
             throw new ArgumentException(
                 $"No valid cloud/region mappings for: {detail}. " +
-                "Use exact region IDs (e.g., azure:eastus, gcp:us-east1, aws:us-east-1) from the approved experiment region set.");
+                "Use exact region IDs (e.g., azure:eastus, gcp:us-east1, aws:us-east-1).");
         }
 
         // Branch by mode

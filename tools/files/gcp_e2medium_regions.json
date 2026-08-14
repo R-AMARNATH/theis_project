@@ -1,0 +1,475 @@
+[
+  {
+    "cloud": "gcp",
+    "region": "asia-east1",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "africa-south1",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "asia-northeast1",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "asia-northeast3",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "asia-northeast2",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "asia-east2",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "asia-south2",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "asia-south1",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "asia-southeast3",
+    "requested_size": "e2-medium",
+    "resolved_size": null,
+    "requested_available": false,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "no_available_size"
+  },
+  {
+    "cloud": "gcp",
+    "region": "asia-southeast1",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "australia-southeast1",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "europe-north1",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "europe-north2",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "asia-southeast2",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "europe-central2",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "australia-southeast2",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "europe-southwest1",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "europe-west1",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "europe-west10",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "europe-west12",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "europe-west2",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "europe-west3",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "europe-west4",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "europe-west6",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "europe-west8",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "europe-west9",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "me-central1",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "northamerica-northeast1",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "me-west1",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "northamerica-south1",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "northamerica-northeast2",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "me-central2",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "southamerica-east1",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "us-east1",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "us-east4",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "us-central1",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "southamerica-west1",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "us-east5",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "us-south1",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "us-west1",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "us-west2",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "us-west3",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "gcp",
+    "region": "us-west4",
+    "requested_size": "e2-medium",
+    "resolved_size": "e2-medium",
+    "requested_available": true,
+    "candidates_tried": [
+      "e2-medium"
+    ],
+    "status": "ok"
+  }
+]

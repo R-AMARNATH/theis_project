@@ -11,7 +11,7 @@ public sealed class CostSignalOptions
     public Dictionary<string, string> InstanceTypeByCloud { get; set; } = new()
     {
         { "aws", "t3.medium" },
-        { "azure", "Standard_B2s" },
+        { "azure", "Standard_D2alds_v6" },
         { "gcp", "e2-medium" }
     };
 

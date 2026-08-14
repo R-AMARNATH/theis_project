@@ -24,10 +24,9 @@ on:
         required: true
         type: string
       instanceType:
-        description: 'Preferred EC2 instance type (leave blank to auto-select)'
-        required: false
+        description: 'EC2 instance type to deploy (exact match required -- workflow fails if unavailable in this region, no fallback)'
+        required: true
         type: string
-        default: ''
       cycleId:
         description: 'Experiment cycle id (1-84)'
         required: true
@@ -141,52 +140,33 @@ jobs:
       - name: Launch EC2 Instance
         id: ec2
         run: |
-          # Try the preferred type first (if given), then fall back through
-          # candidates matched to t3.medium's spec (2 vCPU / 4GiB) -- AWS only
-          # reports InsufficientInstanceCapacity at actual launch time, there's
-          # no pre-check API like Azure's, so this tries-then-retries instead.
-          CANDIDATES="${{ inputs.instanceType }} t3.medium t3a.medium t2.medium m5.large m5a.large m6i.large"
+          # Exact match only: the app already resolved instanceType for this exact
+          # region (see resolve_vm_sizes.py / CostSignalOptions), so silently
+          # substituting a different type here would deploy something that doesn't
+          # match what was priced/scheduled for. Fail fast instead.
+          TYPE="${{ inputs.instanceType }}"
+          echo "Launching exactly: $TYPE in ${{ inputs.region }} (no fallback)"
 
-          INSTANCE_ID=""
-          RESOLVED_TYPE=""
-          for type in $CANDIDATES; do
-            [ -z "$type" ] && continue
-            echo "Trying instance type: $type"
-            OUTPUT=$(aws ec2 run-instances \
-              --image-id ${{ steps.ami.outputs.ami_id }} \
-              --instance-type "$type" \
-              --region ${{ inputs.region }} \
-              --iam-instance-profile Name=CarbonAwareBatchProfile \
-              --user-data file://userdata.sh \
-              --tag-specifications "ResourceType=instance,Tags=[{Key=Source,Value=CarbonAwareScheduler},{Key=RunId,Value=${{ github.run_id }}},{Key=CycleId,Value=${{ inputs.cycleId }}},{Key=ResolvedType,Value=$type}]" \
-              --query "Instances[0].InstanceId" \
-              --output text 2>&1)
+          OUTPUT=$(aws ec2 run-instances \
+            --image-id ${{ steps.ami.outputs.ami_id }} \
+            --instance-type "$TYPE" \
+            --region ${{ inputs.region }} \
+            --iam-instance-profile Name=CarbonAwareBatchProfile \
+            --user-data file://userdata.sh \
+            --tag-specifications "ResourceType=instance,Tags=[{Key=Source,Value=CarbonAwareScheduler},{Key=RunId,Value=${{ github.run_id }}},{Key=CycleId,Value=${{ inputs.cycleId }}},{Key=ResolvedType,Value=$TYPE}]" \
+            --query "Instances[0].InstanceId" \
+            --output text 2>&1)
 
-            if [[ "$OUTPUT" == i-* ]]; then
-              INSTANCE_ID="$OUTPUT"
-              RESOLVED_TYPE="$type"
-              echo "Launched $type: $INSTANCE_ID"
-              break
-            fi
-
-            echo "Failed with $type: $OUTPUT"
-            if echo "$OUTPUT" | grep -qiE "InsufficientInstanceCapacity|Unsupported|InvalidParameterCombination|not eligible for Free Tier|VcpuLimitExceeded"; then
-              echo "Capacity/eligibility issue with $type -- trying next candidate"
-              continue
-            else
-              echo "Non-capacity error launching $type -- aborting" >&2
-              exit 1
-            fi
-          done
-
-          if [ -z "$INSTANCE_ID" ]; then
-            echo "No instance type from [$CANDIDATES] could be launched in ${{ inputs.region }}" >&2
+          if [[ "$OUTPUT" != i-* ]]; then
+            echo "Failed to launch $TYPE in ${{ inputs.region }}: $OUTPUT" >&2
+            echo "No fallback -- this region/type combination should have been verified before dispatch (see resolve_vm_sizes.py)." >&2
             exit 1
           fi
 
+          INSTANCE_ID="$OUTPUT"
+          echo "Launched $TYPE: $INSTANCE_ID"
           echo "instance_id=$INSTANCE_ID" >> "$GITHUB_OUTPUT"
-          echo "resolved_type=$RESOLVED_TYPE" >> "$GITHUB_OUTPUT"
-          echo "Instance ID: $INSTANCE_ID (type: $RESOLVED_TYPE)"
+          echo "resolved_type=$TYPE" >> "$GITHUB_OUTPUT"
 
       - name: Wait for Instance Running
         run: |
@@ -244,7 +224,7 @@ jobs:
           if-no-files-found: warn
 
       - name: Terminate EC2 Instance
-        if: false   # Auto-terminate disabled -- instances will stay running until you terminate them manually
+        if: always()
         run: |
           aws ec2 terminate-instances --region ${{ inputs.region }} \
             --instance-ids ${{ steps.ec2.outputs.instance_id }} || true

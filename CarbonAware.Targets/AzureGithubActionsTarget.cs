@@ -16,7 +16,9 @@ public sealed class AzureGithubActionsTarget : ICloudTarget
     private readonly ILogger<AzureGithubActionsTarget> _log;
 
     // Sensible default VM size; change if you prefer Standard_B1ls (not in all regions)
-    private const string DefaultVmSize = "Standard_B2s";
+    // Matches CostSignalOptions.InstanceTypeByCloud["azure"] — updated from Standard_B2s to
+    // Standard_D2alds_v6 per the finalized experiment manifest.
+    private const string DefaultVmSize = "Standard_D2alds_v6";
 
     public AzureGithubActionsTarget(
         HttpClient http,

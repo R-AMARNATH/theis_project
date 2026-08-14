@@ -1,67 +1,58 @@
 // One-time utility: pulls REAL current prices from the three cloud providers' own pricing
-// APIs for every region CarbonAware.RegionMap.StaticRegionMapper knows about, and writes a
-// ready-to-paste "StaticFallbackUsdPerHr" JSON block.
+// APIs for every region configured in CarbonAware.Api/appsettings.json (LatencySignal:EndpointByRegion
+// — reused here purely as "the list of regions you actually care about", same source of truth as
+// CheckLatencyEndpoints and TestAllRegions use), and writes a ready-to-paste "StaticFallbackUsdPerHr"
+// JSON block.
 //
 // Why this exists: the sandbox used to draft the app-level code can't reach prices.azure.com /
-// pricing.*.amazonaws.com / cloudbilling.googleapis.com, so instead of guessing 131 more region
-// prices, run this FROM YOUR OWN MACHINE (which has normal internet access) and it will fetch
-// the actual numbers.
+// pricing.*.amazonaws.com / cloudbilling.googleapis.com, so instead of guessing region prices,
+// run this FROM YOUR OWN MACHINE (which has normal internet access) and it will fetch the actual
+// numbers.
 //
 // Usage:
 //   cd tools/SeedCostTable
-//   dotnet run                              -> AWS + Azure only (no GCP key needed)
-//   dotnet run -- --gcp-key YOUR_API_KEY    -> AWS + Azure + GCP
+//   dotnet run                                          -> AWS + Azure only (no GCP key needed)
+//   dotnet run -- --gcp-key YOUR_API_KEY                -> AWS + Azure + GCP
+//   dotnet run -- --settings /path/to/appsettings.json  -> custom path (default: ../../CarbonAware.Api/appsettings.json)
 //
 // Output: seeded-static-fallback.json in this folder. Paste its contents into
 // CarbonAware.Api/appsettings.json under CostSignal:StaticFallbackUsdPerHr.
 //
-// Takes a few minutes for AWS (39 regions x a multi-MB price file each) — that's exactly why
-// CostSignalProvider treats AWS's live call as "attempt with a tight timeout, fall back to this
-// table" rather than something to hit on every scheduling cycle.
+// Takes a few minutes for AWS if you have many regions configured (a multi-MB price file each) —
+// that's exactly why CostSignalProvider treats AWS's live call as "attempt with a timeout, fall
+// back to this table" rather than something to hit on every scheduling cycle.
 
 using System.Text;
 using System.Text.Json;
 
 var gcpKey = GetArg(args, "--gcp-key");
+var settingsPath = GetArg(args, "--settings") ?? "../../CarbonAware.Api/appsettings.json";
+var only = GetArg(args, "--only")?.Split(',', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries)
+           .Select(c => c.ToLowerInvariant()).ToHashSet();
 
-var awsRegions = new[]
+if (!File.Exists(settingsPath))
 {
-    "af-south-1","ap-east-1","ap-east-2","ap-northeast-1","ap-northeast-2","ap-northeast-3",
-    "ap-south-1","ap-south-2","ap-southeast-1","ap-southeast-2","ap-southeast-3","ap-southeast-4",
-    "ap-southeast-5","ap-southeast-6","ap-southeast-7","ca-central-1","ca-west-1","eu-central-1",
-    "eu-central-2","eu-east-1","eu-east-2","eu-north-1","eu-south-1","eu-south-2","eu-west-1",
-    "eu-west-2","eu-west-3","eu-west-4","il-central-1","me-central-1","me-south-1","mx-central-1",
-    "sa-east-1","us-east-1","us-east-2","us-gov-east-1","us-gov-west-1","us-west-1","us-west-2"
-};
+    Console.WriteLine($"Could not find {settingsPath}. Pass --settings <path-to-appsettings.json>.");
+    return;
+}
 
-var azureRegions = new[]
-{
-    "australiacentral","australiaeast","australiasoutheast","austriacenter","austriaeast",
-    "belgiumcentral","brazilsouth","brazilsoutheast","canadacentral","canadaeast","centralindia",
-    "centralus","chilecentral","eastasia","eastus","eastus2","eastus3","francecentral","francesouth",
-    "germanynorth","germanywestcentral","indonesiacentral","israelcentral","italynorth","japaneast",
-    "japanwest","koreacentral","koreasouth","malaysiawest","mexicocentral","newzealandnorth",
-    "northcentralus","northeurope","norwayeast","norwaywest","polandcentral","qatarcentral",
-    "saudiarabiacentral","saudiarabiaeast","southafricanorth","southafricawest","southcentralus",
-    "southeastasia","southindia","spaincentral","swedencentral","swedensouth","switzerlandnorth",
-    "switzerlandwest","taiwannorth","uaecentral","uaenorth","uksouth","ukwest","westcentralus",
-    "westcentralus2","westeurope","westindia","westus","westus2","westus3"
-};
+using var settingsDoc = JsonDocument.Parse(await File.ReadAllTextAsync(settingsPath));
+var endpointByRegion = settingsDoc.RootElement.GetProperty("LatencySignal").GetProperty("EndpointByRegion");
 
-var gcpRegions = new[]
-{
-    "africa-south1","asia-east1","asia-east2","asia-northeast1","asia-northeast2","asia-northeast3",
-    "asia-south1","asia-south2","asia-southeast1","asia-southeast2","australia-southeast1",
-    "australia-southeast2","europe-central2","europe-north1","europe-north2","europe-southwest1",
-    "europe-west1","europe-west10","europe-west12","europe-west2","europe-west3","europe-west4",
-    "europe-west6","europe-west8","europe-west9","me-central1","me-central2","me-west1",
-    "northamerica-northeast1","northamerica-northeast2","northamerica-south1","southamerica-east1",
-    "southamerica-west1","us-central1","us-east1","us-east4","us-east5","us-south1","us-west1",
-    "us-west2","us-west3","us-west4"
-};
+string[] RegionsFor(string cloud) =>
+    (only is null || only.Contains(cloud)) && endpointByRegion.TryGetProperty(cloud, out var el)
+        ? el.EnumerateObject().Select(p => p.Name).OrderBy(r => r).ToArray()
+        : Array.Empty<string>();
+
+var awsRegions = RegionsFor("aws");
+var azureRegions = RegionsFor("azure");
+var gcpRegions = RegionsFor("gcp");
+
+Console.WriteLine($"Loaded {awsRegions.Length} AWS, {azureRegions.Length} Azure, {gcpRegions.Length} GCP regions from {settingsPath}" +
+                   (only is not null ? $" (filtered to: {string.Join(",", only)})" : "") + "\n");
 
 const string awsInstanceType = "t3.medium";
-const string azureSkuName = "Standard_B2s";
+const string azureSkuName = "Standard_D2alds_v6"; // was Standard_B2s — updated per the finalized experiment manifest
 const string gcpMachineType = "e2-medium";
 const int gcpVCpu = 2;
 const int gcpRamGb = 4;

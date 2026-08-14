@@ -1,826 +1,735 @@
 [
   {
-    "cloud": "aws",
-    "region": "eu-west-3",
-    "requested_size": "t3.medium",
-    "resolved_size": "t3.medium",
+    "cloud": "azure",
+    "region": "belgiumcentral",
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
     "requested_available": true,
     "candidates_tried": [
-      "t3.medium",
-      "t3a.medium",
-      "t2.medium",
-      "m5.large",
-      "m5a.large",
-      "m6i.large"
+      "Standard_B1s"
     ],
     "status": "ok"
   },
   {
-    "cloud": "aws",
-    "region": "ap-south-1",
-    "requested_size": "t3.medium",
-    "resolved_size": "t3.medium",
+    "cloud": "azure",
+    "region": "brazilsoutheast",
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
     "requested_available": true,
     "candidates_tried": [
-      "t3.medium",
-      "t3a.medium",
-      "t2.medium",
-      "m5.large",
-      "m5a.large",
-      "m6i.large"
+      "Standard_B1s"
     ],
     "status": "ok"
   },
   {
-    "cloud": "aws",
-    "region": "eu-central-1",
-    "requested_size": "t3.medium",
-    "resolved_size": "t3.medium",
+    "cloud": "azure",
+    "region": "brazilsouth",
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
     "requested_available": true,
     "candidates_tried": [
-      "t3.medium",
-      "t3a.medium",
-      "t2.medium",
-      "m5.large",
-      "m5a.large",
-      "m6i.large"
+      "Standard_B1s"
     ],
     "status": "ok"
   },
   {
-    "cloud": "aws",
-    "region": "eu-west-1",
-    "requested_size": "t3.medium",
-    "resolved_size": "t3.medium",
+    "cloud": "azure",
+    "region": "austriaeast",
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
     "requested_available": true,
     "candidates_tried": [
-      "t3.medium",
-      "t3a.medium",
-      "t2.medium",
-      "m5.large",
-      "m5a.large",
-      "m6i.large"
+      "Standard_B1s"
     ],
     "status": "ok"
   },
   {
-    "cloud": "aws",
-    "region": "eu-west-2",
-    "requested_size": "t3.medium",
-    "resolved_size": "t3.medium",
+    "cloud": "azure",
+    "region": "australiasoutheast",
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
     "requested_available": true,
     "candidates_tried": [
-      "t3.medium",
-      "t3a.medium",
-      "t2.medium",
-      "m5.large",
-      "m5a.large",
-      "m6i.large"
+      "Standard_B1s"
     ],
     "status": "ok"
   },
   {
-    "cloud": "aws",
-    "region": "eu-north-1",
-    "requested_size": "t3.medium",
-    "resolved_size": "t3.medium",
+    "cloud": "azure",
+    "region": "australiaeast",
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
     "requested_available": true,
     "candidates_tried": [
-      "t3.medium",
-      "t3a.medium",
-      "t2.medium",
-      "m5.large",
-      "m5a.large",
-      "m6i.large"
-    ],
-    "status": "ok"
-  },
-  {
-    "cloud": "aws",
-    "region": "us-east-1",
-    "requested_size": "t3.medium",
-    "resolved_size": "t3.medium",
-    "requested_available": true,
-    "candidates_tried": [
-      "t3.medium",
-      "t3a.medium",
-      "t2.medium",
-      "m5.large",
-      "m5a.large",
-      "m6i.large"
-    ],
-    "status": "ok"
-  },
-  {
-    "cloud": "aws",
-    "region": "us-east-2",
-    "requested_size": "t3.medium",
-    "resolved_size": "t3.medium",
-    "requested_available": true,
-    "candidates_tried": [
-      "t3.medium",
-      "t3a.medium",
-      "t2.medium",
-      "m5.large",
-      "m5a.large",
-      "m6i.large"
-    ],
-    "status": "ok"
-  },
-  {
-    "cloud": "aws",
-    "region": "ca-central-1",
-    "requested_size": "t3.medium",
-    "resolved_size": "t3.medium",
-    "requested_available": true,
-    "candidates_tried": [
-      "t3.medium",
-      "t3a.medium",
-      "t2.medium",
-      "m5.large",
-      "m5a.large",
-      "m6i.large"
-    ],
-    "status": "ok"
-  },
-  {
-    "cloud": "aws",
-    "region": "ap-northeast-1",
-    "requested_size": "t3.medium",
-    "resolved_size": "t3.medium",
-    "requested_available": true,
-    "candidates_tried": [
-      "t3.medium",
-      "t3a.medium",
-      "t2.medium",
-      "m5.large",
-      "m5a.large",
-      "m6i.large"
-    ],
-    "status": "ok"
-  },
-  {
-    "cloud": "aws",
-    "region": "sa-east-1",
-    "requested_size": "t3.medium",
-    "resolved_size": "t3.medium",
-    "requested_available": true,
-    "candidates_tried": [
-      "t3.medium",
-      "t3a.medium",
-      "t2.medium",
-      "m5.large",
-      "m5a.large",
-      "m6i.large"
-    ],
-    "status": "ok"
-  },
-  {
-    "cloud": "aws",
-    "region": "ap-southeast-1",
-    "requested_size": "t3.medium",
-    "resolved_size": "t3.medium",
-    "requested_available": true,
-    "candidates_tried": [
-      "t3.medium",
-      "t3a.medium",
-      "t2.medium",
-      "m5.large",
-      "m5a.large",
-      "m6i.large"
-    ],
-    "status": "ok"
-  },
-  {
-    "cloud": "aws",
-    "region": "ap-northeast-2",
-    "requested_size": "t3.medium",
-    "resolved_size": "t3.medium",
-    "requested_available": true,
-    "candidates_tried": [
-      "t3.medium",
-      "t3a.medium",
-      "t2.medium",
-      "m5.large",
-      "m5a.large",
-      "m6i.large"
-    ],
-    "status": "ok"
-  },
-  {
-    "cloud": "aws",
-    "region": "ap-northeast-3",
-    "requested_size": "t3.medium",
-    "resolved_size": "t3.medium",
-    "requested_available": true,
-    "candidates_tried": [
-      "t3.medium",
-      "t3a.medium",
-      "t2.medium",
-      "m5.large",
-      "m5a.large",
-      "m6i.large"
-    ],
-    "status": "ok"
-  },
-  {
-    "cloud": "aws",
-    "region": "ap-southeast-2",
-    "requested_size": "t3.medium",
-    "resolved_size": "t3.medium",
-    "requested_available": true,
-    "candidates_tried": [
-      "t3.medium",
-      "t3a.medium",
-      "t2.medium",
-      "m5.large",
-      "m5a.large",
-      "m6i.large"
-    ],
-    "status": "ok"
-  },
-  {
-    "cloud": "aws",
-    "region": "us-west-1",
-    "requested_size": "t3.medium",
-    "resolved_size": "t3.medium",
-    "requested_available": true,
-    "candidates_tried": [
-      "t3.medium",
-      "t3a.medium",
-      "t2.medium",
-      "m5.large",
-      "m5a.large",
-      "m6i.large"
-    ],
-    "status": "ok"
-  },
-  {
-    "cloud": "aws",
-    "region": "us-west-2",
-    "requested_size": "t3.medium",
-    "resolved_size": "t3.medium",
-    "requested_available": true,
-    "candidates_tried": [
-      "t3.medium",
-      "t3a.medium",
-      "t2.medium",
-      "m5.large",
-      "m5a.large",
-      "m6i.large"
+      "Standard_B1s"
     ],
     "status": "ok"
   },
   {
     "cloud": "azure",
     "region": "australiacentral",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
     "candidates_tried": [
-      "Standard_B2s"
+      "Standard_B1s"
     ],
-    "status": "error",
-    "error": "'az' timed out after 120s -- likely stuck waiting for interactive login/consent. Try running 'az login' (or the equivalent) manually first."
-  },
-  {
-    "cloud": "azure",
-    "region": "australiacentral2",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
-    "candidates_tried": [
-      "Standard_B2s"
-    ],
-    "status": "error",
-    "error": "'az' timed out after 120s -- likely stuck waiting for interactive login/consent. Try running 'az login' (or the equivalent) manually first."
-  },
-  {
-    "cloud": "azure",
-    "region": "australiaeast",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
-    "candidates_tried": [
-      "Standard_B2s"
-    ],
-    "status": "error",
-    "error": "'az' timed out after 120s -- likely stuck waiting for interactive login/consent. Try running 'az login' (or the equivalent) manually first."
-  },
-  {
-    "cloud": "azure",
-    "region": "australiasoutheast",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
-    "candidates_tried": [
-      "Standard_B2s"
-    ],
-    "status": "error",
-    "error": "'az' timed out after 120s -- likely stuck waiting for interactive login/consent. Try running 'az login' (or the equivalent) manually first."
-  },
-  {
-    "cloud": "azure",
-    "region": "austriaeast",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
-    "candidates_tried": [
-      "Standard_B2s"
-    ],
-    "status": "error",
-    "error": "'az' timed out after 120s -- likely stuck waiting for interactive login/consent. Try running 'az login' (or the equivalent) manually first."
-  },
-  {
-    "cloud": "azure",
-    "region": "belgiumcentral",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
-    "candidates_tried": [
-      "Standard_B2s"
-    ],
-    "status": "error",
-    "error": "'az' timed out after 120s -- likely stuck waiting for interactive login/consent. Try running 'az login' (or the equivalent) manually first."
-  },
-  {
-    "cloud": "azure",
-    "region": "brazilsouth",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
-    "candidates_tried": [
-      "Standard_B2s"
-    ],
-    "status": "error",
-    "error": "'az' timed out after 120s -- likely stuck waiting for interactive login/consent. Try running 'az login' (or the equivalent) manually first."
-  },
-  {
-    "cloud": "azure",
-    "region": "brazilsoutheast",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
-    "candidates_tried": [
-      "Standard_B2s"
-    ],
-    "status": "error",
-    "error": "ERROR: The command failed with an unexpected error. Here is the traceback:\nERROR: HTTPSConnectionPool(host='login.microsoftonline.com', port=443): Max retries exceeded with url: /common/discovery/instance?api-version=1.1&authorization_endpoint=https%3A%2F%2Flogin.microsoftonline.com%2Fcommon%2Foauth2%2Fauthorize (Caused by NameResolutionError(\"HTTPSConnection(host='login.microsoftonline.com', port=443): Failed to resolve 'login.microsoftonline.com' ([Errno 11001] getaddrinfo failed)\"))\nTraceback (most recent call last):\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connection.py\", line 204, in _new_conn\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/util/connection.py\", line 60, in create_connection\n  File \"socket.py\", line 987, in getaddrinfo\nsocket.gaierror: [Errno 11001] getaddrinfo failed\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 788, in urlopen\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 488, in _make_request\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 464, in _make_request\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 1106, in _validate_conn\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connection.py\", line 759, in connect\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connection.py\", line 211, in _new_conn\nurllib3.exceptions.NameResolutionError: HTTPSConnection(host='login.microsoftonline.com', port=443): Failed to resolve 'login.microsoftonline.com' ([Errno 11001] getaddrinfo failed)\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\requests/adapters.py\", line 645, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 872, in urlopen\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 842, in urlopen\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/util/retry.py\", line 543, in increment\nurllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='login.microsoftonline.com', port=443): Max retries exceeded with url: /common/discovery/instance?api-version=1.1&authorization_endpoint=https%3A%2F%2Flogin.microsoftonline.com%2Fcommon%2Foauth2%2Fauthorize (Caused by NameResolutionError(\"HTTPSConnection(host='login.microsoftonline.com', port=443): Failed to resolve 'login.microsoftonline.com' ([Errno 11001] getaddrinfo failed)\"))\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\knack/cli.py\", line 233, in invoke\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/commands/__init__.py\", line 677, in execute\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/commands/__init__.py\", line 820, in _run_jobs_serially\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/commands/__init__.py\", line 789, in _run_job\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/commands/__init__.py\", line 335, in __call__\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/commands/command_operation.py\", line 120, in handler\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/command_modules/vm/custom.py\", line 1443, in list_skus\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/command_modules/vm/_vm_utils.py\", line 131, in list_sku_info\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_paging.py\", line 87, in __next__\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_paging.py\", line 43, in __next__\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_command.py\", line 250, in executor_wrapper\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure\\cli\\command_modules\\vm\\aaz_compact\\latest\\vm\\__cmds.py\", line 7499, in _execute_operations\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure\\cli\\command_modules\\vm\\aaz_compact\\latest\\vm\\__cmds.py\", line 7520, in __call__\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_client.py\", line 107, in send_request\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/_base.py\", line 242, in run\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/_base.py\", line 98, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/_base.py\", line 98, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/_base.py\", line 98, in send\n  [Previous line repeated 2 more times]\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/mgmt/core/policies/_base.py\", line 95, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/policies/_redirect.py\", line 205, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/policies/_retry.py\", line 545, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_http_policy.py\", line 110, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_http_policy.py\", line 80, in on_request\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/auth/credential_adaptor.py\", line 33, in get_token\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/auth/msal_credentials.py\", line 76, in acquire_token\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/application.py\", line 1495, in acquire_token_silent_with_error\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/application.py\", line 1527, in _acquire_token_silent_with_error\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/application.py\", line 1335, in _get_authority_aliases\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/application.py\", line 1314, in _get_instance_metadata\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/individual_cache.py\", line 273, in wrapper\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/throttled_http_client.py\", line 99, in get\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\requests/sessions.py\", line 605, in get\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\requests/sessions.py\", line 592, in request\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\requests/sessions.py\", line 706, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\requests/adapters.py\", line 678, in send\nrequests.exceptions.ConnectionError: HTTPSConnectionPool(host='login.microsoftonline.com', port=443): Max retries exceeded with url: /common/discovery/instance?api-version=1.1&authorization_endpoint=https%3A%2F%2Flogin.microsoftonline.com%2Fcommon%2Foauth2%2Fauthorize (Caused by NameResolutionError(\"HTTPSConnection(host='login.microsoftonline.com', port=443): Failed to resolve 'login.microsoftonline.com' ([Errno 11001] getaddrinfo failed)\"))\nTo check existing issues, please visit: https://github.com/Azure/azure-cli/issues"
-  },
-  {
-    "cloud": "azure",
-    "region": "canadacentral",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
-    "candidates_tried": [
-      "Standard_B2s"
-    ],
-    "status": "error",
-    "error": "ERROR: The command failed with an unexpected error. Here is the traceback:\nERROR: HTTPSConnectionPool(host='login.microsoftonline.com', port=443): Max retries exceeded with url: /common/discovery/instance?api-version=1.1&authorization_endpoint=https%3A%2F%2Flogin.microsoftonline.com%2Fcommon%2Foauth2%2Fauthorize (Caused by NameResolutionError(\"HTTPSConnection(host='login.microsoftonline.com', port=443): Failed to resolve 'login.microsoftonline.com' ([Errno 11001] getaddrinfo failed)\"))\nTraceback (most recent call last):\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connection.py\", line 204, in _new_conn\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/util/connection.py\", line 60, in create_connection\n  File \"socket.py\", line 987, in getaddrinfo\nsocket.gaierror: [Errno 11001] getaddrinfo failed\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 788, in urlopen\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 488, in _make_request\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 464, in _make_request\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 1106, in _validate_conn\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connection.py\", line 759, in connect\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connection.py\", line 211, in _new_conn\nurllib3.exceptions.NameResolutionError: HTTPSConnection(host='login.microsoftonline.com', port=443): Failed to resolve 'login.microsoftonline.com' ([Errno 11001] getaddrinfo failed)\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\requests/adapters.py\", line 645, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 872, in urlopen\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 842, in urlopen\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/util/retry.py\", line 543, in increment\nurllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='login.microsoftonline.com', port=443): Max retries exceeded with url: /common/discovery/instance?api-version=1.1&authorization_endpoint=https%3A%2F%2Flogin.microsoftonline.com%2Fcommon%2Foauth2%2Fauthorize (Caused by NameResolutionError(\"HTTPSConnection(host='login.microsoftonline.com', port=443): Failed to resolve 'login.microsoftonline.com' ([Errno 11001] getaddrinfo failed)\"))\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\knack/cli.py\", line 233, in invoke\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/commands/__init__.py\", line 677, in execute\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/commands/__init__.py\", line 820, in _run_jobs_serially\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/commands/__init__.py\", line 789, in _run_job\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/commands/__init__.py\", line 335, in __call__\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/commands/command_operation.py\", line 120, in handler\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/command_modules/vm/custom.py\", line 1443, in list_skus\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/command_modules/vm/_vm_utils.py\", line 131, in list_sku_info\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_paging.py\", line 87, in __next__\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_paging.py\", line 43, in __next__\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_command.py\", line 250, in executor_wrapper\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure\\cli\\command_modules\\vm\\aaz_compact\\latest\\vm\\__cmds.py\", line 7499, in _execute_operations\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure\\cli\\command_modules\\vm\\aaz_compact\\latest\\vm\\__cmds.py\", line 7520, in __call__\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_client.py\", line 107, in send_request\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/_base.py\", line 242, in run\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/_base.py\", line 98, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/_base.py\", line 98, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/_base.py\", line 98, in send\n  [Previous line repeated 2 more times]\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/mgmt/core/policies/_base.py\", line 95, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/policies/_redirect.py\", line 205, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/policies/_retry.py\", line 545, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_http_policy.py\", line 110, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_http_policy.py\", line 80, in on_request\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/auth/credential_adaptor.py\", line 33, in get_token\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/auth/msal_credentials.py\", line 76, in acquire_token\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/application.py\", line 1495, in acquire_token_silent_with_error\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/application.py\", line 1527, in _acquire_token_silent_with_error\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/application.py\", line 1335, in _get_authority_aliases\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/application.py\", line 1314, in _get_instance_metadata\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/individual_cache.py\", line 273, in wrapper\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/throttled_http_client.py\", line 99, in get\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\requests/sessions.py\", line 605, in get\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\requests/sessions.py\", line 592, in request\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\requests/sessions.py\", line 706, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\requests/adapters.py\", line 678, in send\nrequests.exceptions.ConnectionError: HTTPSConnectionPool(host='login.microsoftonline.com', port=443): Max retries exceeded with url: /common/discovery/instance?api-version=1.1&authorization_endpoint=https%3A%2F%2Flogin.microsoftonline.com%2Fcommon%2Foauth2%2Fauthorize (Caused by NameResolutionError(\"HTTPSConnection(host='login.microsoftonline.com', port=443): Failed to resolve 'login.microsoftonline.com' ([Errno 11001] getaddrinfo failed)\"))\nTo check existing issues, please visit: https://github.com/Azure/azure-cli/issues"
+    "status": "ok"
   },
   {
     "cloud": "azure",
     "region": "canadaeast",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
     "candidates_tried": [
-      "Standard_B2s"
+      "Standard_B1s"
     ],
-    "status": "error",
-    "error": "ERROR: The command failed with an unexpected error. Here is the traceback:\nERROR: HTTPSConnectionPool(host='login.microsoftonline.com', port=443): Max retries exceeded with url: /common/discovery/instance?api-version=1.1&authorization_endpoint=https%3A%2F%2Flogin.microsoftonline.com%2Fcommon%2Foauth2%2Fauthorize (Caused by NameResolutionError(\"HTTPSConnection(host='login.microsoftonline.com', port=443): Failed to resolve 'login.microsoftonline.com' ([Errno 11001] getaddrinfo failed)\"))\nTraceback (most recent call last):\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connection.py\", line 204, in _new_conn\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/util/connection.py\", line 60, in create_connection\n  File \"socket.py\", line 987, in getaddrinfo\nsocket.gaierror: [Errno 11001] getaddrinfo failed\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 788, in urlopen\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 488, in _make_request\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 464, in _make_request\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 1106, in _validate_conn\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connection.py\", line 759, in connect\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connection.py\", line 211, in _new_conn\nurllib3.exceptions.NameResolutionError: HTTPSConnection(host='login.microsoftonline.com', port=443): Failed to resolve 'login.microsoftonline.com' ([Errno 11001] getaddrinfo failed)\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\requests/adapters.py\", line 645, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 872, in urlopen\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 842, in urlopen\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/util/retry.py\", line 543, in increment\nurllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='login.microsoftonline.com', port=443): Max retries exceeded with url: /common/discovery/instance?api-version=1.1&authorization_endpoint=https%3A%2F%2Flogin.microsoftonline.com%2Fcommon%2Foauth2%2Fauthorize (Caused by NameResolutionError(\"HTTPSConnection(host='login.microsoftonline.com', port=443): Failed to resolve 'login.microsoftonline.com' ([Errno 11001] getaddrinfo failed)\"))\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\knack/cli.py\", line 233, in invoke\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/commands/__init__.py\", line 677, in execute\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/commands/__init__.py\", line 820, in _run_jobs_serially\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/commands/__init__.py\", line 789, in _run_job\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/commands/__init__.py\", line 335, in __call__\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/commands/command_operation.py\", line 120, in handler\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/command_modules/vm/custom.py\", line 1443, in list_skus\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/command_modules/vm/_vm_utils.py\", line 131, in list_sku_info\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_paging.py\", line 87, in __next__\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_paging.py\", line 43, in __next__\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_command.py\", line 250, in executor_wrapper\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure\\cli\\command_modules\\vm\\aaz_compact\\latest\\vm\\__cmds.py\", line 7499, in _execute_operations\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure\\cli\\command_modules\\vm\\aaz_compact\\latest\\vm\\__cmds.py\", line 7520, in __call__\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_client.py\", line 107, in send_request\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/_base.py\", line 242, in run\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/_base.py\", line 98, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/_base.py\", line 98, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/_base.py\", line 98, in send\n  [Previous line repeated 2 more times]\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/mgmt/core/policies/_base.py\", line 95, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/policies/_redirect.py\", line 205, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/policies/_retry.py\", line 545, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_http_policy.py\", line 110, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_http_policy.py\", line 80, in on_request\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/auth/credential_adaptor.py\", line 33, in get_token\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/auth/msal_credentials.py\", line 76, in acquire_token\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/application.py\", line 1495, in acquire_token_silent_with_error\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/application.py\", line 1527, in _acquire_token_silent_with_error\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/application.py\", line 1335, in _get_authority_aliases\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/application.py\", line 1314, in _get_instance_metadata\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/individual_cache.py\", line 273, in wrapper\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/throttled_http_client.py\", line 99, in get\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\requests/sessions.py\", line 605, in get\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\requests/sessions.py\", line 592, in request\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\requests/sessions.py\", line 706, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\requests/adapters.py\", line 678, in send\nrequests.exceptions.ConnectionError: HTTPSConnectionPool(host='login.microsoftonline.com', port=443): Max retries exceeded with url: /common/discovery/instance?api-version=1.1&authorization_endpoint=https%3A%2F%2Flogin.microsoftonline.com%2Fcommon%2Foauth2%2Fauthorize (Caused by NameResolutionError(\"HTTPSConnection(host='login.microsoftonline.com', port=443): Failed to resolve 'login.microsoftonline.com' ([Errno 11001] getaddrinfo failed)\"))\nTo check existing issues, please visit: https://github.com/Azure/azure-cli/issues"
+    "status": "ok"
   },
   {
     "cloud": "azure",
-    "region": "centralindia",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
+    "region": "australiacentral2",
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
     "candidates_tried": [
-      "Standard_B2s"
+      "Standard_B1s"
     ],
-    "status": "error",
-    "error": "ERROR: The command failed with an unexpected error. Here is the traceback:\nERROR: HTTPSConnectionPool(host='login.microsoftonline.com', port=443): Max retries exceeded with url: /common/discovery/instance?api-version=1.1&authorization_endpoint=https%3A%2F%2Flogin.microsoftonline.com%2Fcommon%2Foauth2%2Fauthorize (Caused by NameResolutionError(\"HTTPSConnection(host='login.microsoftonline.com', port=443): Failed to resolve 'login.microsoftonline.com' ([Errno 11001] getaddrinfo failed)\"))\nTraceback (most recent call last):\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connection.py\", line 204, in _new_conn\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/util/connection.py\", line 60, in create_connection\n  File \"socket.py\", line 987, in getaddrinfo\nsocket.gaierror: [Errno 11001] getaddrinfo failed\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 788, in urlopen\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 488, in _make_request\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 464, in _make_request\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 1106, in _validate_conn\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connection.py\", line 759, in connect\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connection.py\", line 211, in _new_conn\nurllib3.exceptions.NameResolutionError: HTTPSConnection(host='login.microsoftonline.com', port=443): Failed to resolve 'login.microsoftonline.com' ([Errno 11001] getaddrinfo failed)\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\requests/adapters.py\", line 645, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 872, in urlopen\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 842, in urlopen\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/util/retry.py\", line 543, in increment\nurllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='login.microsoftonline.com', port=443): Max retries exceeded with url: /common/discovery/instance?api-version=1.1&authorization_endpoint=https%3A%2F%2Flogin.microsoftonline.com%2Fcommon%2Foauth2%2Fauthorize (Caused by NameResolutionError(\"HTTPSConnection(host='login.microsoftonline.com', port=443): Failed to resolve 'login.microsoftonline.com' ([Errno 11001] getaddrinfo failed)\"))\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\knack/cli.py\", line 233, in invoke\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/commands/__init__.py\", line 677, in execute\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/commands/__init__.py\", line 820, in _run_jobs_serially\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/commands/__init__.py\", line 789, in _run_job\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/commands/__init__.py\", line 335, in __call__\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/commands/command_operation.py\", line 120, in handler\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/command_modules/vm/custom.py\", line 1443, in list_skus\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/command_modules/vm/_vm_utils.py\", line 131, in list_sku_info\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_paging.py\", line 87, in __next__\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_paging.py\", line 43, in __next__\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_command.py\", line 250, in executor_wrapper\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure\\cli\\command_modules\\vm\\aaz_compact\\latest\\vm\\__cmds.py\", line 7499, in _execute_operations\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure\\cli\\command_modules\\vm\\aaz_compact\\latest\\vm\\__cmds.py\", line 7520, in __call__\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_client.py\", line 107, in send_request\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/_base.py\", line 242, in run\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/_base.py\", line 98, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/_base.py\", line 98, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/_base.py\", line 98, in send\n  [Previous line repeated 2 more times]\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/mgmt/core/policies/_base.py\", line 95, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/policies/_redirect.py\", line 205, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/policies/_retry.py\", line 545, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_http_policy.py\", line 110, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_http_policy.py\", line 80, in on_request\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/auth/credential_adaptor.py\", line 33, in get_token\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/auth/msal_credentials.py\", line 76, in acquire_token\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/application.py\", line 1495, in acquire_token_silent_with_error\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/application.py\", line 1527, in _acquire_token_silent_with_error\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/application.py\", line 1335, in _get_authority_aliases\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/application.py\", line 1314, in _get_instance_metadata\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/individual_cache.py\", line 273, in wrapper\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/throttled_http_client.py\", line 99, in get\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\requests/sessions.py\", line 605, in get\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\requests/sessions.py\", line 592, in request\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\requests/sessions.py\", line 706, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\requests/adapters.py\", line 678, in send\nrequests.exceptions.ConnectionError: HTTPSConnectionPool(host='login.microsoftonline.com', port=443): Max retries exceeded with url: /common/discovery/instance?api-version=1.1&authorization_endpoint=https%3A%2F%2Flogin.microsoftonline.com%2Fcommon%2Foauth2%2Fauthorize (Caused by NameResolutionError(\"HTTPSConnection(host='login.microsoftonline.com', port=443): Failed to resolve 'login.microsoftonline.com' ([Errno 11001] getaddrinfo failed)\"))\nTo check existing issues, please visit: https://github.com/Azure/azure-cli/issues"
+    "status": "ok"
   },
   {
     "cloud": "azure",
     "region": "centralus",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
     "candidates_tried": [
-      "Standard_B2s"
+      "Standard_B1s"
     ],
-    "status": "error",
-    "error": "ERROR: The command failed with an unexpected error. Here is the traceback:\nERROR: HTTPSConnectionPool(host='login.microsoftonline.com', port=443): Max retries exceeded with url: /common/discovery/instance?api-version=1.1&authorization_endpoint=https%3A%2F%2Flogin.microsoftonline.com%2Fcommon%2Foauth2%2Fauthorize (Caused by NameResolutionError(\"HTTPSConnection(host='login.microsoftonline.com', port=443): Failed to resolve 'login.microsoftonline.com' ([Errno 11001] getaddrinfo failed)\"))\nTraceback (most recent call last):\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connection.py\", line 204, in _new_conn\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/util/connection.py\", line 60, in create_connection\n  File \"socket.py\", line 987, in getaddrinfo\nsocket.gaierror: [Errno 11001] getaddrinfo failed\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 788, in urlopen\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 488, in _make_request\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 464, in _make_request\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 1106, in _validate_conn\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connection.py\", line 759, in connect\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connection.py\", line 211, in _new_conn\nurllib3.exceptions.NameResolutionError: HTTPSConnection(host='login.microsoftonline.com', port=443): Failed to resolve 'login.microsoftonline.com' ([Errno 11001] getaddrinfo failed)\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\requests/adapters.py\", line 645, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 872, in urlopen\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 842, in urlopen\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/util/retry.py\", line 543, in increment\nurllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='login.microsoftonline.com', port=443): Max retries exceeded with url: /common/discovery/instance?api-version=1.1&authorization_endpoint=https%3A%2F%2Flogin.microsoftonline.com%2Fcommon%2Foauth2%2Fauthorize (Caused by NameResolutionError(\"HTTPSConnection(host='login.microsoftonline.com', port=443): Failed to resolve 'login.microsoftonline.com' ([Errno 11001] getaddrinfo failed)\"))\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\knack/cli.py\", line 233, in invoke\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/commands/__init__.py\", line 677, in execute\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/commands/__init__.py\", line 820, in _run_jobs_serially\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/commands/__init__.py\", line 789, in _run_job\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/commands/__init__.py\", line 335, in __call__\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/commands/command_operation.py\", line 120, in handler\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/command_modules/vm/custom.py\", line 1443, in list_skus\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/command_modules/vm/_vm_utils.py\", line 131, in list_sku_info\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_paging.py\", line 87, in __next__\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_paging.py\", line 43, in __next__\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_command.py\", line 250, in executor_wrapper\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure\\cli\\command_modules\\vm\\aaz_compact\\latest\\vm\\__cmds.py\", line 7499, in _execute_operations\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure\\cli\\command_modules\\vm\\aaz_compact\\latest\\vm\\__cmds.py\", line 7520, in __call__\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_client.py\", line 107, in send_request\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/_base.py\", line 242, in run\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/_base.py\", line 98, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/_base.py\", line 98, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/_base.py\", line 98, in send\n  [Previous line repeated 2 more times]\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/mgmt/core/policies/_base.py\", line 95, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/policies/_redirect.py\", line 205, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/policies/_retry.py\", line 545, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_http_policy.py\", line 110, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_http_policy.py\", line 80, in on_request\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/auth/credential_adaptor.py\", line 33, in get_token\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/auth/msal_credentials.py\", line 76, in acquire_token\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/application.py\", line 1495, in acquire_token_silent_with_error\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/application.py\", line 1527, in _acquire_token_silent_with_error\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/application.py\", line 1335, in _get_authority_aliases\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/application.py\", line 1314, in _get_instance_metadata\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/individual_cache.py\", line 273, in wrapper\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/throttled_http_client.py\", line 99, in get\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\requests/sessions.py\", line 605, in get\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\requests/sessions.py\", line 592, in request\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\requests/sessions.py\", line 706, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\requests/adapters.py\", line 678, in send\nrequests.exceptions.ConnectionError: HTTPSConnectionPool(host='login.microsoftonline.com', port=443): Max retries exceeded with url: /common/discovery/instance?api-version=1.1&authorization_endpoint=https%3A%2F%2Flogin.microsoftonline.com%2Fcommon%2Foauth2%2Fauthorize (Caused by NameResolutionError(\"HTTPSConnection(host='login.microsoftonline.com', port=443): Failed to resolve 'login.microsoftonline.com' ([Errno 11001] getaddrinfo failed)\"))\nTo check existing issues, please visit: https://github.com/Azure/azure-cli/issues"
-  },
-  {
-    "cloud": "azure",
-    "region": "centraluseuap",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
-    "candidates_tried": [
-      "Standard_B2s"
-    ],
-    "status": "error",
-    "error": "ERROR: The command failed with an unexpected error. Here is the traceback:\nERROR: HTTPSConnectionPool(host='login.microsoftonline.com', port=443): Max retries exceeded with url: /common/discovery/instance?api-version=1.1&authorization_endpoint=https%3A%2F%2Flogin.microsoftonline.com%2Fcommon%2Foauth2%2Fauthorize (Caused by NameResolutionError(\"HTTPSConnection(host='login.microsoftonline.com', port=443): Failed to resolve 'login.microsoftonline.com' ([Errno 11001] getaddrinfo failed)\"))\nTraceback (most recent call last):\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connection.py\", line 204, in _new_conn\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/util/connection.py\", line 60, in create_connection\n  File \"socket.py\", line 987, in getaddrinfo\nsocket.gaierror: [Errno 11001] getaddrinfo failed\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 788, in urlopen\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 488, in _make_request\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 464, in _make_request\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 1106, in _validate_conn\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connection.py\", line 759, in connect\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connection.py\", line 211, in _new_conn\nurllib3.exceptions.NameResolutionError: HTTPSConnection(host='login.microsoftonline.com', port=443): Failed to resolve 'login.microsoftonline.com' ([Errno 11001] getaddrinfo failed)\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\requests/adapters.py\", line 645, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 872, in urlopen\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 842, in urlopen\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/util/retry.py\", line 543, in increment\nurllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='login.microsoftonline.com', port=443): Max retries exceeded with url: /common/discovery/instance?api-version=1.1&authorization_endpoint=https%3A%2F%2Flogin.microsoftonline.com%2Fcommon%2Foauth2%2Fauthorize (Caused by NameResolutionError(\"HTTPSConnection(host='login.microsoftonline.com', port=443): Failed to resolve 'login.microsoftonline.com' ([Errno 11001] getaddrinfo failed)\"))\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\knack/cli.py\", line 233, in invoke\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/commands/__init__.py\", line 677, in execute\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/commands/__init__.py\", line 820, in _run_jobs_serially\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/commands/__init__.py\", line 789, in _run_job\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/commands/__init__.py\", line 335, in __call__\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/commands/command_operation.py\", line 120, in handler\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/command_modules/vm/custom.py\", line 1443, in list_skus\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/command_modules/vm/_vm_utils.py\", line 131, in list_sku_info\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_paging.py\", line 87, in __next__\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_paging.py\", line 43, in __next__\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_command.py\", line 250, in executor_wrapper\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure\\cli\\command_modules\\vm\\aaz_compact\\latest\\vm\\__cmds.py\", line 7499, in _execute_operations\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure\\cli\\command_modules\\vm\\aaz_compact\\latest\\vm\\__cmds.py\", line 7520, in __call__\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_client.py\", line 107, in send_request\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/_base.py\", line 242, in run\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/_base.py\", line 98, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/_base.py\", line 98, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/_base.py\", line 98, in send\n  [Previous line repeated 2 more times]\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/mgmt/core/policies/_base.py\", line 95, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/policies/_redirect.py\", line 205, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/policies/_retry.py\", line 545, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_http_policy.py\", line 110, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_http_policy.py\", line 80, in on_request\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/auth/credential_adaptor.py\", line 33, in get_token\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/auth/msal_credentials.py\", line 76, in acquire_token\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/application.py\", line 1495, in acquire_token_silent_with_error\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/application.py\", line 1527, in _acquire_token_silent_with_error\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/application.py\", line 1335, in _get_authority_aliases\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/application.py\", line 1314, in _get_instance_metadata\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/individual_cache.py\", line 273, in wrapper\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/throttled_http_client.py\", line 99, in get\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\requests/sessions.py\", line 605, in get\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\requests/sessions.py\", line 592, in request\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\requests/sessions.py\", line 706, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\requests/adapters.py\", line 678, in send\nrequests.exceptions.ConnectionError: HTTPSConnectionPool(host='login.microsoftonline.com', port=443): Max retries exceeded with url: /common/discovery/instance?api-version=1.1&authorization_endpoint=https%3A%2F%2Flogin.microsoftonline.com%2Fcommon%2Foauth2%2Fauthorize (Caused by NameResolutionError(\"HTTPSConnection(host='login.microsoftonline.com', port=443): Failed to resolve 'login.microsoftonline.com' ([Errno 11001] getaddrinfo failed)\"))\nTo check existing issues, please visit: https://github.com/Azure/azure-cli/issues"
+    "status": "ok"
   },
   {
     "cloud": "azure",
     "region": "chilecentral",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
     "candidates_tried": [
-      "Standard_B2s"
+      "Standard_B1s"
     ],
-    "status": "error",
-    "error": "ERROR: The command failed with an unexpected error. Here is the traceback:\nERROR: HTTPSConnectionPool(host='login.microsoftonline.com', port=443): Max retries exceeded with url: /common/discovery/instance?api-version=1.1&authorization_endpoint=https%3A%2F%2Flogin.microsoftonline.com%2Fcommon%2Foauth2%2Fauthorize (Caused by NameResolutionError(\"HTTPSConnection(host='login.microsoftonline.com', port=443): Failed to resolve 'login.microsoftonline.com' ([Errno 11001] getaddrinfo failed)\"))\nTraceback (most recent call last):\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connection.py\", line 204, in _new_conn\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/util/connection.py\", line 60, in create_connection\n  File \"socket.py\", line 987, in getaddrinfo\nsocket.gaierror: [Errno 11001] getaddrinfo failed\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 788, in urlopen\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 488, in _make_request\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 464, in _make_request\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 1106, in _validate_conn\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connection.py\", line 759, in connect\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connection.py\", line 211, in _new_conn\nurllib3.exceptions.NameResolutionError: HTTPSConnection(host='login.microsoftonline.com', port=443): Failed to resolve 'login.microsoftonline.com' ([Errno 11001] getaddrinfo failed)\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\requests/adapters.py\", line 645, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 872, in urlopen\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 842, in urlopen\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/util/retry.py\", line 543, in increment\nurllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='login.microsoftonline.com', port=443): Max retries exceeded with url: /common/discovery/instance?api-version=1.1&authorization_endpoint=https%3A%2F%2Flogin.microsoftonline.com%2Fcommon%2Foauth2%2Fauthorize (Caused by NameResolutionError(\"HTTPSConnection(host='login.microsoftonline.com', port=443): Failed to resolve 'login.microsoftonline.com' ([Errno 11001] getaddrinfo failed)\"))\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\knack/cli.py\", line 233, in invoke\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/commands/__init__.py\", line 677, in execute\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/commands/__init__.py\", line 820, in _run_jobs_serially\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/commands/__init__.py\", line 789, in _run_job\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/commands/__init__.py\", line 335, in __call__\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/commands/command_operation.py\", line 120, in handler\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/command_modules/vm/custom.py\", line 1443, in list_skus\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/command_modules/vm/_vm_utils.py\", line 131, in list_sku_info\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_paging.py\", line 87, in __next__\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_paging.py\", line 43, in __next__\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_command.py\", line 250, in executor_wrapper\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure\\cli\\command_modules\\vm\\aaz_compact\\latest\\vm\\__cmds.py\", line 7499, in _execute_operations\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure\\cli\\command_modules\\vm\\aaz_compact\\latest\\vm\\__cmds.py\", line 7520, in __call__\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_client.py\", line 107, in send_request\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/_base.py\", line 242, in run\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/_base.py\", line 98, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/_base.py\", line 98, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/_base.py\", line 98, in send\n  [Previous line repeated 2 more times]\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/mgmt/core/policies/_base.py\", line 95, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/policies/_redirect.py\", line 205, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/policies/_retry.py\", line 545, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_http_policy.py\", line 110, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_http_policy.py\", line 80, in on_request\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/auth/credential_adaptor.py\", line 33, in get_token\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/auth/msal_credentials.py\", line 76, in acquire_token\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/application.py\", line 1495, in acquire_token_silent_with_error\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/application.py\", line 1527, in _acquire_token_silent_with_error\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/application.py\", line 1335, in _get_authority_aliases\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/application.py\", line 1314, in _get_instance_metadata\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/individual_cache.py\", line 273, in wrapper\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/throttled_http_client.py\", line 99, in get\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\requests/sessions.py\", line 605, in get\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\requests/sessions.py\", line 592, in request\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\requests/sessions.py\", line 706, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\requests/adapters.py\", line 678, in send\nrequests.exceptions.ConnectionError: HTTPSConnectionPool(host='login.microsoftonline.com', port=443): Max retries exceeded with url: /common/discovery/instance?api-version=1.1&authorization_endpoint=https%3A%2F%2Flogin.microsoftonline.com%2Fcommon%2Foauth2%2Fauthorize (Caused by NameResolutionError(\"HTTPSConnection(host='login.microsoftonline.com', port=443): Failed to resolve 'login.microsoftonline.com' ([Errno 11001] getaddrinfo failed)\"))\nTo check existing issues, please visit: https://github.com/Azure/azure-cli/issues"
+    "status": "ok"
   },
   {
     "cloud": "azure",
-    "region": "denmarkeast",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
+    "region": "centralindia",
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
     "candidates_tried": [
-      "Standard_B2s"
+      "Standard_B1s"
     ],
-    "status": "error",
-    "error": "ERROR: The command failed with an unexpected error. Here is the traceback:\nERROR: HTTPSConnectionPool(host='login.microsoftonline.com', port=443): Max retries exceeded with url: /common/discovery/instance?api-version=1.1&authorization_endpoint=https%3A%2F%2Flogin.microsoftonline.com%2Fcommon%2Foauth2%2Fauthorize (Caused by NameResolutionError(\"HTTPSConnection(host='login.microsoftonline.com', port=443): Failed to resolve 'login.microsoftonline.com' ([Errno 11001] getaddrinfo failed)\"))\nTraceback (most recent call last):\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connection.py\", line 204, in _new_conn\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/util/connection.py\", line 60, in create_connection\n  File \"socket.py\", line 987, in getaddrinfo\nsocket.gaierror: [Errno 11001] getaddrinfo failed\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 788, in urlopen\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 488, in _make_request\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 464, in _make_request\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 1106, in _validate_conn\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connection.py\", line 759, in connect\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connection.py\", line 211, in _new_conn\nurllib3.exceptions.NameResolutionError: HTTPSConnection(host='login.microsoftonline.com', port=443): Failed to resolve 'login.microsoftonline.com' ([Errno 11001] getaddrinfo failed)\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\requests/adapters.py\", line 645, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 872, in urlopen\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/connectionpool.py\", line 842, in urlopen\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\urllib3/util/retry.py\", line 543, in increment\nurllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='login.microsoftonline.com', port=443): Max retries exceeded with url: /common/discovery/instance?api-version=1.1&authorization_endpoint=https%3A%2F%2Flogin.microsoftonline.com%2Fcommon%2Foauth2%2Fauthorize (Caused by NameResolutionError(\"HTTPSConnection(host='login.microsoftonline.com', port=443): Failed to resolve 'login.microsoftonline.com' ([Errno 11001] getaddrinfo failed)\"))\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\knack/cli.py\", line 233, in invoke\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/commands/__init__.py\", line 677, in execute\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/commands/__init__.py\", line 820, in _run_jobs_serially\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/commands/__init__.py\", line 789, in _run_job\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/commands/__init__.py\", line 335, in __call__\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/commands/command_operation.py\", line 120, in handler\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/command_modules/vm/custom.py\", line 1443, in list_skus\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/command_modules/vm/_vm_utils.py\", line 131, in list_sku_info\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_paging.py\", line 87, in __next__\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_paging.py\", line 43, in __next__\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_command.py\", line 250, in executor_wrapper\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure\\cli\\command_modules\\vm\\aaz_compact\\latest\\vm\\__cmds.py\", line 7499, in _execute_operations\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure\\cli\\command_modules\\vm\\aaz_compact\\latest\\vm\\__cmds.py\", line 7520, in __call__\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_client.py\", line 107, in send_request\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/_base.py\", line 242, in run\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/_base.py\", line 98, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/_base.py\", line 98, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/_base.py\", line 98, in send\n  [Previous line repeated 2 more times]\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/mgmt/core/policies/_base.py\", line 95, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/policies/_redirect.py\", line 205, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/core/pipeline/policies/_retry.py\", line 545, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_http_policy.py\", line 110, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/aaz/_http_policy.py\", line 80, in on_request\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/auth/credential_adaptor.py\", line 33, in get_token\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\azure/cli/core/auth/msal_credentials.py\", line 76, in acquire_token\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/application.py\", line 1495, in acquire_token_silent_with_error\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/application.py\", line 1527, in _acquire_token_silent_with_error\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/application.py\", line 1335, in _get_authority_aliases\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/application.py\", line 1314, in _get_instance_metadata\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/individual_cache.py\", line 273, in wrapper\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\msal/throttled_http_client.py\", line 99, in get\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\requests/sessions.py\", line 605, in get\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\requests/sessions.py\", line 592, in request\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\requests/sessions.py\", line 706, in send\n  File \"D:\\a\\_work\\1\\s\\build_scripts\\windows\\artifacts\\cli\\Lib\\site-packages\\requests/adapters.py\", line 678, in send\nrequests.exceptions.ConnectionError: HTTPSConnectionPool(host='login.microsoftonline.com', port=443): Max retries exceeded with url: /common/discovery/instance?api-version=1.1&authorization_endpoint=https%3A%2F%2Flogin.microsoftonline.com%2Fcommon%2Foauth2%2Fauthorize (Caused by NameResolutionError(\"HTTPSConnection(host='login.microsoftonline.com', port=443): Failed to resolve 'login.microsoftonline.com' ([Errno 11001] getaddrinfo failed)\"))\nTo check existing issues, please visit: https://github.com/Azure/azure-cli/issues"
+    "status": "ok"
   },
   {
     "cloud": "azure",
-    "region": "eastasia",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
+    "region": "canadacentral",
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
     "candidates_tried": [
-      "Standard_B2s"
+      "Standard_B1s"
     ],
-    "status": "error",
-    "error": "ERROR: The server or proxy was not found.. Status: Response_Status.Status_NoNetwork, Error code: 3399942148, Tag: 557973641\nRun the command below to authenticate interactively; additional arguments may be added as needed:\naz logout\naz login --tenant \"1e26cf0c-9d7a-4b4a-9e5c-e75353451973\" --scope \"https://management.core.windows.net//.default\""
+    "status": "ok"
   },
   {
     "cloud": "azure",
     "region": "eastus",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
     "candidates_tried": [
-      "Standard_B2s"
+      "Standard_B1s"
     ],
-    "status": "error",
-    "error": "'az' timed out after 120s -- likely stuck waiting for interactive login/consent. Try running 'az login' (or the equivalent) manually first."
+    "status": "ok"
+  },
+  {
+    "cloud": "azure",
+    "region": "eastasia",
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
+    "candidates_tried": [
+      "Standard_B1s"
+    ],
+    "status": "ok"
   },
   {
     "cloud": "azure",
     "region": "eastus2",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
     "candidates_tried": [
-      "Standard_B2s"
+      "Standard_B1s"
     ],
-    "status": "error",
-    "error": "'az' timed out after 120s -- likely stuck waiting for interactive login/consent. Try running 'az login' (or the equivalent) manually first."
-  },
-  {
-    "cloud": "azure",
-    "region": "eastus2euap",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
-    "candidates_tried": [
-      "Standard_B2s"
-    ],
-    "status": "error",
-    "error": "'az' timed out after 120s -- likely stuck waiting for interactive login/consent. Try running 'az login' (or the equivalent) manually first."
-  },
-  {
-    "cloud": "azure",
-    "region": "eastusstg",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
-    "candidates_tried": [
-      "Standard_B2s"
-    ],
-    "status": "error",
-    "error": "'az' timed out after 120s -- likely stuck waiting for interactive login/consent. Try running 'az login' (or the equivalent) manually first."
+    "status": "ok"
   },
   {
     "cloud": "azure",
     "region": "francecentral",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
     "candidates_tried": [
-      "Standard_B2s"
+      "Standard_B1s"
     ],
-    "status": "error",
-    "error": "'az' timed out after 120s -- likely stuck waiting for interactive login/consent. Try running 'az login' (or the equivalent) manually first."
-  },
-  {
-    "cloud": "azure",
-    "region": "francesouth",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
-    "candidates_tried": [
-      "Standard_B2s"
-    ],
-    "status": "error",
-    "error": "ERROR: HTTPSConnection(host='management.azure.com', port=443): Failed to resolve 'management.azure.com' ([Errno 11001] getaddrinfo failed)"
+    "status": "ok"
   },
   {
     "cloud": "azure",
     "region": "germanynorth",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
+    "candidates_tried": [
+      "Standard_B1s"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "azure",
+    "region": "francesouth",
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
+    "candidates_tried": [
+      "Standard_B1s"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "azure",
+    "region": "denmarkeast",
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B2ms",
     "requested_available": false,
     "candidates_tried": [
-      "Standard_B2s"
+      "Standard_B1s",
+      "Standard_B2s",
+      "Standard_B2ms"
     ],
-    "status": "error",
-    "error": "'az' timed out after 120s -- likely stuck waiting for interactive login/consent. Try running 'az login' (or the equivalent) manually first."
+    "status": "ok"
   },
   {
     "cloud": "azure",
     "region": "germanywestcentral",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
     "candidates_tried": [
-      "Standard_B2s"
+      "Standard_B1s"
     ],
-    "status": "error",
-    "error": "'az' timed out after 120s -- likely stuck waiting for interactive login/consent. Try running 'az login' (or the equivalent) manually first."
-  },
-  {
-    "cloud": "azure",
-    "region": "indiasouthcentral",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
-    "candidates_tried": [
-      "Standard_B2s"
-    ],
-    "status": "error",
-    "error": "'az' timed out after 120s -- likely stuck waiting for interactive login/consent. Try running 'az login' (or the equivalent) manually first."
-  },
-  {
-    "cloud": "azure",
-    "region": "indonesiacentral",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
-    "candidates_tried": [
-      "Standard_B2s"
-    ],
-    "status": "error",
-    "error": "'az' timed out after 120s -- likely stuck waiting for interactive login/consent. Try running 'az login' (or the equivalent) manually first."
+    "status": "ok"
   },
   {
     "cloud": "azure",
     "region": "israelcentral",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
     "candidates_tried": [
-      "Standard_B2s"
+      "Standard_B1s"
     ],
-    "status": "error",
-    "error": "'az' timed out after 120s -- likely stuck waiting for interactive login/consent. Try running 'az login' (or the equivalent) manually first."
+    "status": "ok"
+  },
+  {
+    "cloud": "azure",
+    "region": "indonesiacentral",
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
+    "candidates_tried": [
+      "Standard_B1s"
+    ],
+    "status": "ok"
   },
   {
     "cloud": "azure",
     "region": "italynorth",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
     "candidates_tried": [
-      "Standard_B2s"
+      "Standard_B1s"
     ],
-    "status": "error",
-    "error": "'az' timed out after 120s -- likely stuck waiting for interactive login/consent. Try running 'az login' (or the equivalent) manually first."
-  },
-  {
-    "cloud": "azure",
-    "region": "japaneast",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
-    "candidates_tried": [
-      "Standard_B2s"
-    ],
-    "status": "error",
-    "error": "'az' timed out after 120s -- likely stuck waiting for interactive login/consent. Try running 'az login' (or the equivalent) manually first."
+    "status": "ok"
   },
   {
     "cloud": "azure",
     "region": "japanwest",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
     "candidates_tried": [
-      "Standard_B2s"
+      "Standard_B1s"
     ],
-    "status": "error",
-    "error": "'az' timed out after 120s -- likely stuck waiting for interactive login/consent. Try running 'az login' (or the equivalent) manually first."
+    "status": "ok"
+  },
+  {
+    "cloud": "azure",
+    "region": "japaneast",
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
+    "candidates_tried": [
+      "Standard_B1s"
+    ],
+    "status": "ok"
   },
   {
     "cloud": "azure",
     "region": "jioindiacentral",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
+    "candidates_tried": [
+      "Standard_B1s"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "azure",
+    "region": "indiasouthcentral",
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B2ms",
     "requested_available": false,
     "candidates_tried": [
-      "Standard_B2s"
+      "Standard_B1s",
+      "Standard_B2s",
+      "Standard_B2ms"
     ],
-    "status": "error",
-    "error": "'az' timed out after 120s -- likely stuck waiting for interactive login/consent. Try running 'az login' (or the equivalent) manually first."
+    "status": "ok"
   },
   {
     "cloud": "azure",
     "region": "jioindiawest",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
     "candidates_tried": [
-      "Standard_B2s"
+      "Standard_B1s"
     ],
-    "status": "error",
-    "error": "'az' timed out after 120s -- likely stuck waiting for interactive login/consent. Try running 'az login' (or the equivalent) manually first."
+    "status": "ok"
   },
   {
     "cloud": "azure",
     "region": "koreacentral",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
     "candidates_tried": [
-      "Standard_B2s"
+      "Standard_B1s"
     ],
-    "status": "error",
-    "error": "'az' timed out after 120s -- likely stuck waiting for interactive login/consent. Try running 'az login' (or the equivalent) manually first."
-  },
-  {
-    "cloud": "azure",
-    "region": "koreasouth",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
-    "candidates_tried": [
-      "Standard_B2s"
-    ],
-    "status": "error",
-    "error": "'az' timed out after 120s -- likely stuck waiting for interactive login/consent. Try running 'az login' (or the equivalent) manually first."
+    "status": "ok"
   },
   {
     "cloud": "azure",
     "region": "malaysiawest",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
     "candidates_tried": [
-      "Standard_B2s"
+      "Standard_B1s"
     ],
-    "status": "error",
-    "error": "'az' timed out after 120s -- likely stuck waiting for interactive login/consent. Try running 'az login' (or the equivalent) manually first."
+    "status": "ok"
   },
   {
     "cloud": "azure",
-    "region": "mexicocentral",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
+    "region": "koreasouth",
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
     "candidates_tried": [
-      "Standard_B2s"
+      "Standard_B1s"
     ],
-    "status": "error",
-    "error": "'az' timed out after 120s -- likely stuck waiting for interactive login/consent. Try running 'az login' (or the equivalent) manually first."
+    "status": "ok"
   },
   {
     "cloud": "azure",
     "region": "newzealandnorth",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
     "candidates_tried": [
-      "Standard_B2s"
+      "Standard_B1s"
     ],
-    "status": "error",
-    "error": "'az' timed out after 120s -- likely stuck waiting for interactive login/consent. Try running 'az login' (or the equivalent) manually first."
+    "status": "ok"
+  },
+  {
+    "cloud": "azure",
+    "region": "mexicocentral",
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
+    "candidates_tried": [
+      "Standard_B1s"
+    ],
+    "status": "ok"
   },
   {
     "cloud": "azure",
     "region": "northcentralus",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
     "candidates_tried": [
-      "Standard_B2s"
+      "Standard_B1s"
     ],
-    "status": "error",
-    "error": "'az' timed out after 120s -- likely stuck waiting for interactive login/consent. Try running 'az login' (or the equivalent) manually first."
+    "status": "ok"
   },
   {
     "cloud": "azure",
     "region": "northeurope",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
     "candidates_tried": [
-      "Standard_B2s"
+      "Standard_B1s"
     ],
-    "status": "error",
-    "error": "'az' timed out after 120s -- likely stuck waiting for interactive login/consent. Try running 'az login' (or the equivalent) manually first."
+    "status": "ok"
   },
   {
     "cloud": "azure",
     "region": "norwayeast",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
     "candidates_tried": [
-      "Standard_B2s"
+      "Standard_B1s"
     ],
-    "status": "error",
-    "error": "'az' timed out after 120s -- likely stuck waiting for interactive login/consent. Try running 'az login' (or the equivalent) manually first."
+    "status": "ok"
   },
   {
     "cloud": "azure",
     "region": "norwaywest",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
     "candidates_tried": [
-      "Standard_B2s"
+      "Standard_B1s"
     ],
-    "status": "error",
-    "error": "'az' timed out after 120s -- likely stuck waiting for interactive login/consent. Try running 'az login' (or the equivalent) manually first."
-  },
-  {
-    "cloud": "azure",
-    "region": "polandcentral",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
-    "candidates_tried": [
-      "Standard_B2s"
-    ],
-    "status": "error",
-    "error": "'az' timed out after 120s -- likely stuck waiting for interactive login/consent. Try running 'az login' (or the equivalent) manually first."
+    "status": "ok"
   },
   {
     "cloud": "azure",
     "region": "qatarcentral",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
     "candidates_tried": [
-      "Standard_B2s"
+      "Standard_B1s"
     ],
-    "status": "error",
-    "error": "'az' timed out after 120s -- likely stuck waiting for interactive login/consent. Try running 'az login' (or the equivalent) manually first."
+    "status": "ok"
   },
   {
     "cloud": "azure",
     "region": "southafricanorth",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
     "candidates_tried": [
-      "Standard_B2s"
+      "Standard_B1s"
     ],
-    "status": "error",
-    "error": "'az' timed out after 120s -- likely stuck waiting for interactive login/consent. Try running 'az login' (or the equivalent) manually first."
+    "status": "ok"
   },
   {
     "cloud": "azure",
-    "region": "southafricawest",
-    "requested_size": "Standard_B2s",
-    "resolved_size": null,
-    "requested_available": false,
+    "region": "polandcentral",
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
     "candidates_tried": [
-      "Standard_B2s"
+      "Standard_B1s"
     ],
-    "status": "error",
-    "error": "'az' timed out after 120s -- likely stuck waiting for interactive login/consent. Try running 'az login' (or the equivalent) manually first."
+    "status": "ok"
   },
   {
     "cloud": "azure",
     "region": "southcentralus",
-    "requested_size": "Standard_B2s",
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
+    "candidates_tried": [
+      "Standard_B1s"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "azure",
+    "region": "southeastasia",
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
+    "candidates_tried": [
+      "Standard_B1s"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "azure",
+    "region": "southindia",
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
+    "candidates_tried": [
+      "Standard_B1s"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "azure",
+    "region": "spaincentral",
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
+    "candidates_tried": [
+      "Standard_B1s"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "azure",
+    "region": "swedencentral",
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
+    "candidates_tried": [
+      "Standard_B1s"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "azure",
+    "region": "switzerlandnorth",
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
+    "candidates_tried": [
+      "Standard_B1s"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "azure",
+    "region": "centraluseuap",
+    "requested_size": "Standard_B1s",
     "resolved_size": null,
     "requested_available": false,
     "candidates_tried": [
-      "Standard_B2s"
+      "Standard_B1s",
+      "Standard_B2s",
+      "Standard_B2ms",
+      "Standard_D2s_v3",
+      "Standard_D2s_v4",
+      "Standard_D2s_v5",
+      "Standard_DS1_v2",
+      "Standard_F2s_v2",
+      "Standard_D2_v3",
+      "Standard_A2_v2"
     ],
-    "status": "error",
-    "error": "'az' timed out after 120s -- likely stuck waiting for interactive login/consent. Try running 'az login' (or the equivalent) manually first."
+    "status": "no_available_size"
+  },
+  {
+    "cloud": "azure",
+    "region": "switzerlandwest",
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
+    "candidates_tried": [
+      "Standard_B1s"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "azure",
+    "region": "uaecentral",
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
+    "candidates_tried": [
+      "Standard_B1s"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "azure",
+    "region": "eastusstg",
+    "requested_size": "Standard_B1s",
+    "resolved_size": null,
+    "requested_available": false,
+    "candidates_tried": [
+      "Standard_B1s",
+      "Standard_B2s",
+      "Standard_B2ms",
+      "Standard_D2s_v3",
+      "Standard_D2s_v4",
+      "Standard_D2s_v5",
+      "Standard_DS1_v2",
+      "Standard_F2s_v2",
+      "Standard_D2_v3",
+      "Standard_A2_v2"
+    ],
+    "status": "no_available_size"
+  },
+  {
+    "cloud": "azure",
+    "region": "ukwest",
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
+    "candidates_tried": [
+      "Standard_B1s"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "azure",
+    "region": "uksouth",
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
+    "candidates_tried": [
+      "Standard_B1s"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "azure",
+    "region": "uaenorth",
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
+    "candidates_tried": [
+      "Standard_B1s"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "azure",
+    "region": "eastus2euap",
+    "requested_size": "Standard_B1s",
+    "resolved_size": null,
+    "requested_available": false,
+    "candidates_tried": [
+      "Standard_B1s",
+      "Standard_B2s",
+      "Standard_B2ms",
+      "Standard_D2s_v3",
+      "Standard_D2s_v4",
+      "Standard_D2s_v5",
+      "Standard_DS1_v2",
+      "Standard_F2s_v2",
+      "Standard_D2_v3",
+      "Standard_A2_v2"
+    ],
+    "status": "no_available_size"
+  },
+  {
+    "cloud": "azure",
+    "region": "westus",
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
+    "candidates_tried": [
+      "Standard_B1s"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "azure",
+    "region": "westindia",
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
+    "candidates_tried": [
+      "Standard_B1s"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "azure",
+    "region": "westeurope",
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
+    "candidates_tried": [
+      "Standard_B1s"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "azure",
+    "region": "westcentralus",
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
+    "candidates_tried": [
+      "Standard_B1s"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "azure",
+    "region": "westus2",
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
+    "candidates_tried": [
+      "Standard_B1s"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "azure",
+    "region": "westus3",
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
+    "candidates_tried": [
+      "Standard_B1s"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "azure",
+    "region": "southafricawest",
+    "requested_size": "Standard_B1s",
+    "resolved_size": "Standard_B1s",
+    "requested_available": true,
+    "candidates_tried": [
+      "Standard_B1s"
+    ],
+    "status": "ok"
+  },
+  {
+    "cloud": "azure",
+    "region": "southcentralusstg",
+    "requested_size": "Standard_B1s",
+    "resolved_size": null,
+    "requested_available": false,
+    "candidates_tried": [
+      "Standard_B1s",
+      "Standard_B2s",
+      "Standard_B2ms",
+      "Standard_D2s_v3",
+      "Standard_D2s_v4",
+      "Standard_D2s_v5",
+      "Standard_DS1_v2",
+      "Standard_F2s_v2",
+      "Standard_D2_v3",
+      "Standard_A2_v2"
+    ],
+    "status": "no_available_size"
   }
 ]

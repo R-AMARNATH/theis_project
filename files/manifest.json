@@ -1,13 +1,519 @@
 [
-  {"cloud": "aws",   "region": "eu-west-1",       "bucket": "carbonaware-data-aws-eu-west-1"},
-  {"cloud": "aws",   "region": "us-east-1",       "bucket": "carbonaware-data-aws-us-east-1"},
-  {"cloud": "aws",   "region": "ap-southeast-1",  "bucket": "carbonaware-data-aws-ap-southeast-1"},
-
-  {"cloud": "azure", "region": "westeurope",      "account": "carbonawestagingweu",  "container": "carbonaware-data"},
-  {"cloud": "azure", "region": "eastus",          "account": "carbonawestagingeus",  "container": "carbonaware-data"},
-  {"cloud": "azure", "region": "southeastasia",   "account": "carbonawestagingsea",  "container": "carbonaware-data"},
-
-  {"cloud": "gcp",   "region": "europe-west1",    "project": "carbonawarescheduler", "bucket": "carbonaware-data-gcp-europe-west1"},
-  {"cloud": "gcp",   "region": "us-east1",        "project": "carbonawarescheduler", "bucket": "carbonaware-data-gcp-us-east1"},
-  {"cloud": "gcp",   "region": "asia-southeast1", "project": "carbonawarescheduler", "bucket": "carbonaware-data-gcp-asia-southeast1"}
+  {
+    "cloud": "aws",
+    "region": "ap-northeast-1",
+    "bucket": "carbonaware-data-aws-ap-northeast-1"
+  },
+  {
+    "cloud": "aws",
+    "region": "ap-northeast-2",
+    "bucket": "carbonaware-data-aws-ap-northeast-2"
+  },
+  {
+    "cloud": "aws",
+    "region": "ap-northeast-3",
+    "bucket": "carbonaware-data-aws-ap-northeast-3"
+  },
+  {
+    "cloud": "aws",
+    "region": "ap-south-1",
+    "bucket": "carbonaware-data-aws-ap-south-1"
+  },
+  {
+    "cloud": "aws",
+    "region": "ap-southeast-1",
+    "bucket": "carbonaware-data-aws-ap-southeast-1"
+  },
+  {
+    "cloud": "aws",
+    "region": "ap-southeast-2",
+    "bucket": "carbonaware-data-aws-ap-southeast-2"
+  },
+  {
+    "cloud": "aws",
+    "region": "ca-central-1",
+    "bucket": "carbonaware-data-aws-ca-central-1"
+  },
+  {
+    "cloud": "aws",
+    "region": "eu-central-1",
+    "bucket": "carbonaware-data-aws-eu-central-1"
+  },
+  {
+    "cloud": "aws",
+    "region": "eu-north-1",
+    "bucket": "carbonaware-data-aws-eu-north-1"
+  },
+  {
+    "cloud": "aws",
+    "region": "eu-west-1",
+    "bucket": "carbonaware-data-aws-eu-west-1"
+  },
+  {
+    "cloud": "aws",
+    "region": "eu-west-2",
+    "bucket": "carbonaware-data-aws-eu-west-2"
+  },
+  {
+    "cloud": "aws",
+    "region": "eu-west-3",
+    "bucket": "carbonaware-data-aws-eu-west-3"
+  },
+  {
+    "cloud": "aws",
+    "region": "sa-east-1",
+    "bucket": "carbonaware-data-aws-sa-east-1"
+  },
+  {
+    "cloud": "aws",
+    "region": "us-east-1",
+    "bucket": "carbonaware-data-aws-us-east-1"
+  },
+  {
+    "cloud": "aws",
+    "region": "us-east-2",
+    "bucket": "carbonaware-data-aws-us-east-2"
+  },
+  {
+    "cloud": "aws",
+    "region": "us-west-1",
+    "bucket": "carbonaware-data-aws-us-west-1"
+  },
+  {
+    "cloud": "aws",
+    "region": "us-west-2",
+    "bucket": "carbonaware-data-aws-us-west-2"
+  },
+  {
+    "cloud": "azure",
+    "region": "australiacentral",
+    "account": "carbonawestagingaus",
+    "container": "carbonaware-data"
+  },
+  {
+    "cloud": "azure",
+    "region": "australiasoutheast",
+    "account": "carbonawestagingaust",
+    "container": "carbonaware-data"
+  },
+  {
+    "cloud": "azure",
+    "region": "austriaeast",
+    "account": "carbonawestagingaustr",
+    "container": "carbonaware-data"
+  },
+  {
+    "cloud": "azure",
+    "region": "belgiumcentral",
+    "account": "carbonawestagingbel",
+    "container": "carbonaware-data"
+  },
+  {
+    "cloud": "azure",
+    "region": "brazilsouth",
+    "account": "carbonawestagingbra",
+    "container": "carbonaware-data"
+  },
+  {
+    "cloud": "azure",
+    "region": "canadaeast",
+    "account": "carbonawestagingcan",
+    "container": "carbonaware-data"
+  },
+  {
+    "cloud": "azure",
+    "region": "centralus",
+    "account": "carbonawestagingcen",
+    "container": "carbonaware-data"
+  },
+  {
+    "cloud": "azure",
+    "region": "chilecentral",
+    "account": "carbonawestagingchi",
+    "container": "carbonaware-data"
+  },
+  {
+    "cloud": "azure",
+    "region": "eastasia",
+    "account": "carbonawestagingeas",
+    "container": "carbonaware-data"
+  },
+  {
+    "cloud": "azure",
+    "region": "eastus2",
+    "account": "carbonawestagingeus2",
+    "container": "carbonaware-data"
+  },
+  {
+    "cloud": "azure",
+    "region": "francecentral",
+    "account": "carbonawestagingfra",
+    "container": "carbonaware-data"
+  },
+  {
+    "cloud": "azure",
+    "region": "indonesiacentral",
+    "account": "carbonawestagingind",
+    "container": "carbonaware-data"
+  },
+  {
+    "cloud": "azure",
+    "region": "israelcentral",
+    "account": "carbonawestagingisr",
+    "container": "carbonaware-data"
+  },
+  {
+    "cloud": "azure",
+    "region": "italynorth",
+    "account": "carbonawestagingita",
+    "container": "carbonaware-data"
+  },
+  {
+    "cloud": "azure",
+    "region": "japanwest",
+    "account": "carbonawestagingjap",
+    "container": "carbonaware-data"
+  },
+  {
+    "cloud": "azure",
+    "region": "koreacentral",
+    "account": "carbonawestagingkor",
+    "container": "carbonaware-data"
+  },
+  {
+    "cloud": "azure",
+    "region": "koreasouth",
+    "account": "carbonawestagingkore",
+    "container": "carbonaware-data"
+  },
+  {
+    "cloud": "azure",
+    "region": "malaysiawest",
+    "account": "carbonawestagingmyw",
+    "container": "carbonaware-data"
+  },
+  {
+    "cloud": "azure",
+    "region": "newzealandnorth",
+    "account": "carbonawestagingnew",
+    "container": "carbonaware-data"
+  },
+  {
+    "cloud": "azure",
+    "region": "northcentralus",
+    "account": "carbonawestagingnor",
+    "container": "carbonaware-data"
+  },
+  {
+    "cloud": "azure",
+    "region": "polandcentral",
+    "account": "carbonawestagingpol",
+    "container": "carbonaware-data"
+  },
+  {
+    "cloud": "azure",
+    "region": "qatarcentral",
+    "account": "carbonawestagingqat",
+    "container": "carbonaware-data"
+  },
+  {
+    "cloud": "azure",
+    "region": "southafricanorth",
+    "account": "carbonawestagingsou",
+    "container": "carbonaware-data"
+  },
+  {
+    "cloud": "azure",
+    "region": "southcentralus",
+    "account": "carbonawestagingsout",
+    "container": "carbonaware-data"
+  },
+  {
+    "cloud": "azure",
+    "region": "swedencentral",
+    "account": "carbonawestagingswe",
+    "container": "carbonaware-data"
+  },
+  {
+    "cloud": "azure",
+    "region": "switzerlandnorth",
+    "account": "carbonawestagingswi",
+    "container": "carbonaware-data"
+  },
+  {
+    "cloud": "azure",
+    "region": "uaenorth",
+    "account": "carbonawestaginguae",
+    "container": "carbonaware-data"
+  },
+  {
+    "cloud": "azure",
+    "region": "ukwest",
+    "account": "carbonawestagingukw",
+    "container": "carbonaware-data"
+  },
+  {
+    "cloud": "azure",
+    "region": "westcentralus",
+    "account": "carbonawestagingwes",
+    "container": "carbonaware-data"
+  },
+  {
+    "cloud": "azure",
+    "region": "westus2",
+    "account": "carbonawestagingwest",
+    "container": "carbonaware-data"
+  },
+  {
+    "cloud": "azure",
+    "region": "westus3",
+    "account": "carbonawestagingwestu",
+    "container": "carbonaware-data"
+  },
+  {
+    "cloud": "gcp",
+    "region": "africa-south1",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-africa-south1"
+  },
+  {
+    "cloud": "gcp",
+    "region": "asia-east1",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-asia-east1"
+  },
+  {
+    "cloud": "gcp",
+    "region": "asia-east2",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-asia-east2"
+  },
+  {
+    "cloud": "gcp",
+    "region": "asia-northeast1",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-asia-northeast1"
+  },
+  {
+    "cloud": "gcp",
+    "region": "asia-northeast2",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-asia-northeast2"
+  },
+  {
+    "cloud": "gcp",
+    "region": "asia-northeast3",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-asia-northeast3"
+  },
+  {
+    "cloud": "gcp",
+    "region": "asia-south1",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-asia-south1"
+  },
+  {
+    "cloud": "gcp",
+    "region": "asia-south2",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-asia-south2"
+  },
+  {
+    "cloud": "gcp",
+    "region": "asia-southeast1",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-asia-southeast1"
+  },
+  {
+    "cloud": "gcp",
+    "region": "asia-southeast2",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-asia-southeast2"
+  },
+  {
+    "cloud": "gcp",
+    "region": "australia-southeast1",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-australia-southeast1"
+  },
+  {
+    "cloud": "gcp",
+    "region": "australia-southeast2",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-australia-southeast2"
+  },
+  {
+    "cloud": "gcp",
+    "region": "europe-central2",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-europe-central2"
+  },
+  {
+    "cloud": "gcp",
+    "region": "europe-north1",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-europe-north1"
+  },
+  {
+    "cloud": "gcp",
+    "region": "europe-north2",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-europe-north2"
+  },
+  {
+    "cloud": "gcp",
+    "region": "europe-southwest1",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-europe-southwest1"
+  },
+  {
+    "cloud": "gcp",
+    "region": "europe-west1",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-europe-west1"
+  },
+  {
+    "cloud": "gcp",
+    "region": "europe-west10",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-europe-west10"
+  },
+  {
+    "cloud": "gcp",
+    "region": "europe-west12",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-europe-west12"
+  },
+  {
+    "cloud": "gcp",
+    "region": "europe-west2",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-europe-west2"
+  },
+  {
+    "cloud": "gcp",
+    "region": "europe-west3",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-europe-west3"
+  },
+  {
+    "cloud": "gcp",
+    "region": "europe-west4",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-europe-west4"
+  },
+  {
+    "cloud": "gcp",
+    "region": "europe-west6",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-europe-west6"
+  },
+  {
+    "cloud": "gcp",
+    "region": "europe-west8",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-europe-west8"
+  },
+  {
+    "cloud": "gcp",
+    "region": "europe-west9",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-europe-west9"
+  },
+  {
+    "cloud": "gcp",
+    "region": "me-central1",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-me-central1"
+  },
+  {
+    "cloud": "gcp",
+    "region": "me-west1",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-me-west1"
+  },
+  {
+    "cloud": "gcp",
+    "region": "northamerica-northeast1",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-northamerica-northeast1"
+  },
+  {
+    "cloud": "gcp",
+    "region": "northamerica-northeast2",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-northamerica-northeast2"
+  },
+  {
+    "cloud": "gcp",
+    "region": "northamerica-south1",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-northamerica-south1"
+  },
+  {
+    "cloud": "gcp",
+    "region": "southamerica-east1",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-southamerica-east1"
+  },
+  {
+    "cloud": "gcp",
+    "region": "southamerica-west1",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-southamerica-west1"
+  },
+  {
+    "cloud": "gcp",
+    "region": "us-central1",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-us-central1"
+  },
+  {
+    "cloud": "gcp",
+    "region": "us-east1",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-us-east1"
+  },
+  {
+    "cloud": "gcp",
+    "region": "us-east4",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-us-east4"
+  },
+  {
+    "cloud": "gcp",
+    "region": "us-east5",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-us-east5"
+  },
+  {
+    "cloud": "gcp",
+    "region": "us-south1",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-us-south1"
+  },
+  {
+    "cloud": "gcp",
+    "region": "us-west1",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-us-west1"
+  },
+  {
+    "cloud": "gcp",
+    "region": "us-west2",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-us-west2"
+  },
+  {
+    "cloud": "gcp",
+    "region": "us-west3",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-us-west3"
+  },
+  {
+    "cloud": "gcp",
+    "region": "us-west4",
+    "project": "carbonawarescheduler",
+    "bucket": "carbonaware-data-gcp-us-west4"
+  }
 ]

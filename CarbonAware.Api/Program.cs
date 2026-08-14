@@ -33,7 +33,7 @@ builder.Services.Configure<CostSignalOptions>(builder.Configuration.GetSection("
 builder.Services.Configure<LatencySignalOptions>(builder.Configuration.GetSection("LatencySignal"));
 
 // Add targets 
-builder.Services.AddHttpClient<AzureGithubActionsTarget>(http =>http.BaseAddress = new Uri(gitHubApiURL));
+builder.Services.AddHttpClient<AzureGithubActionsTarget>(http => http.BaseAddress = new Uri(gitHubApiURL));
 builder.Services.AddHttpClient<GcpGithubActionsTarget>(http => http.BaseAddress = new Uri(gitHubApiURL));
 builder.Services.AddHttpClient<AwsGithubActionsTarget>(http => http.BaseAddress = new Uri(gitHubApiURL));
 
@@ -52,8 +52,8 @@ builder.Services.AddHttpClient<WattTimeProvider>((sp, http) =>
 });
 
 // Use the typed client as the active carbon signal provider
-builder.Services.AddScoped<ICarbonSignalProvider>(sp =>sp.GetRequiredService<WattTimeProvider>());
-builder.Services.AddScoped<IBestWindowSignalProvider>(sp =>sp.GetRequiredService<WattTimeProvider>());
+builder.Services.AddScoped<ICarbonSignalProvider>(sp => sp.GetRequiredService<WattTimeProvider>());
+builder.Services.AddScoped<IBestWindowSignalProvider>(sp => sp.GetRequiredService<WattTimeProvider>());
 builder.Services.AddSingleton<ICorrelationContext, CorrelationContext>();
 
 // NEW: cost and latency signal providers for the multi-objective scheduler
@@ -67,7 +67,8 @@ builder.Services.AddHostedService<WattTimeAuthBackgroundService>();
 
 // Region map / engine / target
 builder.Services.AddSingleton<IRegionMapper, StaticRegionMapper>();
-builder.Services.AddScoped<IPolicyEngine,WattTimeTwoModeEngine>();
+builder.Services.AddSingleton<IRegionAllowlist, ConfigRegionAllowlist>();
+builder.Services.AddScoped<IPolicyEngine, WattTimeTwoModeEngine>();
 // NEW: multi-objective scheduling engine (runs alongside IPolicyEngine, doesn't replace it)
 builder.Services.AddScoped<IMultiObjectivePolicyEngine, MultiObjectiveScoringEngine>();
 builder.Services.AddScoped<ICloudTarget>(sp =>
@@ -100,7 +101,8 @@ app.MapPost("/advise", async (OrchestrationRequest req, IPolicyEngine engine, Ca
     {
         var advice = await engine.AdviseAsync(req.Job, req.Policy, correlation, ct);
         return Results.Ok(advice);
-    } finally { correlation.Current = null;}
+    }
+    finally { correlation.Current = null; }
 })
 .WithName("Advise");
 
@@ -110,7 +112,7 @@ app.MapPost("/schedule", async (OrchestrationRequest req, IPolicyEngine engine, 
     correlation.Current = Guid.NewGuid();
     try
     {
-        var advice = await engine.AdviseAsync(req.Job, req.Policy, correlation ,ct);
+        var advice = await engine.AdviseAsync(req.Job, req.Policy, correlation, ct);
 
         var cycleId = string.IsNullOrWhiteSpace(req.CycleId)
             ? $"auto-{DateTimeOffset.UtcNow:yyyyMMddHHmmss}"

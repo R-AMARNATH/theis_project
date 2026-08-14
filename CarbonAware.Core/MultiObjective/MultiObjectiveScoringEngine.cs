@@ -16,6 +16,7 @@ namespace CarbonAware.Core;
 public sealed class MultiObjectiveScoringEngine : IMultiObjectivePolicyEngine
 {
     private readonly IRegionMapper _mapper;
+    private readonly IRegionAllowlist _allowlist;
     private readonly ICarbonSignalProvider _carbon;
     private readonly ICostSignalProvider _cost;
     private readonly ILatencySignalProvider _latency;
@@ -24,12 +25,14 @@ public sealed class MultiObjectiveScoringEngine : IMultiObjectivePolicyEngine
 
     public MultiObjectiveScoringEngine(
         IRegionMapper mapper,
+        IRegionAllowlist allowlist,
         ICarbonSignalProvider carbon,
         ICostSignalProvider cost,
         ILatencySignalProvider latency,
         IAuditSink audit)
     {
         _mapper = mapper;
+        _allowlist = allowlist;
         _carbon = carbon;
         _cost = cost;
         _latency = latency;
@@ -46,13 +49,13 @@ public sealed class MultiObjectiveScoringEngine : IMultiObjectivePolicyEngine
         var now = DateTimeOffset.UtcNow;
         weights = weights.Normalized();
 
-        var (usable, invalid) = CandidateResolver.ResolveWithZones(job, policy, _mapper);
+        var (usable, invalid) = CandidateResolver.ResolveWithZones(job, policy, _mapper, _allowlist);
         if (usable.Count == 0)
         {
-            var detail = string.Join(", ", invalid.Select(x => $"{x.Item1}:{x.Item2}"));
+            var detail = string.Join(", ", invalid.Select(x => $"{x.Cloud}:{x.Region} ({x.Reason})"));
             throw new ArgumentException(
                 $"No valid cloud/region mappings for: {detail}. " +
-                "Use exact region IDs (e.g., azure:eastus, gcp:us-east1, aws:us-east-1).");
+                "Use exact region IDs (e.g., azure:eastus, gcp:us-east1, aws:us-east-1) from the approved experiment region set.");
         }
 
         // Fetch all three signals for every candidate concurrently
@@ -90,16 +93,16 @@ public sealed class MultiObjectiveScoringEngine : IMultiObjectivePolicyEngine
 
         var scored = new List<RegionCandidateScore>();
 
-        // Candidates the region mapper couldn't resolve to a grid zone at all (e.g. a typo'd
-        // or unsupported region string) never reach signal-fetching above -- log them too,
-        // so AdviceCandidates has a row for every candidate you asked about, not just the
-        // ones that made it past region mapping.
+        // Candidates rejected up front — either outside the approved region allowlist, or the
+        // region mapper couldn't resolve them to a grid zone at all (e.g. a typo'd/unsupported
+        // region string). Never reach signal-fetching above -- log them too, with their specific
+        // reason, so AdviceCandidates has a row for every candidate you asked about.
         void AddInvalidCandidates()
         {
-            foreach (var (cloud, region) in invalid)
+            foreach (var (cloud, region, reason) in invalid)
             {
                 scored.Add(new RegionCandidateScore(cloud, region, null, null, null,
-                    null, null, null, null, true, "no grid zone mapping for this cloud/region",
+                    null, null, null, null, true, reason,
                     null, null, null));
             }
         }

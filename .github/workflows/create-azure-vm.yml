@@ -27,10 +27,9 @@ on:
         required: true
         type: string
       vmsize:
-        description: 'Preferred Azure VM size -- workflow falls back to alternatives if this one has no capacity in the region'
+        description: 'Azure VM size to deploy (exact match required -- workflow fails if unavailable in this region, no fallback)'
         required: true
         type: string
-        default: 'Standard_B2s'
       cycleId:
         description: 'Experiment cycle id (1-84)'
         required: true
@@ -114,36 +113,25 @@ jobs:
             - python3 -c "from azure.storage.blob import BlobServiceClient; import os; BlobServiceClient.from_connection_string(os.environ['CA_CONN_STR']).get_blob_client(container='$CONTAINER', blob='logs/cycle_${{ inputs.cycleId }}.log').upload_blob(open('/var/log/carbonaware-batch.log','rb'), overwrite=True)"
           EOF
 
-      - name: Resolve a deployable VM size for this region
+      - name: Verify the requested VM size is available in this region
         id: vmsize
         run: |
-          # Try the requested size first, then fall back through alternatives roughly
-          # matched to Standard_B2s's spec (2 vCPU / 4GiB), closest first. Capacity
-          # restrictions are per-subscription and change over time, so this is checked
-          # fresh on every run rather than hardcoded.
-          CANDIDATES="${{ inputs.vmsize }} Standard_B2s Standard_F2s_v2 Standard_F2s Standard_F2 Standard_D2ls_v6 Standard_D2ls_v5 Standard_A2_v2 Standard_B2ms Standard_DS1_v2"
+          # Exact match only: the app already resolved vmsize for this exact
+          # region (see resolve_vm_sizes.py / CostSignalOptions), so silently
+          # substituting a different size here would deploy something that
+          # doesn't match what was priced/scheduled for. Fail fast instead.
+          SIZE="${{ inputs.vmsize }}"
+          REASON=$(az vm list-skus --location "${{ inputs.region }}" --size "$SIZE" --all \
+            --query "[0].restrictions[0].reasonCode" -o tsv 2>/dev/null)
 
-          CHOSEN=""
-          for size in $CANDIDATES; do
-            REASON=$(az vm list-skus --location "${{ inputs.region }}" --size "$size" --all \
-              --query "[0].restrictions[0].reasonCode" -o tsv 2>/dev/null)
-            if [ -z "$REASON" ]; then
-              echo "$size is available in ${{ inputs.region }}"
-              CHOSEN="$size"
-              break
-            else
-              echo "$size is restricted in ${{ inputs.region }}: $REASON -- trying next"
-            fi
-          done
-
-          if [ -z "$CHOSEN" ]; then
-            echo "No available VM size found in ${{ inputs.region }} among: $CANDIDATES" >&2
-            echo "Try a different region, or request a quota increase via Azure Support." >&2
+          if [ -n "$REASON" ]; then
+            echo "$SIZE is restricted in ${{ inputs.region }}: $REASON" >&2
+            echo "No fallback -- this region/size combination should have been verified before dispatch (see resolve_vm_sizes.py)." >&2
             exit 1
           fi
 
-          echo "size=$CHOSEN" >> "$GITHUB_OUTPUT"
-          echo "Selected VM size: $CHOSEN"
+          echo "$SIZE confirmed available in ${{ inputs.region }}"
+          echo "size=$SIZE" >> "$GITHUB_OUTPUT"
 
       - name: Create VM
         run: |

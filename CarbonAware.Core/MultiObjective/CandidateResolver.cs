@@ -40,22 +40,30 @@ public static class CandidateResolver
     }
 
     /// <summary>
-    /// Resolves candidates and drops any pair the region mapper can't translate into a
-    /// WattTime grid zone. Returns both the usable set and the ones that were dropped.
+    /// Resolves candidates, drops anything outside the region allowlist, and further drops any
+    /// pair the region mapper can't translate into a WattTime grid zone. Each dropped candidate
+    /// carries its own specific reason, so callers can report "not in the approved region set"
+    /// separately from "no carbon-zone mapping" rather than a single generic message for both.
     /// </summary>
     public static (List<(string Cloud, string Region, string Zone)> Usable,
-                   List<(string Cloud, string Region)> Invalid)
-        ResolveWithZones(JobSpec job, PolicySpec policy, IRegionMapper mapper)
+                   List<(string Cloud, string Region, string Reason)> Invalid)
+        ResolveWithZones(JobSpec job, PolicySpec policy, IRegionMapper mapper, IRegionAllowlist allowlist)
     {
         var raw = BuildCandidates(job, policy);
         var usable = new List<(string, string, string)>();
-        var invalid = new List<(string, string)>();
+        var invalid = new List<(string, string, string)>();
 
         foreach (var (cloud, region) in raw)
         {
+            if (!allowlist.IsAllowed(cloud, region))
+            {
+                invalid.Add((cloud, region, "not in the approved experiment region set"));
+                continue;
+            }
+
             var zone = mapper.GetGridZones(cloud, region);
             if (string.IsNullOrWhiteSpace(zone))
-                invalid.Add((cloud, region));
+                invalid.Add((cloud, region, "no grid zone mapping for this cloud/region"));
             else
                 usable.Add((cloud, region, zone));
         }

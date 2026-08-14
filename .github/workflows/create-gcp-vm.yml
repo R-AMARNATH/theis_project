@@ -22,10 +22,9 @@ on:
         required: true
         type: string
       machineType:
-        description: 'Preferred GCP machine type (leave blank to auto-select)'
-        required: false
+        description: 'GCP machine type to deploy (exact match required -- workflow fails if unavailable in this region, no fallback)'
+        required: true
         type: string
-        default: ''
       cycleId:
         description: 'Experiment cycle id (1-84)'
         required: true
@@ -103,48 +102,32 @@ jobs:
       - name: Create instance
         id: create
         run: |
-          # Try the preferred type first (if given), then fall back through
-          # candidates matched to e2-medium's spec (2 vCPU / 4GiB) -- like AWS,
-          # GCP only reports ZONE_RESOURCE_POOL_EXHAUSTED at actual create time.
-          CANDIDATES="${{ inputs.machineType }} e2-medium e2-standard-2 n2-standard-2 n1-standard-2 e2-standard-4"
+          # Exact match only: the app already resolved machineType for this exact
+          # region (see resolve_vm_sizes.py / CostSignalOptions), so silently
+          # substituting a different type here would deploy something that
+          # doesn't match what was priced/scheduled for. Fail fast instead.
+          TYPE="${{ inputs.machineType }}"
+          echo "Creating exactly: $TYPE in ${{ steps.run.outputs.zone }} (no fallback)"
 
-          RESOLVED_TYPE=""
-          for type in $CANDIDATES; do
-            [ -z "$type" ] && continue
-            echo "Trying machine type: $type"
-            OUTPUT=$(gcloud compute instances create ${{ steps.run.outputs.vm }} \
-              --project=${{ steps.manifest.outputs.project }} \
-              --zone=${{ steps.run.outputs.zone }} \
-              --machine-type="$type" \
-              --image-family=ubuntu-2204-lts \
-              --image-project=ubuntu-os-cloud \
-              --scopes=cloud-platform \
-              --metadata-from-file=startup-script=startup.sh \
-              --labels=source=carbonawarescheduler,run_id=${{ github.run_id }},cycle_id=${{ inputs.cycleId }},resolved_type=$(echo "$type" | tr -d '.') \
-              2>&1)
+          OUTPUT=$(gcloud compute instances create ${{ steps.run.outputs.vm }} \
+            --project=${{ steps.manifest.outputs.project }} \
+            --zone=${{ steps.run.outputs.zone }} \
+            --machine-type="$TYPE" \
+            --image-family=ubuntu-2204-lts \
+            --image-project=ubuntu-os-cloud \
+            --scopes=cloud-platform \
+            --metadata-from-file=startup-script=startup.sh \
+            --labels=source=carbonawarescheduler,run_id=${{ github.run_id }},cycle_id=${{ inputs.cycleId }},resolved_type=$(echo "$TYPE" | tr -d '.') \
+            2>&1)
 
-            if [ $? -eq 0 ]; then
-              RESOLVED_TYPE="$type"
-              echo "Launched with $type"
-              break
-            fi
-
-            echo "Failed with $type: $OUTPUT"
-            if echo "$OUTPUT" | grep -qiE "ZONE_RESOURCE_POOL_EXHAUSTED|does not have enough resources|QUOTA_EXCEEDED"; then
-              echo "Capacity/quota issue with $type -- trying next candidate"
-              continue
-            else
-              echo "Non-capacity error creating instance with $type -- aborting" >&2
-              exit 1
-            fi
-          done
-
-          if [ -z "$RESOLVED_TYPE" ]; then
-            echo "No machine type from [$CANDIDATES] could be launched in ${{ steps.run.outputs.zone }}" >&2
+          if [ $? -ne 0 ]; then
+            echo "Failed to create instance with $TYPE in ${{ steps.run.outputs.zone }}: $OUTPUT" >&2
+            echo "No fallback -- this region/type combination should have been verified before dispatch (see resolve_vm_sizes.py)." >&2
             exit 1
           fi
 
-          echo "resolved_type=$RESOLVED_TYPE" >> "$GITHUB_OUTPUT"
+          echo "Created with $TYPE"
+          echo "resolved_type=$TYPE" >> "$GITHUB_OUTPUT"
 
       - name: Poll GCS for batch_job.py result
         id: wait

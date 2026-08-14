@@ -43,10 +43,14 @@ deployable candidate at all -- treat that as a hard failure before dispatching.
 
 import argparse
 import json
+import os
 import shutil
 import subprocess
 import sys
 import threading
+import urllib.error
+import urllib.parse
+import urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
@@ -63,7 +67,12 @@ CANDIDATES = {
 }
 
 
-def _candidates_for(cloud: str, target: str | None) -> list[str]:
+def _candidates_for(cloud: str, target: str | None, strict: bool = False) -> list[str]:
+    if strict:
+        # --strict: check only the exact requested size, no fallback ladder.
+        # Used when the question is "which regions support THIS type",
+        # not "what's the best available type per region".
+        return [target]
     ladder = CANDIDATES[cloud]
     if target and target not in ladder:
         return [target] + ladder
@@ -95,12 +104,25 @@ def _run(cmd: list[str]) -> subprocess.CompletedProcess:
         # race on the shared MSAL token cache file and deadlock rather than
         # erroring, which is why runs hung silently right as Azure calls
         # started. AWS and GCP CLIs don't have this issue, so only az calls
-        # get serialized. The timeout is a backstop in case a CLI ever blocks
-        # on an interactive prompt (e.g. expired login) instead of erroring.
+        # get serialized.
+        #
+        # stdin=DEVNULL is the important part here: every call was hanging
+        # for exactly the full timeout, which is the signature of a process
+        # blocked on an interactive prompt (confirm/consent/subscription
+        # selection) rather than a genuinely slow query. Without stdin
+        # explicitly closed, subprocess inherits the parent console's stdin,
+        # so any such prompt just sits there forever. Closing stdin makes any
+        # prompt hit immediate EOF and fail fast instead of hanging, and the
+        # env var below suppresses az's own confirm-prompts as a second layer.
+        env = os.environ.copy()
+        env["AZURE_CORE_DISABLE_CONFIRM_PROMPT"] = "1"
+        env["AZURE_CORE_ONLY_SHOW_ERRORS"] = "1"
         if cmd[0] == "az":
             with _AZ_LOCK:
-                return subprocess.run([resolved] + cmd[1:], capture_output=True, text=True, timeout=120)
-        return subprocess.run([resolved] + cmd[1:], capture_output=True, text=True, timeout=120)
+                return subprocess.run([resolved] + cmd[1:], capture_output=True, text=True,
+                                       timeout=120, stdin=subprocess.DEVNULL, env=env)
+        return subprocess.run([resolved] + cmd[1:], capture_output=True, text=True,
+                               timeout=120, stdin=subprocess.DEVNULL, env=env)
     except subprocess.TimeoutExpired:
         class _TimedOut:
             returncode = 1
@@ -110,8 +132,8 @@ def _run(cmd: list[str]) -> subprocess.CompletedProcess:
         return _TimedOut()
 
 
-def resolve_aws(region: str, target: str | None) -> dict:
-    candidates = _candidates_for("aws", target)
+def resolve_aws(region: str, target: str | None, strict: bool = False) -> dict:
+    candidates = _candidates_for("aws", target, strict)
     proc = _run([
         "aws", "ec2", "describe-instance-type-offerings",
         "--location-type", "region",
@@ -134,33 +156,83 @@ def resolve_aws(region: str, target: str | None) -> dict:
     return _no_match("aws", region, target, candidates)
 
 
-def resolve_azure(region: str, target: str | None) -> dict:
-    candidates = _candidates_for("azure", target)
+def _azure_retail_price_exists(region: str, size: str) -> bool:
+    """Query Azure's public Retail Prices API (no auth, no az CLI, no login
+    required) to check whether a VM size has retail pricing -- i.e. Microsoft
+    sells it -- in a region. This is a catalog-level fact, NOT a subscription-
+    level one: a size can show pricing here and still be restricted for your
+    specific subscription (quota, offer type, tenant policy). Used as a fast
+    first filter before the authoritative subscription check.
+    Docs: https://learn.microsoft.com/en-us/rest/api/cost-management/retail-prices/azure-retail-prices
+    """
+    filter_expr = f"armRegionName eq '{region}' and armSkuName eq '{size}' and priceType eq 'Consumption'"
+    url = "https://prices.azure.com/api/retail/prices?$filter=" + urllib.parse.quote(filter_expr)
+    req = urllib.request.Request(url, headers={"User-Agent": "carbonaware-thesis-resolver/1.0"})
+    with urllib.request.urlopen(req, timeout=20) as resp:
+        data = json.loads(resp.read().decode())
+    return bool(data.get("Items"))
+
+
+def _azure_subscription_allows(region: str, size: str) -> tuple[bool, str | None]:
+    """Authoritative, subscription-specific check: is this size actually
+    deployable on YOUR subscription in this region? Catches restrictions
+    (e.g. student/free-tier subscriptions blocked from certain VM families
+    or regions) that the public Retail Prices API can't see, since that API
+    has no idea which subscription is asking.
+
+    Returns (allowed, reason). reason is set when blocked or on CLI error;
+    on CLI error we return allowed=True (treat retail-listed as good enough)
+    so a flaky/slow az call degrades to "probably fine" instead of wrongly
+    rejecting every region -- the error is still surfaced in candidates_tried
+    via the caller so it's visible, not silently swallowed.
+    """
+    proc = _run([
+        "az", "vm", "list-skus",
+        "--location", region,
+        "--size", size,
+        "--all",
+        "--query", "[0].restrictions[0].reasonCode",
+        "-o", "tsv",
+    ])
+    if proc.returncode != 0:
+        return True, f"subscription check failed, trusting retail listing ({proc.stderr.strip()[:120]})"
+    reason = proc.stdout.strip()
+    if reason:
+        return False, f"restricted for this subscription ({reason})"
+    return True, None
+
+
+def resolve_azure(region: str, target: str | None, strict: bool = False) -> dict:
+    candidates = _candidates_for("azure", target, strict)
     tried = []
+    notes = []
     for size in candidates:
         tried.append(size)
-        # No --all here on purpose: --all makes az fetch restriction reasons
-        # for every zone of every SKU, which is what made each call take
-        # 60s+. Without --all, list-skus only returns SKUs that are actually
-        # usable in this subscription/region -- restricted ones are simply
-        # omitted -- which is exactly the availability check we need, and
-        # it's a much lighter query.
-        proc = _run([
-            "az", "vm", "list-skus",
-            "--location", region,
-            "--size", size,
-            "--query", f"[?name=='{size}'].name",
-            "-o", "tsv",
-        ])
-        if proc.returncode != 0:
-            return _error("azure", region, target, tried, proc.stderr.strip())
-        if proc.stdout.strip():
-            return _ok("azure", region, target, tried, size)
-    return _no_match("azure", region, target, tried)
+        try:
+            offered = _azure_retail_price_exists(region, size)
+        except (urllib.error.URLError, TimeoutError, json.JSONDecodeError, OSError) as exc:
+            return _error("azure", region, target, tried, f"Azure Retail Prices API error: {exc}")
+        if not offered:
+            continue  # Microsoft doesn't sell this size here at all -- skip straight to next candidate
+
+        # Microsoft sells it here -- now confirm YOUR subscription can actually use it.
+        with _AZ_LOCK:
+            allowed, note = _azure_subscription_allows(region, size)
+        if allowed:
+            result = _ok("azure", region, target, tried, size)
+            if note:
+                result["note"] = note
+            return result
+        notes.append(f"{size}: {note}")
+
+    result = _no_match("azure", region, target, tried)
+    if notes:
+        result["error"] = "; ".join(notes)
+    return result
 
 
-def resolve_gcp(region: str, target: str | None, project: str | None) -> dict:
-    candidates = _candidates_for("gcp", target)
+def resolve_gcp(region: str, target: str | None, project: str | None, strict: bool = False) -> dict:
+    candidates = _candidates_for("gcp", target, strict)
     zone = f"{region}-b"
     tried = []
     for size in candidates:
@@ -251,14 +323,14 @@ def list_regions(cloud: str, project: str | None = None, include_disabled: bool 
     raise ValueError(f"unknown cloud: {cloud}")
 
 
-def resolve_one(cloud: str, region: str, target: str | None, project: str | None = None) -> dict:
+def resolve_one(cloud: str, region: str, target: str | None, project: str | None = None, strict: bool = False) -> dict:
     cloud = cloud.lower()
     if cloud == "aws":
-        return resolve_aws(region, target)
+        return resolve_aws(region, target, strict)
     if cloud == "azure":
-        return resolve_azure(region, target)
+        return resolve_azure(region, target, strict)
     if cloud == "gcp":
-        return resolve_gcp(region, target, project)
+        return resolve_gcp(region, target, project, strict)
     raise ValueError(f"unknown cloud: {cloud}")
 
 
@@ -281,7 +353,17 @@ def main() -> int:
                      help="parallel CLI calls to run at once (default 8). These are network-bound "
                           "az/aws/gcloud calls, not CPU work, so threads help a lot here -- raise "
                           "this if it's still slow, lower it if a CLI starts rate-limiting you")
+    ap.add_argument("--strict", action="store_true",
+                     help="check only the exact --target size in each region, no fallback ladder. "
+                          "Use this when the question is 'which regions support THIS type' rather "
+                          "than 'what's the best size available per region'. Requires --target.")
     args = ap.parse_args()
+
+    if args.strict and not args.target:
+        ap.error("--strict requires --target (nothing to check strictly without an exact size)")
+    if args.strict and not args.cloud:
+        ap.error("--strict requires --cloud too -- a single --target size doesn't map across "
+                 "clouds with different naming schemes (t3.medium vs Standard_B2s vs e2-medium)")
 
     entries = []
     if args.all_regions:
@@ -323,7 +405,7 @@ def main() -> int:
     print(f"Resolving {len(entries)} region(s) with {args.workers} parallel workers...\n")
     with ThreadPoolExecutor(max_workers=args.workers) as pool:
         futures = {
-            pool.submit(resolve_one, e["cloud"], e["region"], target, e.get("project")): e
+            pool.submit(resolve_one, e["cloud"], e["region"], target, e.get("project"), args.strict): e
             for e in entries
         }
         try:

@@ -1,0 +1,1029 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Carbon-Aware Adviser/Scheduler</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card: #111827;
+            --text: #e5e7eb;
+            --muted: #9ca3af;
+            --accent: #22d3ee;
+            --btn: #334155;
+        }
+
+        body {
+            margin: 0;
+            font-family: ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .wrap {
+            max-width: 1100px;
+            margin: 24px auto;
+            padding: 0 16px;
+        }
+
+        h1 {
+            font-size: 22px;
+            margin: 0 0 12px 0
+        }
+
+        .grid {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .card {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 1px 3px rgba(0,0,0,.3)
+        }
+
+        .hdr {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .muted {
+            color: var(--muted);
+            font-size: 12px
+        }
+
+        .region-list {
+            max-height: 360px;
+            overflow: auto;
+            border: 1px solid #1f2937;
+            border-radius: 8px;
+            padding: 8px
+        }
+
+        .region {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 4px;
+            border-radius: 6px;
+        }
+
+            .region:hover {
+                background: #0b1220;
+            }
+
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .ctl {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 16px;
+        }
+
+        label {
+            font-size: 14px;
+        }
+
+        select,
+        input[type="datetime-local"],
+        input[type="number"] {
+            width: 100%;
+            margin-top: 6px;
+            padding: 8px 10px;
+            border-radius: 8px;
+            border: 1px solid #1f2937;
+            background: #0b1220;
+            color: var(--text);
+            outline: none;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        button {
+            background: var(--btn);
+            color: var(--text);
+            border: 1px solid #1f2937;
+            padding: 10px 14px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+            button.primary {
+                background: var(--accent);
+                color: #062025;
+                border: none;
+            }
+
+        pre {
+            white-space: pre-wrap;
+            word-break: break-word;
+            background: #0b1220;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #1f2937;
+        }
+
+        .row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .mode {
+            display: flex;
+            gap: 12px;
+            margin-top: 8px
+        }
+
+        .selectall {
+            font-size: 12px;
+            color: var(--muted);
+            cursor: pointer;
+        }
+
+        /* ---- LOADING OVERLAY ---- */
+        .loading-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            backdrop-filter: blur(2px);
+        }
+
+        .loading-box {
+            background: #0f172a;
+            color: #e5e7eb;
+            padding: 1.5rem 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.7);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            min-width: 260px;
+        }
+
+        .loading-spinner {
+            width: 32px;
+            height: 32px;
+            border-radius: 999px;
+            border: 3px solid #38bdf8;
+            border-top-color: transparent;
+            animation: loading-spin 0.7s linear infinite;
+        }
+
+        .loading-text {
+            font-size: 0.95rem;
+            letter-spacing: 0.01em;
+        }
+
+        @keyframes loading-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .btn-busy {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .inline-loading {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            color: var(--muted);
+        }
+
+        .inline-spinner {
+            width: 18px;
+            height: 18px;
+            border-radius: 999px;
+            border: 2px solid #38bdf8;
+            border-top-color: transparent;
+            animation: loading-spin 0.7s linear infinite;
+        }
+
+        .regions-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 12px 0 8px;
+        }
+
+        .favorites-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .fav-btn {
+            background: #020617;
+            color: var(--text);
+            border: 1px solid #1f2937;
+            padding: 6px 10px;
+            border-radius: 999px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+            .fav-btn:hover {
+                border-color: var(--accent);
+            }
+
+        /* --- RULER VISUAL FOR schedule_at + batch --- */
+        .ruler {
+            margin-top: 12px;
+            position: relative;
+        }
+
+        .ruler-track {
+            position: relative;
+            height: 10px;
+            border-radius: 999px;
+            background: #1f2937;
+            overflow: hidden;
+        }
+
+        .ruler-window {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, #f97373, #f97316);
+            opacity: 0.35;
+        }
+
+        .ruler-batch {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            background: #22c55e;
+            border-radius: inherit;
+        }
+
+        .ruler-batch-label {
+            position: absolute;
+            top: -18px; /* place it above the bar */
+            transform: translateX(-50%);
+            font-size: 12px;
+            color: var(--text);
+            white-space: nowrap;
+            z-index: 2; /* make sure it renders above everything */
+        }
+
+        .ruler-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--muted);
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="loading-box">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Calculating cleanest time &amp; region…</div>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <h1>Carbon-Aware Adviser/Scheduler</h1>
+
+        <div class="regions-header">
+            <div>
+                <strong>Preferred regions</strong>
+                <div class="muted">Select cloud regions to consider for advice/scheduling.</div>
+            </div>
+            <div class="favorites-actions">
+                <button id="btn-save-fav" class="fav-btn">Save favorites</button>
+                <button id="btn-load-fav" class="fav-btn">Load favorites</button>
+                <button id="btn-clear-fav" class="fav-btn">Clear favorites</button>
+            </div>
+        </div>
+
+        <div class="grid">
+            <!-- Azure -->
+            <div class="card">
+                <div class="hdr">
+                    <strong>Azure</strong>
+                    <span class="selectall" data-cloud="azure">Select all</span>
+                </div>
+                <div id="azure-list" class="region-list"></div>
+            </div>
+
+            <!-- GCP -->
+            <div class="card">
+                <div class="hdr">
+                    <strong>GCP</strong>
+                    <span class="selectall" data-cloud="gcp">Select all</span>
+                </div>
+                <div id="gcp-list" class="region-list"></div>
+            </div>
+
+            <!-- AWS -->
+            <div class="card">
+                <div class="hdr">
+                    <strong>AWS</strong>
+                    <span class="selectall" data-cloud="aws">Select all</span>
+                </div>
+                <div id="aws-list" class="region-list"></div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <!-- Strategy + window -->
+            <div class="ctl">
+                <label>Strategy</label>
+                <div class="mode">
+                    <label>
+                        <input type="radio" name="mode" value="run_now" checked />
+                        Run now
+                    </label>
+                    <label>
+                        <input type="radio" name="mode" value="schedule_at" />
+                        Schedule window
+                    </label>
+                </div>
+
+                <div style="margin-top:10px;">
+                    <div class="row">
+                        <div style="flex:1;">
+                            <label class="muted">Schedule from</label>
+                            <input id="schedule-from" type="datetime-local" step="300" disabled />
+                        </div>
+                        <div style="flex:1;">
+                            <label class="muted">Schedule until</label>
+                            <input id="schedule-until" type="datetime-local" step="300" disabled />
+                        </div>
+                    </div>
+                    <div class="muted" style="margin-top:4px;">
+                        Window is respected only in <em>Schedule window</em> mode. Times use your local timezone.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Workload / Batch -->
+            <div class="ctl">
+                <label>Workload type</label>
+                <div class="mode">
+                    <label><input type="radio" name="workloadType" value="single" checked /> Single</label>
+                    <label><input type="radio" name="workloadType" value="batch" /> Batch</label>
+                </div>
+
+                <div style="margin-top:8px;">
+                    <label for="batch-minutes">Batch duration (minutes, 5–300)</label>
+                    <input id="batch-minutes"
+                           type="number"
+                           min="5"
+                           max="300"
+                           step="5"
+                           value="15"
+                           disabled />
+                </div>
+
+                <div class="muted" style="margin-top:4px;">
+                    Batch windows are computed in 5-minute steps using WattTime forecasts.
+                </div>
+            </div>
+
+            <!-- Fallback + Cloud Preference -->
+            <div class="ctl">
+                <label for="fallback">Fallback location</label>
+                <select id="fallback"></select>
+                <div class="muted">Used if no usable MOER is available for selected region(s).</div>
+                <!-- Cloud preference (tie-breaker) -->
+                <div style="margin-top:16px; padding-top:12px; border-top:1px solid #1f2937;">
+                    <label for="cloud-pref">Cloud preference (tie-breaker)</label>
+                    <select id="cloud-pref">
+                        <option value="azure,aws,gcp">Azure → AWS → GCP</option>
+                        <option value="azure,gcp,aws">Azure → GCP → AWS</option>
+                        <option value="aws,azure,gcp">AWS → Azure → GCP</option>
+                        <option value="aws,gcp,azure">AWS → GCP → Azure</option>
+                        <option value="gcp,azure,aws">GCP → Azure → AWS</option>
+                        <option value="gcp,aws,azure">GCP → AWS → Azure</option>
+                    </select>
+                    <div class="muted">
+                        Used only when two or more regions tie on MOER across different clouds.
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <!-- ACTIONS -->
+        <div class="actions" id="main-actions">
+            <button id="btn-advise" data-busy-toggle="true">Advise</button>
+            <button id="btn-schedule" class="primary" data-busy-toggle="true">Schedule</button>
+            <button id="btn-toggle-json">Convert to JSON</button>
+        </div>
+
+        <h3>Response</h3>
+        <div id="out-pretty" class="ctl" style="margin-top:8px;"></div>
+
+        <div id="json-wrap" style="display:none; margin-top:8px;">
+            <textarea id="out-json"
+                      style="width:100%; height:220px; background:#0b1220; color:#e5e7eb; border:1px solid #1f2937; border-radius:10px; padding:10px;"></textarea>
+        </div>
+    </div>
+
+    <script>
+        // --- global "last-request" meta so we can draw the ruler ---
+        let lastMode = "run_now";
+        let lastWorkloadType = "single";
+        let lastScheduleFrom = null;
+        let lastScheduleUntil = null;
+        let lastBatchMinutes = null;
+
+        // ---- Favorites helpers ----
+        async function saveFavorites() {
+            const locs = collectPreferredLocations();
+            if (!locs.length) {
+                alert("Select at least one region to save as favorites.");
+                return;
+            }
+
+            try {
+                const resp = await fetch('/favorites', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(locs)
+                });
+                if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+                alert("Favorites saved.");
+            } catch (err) {
+                console.error("Failed to save favorites", err);
+                alert("Failed to save favorites.");
+            }
+        }
+
+        async function loadFavorites() {
+            try {
+                const resp = await fetch('/favorites', {
+                    headers: { 'Accept': 'application/json' }
+                });
+                if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+
+                const favs = await resp.json();
+                if (!Array.isArray(favs) || favs.length === 0) {
+                    alert("No favorites saved yet.");
+                    return;
+                }
+
+                document.querySelectorAll('input.chk').forEach(cb => cb.checked = false);
+
+                favs.forEach(f => {
+                    const cloud = (f.cloud || f.Cloud || "").toLowerCase();
+                    const region = f.region || f.Region;
+                    if (!cloud || !region) return;
+
+                    const selector = `input.chk[data-cloud="${cloud}"][data-region="${region}"]`;
+                    const cb = document.querySelector(selector);
+                    if (cb) cb.checked = true;
+                });
+            } catch (err) {
+                console.error("Failed to load favorites", err);
+                alert("Failed to load favorites.");
+            }
+        }
+
+        async function clearFavorites() {
+            if (!confirm("Clear all saved favorites?")) return;
+
+            try {
+                const resp = await fetch('/favorites', { method: 'DELETE' });
+                if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+                alert("Favorites cleared.");
+            } catch (err) {
+                console.error("Failed to clear favorites", err);
+                alert("Failed to clear favorites.");
+            }
+        }
+
+        document.getElementById('btn-save-fav').addEventListener('click', saveFavorites);
+        document.getElementById('btn-load-fav').addEventListener('click', loadFavorites);
+        document.getElementById('btn-clear-fav').addEventListener('click', clearFavorites);
+
+        // ---- LOADING CONTROL ----
+        function setLoading(isLoading) {
+            const overlay = document.getElementById("loading-overlay");
+            const toggles = document.querySelectorAll("button[data-busy-toggle='true']");
+            const prettyBox = document.getElementById("out-pretty");
+
+            if (isLoading) {
+                if (overlay) overlay.style.display = "flex";
+
+                toggles.forEach(btn => {
+                    btn.classList.add("btn-busy");
+                    btn.disabled = true;
+                    if (!btn.dataset.originalText) {
+                        btn.dataset.originalText = btn.textContent;
+                    }
+                    btn.textContent = "Working…";
+                });
+
+                if (prettyBox) {
+                    prettyBox.innerHTML = `
+                            <div class="inline-loading">
+                                <div class="inline-spinner"></div>
+                                <span>Contacting WattTime and evaluating regions…</span>
+                            </div>`;
+                }
+            } else {
+                if (overlay) overlay.style.display = "none";
+
+                toggles.forEach(btn => {
+                    btn.classList.remove("btn-busy");
+                    btn.disabled = false;
+                    if (btn.dataset.originalText) {
+                        btn.textContent = btn.dataset.originalText;
+                    }
+                });
+            }
+        }
+
+        // ---- Region catalogs ----
+        let CATALOG = { azure: [], gcp: [], aws: [] };
+
+        async function loadCatalog() {
+            try {
+                const resp = await fetch('/regions', { headers: { 'Accept': 'application/json' } });
+                if (!resp.ok) {
+                    console.error('Failed to load /regions', resp.status);
+                    return;
+                }
+                CATALOG = await resp.json();
+                renderAll();
+                rebuildFallback();
+            } catch (e) {
+                console.error('Error loading catalog', e);
+            }
+        }
+
+        function renderList(cloud, elId) {
+            const el = document.getElementById(elId);
+            if (!el) return;
+            el.innerHTML = "";
+            const regions = (CATALOG[cloud] || []);
+            regions.forEach(region => {
+                const row = document.createElement('div');
+                row.className = 'region';
+                row.innerHTML = `
+                        <input type="checkbox" class="chk" data-cloud="${cloud}" data-region="${region}" id="${cloud}-${region}">
+                        <label for="${cloud}-${region}">${region}</label>`;
+                el.appendChild(row);
+            });
+        }
+
+        function renderAll() {
+            renderList('azure', 'azure-list');
+            renderList('gcp', 'gcp-list');
+            renderList('aws', 'aws-list');
+        }
+
+        // Fallback dropdown
+        const fallbackSel = document.getElementById('fallback');
+        function rebuildFallback() {
+            const items = [];
+            Object.entries(CATALOG).forEach(([cloud, regs]) =>
+                (regs || []).forEach(r => items.push({ cloud, region: r }))
+            );
+            items.sort((a, b) => (a.cloud + a.region).localeCompare(b.cloud + b.region));
+            fallbackSel.innerHTML = items
+                .map(i => `<option value="${i.cloud}|${i.region}">${i.cloud}: ${i.region}</option>`)
+                .join('');
+        }
+
+        // Select-all toggling per cloud
+        document.addEventListener('click', evt => {
+            const span = evt.target.closest('.selectall');
+            if (!span) return;
+
+            const cloud = span.getAttribute('data-cloud');
+            const boxes = [...document.querySelectorAll(`input.chk[data-cloud="${cloud}"]`)];
+
+            if (boxes.length === 0) return;
+
+            // Check if all are currently selected
+            const allSelected = boxes.every(cb => cb.checked);
+
+            // Toggle: if all selected → unselect all, else select all
+            boxes.forEach(cb => cb.checked = !allSelected);
+        });
+
+
+        // Mode toggle
+        const scheduleFromInput = document.getElementById('schedule-from');
+        const scheduleUntilInput = document.getElementById('schedule-until');
+        const batchInput = document.getElementById('batch-minutes');
+
+        function getSelectedWorkloadType() {
+            const r = document.querySelector('input[name="workloadType"]:checked');
+            return r ? r.value : "single";
+        }
+
+        function formatLocalForInput(date) {
+            const pad = n => String(n).padStart(2, '0');
+            const y = date.getFullYear();
+            const m = pad(date.getMonth() + 1);
+            const d = pad(date.getDate());
+            const hh = pad(date.getHours());
+            const mm = pad(date.getMinutes());
+            return `${y}-${m}-${d}T${hh}:${mm}`;
+        }
+
+        // --- Schedule window validation (only when clicking Advise / Schedule) ---
+
+        function validateScheduleWindow() {
+            const mode = document.querySelector('input[name="mode"]:checked')?.value;
+            if (mode !== "schedule_at") {
+                // No schedule window constraints in run_now mode
+                return true;
+            }
+
+            const fromRaw = scheduleFromInput.value;
+            const untilRaw = scheduleUntilInput.value;
+
+            const from = new Date(fromRaw);
+            const until = new Date(untilRaw);
+
+            if (!fromRaw || isNaN(from.getTime())) {
+                alert("Please set a valid 'Schedule from' time.");
+                return false;
+            }
+
+            if (!untilRaw || isNaN(until.getTime())) {
+                alert("Please set a valid 'Schedule until' time.");
+                return false;
+            }
+
+            if (until <= from) {
+                alert("'Schedule until' must be later than 'Schedule from'.");
+                return false;
+            }
+
+            const workloadType = getSelectedWorkloadType();
+            if (workloadType === "batch") {
+                const raw = parseInt(batchInput.value, 10);
+                if (isNaN(raw) || raw <= 0) {
+                    alert("Please enter a valid batch duration in minutes.");
+                    return false;
+                }
+
+                // Clamp into your allowed range, but don't mutate the input here
+                const batchMinutes = Math.max(5, Math.min(300, raw));
+
+                const diffMinutes = (until - from) / 60000; // ms → minutes
+                if (diffMinutes < batchMinutes) {
+                    alert(
+                        `Batch window (${batchMinutes} minutes) does not fit inside the schedule window ` +
+                        `(${diffMinutes.toFixed(1)} minutes). Increase 'Schedule until' or reduce batch duration.`
+                    );
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        // Mode toggle: just enable/disable the controls, no auto-correction
+        document.querySelectorAll('input[name="mode"]').forEach(r => {
+            r.addEventListener('change', () => {
+                const isSchedule = (r.value === 'schedule_at' && r.checked);
+                scheduleFromInput.disabled = !isSchedule;
+                scheduleUntilInput.disabled = !isSchedule;
+            });
+        });
+
+        // Workload type toggle: just enable/disable batch input
+        document.querySelectorAll('input[name="workloadType"]').forEach(r => {
+            r.addEventListener('change', () => {
+                const isBatch = (r.value === 'batch' && r.checked);
+                batchInput.disabled = !isBatch;
+            });
+        });
+
+        // No more change/input handlers that rewrite the datetime fields
+
+
+        // Collect selected locations
+        function collectPreferredLocations() {
+            const locs = [];
+            document.querySelectorAll('input.chk:checked').forEach(cb => {
+                locs.push({
+                    cloud: cb.getAttribute('data-cloud'),
+                    region: cb.getAttribute('data-region')
+                });
+            });
+            return locs;
+        }
+
+        function uniqueClouds(locs) {
+            return [...new Set(locs.map(l => l.cloud))];
+        }
+
+        function buildPayload(action) {
+            const mode = document.querySelector('input[name="mode"]:checked').value;
+            const workloadType = getSelectedWorkloadType();
+            const locs = collectPreferredLocations();
+
+            const [fbCloud, fbRegion] =
+                (document.getElementById('fallback').value || 'gcp|us-east1').split('|');
+            const fallbackLocation = { cloud: fbCloud, region: fbRegion };
+
+            const preferredLocations = locs.length ? locs : [fallbackLocation];
+
+            let batchMinutes = null;
+            if (workloadType === 'batch') {
+                const raw = parseInt(batchInput.value, 10);
+                if (Number.isNaN(raw)) {
+                    alert('Please enter a batch duration in minutes.');
+                    throw new Error('Invalid batch duration');
+                }
+                let minutes = Math.max(5, Math.min(300, raw));
+                minutes = Math.round(minutes / 5) * 5;
+                if (minutes < 5) minutes = 5;
+                if (minutes > 300) minutes = 300;
+                batchInput.value = minutes;
+                batchMinutes = minutes;
+            }
+
+            // NEW: read cloud preference from UI
+            const prefRaw = document.getElementById('cloud-pref')?.value || '';
+            const cloudPreference = prefRaw
+                .split(',')
+                .map(x => x.trim().toLowerCase())
+                .filter(x => x.length > 0);
+
+            const policy = {
+                mode: mode,
+                signalType: "co2_moer",
+                preferredLocations: preferredLocations,
+                fallbackLocation: fallbackLocation,
+                // NEW: tie-breaker preference
+                cloudPreference: cloudPreference
+            };
+
+            if (mode === 'schedule_at') {
+                if (scheduleFromInput.value) {
+                    policy.scheduleFrom = new Date(scheduleFromInput.value).toISOString();
+                }
+                if (scheduleUntilInput.value) {
+                    policy.scheduleUntil = new Date(scheduleUntilInput.value).toISOString();
+                }
+            }
+
+            if (batchMinutes !== null) {
+                policy.batchDurationMinutes = batchMinutes;
+            }
+
+            // update globals for the ruler (unchanged)
+            lastMode = mode;
+            lastWorkloadType = workloadType;
+            lastBatchMinutes = batchMinutes;
+            lastScheduleFrom = scheduleFromInput.value ? new Date(scheduleFromInput.value) : null;
+            lastScheduleUntil = scheduleUntilInput.value ? new Date(scheduleUntilInput.value) : null;
+
+            return {
+                policy: policy,
+                job: {
+                    workloadType: workloadType,
+                    cloud: uniqueClouds(preferredLocations),
+                    parameters: {}
+                }
+            };
+        }
+
+
+        async function callApi(path, body) {
+            const resp = await fetch(path, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(body)
+            });
+            const txt = await resp.text();
+            let data;
+            try { data = JSON.parse(txt); }
+            catch { data = { status: resp.status, body: txt }; }
+            return data;
+        }
+
+        function fmtNum(v) {
+            if (v == null || Number.isNaN(v)) return '—';
+            const n = Number(v);
+            return Number.isInteger(n) ? String(n) : n.toFixed(2);
+        }
+
+        function escapeHtml(s) {
+            return String(s).replace(/[&<>"']/g, c => ({
+                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+            }[c]));
+        }
+
+        function formatLocalReadable(date) {
+            if (!(date instanceof Date) || Number.isNaN(date.getTime())) return '—';
+            const pad = n => String(n).padStart(2, '0');
+            return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}-${pad(date.getHours())}:${pad(date.getMinutes())}`;
+        }
+
+        function formatLocalTime(date) {
+            if (!(date instanceof Date) || Number.isNaN(date.getTime())) return '—';
+            const pad = n => String(n).padStart(2, '0');
+            return `${pad(date.getHours())}:${pad(date.getMinutes())}`;
+        }
+
+
+        function renderPretty(obj) {
+            const box = document.getElementById('out-pretty');
+            if (!obj) { box.textContent = 'No response.'; return; }
+
+            const advice = obj.advice || obj;
+            const scheduledId = obj.scheduledId;
+
+            const lines = [];
+            if (advice) {
+                lines.push(`Cloud: ${advice.cloud ?? '—'}`);
+                lines.push(`Region: ${advice.region ?? '—'}`);
+                lines.push(`When: ${advice.when ?? '—'}`);
+                lines.push(`Rationale: ${advice.rationale ?? '—'}`);
+                lines.push(`MOER (g/kWh): ${fmtNum(advice.estimatedIntensityGPerKwh)}`);
+                if (advice.estimatedIndexPercent != null)
+                    lines.push(`Index (%): ${fmtNum(advice.estimatedIndexPercent)}`);
+
+                if (advice.highestEmissionCloud || advice.highestEmissionRegion || advice.highestEmissionGPerKwh != null) {
+                    lines.push(`Highest Emission → ${advice.highestEmissionCloud ?? '—'}:${advice.highestEmissionRegion ?? '—'} @ ${fmtNum(advice.highestEmissionGPerKwh)} g/kWh`);
+                }
+                if (advice.estimatedSavingPercent != null)
+                    lines.push(`Saving vs Highest (%): ${fmtNum(advice.estimatedSavingPercent)}%`);
+                if (advice.estimatedSavingGPerKwh != null)
+                    lines.push(`Saving vs Highest (g/kWh): ${fmtNum(advice.estimatedSavingGPerKwh)}`);
+                if (advice.averageEstimatedSavingPercent != null)
+                    lines.push(`Saving vs Average (%): ${fmtNum(advice.averageEstimatedSavingPercent)}%`);
+                if (advice.bestWindowMoerGPerKwh != null) {
+                    lines.push(
+                        `Best Window (till target): ${fmtNum(advice.bestWindowMoerGPerKwh)} g/kWh @ ` +
+                        `${advice.bestWindowWhen ?? '—'} in ${advice.bestWindowCloud ?? '—'}:${advice.bestWindowRegion ?? '—'}`
+                    );
+                }
+            }
+
+            if (scheduledId) {
+                lines.push(`Scheduled Id: ${scheduledId}`);
+            }
+
+            const baseLinesHtml = lines
+                .map(l => `<div style="padding:4px 0;">${escapeHtml(l)}</div>`)
+                .join('');
+
+            // ---- RULER GOES ABOVE TEXT ----
+            let rulerHtml = "";
+
+            if (
+                lastMode === 'schedule_at' &&
+                lastWorkloadType === 'batch' &&
+                advice &&
+                advice.when &&
+                lastScheduleFrom instanceof Date &&
+                lastScheduleUntil instanceof Date &&
+                lastBatchMinutes != null
+            ) {
+                const batchStart = new Date(advice.when);
+                const batchEnd = new Date(batchStart.getTime() + lastBatchMinutes * 60000);
+                const windowStart = lastScheduleFrom;
+                const windowEnd = lastScheduleUntil;
+
+                const totalMs = windowEnd - windowStart;
+                if (totalMs > 0) {
+                    let offsetMs = batchStart - windowStart;
+                    let widthMs = batchEnd - batchStart;
+
+                    if (offsetMs < 0) offsetMs = 0;
+                    if (offsetMs > totalMs) offsetMs = totalMs;
+                    if (widthMs < 0) widthMs = 0;
+                    if (offsetMs + widthMs > totalMs) {
+                        widthMs = totalMs - offsetMs;
+                    }
+
+                    const leftPct = (offsetMs / totalMs) * 100;
+                    const widthPct = (widthMs / totalMs) * 100;
+
+                    // Center point of batch window on the ruler, for label position
+                    const centerPct = leftPct + widthPct / 2;
+
+                    // Time-only text, e.g. "03:00 - 03:30"
+                    const batchTimeText = `${formatLocalTime(batchStart)} - ${formatLocalTime(batchEnd)}`;
+
+                    const windowFromLocal = formatLocalReadable(windowStart);
+                    const windowUntilLocal = formatLocalReadable(windowEnd);
+
+                    rulerHtml += `
+                            <div class="ruler">
+                                <div class="ruler-track">
+                                    <div class="ruler-window"></div>
+                                    <div class="ruler-batch" style="left:${leftPct}%; width:${widthPct}%;"></div>
+                                </div>
+                                <div class="ruler-batch-label" style="left:${centerPct}%;">
+
+                                    ${escapeHtml(batchTimeText)}
+                                </div>
+                                <div class="ruler-labels">
+                                    <span>From: ${escapeHtml(windowFromLocal)}</span>
+                                    <span>Until: ${escapeHtml(windowUntilLocal)}</span>
+                                </div>
+                            </div>`;
+
+             }
+          }
+
+            box.innerHTML = rulerHtml + baseLinesHtml;
+        }
+
+
+        const btnToggleJson = document.getElementById('btn-toggle-json');
+        const jsonWrap = document.getElementById('json-wrap');
+        const outJson = document.getElementById('out-json');
+
+        btnToggleJson.addEventListener('click', () => {
+            const isHidden = jsonWrap.style.display === 'none';
+            jsonWrap.style.display = isHidden ? 'block' : 'none';
+            btnToggleJson.textContent = isHidden ? 'Hide JSON' : 'Convert to JSON';
+        });
+
+        function showResponse(obj) {
+            renderPretty(obj);
+            outJson.value = JSON.stringify(obj, null, 2);
+        }
+
+        document.getElementById('btn-advise').addEventListener('click', async () => {
+            // Validate schedule window (no-op in run_now mode)
+            if (!validateScheduleWindow()) return;
+
+            setLoading(true);
+            try {
+                const payload = buildPayload('advise');
+                const res = await callApi('/advise', payload);
+                showResponse(res);
+            } finally {
+                setLoading(false);
+            }
+        });
+
+        document.getElementById('btn-schedule').addEventListener('click', async () => {
+            // Validate schedule window (no-op in run_now mode)
+            if (!validateScheduleWindow()) return;
+
+            setLoading(true);
+            try {
+                const payload = buildPayload('schedule');
+                const res = await callApi('/schedule', payload);
+                showResponse(res);
+            } finally {
+                setLoading(false);
+            }
+        });
+
+
+        // Initialize schedule window to [now .. now+10min] rounded to 5-min
+        (function initScheduleWindow() {
+            const now = new Date();
+            const ms5 = 5 * 60 * 1000;
+            const roundedFrom = new Date(Math.ceil(now.getTime() / ms5) * ms5);
+            const roundedUntil = new Date(roundedFrom.getTime() + 10 * 60 * 1000);
+
+            scheduleFromInput.value = formatLocalForInput(roundedFrom);
+            scheduleUntilInput.value = formatLocalForInput(roundedUntil);
+
+            scheduleFromInput.disabled = true;
+            scheduleUntilInput.disabled = true;
+        })();
+
+        // Kick off region load
+        loadCatalog();
+    </script>
+</body>
+</html>

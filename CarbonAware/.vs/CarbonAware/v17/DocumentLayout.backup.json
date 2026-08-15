@@ -128,7 +128,7 @@
               "RelativeDocumentMoniker": "..\\CarbonAware.Providers\\LatencySignalProvider.cs",
               "ToolTip": "C:\\Users\\amarnath\\Documents\\TUD modules\\sem2\\research thesis\\project\\CarbonAwareAPI\\CarbonAware.Providers\\LatencySignalProvider.cs",
               "RelativeToolTip": "..\\CarbonAware.Providers\\LatencySignalProvider.cs",
-              "ViewState": "AgIAAH0AAAAAAAAAAAAkwI4AAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAGsAAAAAAAAAAAAkwI4AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-08-14T21:36:41.382Z",
               "EditorCaption": ""
@@ -158,6 +158,10 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-08-14T21:08:13.1Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{56df62a4-05a3-4e5b-aa1a-99371ccfb997}"
             },
             {
               "$type": "Document",
@@ -554,10 +558,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-13T18:14:56.099Z"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{56df62a4-05a3-4e5b-aa1a-99371ccfb997}"
             }
           ]
         }

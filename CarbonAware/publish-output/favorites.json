@@ -1,0 +1,30 @@
+[
+  {
+    "Cloud": "azure",
+    "Region": "eastus"
+  },
+  {
+    "Cloud": "azure",
+    "Region": "westeurope"
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "europe-central2"
+  },
+  {
+    "Cloud": "gcp",
+    "Region": "us-west1"
+  },
+  {
+    "Cloud": "aws",
+    "Region": "af-east-1"
+  },
+  {
+    "Cloud": "aws",
+    "Region": "eu-south-2"
+  },
+  {
+    "Cloud": "aws",
+    "Region": "us-east-1"
+  }
+]

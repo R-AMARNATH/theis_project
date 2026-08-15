@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "CarbonAware.RegionMap/1.0.0": {
+        "dependencies": {
+          "CarbonAware.Core": "1.0.0"
+        },
+        "runtime": {
+          "CarbonAware.RegionMap.dll": {}
+        }
+      },
+      "CarbonAware.Core/1.0.0": {
+        "runtime": {
+          "CarbonAware.Core.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CarbonAware.RegionMap/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CarbonAware.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

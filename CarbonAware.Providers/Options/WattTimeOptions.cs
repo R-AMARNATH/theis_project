@@ -12,5 +12,7 @@ namespace CarbonAware.Providers.Options
         public string Username { get; set; } = "";
         public string Password { get; set; } = "";
         public int TokenCacheMinutes { get; set; } = 55; // access tokens typically ~1hr
+
+        public int MaxConcurrentChecks { get; set; } = 12;
     }
 }

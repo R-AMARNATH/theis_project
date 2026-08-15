@@ -22,6 +22,9 @@ public sealed class WattTimeProvider : ICarbonSignalProvider, IBestWindowSignalP
     private static  DateTimeOffset _tokenExpiresAt = DateTimeOffset.MinValue;
     private readonly IAuditSink _audit;
     private readonly ICorrelationContext _correlation;
+
+    private static readonly SemaphoreSlim _gate = new(initialCount: 12, maxCount: 12);
+    private static int _configuredMax = 12;
     public WattTimeProvider(HttpClient http, IOptions<WattTimeOptions> opts, ILogger<WattTimeProvider> log, IAuditSink audit, ICorrelationContext correlation)
     {
         _http = http;
@@ -30,6 +33,19 @@ public sealed class WattTimeProvider : ICarbonSignalProvider, IBestWindowSignalP
         _audit = audit;
         _correlation = correlation;
         // BaseAddress set in Program.cs
+        var wanted = Math.Max(1, _opts.MaxConcurrentChecks);
+        if (wanted != _configuredMax)
+        {
+            lock (_gate)
+            {
+                if (wanted != _configuredMax)
+                {
+                    var diff = wanted - _configuredMax;
+                    if (diff > 0) _gate.Release(diff);
+                    _configuredMax = wanted;
+                }
+            }
+        }
     }
 
     // ======== PUBLIC API ========
@@ -40,30 +56,46 @@ public sealed class WattTimeProvider : ICarbonSignalProvider, IBestWindowSignalP
     bool marginal,
     CancellationToken ct = default)
     {
+        await _gate.WaitAsync(ct);
+        try
+        {
+            return await GetSignalsCoreAsync(region, at, marginal, ct);
+        }
+        finally
+        {
+            _gate.Release();
+        }
+    }
+
+
+    private async Task<CarbonSignal> GetSignalsCoreAsync(
+    string region,
+    DateTimeOffset at,
+    bool marginal,
+    CancellationToken ct = default)
+    {
         await EnsureTokenAsync(ct);
         var now = DateTimeOffset.UtcNow;
         var isFuture = at > now.AddMinutes(2); // small tolerance
 
-            double? moer = isFuture
-                ? await GetMoerAtAsync(region, at, ct)            // forecast near 'at'
-                : await TryGetMoerForecastNowAsync(region, ct);   // earliest forecast point ~now
+        double? moer = isFuture
+            ? await GetMoerAtAsync(region, at, ct)            // forecast near 'at'
+            : await TryGetMoerForecastNowAsync(region, ct);   // earliest forecast point ~now
 
-            if (moer.HasValue)
-            {
-                 return new CarbonSignal(
-                    Zone: region,
-                    Timestamp: at, // or DateTimeOffset.UtcNow; either is fine for display
-                    IntensityGPerKwh: moer.Value,
-                    IsMarginal: true,
-                    ForecastHorizonMin: (int?)Math.Round((at - now).TotalMinutes),
-                    Source: isFuture ? "watttime.v3.forecast@at" : "watttime.v3.forecast@now"
-                );
-            }
-            _log.LogDebug("WattTime: no usable signal for region {Region} at {At:o}", region, at);
+        if (moer.HasValue)
+        {
+            return new CarbonSignal(
+               Zone: region,
+               Timestamp: at, // or DateTimeOffset.UtcNow; either is fine for display
+               IntensityGPerKwh: moer.Value,
+               IsMarginal: true,
+               ForecastHorizonMin: (int?)Math.Round((at - now).TotalMinutes),
+               Source: isFuture ? "watttime.v3.forecast@at" : "watttime.v3.forecast@now"
+           );
+        }
+        _log.LogDebug("WattTime: no usable signal for region {Region} at {At:o}", region, at);
         return null;
     }
-
-
     // ======== AUTH ========
     /// <summary>Ensures there is a valid Bearer token (login at /login, cache for TokenCacheMinutes).</summary>
     public async Task EnsureTokenAsync(CancellationToken ct = default)

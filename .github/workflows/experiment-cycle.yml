@@ -40,7 +40,7 @@ jobs:
       - name: Determine cycle id and time window
         id: vars
         run: |
-          CYCLE_ID="cycle-$(date -u +%Y%m%dT%H%M%SZ)"
+          CYCLE_ID="cycle-$(date -u +%Y%m%dt%H%M%Sz)"
           FROM=$(date -u +%Y-%m-%dT%H:%M:%SZ)
           UNTIL=$(date -u -d '+1 hour' +%Y-%m-%dT%H:%M:%SZ)
           echo "cycle_id=$CYCLE_ID" >> "$GITHUB_OUTPUT"

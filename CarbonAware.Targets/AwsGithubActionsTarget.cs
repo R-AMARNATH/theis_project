@@ -53,20 +53,47 @@ public sealed class AwsGithubActionsTarget : ICloudTarget
 
         var baseUri = _http.BaseAddress ?? new Uri("https://api.github.com");
         var url = new Uri(baseUri, $"/repos/{_opts.Owner}/{_opts.Repo}/actions/workflows/{_opts.AwsWorkflow}/dispatches");
+        var json = JsonSerializer.Serialize(body);
 
-        using var content = new StringContent(JsonSerializer.Serialize(body), Encoding.UTF8, "application/json");
-        using var resp = await _http.PostAsync(url, content, ct);
+        // Same retry pattern as AzureGithubActionsTarget -- GitHub's API occasionally returns
+        // transient 502/503/429 (confirmed in production during a real automated cycle),
+        // which otherwise kills the whole cycle for a blip that's entirely outside this app.
+        const int maxAttempts = 3;
+        HttpResponseMessage? resp = null;
+        string? lastErr = null;
 
-        if (resp.StatusCode == HttpStatusCode.NoContent)
+        for (int attempt = 1; attempt <= maxAttempts; attempt++)
         {
-            var id = $"gha-aws-dispatch-{DateTimeOffset.UtcNow:yyyyMMddHHmmssfff}";
-            _log.LogInformation("Triggered AWS VM workflow for region {Region} on {Branch}. CorrelationId={Id}",
-                advice.Region, _opts.Branch, id);
-            return id;
+            using var content = new StringContent(json, Encoding.UTF8, "application/json");
+            resp = await _http.PostAsync(url, content, ct);
+
+            if (resp.StatusCode == HttpStatusCode.NoContent)
+            {
+                var id = $"gha-aws-dispatch-{DateTimeOffset.UtcNow:yyyyMMddHHmmssfff}";
+                _log.LogInformation("Triggered AWS VM workflow for region {Region} on {Branch}. CorrelationId={Id}",
+                    advice.Region, _opts.Branch, id);
+                return id;
+            }
+
+            var isTransient = resp.StatusCode is HttpStatusCode.ServiceUnavailable
+                or HttpStatusCode.BadGateway
+                or (HttpStatusCode)429;
+
+            lastErr = await resp.Content.ReadAsStringAsync(ct);
+
+            if (!isTransient || attempt == maxAttempts)
+            {
+                _log.LogError("GitHub AWS workflow_dispatch failed (attempt {Attempt}/{Max}). Status={Status} Body={Body}",
+                    attempt, maxAttempts, (int)resp.StatusCode, lastErr);
+                break;
+            }
+
+            var delay = TimeSpan.FromSeconds(Math.Pow(2, attempt));
+            _log.LogWarning("GitHub AWS workflow_dispatch transient failure (attempt {Attempt}/{Max}), retrying in {Delay}s. Status={Status} Body={Body}",
+                attempt, maxAttempts, delay.TotalSeconds, (int)resp.StatusCode, lastErr);
+            await Task.Delay(delay, ct);
         }
 
-        var err = await resp.Content.ReadAsStringAsync(ct);
-        _log.LogError("GitHub AWS workflow_dispatch failed. Status={Status} Body={Body}", (int)resp.StatusCode, err);
-        throw new InvalidOperationException($"GitHub AWS workflow_dispatch failed: {(int)resp.StatusCode} {err}");
+        throw new InvalidOperationException($"GitHub AWS workflow_dispatch failed after {maxAttempts} attempts: {(int)resp!.StatusCode} {lastErr}");
     }
 }

@@ -57,17 +57,6 @@ public sealed class AzureGithubActionsTarget : ICloudTarget
 
         var body = new
         {
-            // GitHub requires a ref (branch or tag) on which the workflow will run
-            // Ensure your workflow file exists on this branch
-            // e.g. "main"
-            // If you supply a filename in AzureWorkflow, GitHub allows filename or numeric ID
-            // POST /repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches
-            // returns 204 No Content on success
-            // We’ll return a synthetic request id (timestamp) since dispatch has no body
-            // Optionally, you can follow up by listing runs to get the actual run id.
-            // For now: trigger & return a synthetic correlation id
-            // https://docs.github.com/en/rest/actions/workflows#create-a-workflow-dispatch-event
-            // payload below
             @ref = _opts.Branch, // escape reserved keyword
             inputs
         };
@@ -75,19 +64,48 @@ public sealed class AzureGithubActionsTarget : ICloudTarget
         var baseUri = _http.BaseAddress ?? new Uri("https://api.github.com");
         var url = new Uri(baseUri, $"/repos/{_opts.Owner}/{_opts.Repo}/actions/workflows/{_opts.AzureWorkflow}/dispatches");
         var json = JsonSerializer.Serialize(body);
-        using var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-        using var resp = await _http.PostAsync(url, content, ct);
-        if (resp.StatusCode == HttpStatusCode.NoContent)
+        // GitHub's API occasionally returns transient 502/503/429 responses (confirmed in
+        // production: "No server is currently available to service your request" during a
+        // real automated cycle). Without a retry, one transient blip kills the entire cycle
+        // and the caller gets a bare unhandled 500 with no useful response body. Retry a
+        // few times with backoff before giving up for real.
+        const int maxAttempts = 3;
+        HttpResponseMessage? resp = null;
+        string? lastErr = null;
+
+        for (int attempt = 1; attempt <= maxAttempts; attempt++)
         {
-            var correlationId = $"gha-azure-dispatch-{DateTimeOffset.UtcNow:yyyyMMddHHmmssfff}";
-            _log.LogInformation("Triggered Azure VM workflow for region {Region} on {Branch}. CorrelationId={Id}",
-                advice.Region, _opts.Branch, correlationId);
-            return correlationId;
+            using var content = new StringContent(json, Encoding.UTF8, "application/json");
+            resp = await _http.PostAsync(url, content, ct);
+
+            if (resp.StatusCode == HttpStatusCode.NoContent)
+            {
+                var correlationId = $"gha-azure-dispatch-{DateTimeOffset.UtcNow:yyyyMMddHHmmssfff}";
+                _log.LogInformation("Triggered Azure VM workflow for region {Region} on {Branch}. CorrelationId={Id}",
+                    advice.Region, _opts.Branch, correlationId);
+                return correlationId;
+            }
+
+            var isTransient = resp.StatusCode is HttpStatusCode.ServiceUnavailable
+                or HttpStatusCode.BadGateway
+                or (HttpStatusCode)429;
+
+            lastErr = await resp.Content.ReadAsStringAsync(ct);
+
+            if (!isTransient || attempt == maxAttempts)
+            {
+                _log.LogError("GitHub workflow_dispatch failed (attempt {Attempt}/{Max}). Status={Status} Body={Body}",
+                    attempt, maxAttempts, (int)resp.StatusCode, lastErr);
+                break;
+            }
+
+            var delay = TimeSpan.FromSeconds(Math.Pow(2, attempt)); // 2s, 4s, 8s
+            _log.LogWarning("GitHub workflow_dispatch transient failure (attempt {Attempt}/{Max}), retrying in {Delay}s. Status={Status} Body={Body}",
+                attempt, maxAttempts, delay.TotalSeconds, (int)resp.StatusCode, lastErr);
+            await Task.Delay(delay, ct);
         }
 
-        var err = await resp.Content.ReadAsStringAsync(ct);
-        _log.LogError("GitHub workflow_dispatch failed. Status={Status} Body={Body}", (int)resp.StatusCode, err);
-        throw new InvalidOperationException($"GitHub workflow_dispatch failed: {(int)resp.StatusCode} {err}");
+        throw new InvalidOperationException($"GitHub workflow_dispatch failed after {maxAttempts} attempts: {(int)resp!.StatusCode} {lastErr}");
     }
 }
